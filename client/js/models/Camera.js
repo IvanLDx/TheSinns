@@ -1,4 +1,4 @@
-export class CameraModel {
+export class Camera {
 	constructor() {
 		this.x = 0;
 		this.y = 0;
@@ -11,11 +11,17 @@ export class CameraModel {
 		this.y = y * pixelSize - cv.height / 2;
 	}
 
+	resize(cv) {
+		cv.width = this.getScreenSize(cv.clientWidth);
+		cv.height = this.getScreenSize(cv.clientHeight);
+	}
+
 	getScreenSize(size) {
 		let calc = size;
 		while (calc % 4 !== 0) {
 			calc++;
 		}
+		this.needsResize = false;
 		return calc;
 	}
 }

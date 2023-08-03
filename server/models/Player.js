@@ -7,7 +7,7 @@ class Player extends Entity {
 		this.pressingLeft = false;
 		this.pressingUp = false;
 		this.pressingDown = false;
-		this.maxSpd = 2;
+		this.maxSpd = 1;
 
 		let super_update = this.update;
 		this.update = function () {
@@ -24,7 +24,7 @@ class Player extends Entity {
 			else if (this.pressingDown) this.spdY = this.maxSpd;
 			else this.spdY = 0;
 		};
-		Player.list[id] = this;
+		Player.create(this);
 	}
 	static connect(socket) {
 		let player = new Player(socket.id);
@@ -42,22 +42,17 @@ class Player extends Entity {
 			playerList: Player.list
 		});
 	}
-	static disconnect(socket) {
-		delete Player.list[socket.id];
-	}
 	static update() {
 		let pack = [];
-		for (let i in Player.list) {
-			let player = Player.list[i];
+		Player.each((player) => {
 			player.update();
 			pack.push({
 				x: player.x,
 				y: player.y
 			});
-		}
+		});
 		return pack;
 	}
-	static list = {};
 }
 
 module.exports = Player;

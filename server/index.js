@@ -11,21 +11,6 @@ const Server = {
 		serv.listen(3000);
 		return serv;
 	},
-	deleteSocket(socket) {
-		Server.sockets.forEach((serverSocket, i) => {
-			if (serverSocket.id === socket.id) {
-				Server.sockets.splice(i, 1);
-			}
-		});
-	},
-	createSocket(socket) {
-		Server.sockets.push(socket);
-	},
-	emit(pack) {
-		Server.sockets.forEach((socket) => {
-			socket.emit('newPosition', pack);
-		});
-	},
 	sockets: [],
 	FPS: 60
 };

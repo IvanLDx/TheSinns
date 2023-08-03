@@ -1,8 +1,7 @@
-import { CameraModel } from './models/Camera.js';
+import { Camera } from './models/Camera.js';
 const cv = document.querySelector('.canvas');
-const Camera = new CameraModel();
-cv.width = Camera.getScreenSize(cv.clientWidth);
-cv.height = Camera.getScreenSize(cv.clientHeight);
+const cam = new Camera();
+cam.resize(cv);
 const ctx = cv.getContext('2d');
 const socket = io();
 let pixelSize = 4;
@@ -12,11 +11,13 @@ const img = new Image();
 img.src = './client/img/pj.png';
 
 function updateSelfPlayer(players, id) {
-	for (let i in players) {
-		if (players[i].id === id) {
-			selfPlayer = players[i];
-		}
-	}
+	players
+		.filter((player) => {
+			return player.id === id;
+		})
+		.forEach((player) => {
+			selfPlayer = player;
+		});
 }
 
 socket.on('init', function (data) {
@@ -25,7 +26,7 @@ socket.on('init', function (data) {
 
 socket.on('newPosition', function (data) {
 	updateSelfPlayer(data.player, selfPlayer.id);
-	Camera.focus(cv, selfPlayer, pixelSize);
+	cam.focus(cv, selfPlayer, pixelSize);
 	if (selfPlayer) {
 		ctx.clearRect(0, 0, cv.width, cv.height);
 		ctx.imageSmoothingEnabled = false;
@@ -36,8 +37,8 @@ socket.on('newPosition', function (data) {
 				0,
 				10,
 				10,
-				pixelSize * data.player[i].x - Camera.x,
-				pixelSize * data.player[i].y - Camera.y,
+				pixelSize * data.player[i].x - cam.x,
+				pixelSize * data.player[i].y - cam.y,
 				pixelSize * 10,
 				pixelSize * 10
 			);
@@ -72,4 +73,8 @@ document.onwheel = function (e) {
 	} else if (e.deltaY > 0 && pixelSize > 1) {
 		pixelSize--;
 	}
+};
+
+document.querySelector('body').onresize = function () {
+	Camera.resize(cv);
 };

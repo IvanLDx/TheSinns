@@ -1,22 +1,22 @@
-class Entity {
+const List = require('./List');
+class Entity extends List {
 	constructor() {
-		var self = {
-			x: 40,
-			y: 40,
-			w: 10,
-			h: 10,
-			spdX: 0,
-			spdY: 0
+		super();
+		this.x = 40;
+		this.y = 40;
+		this.w = 10;
+		this.h = 10;
+		this.spdX = 0;
+		this.spdY = 0;
+		this.update = () => {
+			this.updatePosition();
 		};
-		self.update = function () {
-			self.updatePosition();
+		this.updatePosition = () => {
+			this.x += this.spdX;
+			this.y += this.spdY;
 		};
-		self.updatePosition = function () {
-			self.x += self.spdX;
-			self.y += self.spdY;
-		};
-		return self;
 	}
+	static list = [];
 }
 
 module.exports = Entity;

@@ -1,16 +1,17 @@
 var Server = require('./server');
 const Player = require('./server/models/Player');
+const Socket = require('./server/Socket');
 
 var io = require('socket.io')(Server.start(__dirname), {});
 io.sockets.on('connection', function (socket) {
 	let id = ~~(Math.random() * 8999) + 1000;
 	socket.id = id;
-	Server.createSocket(socket);
+	Socket.create(socket);
 	Player.connect(socket);
 
 	socket.on('disconnect', function () {
-		Server.deleteSocket(socket);
-		Player.disconnect(socket);
+		Socket.delete(socket);
+		Player.delete(socket.id);
 	});
 });
 
@@ -20,5 +21,5 @@ setInterval(function () {
 		player: Player.list
 	};
 
-	Server.emit(pack);
+	Socket.emit(pack);
 }, 1000 / Server.FPS);
