@@ -1,4 +1,6 @@
 const Entity = require('./Entity');
+const World = require('./World');
+const world = new World();
 class Player extends Entity {
 	constructor(id) {
 		super();
@@ -7,7 +9,7 @@ class Player extends Entity {
 		this.pressingLeft = false;
 		this.pressingUp = false;
 		this.pressingDown = false;
-		this.maxSpd = 1;
+		this.maxSpd = 2;
 
 		let super_update = this.update;
 		this.update = function () {
@@ -39,7 +41,8 @@ class Player extends Entity {
 
 		socket.emit('init', {
 			id: socket.id,
-			playerList: Player.list
+			playerList: Player.list,
+			world: world
 		});
 	}
 	static update() {
