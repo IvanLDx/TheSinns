@@ -15,6 +15,7 @@ class List {
 			evt(player, i);
 		});
 	}
+	static list = [];
 }
 
 module.exports = List;

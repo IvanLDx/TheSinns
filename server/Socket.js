@@ -10,7 +10,6 @@ class Socket extends List {
 			socket.emit('newPosition', pack);
 		});
 	}
-	static list = [];
 }
 
 module.exports = Socket;

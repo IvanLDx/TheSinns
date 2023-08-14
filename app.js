@@ -10,7 +10,7 @@ io.sockets.on('connection', function (socket) {
 	Player.connect(socket);
 
 	socket.on('disconnect', function () {
-		Socket.delete(socket);
+		Socket.delete(socket.id);
 		Player.delete(socket.id);
 	});
 });
