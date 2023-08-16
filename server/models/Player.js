@@ -1,6 +1,5 @@
 const Entity = require('./Entity');
 const World = require('./World');
-const world = new World();
 class Player extends Entity {
 	constructor(id) {
 		super();
@@ -42,7 +41,11 @@ class Player extends Entity {
 		socket.emit('init', {
 			id: socket.id,
 			playerList: Player.list,
-			world: world
+			world: World.tiles
+		});
+
+		socket.on('sendToServer', (pack) => {
+			World.setTouchedTile(pack);
 		});
 	}
 	static update() {
