@@ -6,7 +6,6 @@ const ctx = cv.getContext('2d');
 const socket = io();
 let pixelSize = 4;
 let selfPlayer;
-let world;
 let tiles = [];
 let floorImg = new Image();
 floorImg.src = './client/img/floor.png';
@@ -16,8 +15,10 @@ let mouse = { x: 0, y: 0 };
 
 const img = new Image();
 img.src = './client/img/pj.png';
+const Entity = {};
 
 function updateSelfPlayer(players, id) {
+	Entity.players = players;
 	players
 		.filter((player) => {
 			return player.id === id;
@@ -29,59 +30,28 @@ function updateSelfPlayer(players, id) {
 
 socket.on('init', function (data) {
 	updateSelfPlayer(data.playerList, data.id);
-	world = data.world;
-
-	for (let row = 0; row < world.h; row += 1) {
-		for (let col = 0; col < world.w; col += 1) {
-			let tile = {
-				i: tiles.length,
-				id: col + '-' + row,
-				img: {
-					file: floorImg,
-					w: world.tile.w,
-					h: world.tile.h
-				}
-			};
-			tile.w = tile.img.w;
-			tile.h = tile.img.h;
-			tile.col = (row / 2) * tile.w + (col * tile.w) / 2;
-			tile.row = (row * tile.h) / 2 - (col * tile.h) / 2;
-
-			tile.center = {
-				x: ~~(tile.col * pixelSize + (tile.w * pixelSize) / 2),
-				y: ~~(tile.row * pixelSize + (tile.h * pixelSize) / 2)
-			};
-
-			tile.intersects = function () {
-				tile.mousePosition = {
-					x: Math.abs(mouse.x - tile.center.x),
-					y: Math.abs(mouse.y - tile.center.y)
-				};
-
-				tile.mouseTotalPos = tile.calculateTotalXYPosition();
-				tile.touch = tile.mouseIsInside();
-
-				return tile.isInCenter;
-			};
-
-			tile.calculateTotalXYPosition = function () {
-				return tile.mousePosition.x + tile.mousePosition.y * 2;
-			};
-
-			tile.mouseIsInside = function () {
-				return (
-					tile.mouseTotalPos < tile.center.x - tile.col * pixelSize
-				);
-			};
-
-			tiles.push(tile);
-		}
-	}
+	tiles = data.world;
 });
 
 socket.on('newPosition', function (data) {
 	updateSelfPlayer(data.player, selfPlayer.id);
+	tiles.forEach((tile) => {
+		tile.touch = false;
+		if (data.touchedTile && tile.id === data.touchedTile.id) {
+			tile.touch = true;
+		}
+	});
 	cam.focus(cv, selfPlayer, pixelSize);
+});
+
+function act() {
+	paint();
+	socket.emit('sendToServer', {
+		mouse: mouse
+	});
+}
+
+function paint() {
 	if (selfPlayer) {
 		ctx.clearRect(0, 0, cv.width, cv.height);
 		ctx.imageSmoothingEnabled = false;
@@ -100,25 +70,21 @@ socket.on('newPosition', function (data) {
 			);
 		});
 
-		for (var i in data.player) {
+		for (var i in Entity.players) {
 			ctx.drawImage(
 				img,
 				0,
 				0,
 				10,
 				10,
-				pixelSize * data.player[i].x - cam.x,
-				pixelSize * data.player[i].y - cam.y,
+				pixelSize * Entity.players[i].x - cam.x,
+				pixelSize * Entity.players[i].y - cam.y,
 				pixelSize * 10,
 				pixelSize * 10
 			);
 		}
 	}
-
-	socket.emit('sendToServer', {
-		mouse: mouse
-	});
-});
+}
 
 const keys = {
 	KeyD: 'right',
@@ -166,14 +132,12 @@ document.onmouseup = function () {
 };
 
 function mouseMove(e) {
-	mouse.x = e.clientX + cam.x;
-	mouse.y = e.clientY + cam.y;
-
-	tiles.forEach((tile, i) => {
-		tile.intersects();
-	});
+	mouse.x = ~~((e.clientX + cam.x) / pixelSize);
+	mouse.y = ~~((e.clientY + cam.y) / pixelSize);
 }
 
 function mouseDrag(e) {
 	document.body.style.cursor = 'grabbing';
 }
+
+setInterval(act, 1000 / 60);
