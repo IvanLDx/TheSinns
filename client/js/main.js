@@ -1,4 +1,5 @@
 import { Camera } from './models/Camera.js';
+import { Mouse } from './models/Mouse.js';
 const cv = document.querySelector('.canvas');
 const cam = new Camera();
 cam.resize(cv);
@@ -11,10 +12,8 @@ let floorImg = new Image();
 floorImg.src = './client/img/floor.png';
 let floorImg2 = new Image();
 floorImg2.src = './client/img/floor2.png';
-let mouse = { x: 0, y: 0 };
+let mouse = new Mouse();
 
-const img = new Image();
-img.src = './client/img/pj.png';
 const Entity = {};
 
 function updateSelfPlayer(players, id) {
@@ -41,10 +40,10 @@ socket.on('newPosition', function (data) {
 			tile.touch = true;
 		}
 	});
-	cam.focus(cv, selfPlayer, pixelSize);
 });
 
 function act() {
+	cam.focus(cv, selfPlayer, pixelSize);
 	paint();
 	socket.emit('sendToServer', {
 		mouse: mouse
@@ -69,20 +68,6 @@ function paint() {
 				tile.h * pixelSize + pixelSize
 			);
 		});
-
-		for (var i in Entity.players) {
-			ctx.drawImage(
-				img,
-				0,
-				0,
-				10,
-				10,
-				pixelSize * Entity.players[i].x - cam.x,
-				pixelSize * Entity.players[i].y - cam.y,
-				pixelSize * 10,
-				pixelSize * 10
-			);
-		}
 	}
 }
 
@@ -123,21 +108,25 @@ document.onmousemove = mouseMove;
 
 document.onmousedown = function (e) {
 	document.body.style.cursor = 'grab';
+	mouse.setPressedPosition();
 	document.onmousemove = mouseDrag;
 };
 
 document.onmouseup = function () {
 	document.body.style.cursor = 'initial';
 	document.onmousemove = mouseMove;
+	mouse.stop();
 };
 
 function mouseMove(e) {
-	mouse.x = ~~((e.clientX + cam.x) / pixelSize);
-	mouse.y = ~~((e.clientY + cam.y) / pixelSize);
+	mouse.setPosition(e, pixelSize);
 }
 
 function mouseDrag(e) {
+	mouseMove(e);
 	document.body.style.cursor = 'grabbing';
+	mouse.setMovedPosition();
+	mouse.setPressedPosition();
 }
 
 setInterval(act, 1000 / 60);

@@ -5,10 +5,12 @@ export class Camera {
 	}
 
 	focus(cv, player, pixelSize) {
-		let x = player.x + player.w / 2;
-		let y = player.y + player.h / 2;
-		this.x = x * pixelSize - cv.width / 2;
-		this.y = y * pixelSize - cv.height / 2;
+		if (player) {
+			let x = player.x + player.w / 2;
+			let y = player.y + player.h / 2;
+			this.x = x * pixelSize - cv.width / 2;
+			this.y = y * pixelSize - cv.height / 2;
+		}
 	}
 
 	resize(cv) {

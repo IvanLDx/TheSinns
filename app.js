@@ -3,7 +3,7 @@ const Player = require('./server/models/Player');
 const Socket = require('./server/Socket');
 
 const World = require('./server/models/World');
-const world = new World('3x4');
+const world = new World('4x8');
 world.setMap();
 
 var io = require('socket.io')(Server.start(__dirname), {});
