@@ -2,10 +2,9 @@ export class Mouse {
 	constructor() {
 		this.x = 0;
 		this.y = 0;
-		this.pressed = {};
-		this.dragged = {};
-
-		this.stop();
+		this.press = { x: 0, y: 0 };
+		this.drag = { x: 0, y: 0 };
+		this.pressing = false;
 	}
 
 	setPosition(e, cam) {
@@ -13,33 +12,32 @@ export class Mouse {
 		this.y = ~~((e.clientY + cam.y) / cam.pixelSize);
 	}
 
-	setPressedPosition() {
-		this.pressed = {
+	setPress(e) {
+		this.pressing = true;
+		this.press = {
+			x: e?.clientX || this.x,
+			y: e?.clientY || this.y
+		};
+	}
+
+	setDrag(e, cam) {
+		this.press = {
 			x: this.x,
 			y: this.y
 		};
-	}
 
-	setMovedPosition() {
-		this.dragged = {
-			x: this.pressed.x - this.x,
-			y: this.pressed.y - this.y
-		};
+		this.x = e.clientX;
+		this.y = e.clientY;
+
+		let x = ~~((this.press.x - this.x) / cam.pixelSize);
+		let y = ~~((this.press.y - this.y) / cam.pixelSize);
+
+		if (Math.abs(x) < 10 && Math.abs(y) < 20) {
+			this.drag = { x: x, y: y };
+		}
 	}
 
 	stop() {
-		this.pressed = {
-			x: 0,
-			y: 0
-		};
-
-		this.dragged = {
-			x: 0,
-			y: 0
-		};
-	}
-
-	getMovedPosition() {
-		return this.dragged;
+		this.drag = { x: 0, y: 0 };
 	}
 }
