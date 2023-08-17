@@ -46,6 +46,9 @@ function act() {
 		cam.focus(cv, selfPlayer);
 		paint();
 	}
+	if (mouse.pressing) {
+		mouse.setPress();
+	}
 	socket.emit('sendToServer', {
 		mouse: mouse
 	});
@@ -79,11 +82,10 @@ document.querySelector('body').onresize = function () {
 };
 
 document.onmousemove = mouseMove;
-
-document.onmousedown = function () {
-	mouse.setPressedPosition();
+document.onmousedown = function (e) {
 	document.body.style.cursor = 'grab';
 	document.onmousemove = mouseDrag;
+	mouse.setPress(e);
 };
 
 document.onmouseup = function () {
@@ -97,10 +99,8 @@ function mouseMove(e) {
 }
 
 function mouseDrag(e) {
-	mouseMove(e);
+	mouse.setDrag(e, cam);
 	document.body.style.cursor = 'grabbing';
-	mouse.setMovedPosition();
-	mouse.setPressedPosition();
 }
 
 setInterval(act, 1000 / 60);

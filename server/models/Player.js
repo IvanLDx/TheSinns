@@ -9,8 +9,8 @@ class Player extends Entity {
 	}
 
 	setMousePosition(pack) {
-		this.x += pack.mouse.dragged.x;
-		this.y += pack.mouse.dragged.y;
+		this.x += pack.mouse.drag.x;
+		this.y += pack.mouse.drag.y;
 	}
 
 	static connect(socket) {
