@@ -2,13 +2,14 @@ export class Camera {
 	constructor() {
 		this.x = 0;
 		this.y = 0;
+		this.pixelSize = 4;
 	}
 
-	focus(cv, player, pixelSize) {
+	focus(cv, player) {
 		let x = player.x + player.w / 2;
 		let y = player.y + player.h / 2;
-		this.x = x * pixelSize - cv.width / 2;
-		this.y = y * pixelSize - cv.height / 2;
+		this.x = x * this.pixelSize - cv.width / 2;
+		this.y = y * this.pixelSize - cv.height / 2;
 	}
 
 	resize(cv) {
@@ -23,5 +24,13 @@ export class Camera {
 		}
 		this.needsResize = false;
 		return calc;
+	}
+
+	zoom(e) {
+		if (e.deltaY < 0 && this.pixelSize < 40) {
+			this.pixelSize++;
+		} else if (e.deltaY > 0 && this.pixelSize > 1) {
+			this.pixelSize--;
+		}
 	}
 }

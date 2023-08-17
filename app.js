@@ -20,7 +20,6 @@ io.sockets.on('connection', function (socket) {
 });
 
 setInterval(function () {
-	Player.update();
 	var pack = {
 		player: Player.list,
 		touchedTile: World.getTouchedTile()
