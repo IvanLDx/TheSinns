@@ -5,16 +5,20 @@ export class Camera {
 		this.pixelSize = 4;
 	}
 
-	focus(cv, player) {
+	focus(player) {
 		let x = player.x + player.w / 2;
 		let y = player.y + player.h / 2;
 		this.x = x * this.pixelSize - cv.width / 2;
 		this.y = y * this.pixelSize - cv.height / 2;
 	}
 
-	resize(cv) {
+	onResize(evt) {
 		cv.width = this.getScreenSize(cv.clientWidth);
 		cv.height = this.getScreenSize(cv.clientHeight);
+
+		if (evt) {
+			evt();
+		}
 	}
 
 	getScreenSize(size) {
