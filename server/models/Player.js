@@ -24,7 +24,6 @@ class Player extends Entity {
 
 		socket.on('sendToServer', (pack) => {
 			player.setMousePosition(pack);
-
 			World.setTouchedTile(pack);
 		});
 	}
