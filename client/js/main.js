@@ -1,19 +1,20 @@
 import { Camera } from './models/Camera.js';
 import { Mouse } from './models/Mouse.js';
+import { Modal } from './models/components/Modal.js';
+import { Tile } from './models/Tile.js';
 
-const cv = document.querySelector('.canvas');
+window.cv = document.querySelector('.canvas');
+window.ctx = cv.getContext('2d');
 const cam = new Camera();
-cam.resize(cv);
-const ctx = cv.getContext('2d');
 const socket = io();
 let selfPlayer;
 let tiles = [];
-let floorImg = new Image();
-floorImg.src = './client/img/floor.png';
-let floorImg2 = new Image();
-floorImg2.src = './client/img/floor2.png';
 let mouse = new Mouse();
 const Entity = {};
+const itemsModal = new Modal();
+cam.onResize(() => {
+	itemsModal.resize();
+});
 
 function updateSelfPlayer(players, id) {
 	Entity.players = players;
@@ -28,22 +29,18 @@ function updateSelfPlayer(players, id) {
 
 socket.on('init', function (data) {
 	updateSelfPlayer(data.playerList, data.id);
-	tiles = data.world;
+	Tile.createList(data.world);
+	tiles = Tile;
 });
 
 socket.on('newPosition', function (data) {
 	updateSelfPlayer(data.player, selfPlayer.id);
-	tiles.forEach((tile) => {
-		tile.touch = false;
-		if (data.touchedTile && tile.id === data.touchedTile.id) {
-			tile.touch = true;
-		}
-	});
+	tiles.handleTouch(data);
 });
 
 function act() {
 	if (selfPlayer) {
-		cam.focus(cv, selfPlayer);
+		cam.focus(selfPlayer);
 		paint();
 	}
 	if (mouse.pressing) {
@@ -55,22 +52,12 @@ function act() {
 }
 
 function paint() {
-	ctx.clearRect(0, 0, cv.width, cv.height);
+	ctx.fillStyle = '#64e29d';
+	ctx.fillRect(0, 0, cv.width, cv.height);
 	ctx.imageSmoothingEnabled = false;
 
-	tiles.forEach((tile) => {
-		ctx.drawImage(
-			tile.touch ? floorImg2 : floorImg,
-			0,
-			0,
-			tile.img.w + 2,
-			tile.img.h + 1,
-			tile.col * cam.pixelSize - cam.x,
-			tile.row * cam.pixelSize - cam.y,
-			tile.w * cam.pixelSize + cam.pixelSize * 2,
-			tile.h * cam.pixelSize + cam.pixelSize
-		);
-	});
+	tiles.paint(cam);
+	itemsModal.paint();
 }
 
 document.onwheel = function (e) {
@@ -78,20 +65,31 @@ document.onwheel = function (e) {
 };
 
 document.querySelector('body').onresize = function () {
-	cam.resize(cv);
+	cam.onResize(() => {
+		itemsModal.resize();
+	});
 };
 
 document.onmousemove = mouseMove;
 document.onmousedown = function (e) {
-	document.body.style.cursor = 'grab';
-	document.onmousemove = mouseDrag;
-	mouse.setPress(e);
+	mouse.onLeftClick(e, (e) => {
+		mouse.setPress(e);
+	});
+
+	mouse.onRightClick(e, () => {
+		document.body.style.cursor = 'grab';
+		document.onmousemove = mouseDrag;
+	});
 };
 
 document.onmouseup = function () {
 	document.body.style.cursor = 'initial';
 	document.onmousemove = mouseMove;
 	mouse.stop();
+};
+
+document.oncontextmenu = function (e) {
+	e.preventDefault();
 };
 
 function mouseMove(e) {
