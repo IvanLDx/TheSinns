@@ -5,7 +5,6 @@ import { Tile } from './models/Tile.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
-const cv = document.querySelector('.canvas');
 const cam = new Camera();
 const socket = io();
 let selfPlayer;
@@ -100,8 +99,6 @@ function mouseMove(e) {
 function mouseDrag(e) {
 	mouse.setDrag(e, cam);
 	document.body.style.cursor = 'grabbing';
-	mouse.setMovedPosition();
-	mouse.setPressedPosition();
 }
 
 setInterval(act, 1000 / 60);
