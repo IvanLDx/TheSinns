@@ -19,5 +19,29 @@ export class Modal {
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
 		ctx.fillStyle = '#e2b332';
 		ctx.fillRect(this.x, this.y, this.w, this.h);
+
+		let walls = this.items.wall;
+		let i = 0;
+		for (let w in walls) {
+			let wall = walls[w];
+			wall.setPosition(this, i);
+			ctx.drawImage(
+				wall.image,
+				wall.x,
+				wall.y,
+				wall.w,
+				wall.h,
+				wall.position.x,
+				wall.position.y,
+				wall.position.w,
+				wall.position.h
+			);
+
+			i++;
+		}
+	}
+
+	appendItems(items) {
+		this.items = items;
 	}
 }
