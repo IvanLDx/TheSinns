@@ -2,6 +2,7 @@ import { Camera } from './models/Camera.js';
 import { Mouse } from './models/Mouse.js';
 import { Modal } from './models/components/Modal.js';
 import { Tile } from './models/Tile.js';
+import { Item } from './models/components/Item.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
@@ -31,6 +32,8 @@ socket.on('init', function (data) {
 	updateSelfPlayer(data.playerList, data.id);
 	Tile.createList(data.world);
 	tiles = Tile;
+	Item.createList(data.itemData);
+	itemsModal.appendItems(Item.list);
 });
 
 socket.on('newPosition', function (data) {
@@ -74,6 +77,12 @@ document.onmousemove = mouseMove;
 document.onmousedown = function (e) {
 	mouse.onLeftClick(e, (e) => {
 		mouse.setPress(e);
+
+		Item.each((item) => {
+			if (item.intersects(mouse)) {
+				console.info(item);
+			}
+		});
 	});
 
 	mouse.onRightClick(e, () => {

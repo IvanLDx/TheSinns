@@ -37,18 +37,6 @@ export class Mouse {
 		}
 	}
 
-	onLeftClick(e, evt) {
-		if (e.button === 0 && evt) {
-			evt(e);
-		}
-	}
-
-	onRightClick(e, evt) {
-		if (e.button === 2 && evt) {
-			evt(e);
-		}
-	}
-
 	stop() {
 		this.drag = { x: 0, y: 0 };
 	}

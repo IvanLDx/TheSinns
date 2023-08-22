@@ -23,7 +23,7 @@ export class Tile {
 	}
 
 	static handleTouch(data) {
-		this.list.forEach((tile) => {
+		this.each((tile) => {
 			tile.touch = false;
 			if (data.touchedTile && tile.id === data.touchedTile.id) {
 				tile.touch = true;
@@ -32,7 +32,7 @@ export class Tile {
 	}
 
 	static paint(cam) {
-		this.list.forEach((tile) => {
+		this.each((tile) => {
 			ctx.drawImage(
 				tile.touch ? floorImg2 : floorImg,
 				0,
@@ -44,6 +44,12 @@ export class Tile {
 				tile.w * cam.pixelSize + cam.pixelSize * 2,
 				tile.h * cam.pixelSize + cam.pixelSize
 			);
+		});
+	}
+
+	static each(evt) {
+		this.list.forEach((tile) => {
+			evt(tile);
 		});
 	}
 
