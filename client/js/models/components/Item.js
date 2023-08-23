@@ -1,4 +1,5 @@
 import { helpers } from '../../helpers.js';
+const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
 
 export class Item {
 	constructor({ x, y, w, h, name }) {
@@ -11,19 +12,57 @@ export class Item {
 	}
 
 	setPosition(container, i) {
-		let pixelSize = 6;
+		this.containerX =
+			container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
+		this.containerY = container.y + 10;
 		this.position = {
-			x: container.x + 10 + this.w * pixelSize * i * 1.1,
-			y: container.y + 10,
-			w: this.w * pixelSize,
-			h: this.h * pixelSize
+			x: this.containerX,
+			y: this.containerY,
+			w: this.w * MODAL_PIXEL_SIZE,
+			h: this.h * MODAL_PIXEL_SIZE
 		};
 	}
 
-	mouseDrag(mouse) {}
-
 	intersects(mouse) {
-		return mouse.x < this.x;
+		return (
+			mouse.absoluteX > this.containerX &&
+			mouse.absoluteX < this.containerX + this.w * MODAL_PIXEL_SIZE &&
+			mouse.absoluteY > this.containerY &&
+			mouse.absoluteY < this.containerY + this.h * MODAL_PIXEL_SIZE
+		);
+	}
+
+	move() {
+		// console.info(this);
+	}
+
+	createGrabItem() {
+		let item = this;
+		item.id = this.createID();
+		Item.grabbed = item;
+	}
+
+	createID() {
+		const getFormattedDate = function (date) {
+			let formattedDate = date;
+			if (date < 10) {
+				formattedDate = '0' + date;
+			} else {
+				formattedDate = '' + date;
+			}
+			return formattedDate;
+		};
+
+		let rawDate = new Date();
+		let year = getFormattedDate(rawDate.getFullYear());
+		let month = getFormattedDate(rawDate.getMonth() + 1);
+		let day = getFormattedDate(rawDate.getDate());
+		let hour = getFormattedDate(rawDate.getHours());
+		let minutes = getFormattedDate(rawDate.getMinutes());
+		let seconds = getFormattedDate(rawDate.getSeconds());
+		let date = year + month + day + '-' + hour + minutes + seconds + '-';
+		let rdm = ~~(Math.random() * 9000 + 1000);
+		return date + rdm;
 	}
 
 	static createList(items) {
@@ -44,4 +83,5 @@ export class Item {
 	}
 
 	static list = {};
+	static grabbed = null;
 }

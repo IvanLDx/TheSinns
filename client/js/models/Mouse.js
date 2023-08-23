@@ -5,11 +5,16 @@ export class Mouse {
 		this.press = { x: 0, y: 0 };
 		this.drag = { x: 0, y: 0 };
 		this.pressing = false;
+		this.absoluteX = 0;
+		this.absoluteY = 0;
 	}
 
 	setPosition(e, cam) {
 		this.x = ~~((e.clientX + cam.x) / cam.pixelSize);
 		this.y = ~~((e.clientY + cam.y) / cam.pixelSize);
+
+		this.absoluteX = e.clientX;
+		this.absoluteY = e.clientY;
 	}
 
 	setPress(e) {
@@ -25,9 +30,6 @@ export class Mouse {
 			x: this.x,
 			y: this.y
 		};
-
-		this.x = e.clientX;
-		this.y = e.clientY;
 
 		let x = ~~((this.press.x - this.x) / cam.pixelSize);
 		let y = ~~((this.press.y - this.y) / cam.pixelSize);

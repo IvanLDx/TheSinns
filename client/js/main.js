@@ -80,6 +80,7 @@ document.onmousedown = function (e) {
 
 		Item.each((item) => {
 			if (item.intersects(mouse)) {
+				item.createGrabItem(mouse);
 				console.info(item);
 			}
 		});
@@ -103,6 +104,10 @@ document.oncontextmenu = function (e) {
 
 function mouseMove(e) {
 	mouse.setPosition(e, cam);
+	let itemGrabbed = Item.grabbed;
+	if (itemGrabbed) {
+		itemGrabbed.move();
+	}
 }
 
 function mouseDrag(e) {
