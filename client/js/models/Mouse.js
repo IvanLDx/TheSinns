@@ -1,4 +1,4 @@
-export class Mouse {
+export class MouseModel {
 	constructor() {
 		this.x = 0;
 		this.y = 0;
@@ -9,7 +9,14 @@ export class Mouse {
 		this.absoluteY = 0;
 	}
 
-	setPosition(e, cam) {
+	move(e, itemGrabbed) {
+		this.setPosition(e);
+		if (itemGrabbed) {
+			itemGrabbed.move();
+		}
+	}
+
+	setPosition(e) {
 		this.x = ~~((e.clientX + cam.x) / cam.pixelSize);
 		this.y = ~~((e.clientY + cam.y) / cam.pixelSize);
 
@@ -18,18 +25,22 @@ export class Mouse {
 	}
 
 	setPress(e) {
-		this.pressing = true;
-		this.press = {
-			x: e?.clientX || this.x,
-			y: e?.clientY || this.y
-		};
+		if (mouse.pressing) {
+			this.press = {
+				x: e?.clientX || this.x,
+				y: e?.clientY || this.y
+			};
+		}
 	}
 
-	setDrag(e, cam) {
+	setDrag(e) {
 		this.press = {
 			x: this.x,
 			y: this.y
 		};
+
+		this.x = e.clientX;
+		this.y = e.clientY;
 
 		let x = ~~((this.press.x - this.x) / cam.pixelSize);
 		let y = ~~((this.press.y - this.y) / cam.pixelSize);

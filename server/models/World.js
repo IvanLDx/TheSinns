@@ -32,6 +32,7 @@ class World {
 
 	static active;
 	static tiles = [];
+	static items = [];
 	static toucedTile = false;
 }
 
