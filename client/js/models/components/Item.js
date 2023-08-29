@@ -36,10 +36,53 @@ export class Item {
 		// console.info(this);
 	}
 
-	createGrabItem() {
-		let item = this;
-		item.id = this.createID();
-		Item.grabbed = item;
+	createGrabItem(mouse, cam) {
+		Item.grabbed = {
+			x: this.x,
+			y: this.y,
+			w: this.w,
+			h: this.h,
+			name: this.name,
+			image: helpers.getImage(this.name),
+			id: this.createID(),
+			touchedTile: null,
+			move: function (mouse, cam) {
+				this.x = mouse.absoluteX - (this.w * cam.pixelSize) / 2;
+				this.y =
+					mouse.absoluteY -
+					this.h * cam.pixelSize +
+					5 * cam.pixelSize;
+			},
+			paint: function (cam) {
+				let tile = {};
+				if (this.touchedTile) {
+					tile = {
+						x: (this.touchedTile.col + 1) * cam.pixelSize - cam.x,
+						y:
+							(this.touchedTile.row + 1) * cam.pixelSize -
+							cam.y -
+							(this.h - 10) * cam.pixelSize,
+						w: (this.w - 2) * cam.pixelSize + cam.pixelSize * 2,
+						h: (this.h - 1) * cam.pixelSize + cam.pixelSize
+					};
+				} else {
+					tile = {};
+				}
+
+				ctx.drawImage(
+					this.image,
+					0,
+					0,
+					this.w,
+					this.h,
+					tile.x || this.x,
+					tile.y || this.y,
+					tile.w || this.w * cam.pixelSize,
+					tile.h || this.h * cam.pixelSize
+				);
+			}
+		};
+		Item.grabbed.move(mouse, cam);
 	}
 
 	createID() {
@@ -80,6 +123,15 @@ export class Item {
 		Object.values(this.list.wall).forEach((val) => {
 			evt(val);
 		});
+	}
+
+	static completeGrab(socket) {
+		if (this.grabbed && this.grabbed.touchedTile) {
+			socket.emit('placeGrabbedItem', {
+				grabbedTile: this.grabbed
+			});
+		}
+		this.grabbed = null;
 	}
 
 	static list = {};

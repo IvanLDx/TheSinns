@@ -31,6 +31,9 @@ export class Mouse {
 			y: this.y
 		};
 
+		this.x = e.clientX;
+		this.y = e.clientY;
+
 		let x = ~~((this.press.x - this.x) / cam.pixelSize);
 		let y = ~~((this.press.y - this.y) / cam.pixelSize);
 

@@ -3,6 +3,7 @@ import { Mouse } from './models/Mouse.js';
 import { Modal } from './models/components/Modal.js';
 import { Tile } from './models/Tile.js';
 import { Item } from './models/components/Item.js';
+import { helpers } from './helpers.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
@@ -10,6 +11,7 @@ const cam = new Camera();
 const socket = io();
 let selfPlayer;
 let tiles = [];
+let worldItems = [];
 let mouse = new Mouse();
 const Entity = {};
 const itemsModal = new Modal();
@@ -38,7 +40,16 @@ socket.on('init', function (data) {
 
 socket.on('newPosition', function (data) {
 	updateSelfPlayer(data.player, selfPlayer.id);
-	tiles.handleTouch(data);
+	tiles.handleTouch(data, Item.grabbed);
+	if (worldItems.length !== data.worldItems.length) {
+		worldItems = data.worldItems;
+
+		worldItems = worldItems.sort(function (a, b) {
+			return a.touchedTile.row - b.touchedTile.row;
+		});
+
+		console.info(worldItems);
+	}
 });
 
 function act() {
@@ -60,7 +71,28 @@ function paint() {
 	ctx.imageSmoothingEnabled = false;
 
 	tiles.paint(cam);
+
+	worldItems.forEach((item) => {
+		ctx.drawImage(
+			helpers.getImage(item.name),
+			0,
+			0,
+			item.w,
+			item.h,
+			(item.touchedTile.col + 1) * cam.pixelSize - cam.x,
+			(item.touchedTile.row + 1) * cam.pixelSize -
+				cam.y -
+				(item.h - 10) * cam.pixelSize,
+			(item.w - 2) * cam.pixelSize + cam.pixelSize * 2,
+			(item.h - 1) * cam.pixelSize + cam.pixelSize
+		);
+	});
+
 	itemsModal.paint();
+
+	if (Item.grabbed) {
+		Item.grabbed.paint(cam);
+	}
 }
 
 document.onwheel = function (e) {
@@ -80,8 +112,7 @@ document.onmousedown = function (e) {
 
 		Item.each((item) => {
 			if (item.intersects(mouse)) {
-				item.createGrabItem(mouse);
-				console.info(item);
+				item.createGrabItem(mouse, cam);
 			}
 		});
 	});
@@ -95,6 +126,7 @@ document.onmousedown = function (e) {
 document.onmouseup = function () {
 	document.body.style.cursor = 'initial';
 	document.onmousemove = mouseMove;
+	Item.completeGrab(socket);
 	mouse.stop();
 };
 
@@ -106,7 +138,7 @@ function mouseMove(e) {
 	mouse.setPosition(e, cam);
 	let itemGrabbed = Item.grabbed;
 	if (itemGrabbed) {
-		itemGrabbed.move();
+		itemGrabbed.move(mouse, cam);
 	}
 }
 

@@ -28,6 +28,10 @@ class Player extends Entity {
 			player.setMousePosition(pack);
 			World.setTouchedTile(pack);
 		});
+
+		socket.on('placeGrabbedItem', (pack) => {
+			World.items.push(pack.grabbedTile);
+		});
 	}
 	static update() {
 		let pack = [];

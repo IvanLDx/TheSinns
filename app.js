@@ -22,7 +22,8 @@ io.sockets.on('connection', function (socket) {
 setInterval(function () {
 	var pack = {
 		player: Player.list,
-		touchedTile: World.getTouchedTile()
+		touchedTile: World.getTouchedTile(),
+		worldItems: World.items
 	};
 
 	Socket.emit(pack);

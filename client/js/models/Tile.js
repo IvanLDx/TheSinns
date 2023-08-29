@@ -22,13 +22,19 @@ export class Tile {
 		});
 	}
 
-	static handleTouch(data) {
+	static handleTouch(data, grabbedItem) {
+		let touchedTile = null;
 		this.each((tile) => {
 			tile.touch = false;
 			if (data.touchedTile && tile.id === data.touchedTile.id) {
 				tile.touch = true;
+				touchedTile = tile;
 			}
 		});
+
+		if (grabbedItem) {
+			grabbedItem.touchedTile = touchedTile;
+		}
 	}
 
 	static paint(cam) {
