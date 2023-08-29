@@ -23,7 +23,7 @@ export class Item {
 		};
 	}
 
-	intersects(mouse) {
+	intersects() {
 		return (
 			mouse.absoluteX > this.containerX &&
 			mouse.absoluteX < this.containerX + this.w * MODAL_PIXEL_SIZE &&
@@ -32,11 +32,7 @@ export class Item {
 		);
 	}
 
-	move() {
-		// console.info(this);
-	}
-
-	createGrabItem(mouse, cam) {
+	createGrabItem() {
 		Item.grabbed = {
 			x: this.x,
 			y: this.y,
@@ -46,14 +42,14 @@ export class Item {
 			image: helpers.getImage(this.name),
 			id: this.createID(),
 			touchedTile: null,
-			move: function (mouse, cam) {
+			move: function () {
 				this.x = mouse.absoluteX - (this.w * cam.pixelSize) / 2;
 				this.y =
 					mouse.absoluteY -
 					this.h * cam.pixelSize +
 					5 * cam.pixelSize;
 			},
-			paint: function (cam) {
+			paint: function () {
 				let tile = {};
 				if (this.touchedTile) {
 					tile = {
@@ -69,6 +65,7 @@ export class Item {
 					tile = {};
 				}
 
+				ctx.globalAlpha = 0.6;
 				ctx.drawImage(
 					this.image,
 					0,
@@ -82,7 +79,7 @@ export class Item {
 				);
 			}
 		};
-		Item.grabbed.move(mouse, cam);
+		Item.grabbed.move();
 	}
 
 	createID() {
@@ -132,6 +129,41 @@ export class Item {
 			});
 		}
 		this.grabbed = null;
+	}
+
+	static paintGrabbedItem() {
+		let tile = {};
+		let grabbedItem = this.grabbed;
+		if (grabbedItem) {
+			if (grabbedItem.touchedTile) {
+				tile = {
+					x:
+						(grabbedItem.touchedTile.col + 1) * cam.pixelSize -
+						cam.x,
+					y:
+						(grabbedItem.touchedTile.row + 1) * cam.pixelSize -
+						cam.y -
+						(grabbedItem.h - 10) * cam.pixelSize,
+					w: (grabbedItem.w - 2) * cam.pixelSize + cam.pixelSize * 2,
+					h: (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize
+				};
+			} else {
+				tile = {};
+			}
+
+			ctx.globalAlpha = 0.6;
+			ctx.drawImage(
+				grabbedItem.image,
+				0,
+				0,
+				grabbedItem.w,
+				grabbedItem.h,
+				tile.x || grabbedItem.x,
+				tile.y || grabbedItem.y,
+				tile.w || grabbedItem.w * cam.pixelSize,
+				tile.h || grabbedItem.h * cam.pixelSize
+			);
+		}
 	}
 
 	static list = {};

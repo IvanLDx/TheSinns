@@ -37,7 +37,7 @@ export class Tile {
 		}
 	}
 
-	static paint(cam) {
+	static paint() {
 		this.each((tile) => {
 			ctx.drawImage(
 				tile.touch ? floorImg2 : floorImg,
