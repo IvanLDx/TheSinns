@@ -1,4 +1,5 @@
 import { helpers } from '../../helpers.js';
+import { Socket } from '../Socket.js';
 const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
 
 export class Item {
@@ -122,11 +123,17 @@ export class Item {
 		});
 	}
 
-	static completeGrab(socket) {
+	static handleIntersections() {
+		this.each((item) => {
+			if (item.intersects()) {
+				item.createGrabItem();
+			}
+		});
+	}
+
+	static completeGrab() {
 		if (this.grabbed && this.grabbed.touchedTile) {
-			socket.emit('placeGrabbedItem', {
-				grabbedTile: this.grabbed
-			});
+			Socket.placeGrabbedItem();
 		}
 		this.grabbed = null;
 	}

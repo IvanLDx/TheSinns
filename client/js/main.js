@@ -5,70 +5,36 @@ import { Tile } from './models/Tile.js';
 import { Item } from './models/components/Item.js';
 import { helpers } from './helpers.js';
 import { WorldItem } from './models/WorldItem.js';
+import { Entity } from './models/Entity.js';
+import { Socket } from './models/Socket.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
 window.cam = new Camera();
 window.mouse = new MouseModel();
+
 const socket = io();
-let selfPlayer;
-let tiles = [];
-let worldItems = [];
-const Entity = {};
-const itemsModal = new Modal();
+Entity.itemsModal = new Modal();
+Socket.start();
 
 cam.onResize(() => {
-	itemsModal.resize();
-});
-
-function updateSelfPlayer(players, id) {
-	Entity.players = players;
-	players
-		.filter((player) => {
-			return player.id === id;
-		})
-		.forEach((player) => {
-			selfPlayer = player;
-		});
-}
-
-socket.on('init', function (data) {
-	updateSelfPlayer(data.playerList, data.id);
-	Tile.createList(data.world);
-	tiles = Tile;
-	Item.createList(data.itemData);
-	itemsModal.appendItems(Item.list);
-});
-
-socket.on('newPosition', function (data) {
-	updateSelfPlayer(data.player, selfPlayer.id);
-	tiles.handleTouch(data, Item.grabbed);
-	if (worldItems && worldItems.length !== data.worldItems.length) {
-		worldItems = WorldItem.create(data.worldItems);
-
-		worldItems = worldItems.sort(function (a, b) {
-			return a.touchedTile.row - b.touchedTile.row;
-		});
-	}
+	Entity.itemsModal.resize();
 });
 
 function act() {
-	if (selfPlayer) {
-		cam.focus(selfPlayer);
-		paint();
+	if (Entity.selfPlayer) {
+		cam.focus(Entity.selfPlayer);
 		mouse.setPress();
-
-		socket.emit('sendToServer', {
-			mouse: mouse
-		});
+		Socket.sendToServer();
+		paint();
 	}
 }
 
 function paint() {
 	helpers.paintSettings();
-	tiles.paint();
+	Tile.paint();
 	WorldItem.paint();
-	itemsModal.paint();
+	Entity.itemsModal.paint();
 	Item.paintGrabbedItem();
 }
 
@@ -78,7 +44,7 @@ document.onwheel = function (e) {
 
 document.querySelector('body').onresize = function () {
 	cam.onResize(() => {
-		itemsModal.resize();
+		Entity.itemsModal.resize();
 	});
 };
 
@@ -89,12 +55,7 @@ document.onmousemove = function (e) {
 document.onmousedown = function (e) {
 	mouse.onLeftClick(e, (e) => {
 		mouse.setPress(e);
-
-		Item.each((item) => {
-			if (item.intersects(mouse)) {
-				item.createGrabItem(mouse, cam);
-			}
-		});
+		Item.handleIntersections();
 	});
 
 	mouse.onRightClick(e, () => {
@@ -106,7 +67,7 @@ document.onmousedown = function (e) {
 	});
 };
 
-document.onmouseup = function (e) {
+document.onmouseup = function () {
 	document.body.style.cursor = 'initial';
 	document.onmousemove = function (e) {
 		mouse.move(e, Item.grabbed);
