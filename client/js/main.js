@@ -15,6 +15,7 @@ window.mouse = new MouseModel();
 
 const socket = io();
 Entity.itemsModal = new Modal();
+let selfPlayer;
 Socket.start();
 
 cam.onResize(() => {
@@ -23,8 +24,13 @@ cam.onResize(() => {
 
 function act() {
 	if (Entity.selfPlayer) {
-		cam.focus(Entity.selfPlayer);
+		selfPlayer = Entity.selfPlayer;
+		cam.focus(selfPlayer);
 		mouse.setPress();
+
+		selfPlayer.x += mouse.drag.x;
+		selfPlayer.y += mouse.drag.y;
+
 		Socket.sendToServer();
 		paint();
 	}
