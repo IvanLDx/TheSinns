@@ -5,7 +5,7 @@ import { Tile } from './models/Tile.js';
 import { GrabbedItem } from './models/components/GrabbedItem.js';
 import { helpers } from './helpers.js';
 import { WorldItem } from './models/WorldItem.js';
-import { Entity } from './models/Entity.js';
+import { SelfPlayer } from './models/SelfPlayer.js';
 import { Socket } from './models/Socket.js';
 
 window.cv = document.querySelector('.canvas');
@@ -23,8 +23,8 @@ cam.onResize(() => {
 });
 
 function act() {
-	if (Entity.selfPlayer) {
-		selfPlayer = Entity.selfPlayer;
+	selfPlayer = SelfPlayer.element;
+	if (selfPlayer) {
 		cam.focus(selfPlayer);
 		mouse.setPress();
 

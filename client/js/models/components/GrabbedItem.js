@@ -1,7 +1,6 @@
 import { Item } from './Item.js';
 import { Tile } from '../Tile.js';
 import { helpers } from '../../helpers.js';
-import { Entity } from '../Entity.js';
 import { Socket } from '../Socket.js';
 
 let grabbedItem;
@@ -82,7 +81,7 @@ export class GrabbedItem extends Item {
 		Item.each((item) => {
 			if (item.intersects()) {
 				grabbedItem = new GrabbedItem(item);
-				Entity.grabbedItem = grabbedItem;
+				this.element = grabbedItem;
 				grabbedItem.move();
 			}
 		});
@@ -90,7 +89,7 @@ export class GrabbedItem extends Item {
 
 	static remove() {
 		grabbedItem = null;
-		Entity.grabbedItem = null;
+		this.element = null;
 	}
 
 	static paint() {
@@ -124,4 +123,6 @@ export class GrabbedItem extends Item {
 			);
 		}
 	}
+
+	static element = null;
 }

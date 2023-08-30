@@ -1,7 +1,7 @@
 import { Tile } from './Tile.js';
 import { Modal } from './components/Modal.js';
 import { Item } from './components/Item.js';
-import { Entity } from './Entity.js';
+import { GrabbedItem } from './components/GrabbedItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
 import { WorldItem } from './WorldItem.js';
 
@@ -36,7 +36,7 @@ export class Socket {
 
 	static placeGrabbedItem() {
 		socket.emit('placeGrabbedItem', {
-			grabbedTile: Entity.grabbedItem
+			grabbedTile: GrabbedItem.element
 		});
 	}
 

@@ -1,9 +1,13 @@
-const Entity = require('./Entity');
+const List = require('./List');
 const World = require('./World');
 const itemData = require('../data/items');
-class Player extends Entity {
+class Player extends List {
 	constructor(id) {
 		super();
+		this.x = 40;
+		this.y = 40;
+		this.w = 10;
+		this.h = 10;
 		this.id = id;
 
 		Player.create(this);
@@ -28,6 +32,8 @@ class Player extends Entity {
 			World.items.push(pack.grabbedTile);
 		});
 	}
+
+	static list = [];
 }
 
 module.exports = Player;

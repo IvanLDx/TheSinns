@@ -1,5 +1,5 @@
-import { Entity } from './Entity.js';
 import { helpers } from '../helpers.js';
+import { GrabbedItem } from './components/GrabbedItem.js';
 let floorImg = helpers.getImage('floor');
 let floorImg2 = helpers.getImage('floor2');
 
@@ -61,8 +61,8 @@ export class Tile {
 			}
 		});
 
-		if (Entity.grabbedItem) {
-			Entity.grabbedItem.touchedTile = touchedTile;
+		if (GrabbedItem.element) {
+			GrabbedItem.element.touchedTile = touchedTile;
 		}
 	}
 

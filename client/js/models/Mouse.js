@@ -1,4 +1,4 @@
-import { Entity } from './Entity.js';
+import { GrabbedItem } from './components/GrabbedItem.js';
 
 export class MouseModel {
 	constructor() {
@@ -16,7 +16,7 @@ export class MouseModel {
 	}
 
 	move(e) {
-		let grabbedItem = Entity.grabbedItem;
+		let grabbedItem = GrabbedItem.element;
 		this.setPosition(e);
 		if (grabbedItem) {
 			this.style('none');

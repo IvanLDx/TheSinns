@@ -1,5 +1,3 @@
-import { Entity } from './Entity.js';
-
 export class SelfPlayer {
 	constructor(player) {
 		this.x = player.x;
@@ -15,13 +13,14 @@ export class SelfPlayer {
 	}
 
 	static create(players, id) {
-		Entity.players = players;
 		players
 			.filter((player) => {
 				return player.id === id;
 			})
 			.forEach((player) => {
-				Entity.selfPlayer = new SelfPlayer(player);
+				this.element = new SelfPlayer(player);
 			});
 	}
+
+	static element = null;
 }
