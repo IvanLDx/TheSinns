@@ -3,6 +3,7 @@ import { MouseModel } from './models/Mouse.js';
 import { Modal } from './models/components/Modal.js';
 import { Tile } from './models/Tile.js';
 import { Item } from './models/components/Item.js';
+import { GrabbedItem } from './models/components/GrabbedItem.js';
 import { helpers } from './helpers.js';
 import { WorldItem } from './models/WorldItem.js';
 import { Entity } from './models/Entity.js';
@@ -38,7 +39,7 @@ function paint() {
 	Tile.paint();
 	WorldItem.paint();
 	Entity.itemsModal.paint();
-	Item.paintGrabbedItem();
+	GrabbedItem.paint();
 }
 
 document.onwheel = function (e) {
@@ -52,13 +53,13 @@ document.querySelector('body').onresize = function () {
 };
 
 document.onmousemove = function (e) {
-	mouse.move(e, Item.grabbed);
+	mouse.move(e);
 };
 
 document.onmousedown = function (e) {
 	mouse.onLeftClick(e, (e) => {
 		mouse.setPress(e);
-		Item.handleIntersections();
+		GrabbedItem.tryToCreate();
 	});
 
 	mouse.onRightClick(e, () => {
@@ -71,9 +72,9 @@ document.onmousedown = function (e) {
 
 document.onmouseup = function () {
 	document.onmousemove = function (e) {
-		mouse.move(e, Item.grabbed);
+		mouse.move(e);
 	};
-	Item.completeGrab(socket);
+	GrabbedItem.completeGrab(socket);
 	mouse.stop();
 };
 

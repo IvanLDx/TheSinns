@@ -1,12 +1,14 @@
+import { Item } from './Item.js';
+import { Tile } from '../Tile.js';
 import { helpers } from '../../helpers.js';
+import { Entity } from '../Entity.js';
+import { Socket } from '../Socket.js';
 
-export class GrabbedItem {
+let grabbedItem;
+
+export class GrabbedItem extends Item {
 	constructor(item) {
-		this.x = item.x;
-		this.y = item.y;
-		this.w = item.w;
-		this.h = item.h;
-		this.name = item.name;
+		super(item);
 		this.image = helpers.getImage(this.name);
 		this.id = this.createID();
 		this.touchedTile = null;
@@ -18,11 +20,11 @@ export class GrabbedItem {
 	}
 	paint() {
 		let tile = {};
-		if (this.touchedTile) {
+		if (Tile.touchedTile) {
 			tile = {
-				x: (this.touchedTile.col + 1) * cam.pixelSize - cam.x,
+				x: (Tile.touchedTile.col + 1) * cam.pixelSize - cam.x,
 				y:
-					(this.touchedTile.row + 1) * cam.pixelSize -
+					(Tile.touchedTile.row + 1) * cam.pixelSize -
 					cam.y -
 					(this.h - 10) * cam.pixelSize,
 				w: (this.w - 2) * cam.pixelSize + cam.pixelSize * 2,
@@ -67,5 +69,59 @@ export class GrabbedItem {
 		let date = year + month + day + '-' + hour + minutes + seconds + '-';
 		let rdm = ~~(Math.random() * 9000 + 1000);
 		return date + rdm;
+	}
+
+	static completeGrab() {
+		if (grabbedItem && grabbedItem.touchedTile) {
+			Socket.placeGrabbedItem();
+		}
+		this.remove();
+	}
+
+	static tryToCreate() {
+		Item.each((item) => {
+			if (item.intersects()) {
+				grabbedItem = new GrabbedItem(item);
+				Entity.grabbedItem = grabbedItem;
+				grabbedItem.move();
+			}
+		});
+	}
+
+	static remove() {
+		grabbedItem = null;
+		Entity.grabbedItem = null;
+	}
+
+	static paint() {
+		let tile = {};
+		if (grabbedItem) {
+			if (Tile.touchedTile) {
+				tile = {
+					x: (Tile.touchedTile.col + 1) * cam.pixelSize - cam.x,
+					y:
+						(Tile.touchedTile.row + 1) * cam.pixelSize -
+						cam.y -
+						(grabbedItem.h - 10) * cam.pixelSize,
+					w: (grabbedItem.w - 2) * cam.pixelSize + cam.pixelSize * 2,
+					h: (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize
+				};
+			} else {
+				tile = {};
+			}
+
+			ctx.globalAlpha = 0.6;
+			ctx.drawImage(
+				grabbedItem.image,
+				0,
+				0,
+				grabbedItem.w,
+				grabbedItem.h,
+				tile.x || grabbedItem.x,
+				tile.y || grabbedItem.y,
+				tile.w || grabbedItem.w * cam.pixelSize,
+				tile.h || grabbedItem.h * cam.pixelSize
+			);
+		}
 	}
 }

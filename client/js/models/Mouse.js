@@ -1,3 +1,5 @@
+import { Entity } from './Entity.js';
+
 export class MouseModel {
 	constructor() {
 		this.x = 0;
@@ -13,11 +15,12 @@ export class MouseModel {
 		document.body.style.cursor = value;
 	}
 
-	move(e, itemGrabbed) {
+	move(e) {
+		let grabbedItem = Entity.grabbedItem;
 		this.setPosition(e);
-		if (itemGrabbed) {
+		if (grabbedItem) {
 			this.style('none');
-			itemGrabbed.move();
+			grabbedItem.move();
 		}
 	}
 

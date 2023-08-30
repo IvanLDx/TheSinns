@@ -1,6 +1,4 @@
 import { helpers } from '../../helpers.js';
-import { Socket } from '../Socket.js';
-import { GrabbedItem } from './GrabbedItem.js';
 const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
 
 export class Item {
@@ -32,11 +30,6 @@ export class Item {
 			mouse.absoluteY > this.containerY &&
 			mouse.absoluteY < this.containerY + this.h * MODAL_PIXEL_SIZE
 		);
-	}
-
-	createGrabItem() {
-		Item.grabbed = new GrabbedItem(this);
-		Item.grabbed.move();
 	}
 
 	createID() {
@@ -79,56 +72,5 @@ export class Item {
 		});
 	}
 
-	static handleIntersections() {
-		this.each((item) => {
-			if (item.intersects()) {
-				item.createGrabItem();
-			}
-		});
-	}
-
-	static completeGrab() {
-		if (this.grabbed && this.grabbed.touchedTile) {
-			Socket.placeGrabbedItem();
-		}
-		this.grabbed = null;
-	}
-
-	static paintGrabbedItem() {
-		let tile = {};
-		let grabbedItem = this.grabbed;
-		if (grabbedItem) {
-			if (grabbedItem.touchedTile) {
-				tile = {
-					x:
-						(grabbedItem.touchedTile.col + 1) * cam.pixelSize -
-						cam.x,
-					y:
-						(grabbedItem.touchedTile.row + 1) * cam.pixelSize -
-						cam.y -
-						(grabbedItem.h - 10) * cam.pixelSize,
-					w: (grabbedItem.w - 2) * cam.pixelSize + cam.pixelSize * 2,
-					h: (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize
-				};
-			} else {
-				tile = {};
-			}
-
-			ctx.globalAlpha = 0.6;
-			ctx.drawImage(
-				grabbedItem.image,
-				0,
-				0,
-				grabbedItem.w,
-				grabbedItem.h,
-				tile.x || grabbedItem.x,
-				tile.y || grabbedItem.y,
-				tile.w || grabbedItem.w * cam.pixelSize,
-				tile.h || grabbedItem.h * cam.pixelSize
-			);
-		}
-	}
-
 	static list = {};
-	static grabbed = null;
 }

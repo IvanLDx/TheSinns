@@ -23,7 +23,7 @@ export class Socket {
 
 	newPosition() {
 		socket.on('newPosition', function (data) {
-			Tile.handleTouch(data, Item.grabbed);
+			Tile.handleTouch(data);
 			if (worldItems && worldItems.length !== data.worldItems.length) {
 				worldItems = WorldItem.create(data.worldItems);
 				worldItems = worldItems.sort(function (a, b) {
@@ -35,7 +35,7 @@ export class Socket {
 
 	static placeGrabbedItem() {
 		socket.emit('placeGrabbedItem', {
-			grabbedTile: Item.grabbed
+			grabbedTile: Entity.grabbedItem
 		});
 	}
 

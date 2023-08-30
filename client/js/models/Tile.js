@@ -1,3 +1,4 @@
+import { Entity } from './Entity.js';
 import { helpers } from '../helpers.js';
 let floorImg = helpers.getImage('floor');
 let floorImg2 = helpers.getImage('floor2');
@@ -50,7 +51,7 @@ export class Tile {
 		});
 	}
 
-	static handleTouch(data, grabbedItem) {
+	static handleTouch(data) {
 		let touchedTile = null;
 		this.each((tile) => {
 			tile.touch = false;
@@ -60,8 +61,8 @@ export class Tile {
 			}
 		});
 
-		if (grabbedItem) {
-			grabbedItem.touchedTile = touchedTile;
+		if (Entity.grabbedItem) {
+			Entity.grabbedItem.touchedTile = touchedTile;
 		}
 	}
 
