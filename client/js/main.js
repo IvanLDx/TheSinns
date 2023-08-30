@@ -28,10 +28,7 @@ function act() {
 		cam.focus(selfPlayer);
 		mouse.setPress();
 
-		selfPlayer.x += mouse.drag.x;
-		selfPlayer.y += mouse.drag.y;
-
-		Socket.sendToServer();
+		Tile.setTouchedTile();
 		paint();
 	}
 }
@@ -65,16 +62,14 @@ document.onmousedown = function (e) {
 	});
 
 	mouse.onRightClick(e, () => {
-		document.body.style.cursor = 'grab';
 		document.onmousemove = function (e) {
 			mouse.setDrag(e);
-			document.body.style.cursor = 'grabbing';
+			selfPlayer.updatePosition();
 		};
 	});
 };
 
 document.onmouseup = function () {
-	document.body.style.cursor = 'initial';
 	document.onmousemove = function (e) {
 		mouse.move(e, Item.grabbed);
 	};

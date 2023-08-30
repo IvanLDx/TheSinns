@@ -14,6 +14,34 @@ export class Tile {
 		this.touch = tile.touch;
 	}
 
+	intersects() {
+		this.mousePosition = {
+			x: Math.abs(mouse.x - this.center.x),
+			y: Math.abs(mouse.y - this.center.y)
+		};
+
+		this.mouseTotalPos = this.calculateTotalXYPosition();
+		this.touch = this.mouseIsInside();
+		if (this.touch) {
+			Tile.touchedTile = this;
+		}
+	}
+
+	calculateTotalXYPosition() {
+		return this.mousePosition.x + this.mousePosition.y * 2;
+	}
+
+	mouseIsInside() {
+		return this.mouseTotalPos < this.center.x - this.col;
+	}
+
+	static setTouchedTile() {
+		this.touchedTile = null;
+		this.each((tile) => {
+			tile.intersects();
+		});
+	}
+
 	static createList(world) {
 		Tile.list = [];
 		world.forEach((tile) => {
@@ -59,5 +87,6 @@ export class Tile {
 		});
 	}
 
+	static touchedTile = null;
 	static list = [];
 }

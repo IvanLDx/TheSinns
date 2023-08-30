@@ -15,7 +15,7 @@ class Player extends Entity {
 	}
 
 	static connect(socket) {
-		let player = new Player(socket.id);
+		new Player(socket.id);
 
 		socket.emit('init', {
 			id: socket.id,
@@ -24,23 +24,9 @@ class Player extends Entity {
 			world: World.tiles
 		});
 
-		socket.on('sendToServer', (pack) => {
-			World.setTouchedTile(pack);
-		});
-
 		socket.on('placeGrabbedItem', (pack) => {
 			World.items.push(pack.grabbedTile);
 		});
-	}
-	static update() {
-		let pack = [];
-		Player.each((player) => {
-			pack.push({
-				x: player.x,
-				y: player.y
-			});
-		});
-		return pack;
 	}
 }
 

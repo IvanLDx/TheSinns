@@ -1,21 +1,11 @@
 import { Tile } from './Tile.js';
 import { Item } from './components/Item.js';
 import { Entity } from './Entity.js';
+import { SelfPlayer } from './SelfPlayer.js';
 import { WorldItem } from './WorldItem.js';
 
 const socket = io();
 let worldItems = [];
-
-function updateSelfPlayer(players, id) {
-	Entity.players = players;
-	players
-		.filter((player) => {
-			return player.id === id;
-		})
-		.forEach((player) => {
-			Entity.selfPlayer = player;
-		});
-}
 
 export class Socket {
 	constructor() {
@@ -24,7 +14,7 @@ export class Socket {
 	}
 	init() {
 		socket.on('init', (data) => {
-			updateSelfPlayer(data.playerList, data.id);
+			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
 			Item.createList(data.itemData);
 			Entity.itemsModal.appendItems(Item.list);
@@ -33,21 +23,13 @@ export class Socket {
 
 	newPosition() {
 		socket.on('newPosition', function (data) {
-			updateSelfPlayer(data.player, Entity.selfPlayer.id);
 			Tile.handleTouch(data, Item.grabbed);
 			if (worldItems && worldItems.length !== data.worldItems.length) {
 				worldItems = WorldItem.create(data.worldItems);
-
 				worldItems = worldItems.sort(function (a, b) {
 					return a.touchedTile.row - b.touchedTile.row;
 				});
 			}
-		});
-	}
-
-	static sendToServer() {
-		socket.emit('sendToServer', {
-			mouse: mouse
 		});
 	}
 

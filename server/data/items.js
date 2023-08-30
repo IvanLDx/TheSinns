@@ -10,11 +10,11 @@ const items = {
 			name: 'wall'
 		}),
 		green2: new Item({
-			x: 20,
+			x: 0,
 			y: 0,
 			w: 20,
 			h: 28,
-			name: 'wall'
+			name: 'deco-sakura-grey'
 		}),
 		green3: new Item({
 			x: 40,
