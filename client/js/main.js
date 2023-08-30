@@ -2,74 +2,43 @@ import { Camera } from './models/Camera.js';
 import { MouseModel } from './models/Mouse.js';
 import { Modal } from './models/components/Modal.js';
 import { Tile } from './models/Tile.js';
-import { Item } from './models/components/Item.js';
+import { GrabbedItem } from './models/components/GrabbedItem.js';
 import { helpers } from './helpers.js';
 import { WorldItem } from './models/WorldItem.js';
+import { SelfPlayer } from './models/SelfPlayer.js';
+import { Socket } from './models/Socket.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
 window.cam = new Camera();
 window.mouse = new MouseModel();
+
 const socket = io();
+const modal = Modal.create();
 let selfPlayer;
-let tiles = [];
-let worldItems = [];
-const Entity = {};
-const itemsModal = new Modal();
+Socket.start();
 
 cam.onResize(() => {
-	itemsModal.resize();
-});
-
-function updateSelfPlayer(players, id) {
-	Entity.players = players;
-	players
-		.filter((player) => {
-			return player.id === id;
-		})
-		.forEach((player) => {
-			selfPlayer = player;
-		});
-}
-
-socket.on('init', function (data) {
-	updateSelfPlayer(data.playerList, data.id);
-	Tile.createList(data.world);
-	tiles = Tile;
-	Item.createList(data.itemData);
-	itemsModal.appendItems(Item.list);
-});
-
-socket.on('newPosition', function (data) {
-	updateSelfPlayer(data.player, selfPlayer.id);
-	tiles.handleTouch(data, Item.grabbed);
-	if (worldItems && worldItems.length !== data.worldItems.length) {
-		worldItems = WorldItem.create(data.worldItems);
-
-		worldItems = worldItems.sort(function (a, b) {
-			return a.touchedTile.row - b.touchedTile.row;
-		});
-	}
+	modal.resize();
 });
 
 function act() {
+	selfPlayer = SelfPlayer.element;
 	if (selfPlayer) {
 		cam.focus(selfPlayer);
-		paint();
 		mouse.setPress();
 
-		socket.emit('sendToServer', {
-			mouse: mouse
-		});
+		Tile.setTouchedTile();
+		paint();
 	}
 }
 
 function paint() {
 	helpers.paintSettings();
-	tiles.paint();
+	Tile.paint();
 	WorldItem.paint();
-	itemsModal.paint();
-	Item.paintGrabbedItem();
+	modal.paint();
+	GrabbedItem.paint();
 }
 
 document.onwheel = function (e) {
@@ -78,40 +47,33 @@ document.onwheel = function (e) {
 
 document.querySelector('body').onresize = function () {
 	cam.onResize(() => {
-		itemsModal.resize();
+		modal.resize();
 	});
 };
 
 document.onmousemove = function (e) {
-	mouse.move(e, Item.grabbed);
+	mouse.move(e);
 };
 
 document.onmousedown = function (e) {
 	mouse.onLeftClick(e, (e) => {
 		mouse.setPress(e);
-
-		Item.each((item) => {
-			if (item.intersects(mouse)) {
-				item.createGrabItem(mouse, cam);
-			}
-		});
+		GrabbedItem.tryToCreate();
 	});
 
 	mouse.onRightClick(e, () => {
-		document.body.style.cursor = 'grab';
 		document.onmousemove = function (e) {
 			mouse.setDrag(e);
-			document.body.style.cursor = 'grabbing';
+			selfPlayer.updatePosition();
 		};
 	});
 };
 
-document.onmouseup = function (e) {
-	document.body.style.cursor = 'initial';
+document.onmouseup = function () {
 	document.onmousemove = function (e) {
-		mouse.move(e, Item.grabbed);
+		mouse.move(e);
 	};
-	Item.completeGrab(socket);
+	GrabbedItem.completeGrab(socket);
 	mouse.stop();
 };
 

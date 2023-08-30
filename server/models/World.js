@@ -19,13 +19,6 @@ class World {
 		}
 	}
 
-	static setTouchedTile(pack) {
-		this.touchedTile = false;
-		this.tiles.forEach((tile) => {
-			tile.intersects(pack);
-		});
-	}
-
 	static getTouchedTile() {
 		return World.touchedTile;
 	}
@@ -55,27 +48,6 @@ class Tile {
 		};
 
 		World.tiles.push(this);
-	}
-
-	intersects(pack) {
-		this.mousePosition = {
-			x: Math.abs(pack.mouse.x - this.center.x),
-			y: Math.abs(pack.mouse.y - this.center.y)
-		};
-
-		this.mouseTotalPos = this.calculateTotalXYPosition();
-		this.touch = this.mouseIsInside();
-		if (this.touch) {
-			World.touchedTile = this;
-		}
-	}
-
-	calculateTotalXYPosition() {
-		return this.mousePosition.x + this.mousePosition.y * 2;
-	}
-
-	mouseIsInside() {
-		return this.mouseTotalPos < this.center.x - this.col;
 	}
 }
 

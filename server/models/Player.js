@@ -1,9 +1,13 @@
-const Entity = require('./Entity');
+const List = require('./List');
 const World = require('./World');
 const itemData = require('../data/items');
-class Player extends Entity {
+class Player extends List {
 	constructor(id) {
 		super();
+		this.x = 40;
+		this.y = 40;
+		this.w = 10;
+		this.h = 10;
 		this.id = id;
 
 		Player.create(this);
@@ -15,7 +19,7 @@ class Player extends Entity {
 	}
 
 	static connect(socket) {
-		let player = new Player(socket.id);
+		new Player(socket.id);
 
 		socket.emit('init', {
 			id: socket.id,
@@ -24,25 +28,12 @@ class Player extends Entity {
 			world: World.tiles
 		});
 
-		socket.on('sendToServer', (pack) => {
-			player.setMousePosition(pack);
-			World.setTouchedTile(pack);
-		});
-
 		socket.on('placeGrabbedItem', (pack) => {
 			World.items.push(pack.grabbedTile);
 		});
 	}
-	static update() {
-		let pack = [];
-		Player.each((player) => {
-			pack.push({
-				x: player.x,
-				y: player.y
-			});
-		});
-		return pack;
-	}
+
+	static list = [];
 }
 
 module.exports = Player;

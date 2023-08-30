@@ -1,3 +1,5 @@
+import { GrabbedItem } from './components/GrabbedItem.js';
+
 export class MouseModel {
 	constructor() {
 		this.x = 0;
@@ -9,10 +11,16 @@ export class MouseModel {
 		this.absoluteY = 0;
 	}
 
-	move(e, itemGrabbed) {
+	style(value) {
+		document.body.style.cursor = value;
+	}
+
+	move(e) {
+		let grabbedItem = GrabbedItem.element;
 		this.setPosition(e);
-		if (itemGrabbed) {
-			itemGrabbed.move();
+		if (grabbedItem) {
+			this.style('none');
+			grabbedItem.move();
 		}
 	}
 
@@ -48,10 +56,12 @@ export class MouseModel {
 		if (Math.abs(x) < 10 && Math.abs(y) < 20) {
 			this.drag = { x: x, y: y };
 		}
+		this.style('grabbing');
 	}
 
 	stop() {
 		this.drag = { x: 0, y: 0 };
+		this.style('initial');
 	}
 
 	onLeftClick(e, evt) {
@@ -62,6 +72,7 @@ export class MouseModel {
 
 	onRightClick(e, evt) {
 		if (e.button === 2 && evt) {
+			this.style('grab');
 			evt(e);
 		}
 	}
