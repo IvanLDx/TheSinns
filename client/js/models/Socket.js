@@ -1,4 +1,5 @@
 import { Tile } from './Tile.js';
+import { Modal } from './components/Modal.js';
 import { Item } from './components/Item.js';
 import { Entity } from './Entity.js';
 import { SelfPlayer } from './SelfPlayer.js';
@@ -17,7 +18,7 @@ export class Socket {
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
 			Item.createList(data.itemData);
-			Entity.itemsModal.appendItems(Item.list);
+			Modal.element.appendItems(Item.list);
 		});
 	}
 

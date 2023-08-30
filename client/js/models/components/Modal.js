@@ -44,4 +44,11 @@ export class Modal {
 	appendItems(items) {
 		this.items = items;
 	}
+
+	static create() {
+		Modal.element = new Modal();
+		return Modal.element;
+	}
+
+	static element = null;
 }

@@ -2,7 +2,6 @@ import { Camera } from './models/Camera.js';
 import { MouseModel } from './models/Mouse.js';
 import { Modal } from './models/components/Modal.js';
 import { Tile } from './models/Tile.js';
-import { Item } from './models/components/Item.js';
 import { GrabbedItem } from './models/components/GrabbedItem.js';
 import { helpers } from './helpers.js';
 import { WorldItem } from './models/WorldItem.js';
@@ -15,12 +14,12 @@ window.cam = new Camera();
 window.mouse = new MouseModel();
 
 const socket = io();
-Entity.itemsModal = new Modal();
+const modal = Modal.create();
 let selfPlayer;
 Socket.start();
 
 cam.onResize(() => {
-	Entity.itemsModal.resize();
+	modal.resize();
 });
 
 function act() {
@@ -38,7 +37,7 @@ function paint() {
 	helpers.paintSettings();
 	Tile.paint();
 	WorldItem.paint();
-	Entity.itemsModal.paint();
+	modal.paint();
 	GrabbedItem.paint();
 }
 
@@ -48,7 +47,7 @@ document.onwheel = function (e) {
 
 document.querySelector('body').onresize = function () {
 	cam.onResize(() => {
-		Entity.itemsModal.resize();
+		modal.resize();
 	});
 };
 
