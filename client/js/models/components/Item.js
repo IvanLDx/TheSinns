@@ -32,29 +32,6 @@ export class Item {
 		);
 	}
 
-	createID() {
-		const getFormattedDate = function (date) {
-			let formattedDate = date;
-			if (date < 10) {
-				formattedDate = '0' + date;
-			} else {
-				formattedDate = '' + date;
-			}
-			return formattedDate;
-		};
-
-		let rawDate = new Date();
-		let year = getFormattedDate(rawDate.getFullYear());
-		let month = getFormattedDate(rawDate.getMonth() + 1);
-		let day = getFormattedDate(rawDate.getDate());
-		let hour = getFormattedDate(rawDate.getHours());
-		let minutes = getFormattedDate(rawDate.getMinutes());
-		let seconds = getFormattedDate(rawDate.getSeconds());
-		let date = year + month + day + '-' + hour + minutes + seconds + '-';
-		let rdm = ~~(Math.random() * 9000 + 1000);
-		return date + rdm;
-	}
-
 	static createList(items) {
 		let list = {};
 		for (const [name, item] of Object.entries(items)) {

@@ -17,35 +17,6 @@ export class GrabbedItem extends Item {
 		this.x = mouse.absoluteX - (this.w * cam.pixelSize) / 2;
 		this.y = mouse.absoluteY - this.h * cam.pixelSize + 5 * cam.pixelSize;
 	}
-	paint() {
-		let tile = {};
-		if (Tile.touchedTile) {
-			tile = {
-				x: (Tile.touchedTile.col + 1) * cam.pixelSize - cam.x,
-				y:
-					(Tile.touchedTile.row + 1) * cam.pixelSize -
-					cam.y -
-					(this.h - 10) * cam.pixelSize,
-				w: (this.w - 2) * cam.pixelSize + cam.pixelSize * 2,
-				h: (this.h - 1) * cam.pixelSize + cam.pixelSize
-			};
-		} else {
-			tile = {};
-		}
-
-		ctx.globalAlpha = 0.6;
-		ctx.drawImage(
-			this.image,
-			0,
-			0,
-			this.w,
-			this.h,
-			tile.x || this.x,
-			tile.y || this.y,
-			tile.w || this.w * cam.pixelSize,
-			tile.h || this.h * cam.pixelSize
-		);
-	}
 
 	createID() {
 		const getFormattedDate = function (date) {
@@ -95,11 +66,13 @@ export class GrabbedItem extends Item {
 	static paint() {
 		let tile = {};
 		if (grabbedItem) {
-			if (Tile.touchedTile) {
+			if (grabbedItem.touchedTile) {
 				tile = {
-					x: (Tile.touchedTile.col + 1) * cam.pixelSize - cam.x,
+					x:
+						(grabbedItem.touchedTile.col + 1) * cam.pixelSize -
+						cam.x,
 					y:
-						(Tile.touchedTile.row + 1) * cam.pixelSize -
+						(grabbedItem.touchedTile.row + 1) * cam.pixelSize -
 						cam.y -
 						(grabbedItem.h - 10) * cam.pixelSize,
 					w: (grabbedItem.w - 2) * cam.pixelSize + cam.pixelSize * 2,
@@ -121,6 +94,16 @@ export class GrabbedItem extends Item {
 				tile.w || grabbedItem.w * cam.pixelSize,
 				tile.h || grabbedItem.h * cam.pixelSize
 			);
+		}
+	}
+
+	static setTouchedTile(tile) {
+		if (this.element) {
+			this.element.touchedTile = {
+				id: tile.id,
+				col: tile.col,
+				row: tile.row
+			};
 		}
 	}
 

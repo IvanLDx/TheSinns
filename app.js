@@ -25,6 +25,4 @@ setInterval(function () {
 		touchedTile: World.getTouchedTile(),
 		worldItems: World.items
 	};
-
-	Socket.emit(pack);
 }, 1000 / Server.FPS);
