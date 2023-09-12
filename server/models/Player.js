@@ -1,5 +1,6 @@
 const List = require('./List');
 const World = require('./World');
+const Socket = require('../Socket');
 const itemData = require('../data/items');
 class Player extends List {
 	constructor(id) {
@@ -29,7 +30,8 @@ class Player extends List {
 		});
 
 		socket.on('placeGrabbedItem', (pack) => {
-			World.items.push(pack.grabbedTile);
+			World.items.push(pack.grabbedItem);
+			Socket.emit({ worldItems: World.items });
 		});
 	}
 

@@ -6,11 +6,7 @@ export class WorldItem {
 		this.w = worldItem.w;
 		this.h = worldItem.h;
 		this.name = worldItem.name;
-		this.touchedTile = {
-			id: worldItem.touchedTile.id,
-			col: worldItem.touchedTile.col,
-			row: worldItem.touchedTile.row
-		};
+		this.touchedTile = worldItem.touchedTile;
 	}
 
 	static create(worldItems) {

@@ -24,19 +24,16 @@ export class Socket {
 
 	newPosition() {
 		socket.on('newPosition', function (data) {
-			Tile.handleTouch(data);
-			if (worldItems && worldItems.length !== data.worldItems.length) {
-				worldItems = WorldItem.create(data.worldItems);
-				worldItems = worldItems.sort(function (a, b) {
-					return a.touchedTile.row - b.touchedTile.row;
-				});
-			}
+			worldItems = WorldItem.create(data.worldItems);
+			worldItems = worldItems.sort(function (a, b) {
+				return a.touchedTile.row - b.touchedTile.row;
+			});
 		});
 	}
 
 	static placeGrabbedItem() {
 		socket.emit('placeGrabbedItem', {
-			grabbedTile: GrabbedItem.element
+			grabbedItem: GrabbedItem.element
 		});
 	}
 

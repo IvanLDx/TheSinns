@@ -73,7 +73,7 @@ document.onmouseup = function () {
 	document.onmousemove = function (e) {
 		mouse.move(e);
 	};
-	GrabbedItem.completeGrab(socket);
+	GrabbedItem.completeGrab();
 	mouse.stop();
 };
 

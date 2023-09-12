@@ -23,9 +23,7 @@ export class Tile {
 
 		this.mouseTotalPos = this.calculateTotalXYPosition();
 		this.touch = this.mouseIsInside();
-		if (this.touch) {
-			Tile.touchedTile = this;
-		}
+		return this.touch;
 	}
 
 	calculateTotalXYPosition() {
@@ -37,9 +35,10 @@ export class Tile {
 	}
 
 	static setTouchedTile() {
-		this.touchedTile = null;
 		this.each((tile) => {
-			tile.intersects();
+			if (tile.intersects()) {
+				GrabbedItem.setTouchedTile(tile);
+			}
 		});
 	}
 
@@ -49,21 +48,6 @@ export class Tile {
 			let newTile = new Tile(tile);
 			Tile.list.push(newTile);
 		});
-	}
-
-	static handleTouch(data) {
-		let touchedTile = null;
-		this.each((tile) => {
-			tile.touch = false;
-			if (data.touchedTile && tile.id === data.touchedTile.id) {
-				tile.touch = true;
-				touchedTile = tile;
-			}
-		});
-
-		if (GrabbedItem.element) {
-			GrabbedItem.element.touchedTile = touchedTile;
-		}
 	}
 
 	static paint() {
@@ -88,6 +72,5 @@ export class Tile {
 		});
 	}
 
-	static touchedTile = null;
 	static list = [];
 }
