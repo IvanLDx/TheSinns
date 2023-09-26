@@ -74,6 +74,7 @@ document.onmouseup = function () {
 		mouse.move(e);
 	};
 	GrabbedItem.completeGrab();
+	modal.clickOnArrowButton();
 	mouse.stop();
 };
 
