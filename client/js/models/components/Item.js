@@ -9,6 +9,37 @@ export class Item {
 		this.h = h || 0;
 		this.name = name || 'default';
 		this.image = helpers.getImage(name);
+		this.rotation = 0;
+	}
+
+	rotateRight() {
+		if (this.rotation >= 3) {
+			this.rotation = 0;
+		} else {
+			this.rotation++;
+		}
+	}
+
+	rotateLeft() {
+		if (this.rotation <= 0) {
+			this.rotation = 3;
+		} else {
+			this.rotation--;
+		}
+	}
+
+	paint() {
+		ctx.drawImage(
+			this.image,
+			this.x + this.rotation * this.w,
+			this.y,
+			this.w,
+			this.h,
+			this.position.x,
+			this.position.y,
+			this.position.w,
+			this.position.h
+		);
 	}
 
 	setPosition(container, i) {

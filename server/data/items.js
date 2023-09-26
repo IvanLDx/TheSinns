@@ -21,7 +21,7 @@ const items = {
 			y: 0,
 			w: 20,
 			h: 28,
-			name: 'wall'
+			name: 'wall-worn-yellow'
 		}),
 		green4: new Item({
 			x: 60,
