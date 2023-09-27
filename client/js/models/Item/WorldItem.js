@@ -1,15 +1,25 @@
+import { Item } from './Item.js';
 import { helpers } from '../../helpers.js';
 
-export class WorldItem {
+export class WorldItem extends Item {
 	constructor(worldItem) {
-		this.type = 'worldItem';
+		super(worldItem);
+		this.type = 'WorldItem';
 		this.id = worldItem.id;
-		this.w = worldItem.w;
-		this.h = worldItem.h;
-		this.name = worldItem.name;
 		this.touchedTile = worldItem.touchedTile;
-		this.rotation = worldItem.rotation;
-		this.image = helpers.getImage(this.name);
+		this.position = this.setPositionTile();
+	}
+
+	setPositionTile() {
+		return {
+			x: (this.touchedTile.col + 1) * cam.pixelSize - cam.x,
+			y:
+				(this.touchedTile.row + 1) * cam.pixelSize -
+				cam.y -
+				(this.h - 10) * cam.pixelSize,
+			w: (this.w - 2) * cam.pixelSize + cam.pixelSize * 2,
+			h: (this.h - 1) * cam.pixelSize + cam.pixelSize
+		};
 	}
 
 	static create(worldItems) {
@@ -24,19 +34,7 @@ export class WorldItem {
 
 	static paint() {
 		this.list.forEach((item) => {
-			ctx.drawImage(
-				item.image,
-				item.rotation * item.w,
-				0,
-				item.w,
-				item.h,
-				(item.touchedTile.col + 1) * cam.pixelSize - cam.x,
-				(item.touchedTile.row + 1) * cam.pixelSize -
-					cam.y -
-					(item.h - 10) * cam.pixelSize,
-				(item.w - 2) * cam.pixelSize + cam.pixelSize * 2,
-				(item.h - 1) * cam.pixelSize + cam.pixelSize
-			);
+			item.paint();
 		});
 	}
 

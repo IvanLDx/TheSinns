@@ -7,8 +7,7 @@ let grabbedItem;
 export class GrabbedItem extends ModalItem {
 	constructor(item) {
 		super(item);
-		this.type = 'grabbedItem';
-		this.image = helpers.getImage(this.name);
+		this.type = 'GrabbedItem';
 		this.id = this.createID();
 		this.touchedTile = null;
 	}
