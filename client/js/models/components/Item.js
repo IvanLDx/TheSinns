@@ -2,29 +2,29 @@ import { helpers } from '../../helpers.js';
 const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
 
 export class Item {
-	constructor({ x, y, w, h, name }) {
+	constructor({ x, y, w, h, name, rotation }) {
 		this.x = x || 0;
 		this.y = y || 0;
 		this.w = w || 0;
 		this.h = h || 0;
 		this.name = name || 'default';
 		this.image = helpers.getImage(name);
-		this.rotation = 0;
+		this.rotation = rotation || 0;
 	}
 
 	rotateRight() {
-		if (this.rotation >= 3) {
-			this.rotation = 0;
-		} else {
-			this.rotation++;
-		}
-	}
-
-	rotateLeft() {
 		if (this.rotation <= 0) {
 			this.rotation = 3;
 		} else {
 			this.rotation--;
+		}
+	}
+
+	rotateLeft() {
+		if (this.rotation >= 3) {
+			this.rotation = 0;
+		} else {
+			this.rotation++;
 		}
 	}
 

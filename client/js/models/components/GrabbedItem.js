@@ -8,6 +8,7 @@ let grabbedItem;
 export class GrabbedItem extends Item {
 	constructor(item) {
 		super(item);
+		this.type = 'grabbedItem';
 		this.image = helpers.getImage(this.name);
 		this.id = this.createID();
 		this.touchedTile = null;
@@ -85,7 +86,7 @@ export class GrabbedItem extends Item {
 			ctx.globalAlpha = 0.6;
 			ctx.drawImage(
 				grabbedItem.image,
-				0,
+				grabbedItem.rotation * grabbedItem.w,
 				0,
 				grabbedItem.w,
 				grabbedItem.h,
