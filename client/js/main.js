@@ -2,9 +2,9 @@ import { Camera } from './models/Camera.js';
 import { MouseModel } from './models/Mouse.js';
 import { Modal } from './models/components/Modal.js';
 import { Tile } from './models/Tile.js';
-import { GrabbedItem } from './models/components/GrabbedItem.js';
+import { GrabbedItem } from './models/Item/GrabbedItem.js';
 import { helpers } from './helpers.js';
-import { WorldItem } from './models/WorldItem.js';
+import { WorldItem } from './models/Item/WorldItem.js';
 import { SelfPlayer } from './models/SelfPlayer.js';
 import { Socket } from './models/Socket.js';
 

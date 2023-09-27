@@ -1,45 +1,11 @@
+import { Item } from './Item.js';
 import { helpers } from '../../helpers.js';
 const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
 
-export class Item {
+export class ModalItem extends Item {
 	constructor({ x, y, w, h, name, rotation }) {
-		this.x = x || 0;
-		this.y = y || 0;
-		this.w = w || 0;
-		this.h = h || 0;
-		this.name = name || 'default';
-		this.image = helpers.getImage(name);
-		this.rotation = rotation || 0;
-	}
-
-	rotateRight() {
-		if (this.rotation <= 0) {
-			this.rotation = 3;
-		} else {
-			this.rotation--;
-		}
-	}
-
-	rotateLeft() {
-		if (this.rotation >= 3) {
-			this.rotation = 0;
-		} else {
-			this.rotation++;
-		}
-	}
-
-	paint() {
-		ctx.drawImage(
-			this.image,
-			this.x + this.rotation * this.w,
-			this.y,
-			this.w,
-			this.h,
-			this.position.x,
-			this.position.y,
-			this.position.w,
-			this.position.h
-		);
+		super({ x, y, w, h, name, rotation });
+		this.type = 'ModalItem';
 	}
 
 	setPosition(container, i) {
@@ -68,7 +34,7 @@ export class Item {
 		for (const [name, item] of Object.entries(items)) {
 			list[name] = {};
 			for (const [key, value] of Object.entries(item)) {
-				list[name][key] = new Item(value);
+				list[name][key] = new ModalItem(value);
 			}
 		}
 		this.list = list;

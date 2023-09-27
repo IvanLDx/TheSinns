@@ -1,5 +1,5 @@
 import { helpers } from '../helpers.js';
-import { GrabbedItem } from './components/GrabbedItem.js';
+import { GrabbedItem } from './Item/GrabbedItem.js';
 let floorImg = helpers.getImage('floor');
 let floorImg2 = helpers.getImage('floor2');
 
