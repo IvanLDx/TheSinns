@@ -1,9 +1,9 @@
 import { Tile } from './Tile.js';
 import { Modal } from './components/Modal.js';
-import { Item } from './components/Item.js';
-import { GrabbedItem } from './components/GrabbedItem.js';
+import { ModalItem } from './Item/ModalItem.js';
+import { GrabbedItem } from './Item/GrabbedItem.js';
+import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
-import { WorldItem } from './WorldItem.js';
 
 const socket = io();
 let worldItems = [];
@@ -17,8 +17,8 @@ export class Socket {
 		socket.on('init', (data) => {
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
-			Item.createList(data.itemData);
-			Modal.element.appendItems(Item.list);
+			ModalItem.createList(data.itemData);
+			Modal.element.appendItems(ModalItem.list);
 		});
 	}
 

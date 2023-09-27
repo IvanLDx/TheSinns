@@ -1,4 +1,4 @@
-import { GrabbedItem } from './components/GrabbedItem.js';
+import { GrabbedItem } from './Item/GrabbedItem.js';
 
 export class MouseModel {
 	constructor() {

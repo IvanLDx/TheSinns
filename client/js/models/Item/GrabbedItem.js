@@ -1,11 +1,10 @@
-import { Item } from './Item.js';
-import { Tile } from '../Tile.js';
+import { ModalItem } from './ModalItem.js';
 import { helpers } from '../../helpers.js';
 import { Socket } from '../Socket.js';
 
 let grabbedItem;
 
-export class GrabbedItem extends Item {
+export class GrabbedItem extends ModalItem {
 	constructor(item) {
 		super(item);
 		this.type = 'grabbedItem';
@@ -50,7 +49,7 @@ export class GrabbedItem extends Item {
 	}
 
 	static tryToCreate() {
-		Item.each((item) => {
+		ModalItem.each((item) => {
 			if (item.intersects()) {
 				grabbedItem = new GrabbedItem(item);
 				this.element = grabbedItem;

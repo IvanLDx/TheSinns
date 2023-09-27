@@ -1,4 +1,4 @@
-import { helpers } from '../helpers.js';
+import { helpers } from '../../helpers.js';
 
 export class WorldItem {
 	constructor(worldItem) {
