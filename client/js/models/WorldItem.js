@@ -2,11 +2,14 @@ import { helpers } from '../helpers.js';
 
 export class WorldItem {
 	constructor(worldItem) {
+		this.type = 'worldItem';
 		this.id = worldItem.id;
 		this.w = worldItem.w;
 		this.h = worldItem.h;
 		this.name = worldItem.name;
 		this.touchedTile = worldItem.touchedTile;
+		this.rotation = worldItem.rotation;
+		this.image = helpers.getImage(this.name);
 	}
 
 	static create(worldItems) {
@@ -22,8 +25,8 @@ export class WorldItem {
 	static paint() {
 		this.list.forEach((item) => {
 			ctx.drawImage(
-				helpers.getImage(item.name),
-				0,
+				item.image,
+				item.rotation * item.w,
 				0,
 				item.w,
 				item.h,

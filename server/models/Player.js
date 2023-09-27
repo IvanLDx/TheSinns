@@ -1,7 +1,7 @@
 const List = require('./List');
 const World = require('./World');
 const Socket = require('../Socket');
-const itemData = require('../data/items');
+const itemData = require('../data/serverModalitems');
 class Player extends List {
 	constructor(id) {
 		super();
