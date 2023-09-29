@@ -1,5 +1,4 @@
 import { ModalItem } from './ModalItem.js';
-import { helpers } from '../../helpers.js';
 import { Socket } from '../Socket.js';
 
 let grabbedItem;

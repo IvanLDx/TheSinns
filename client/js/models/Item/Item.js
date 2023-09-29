@@ -1,5 +1,4 @@
 import { helpers } from '../../helpers.js';
-const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
 
 export class Item {
 	constructor(item) {

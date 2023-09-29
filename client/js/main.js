@@ -1,6 +1,6 @@
 import { Camera } from './models/Camera.js';
 import { MouseModel } from './models/Mouse.js';
-import { Modal } from './models/components/Modal.js';
+import { Modal } from './models/components/Modal/Modal.js';
 import { Tile } from './models/Tile.js';
 import { GrabbedItem } from './models/Item/GrabbedItem.js';
 import { helpers } from './helpers.js';
@@ -13,7 +13,6 @@ window.ctx = cv.getContext('2d');
 window.cam = new Camera();
 window.mouse = new MouseModel();
 
-const socket = io();
 const modal = Modal.create();
 let selfPlayer;
 Socket.start();
@@ -28,6 +27,7 @@ function act() {
 		cam.focus(selfPlayer);
 		mouse.setPress();
 
+		WorldItem.setPositionTile();
 		Tile.setTouchedTile();
 		paint();
 	}

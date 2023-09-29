@@ -1,5 +1,5 @@
 import { Tile } from './Tile.js';
-import { Modal } from './components/Modal.js';
+import { Modal } from './components/Modal/Modal.js';
 import { ModalItem } from './Item/ModalItem.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
