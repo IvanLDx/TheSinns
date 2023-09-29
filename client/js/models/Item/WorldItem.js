@@ -1,5 +1,4 @@
 import { Item } from './Item.js';
-import { helpers } from '../../helpers.js';
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
@@ -7,11 +6,11 @@ export class WorldItem extends Item {
 		this.type = 'WorldItem';
 		this.id = worldItem.id;
 		this.touchedTile = worldItem.touchedTile;
-		this.position = this.setPositionTile();
+		this.setPositionTile();
 	}
 
 	setPositionTile() {
-		return {
+		this.position = {
 			x: (this.touchedTile.col + 1) * cam.pixelSize - cam.x,
 			y:
 				(this.touchedTile.row + 1) * cam.pixelSize -
@@ -35,6 +34,12 @@ export class WorldItem extends Item {
 	static paint() {
 		this.list.forEach((item) => {
 			item.paint();
+		});
+	}
+
+	static setPositionTile() {
+		this.list.forEach((item) => {
+			item.setPositionTile();
 		});
 	}
 

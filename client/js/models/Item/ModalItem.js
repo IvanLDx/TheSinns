@@ -11,7 +11,7 @@ export class ModalItem extends Item {
 	setPosition(container, i) {
 		this.containerX =
 			container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
-		this.containerY = container.y + 10;
+		this.containerY = container.y + 20;
 		this.position = {
 			x: this.containerX,
 			y: this.containerY,
