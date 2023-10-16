@@ -1,4 +1,6 @@
 import { GrabbedItem } from './Item/GrabbedItem.js';
+import { WorldItem } from './Item/WorldItem.js';
+import { Tile } from './Tile.js';
 
 export class MouseModel {
 	constructor() {
@@ -21,6 +23,14 @@ export class MouseModel {
 		if (grabbedItem) {
 			this.style('none');
 			grabbedItem.move();
+			let selectedWorldItem = WorldItem.selected;
+			if (selectedWorldItem) {
+				if (this.touchedTile.id === selectedWorldItem.id) {
+					this.setTouchedTile();
+				} else {
+					WorldItem.removeItem();
+				}
+			}
 		}
 	}
 
@@ -38,6 +48,19 @@ export class MouseModel {
 				x: e?.clientX || this.x,
 				y: e?.clientY || this.y
 			};
+		}
+	}
+
+	setTouchedTile() {
+		let touched = false;
+		Tile.each((tile) => {
+			if (tile.intersects()) {
+				touched = true;
+				this.touchedTile = tile;
+			}
+		});
+		if (!touched) {
+			this.touchedTile = null;
 		}
 	}
 

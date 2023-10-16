@@ -58,7 +58,14 @@ document.onmousemove = function (e) {
 document.onmousedown = function (e) {
 	mouse.onLeftClick(e, (e) => {
 		mouse.setPress(e);
-		GrabbedItem.tryToCreate();
+		mouse.setTouchedTile();
+
+		let selectedItem = WorldItem.tryToSelect();
+		if (selectedItem) {
+			GrabbedItem.grab(selectedItem);
+		} else {
+			GrabbedItem.tryToCreate();
+		}
 	});
 
 	mouse.onRightClick(e, () => {
@@ -73,6 +80,7 @@ document.onmouseup = function () {
 	document.onmousemove = function (e) {
 		mouse.move(e);
 	};
+	WorldItem.unselectItem();
 	GrabbedItem.completeGrab();
 	modal.clickOnArrowButton();
 	mouse.stop();

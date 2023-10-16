@@ -1,4 +1,5 @@
 import { Item } from './Item.js';
+import { Socket } from '../Socket.js';
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
@@ -42,6 +43,30 @@ export class WorldItem extends Item {
 			item.setPositionTile();
 		});
 	}
+
+	static removeItem() {
+		Socket.removeItemFromWorld();
+		this.unselectItem();
+	}
+
+	static unselectItem() {
+		this.selected = null;
+	}
+
+	static tryToSelect() {
+		let touchedItem = null;
+		if (mouse.touchedTile) {
+			touchedItem = this.list.find((item) => {
+				return mouse.touchedTile.id === item.touchedTile.id;
+			});
+			if (touchedItem) {
+				this.selected = touchedItem;
+			}
+		}
+		return touchedItem;
+	}
+
+	static selected = null;
 
 	static list = [];
 }

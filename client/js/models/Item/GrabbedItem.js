@@ -7,7 +7,7 @@ export class GrabbedItem extends ModalItem {
 	constructor(item) {
 		super(item);
 		this.type = 'GrabbedItem';
-		this.id = this.createID();
+		this.id = this.id || this.createID();
 		this.touchedTile = null;
 	}
 
@@ -49,11 +49,23 @@ export class GrabbedItem extends ModalItem {
 	static tryToCreate() {
 		ModalItem.each((item) => {
 			if (item.intersects()) {
-				grabbedItem = new GrabbedItem(item);
-				this.element = grabbedItem;
-				grabbedItem.move();
+				this.grab(item);
 			}
 		});
+	}
+
+	static grab(item) {
+		grabbedItem = new GrabbedItem(item);
+		this.element = grabbedItem;
+		grabbedItem.move();
+	}
+
+	static tryToSelect() {
+		if (mouse.touchedTile) {
+			if (this.element.id === item.touchedTile.id) {
+				this.selected = item;
+			}
+		}
 	}
 
 	static remove() {
@@ -102,6 +114,12 @@ export class GrabbedItem extends ModalItem {
 				col: tile.col,
 				row: tile.row
 			};
+		}
+	}
+
+	static unsetTouchedTile() {
+		if (this.element) {
+			this.element.touchedTile = null;
 		}
 	}
 

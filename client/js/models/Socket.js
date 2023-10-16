@@ -37,6 +37,12 @@ export class Socket {
 		});
 	}
 
+	static removeItemFromWorld() {
+		socket.emit('removeItemFromWorld', {
+			item: WorldItem.selected
+		});
+	}
+
 	static start() {
 		new Socket();
 	}

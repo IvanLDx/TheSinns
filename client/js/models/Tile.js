@@ -13,6 +13,7 @@ export class Tile {
 		this.img = tile.img;
 		this.center = tile.center;
 		this.touch = tile.touch;
+		this.occupiedBy = null;
 	}
 
 	intersects() {
@@ -35,11 +36,16 @@ export class Tile {
 	}
 
 	static setTouchedTile() {
+		let isThereIntersection = false;
 		this.each((tile) => {
 			if (tile.intersects()) {
+				isThereIntersection = true;
 				GrabbedItem.setTouchedTile(tile);
 			}
 		});
+		if (!isThereIntersection) {
+			GrabbedItem.unsetTouchedTile();
+		}
 	}
 
 	static createList(world) {
