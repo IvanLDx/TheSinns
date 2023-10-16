@@ -1,4 +1,6 @@
 var Server = require('./server');
+require('./server/Global')();
+
 const Player = require('./server/models/Player');
 const Socket = require('./server/Socket');
 
@@ -18,11 +20,3 @@ io.sockets.on('connection', function (socket) {
 		Player.delete(socket.id);
 	});
 });
-
-setInterval(function () {
-	var pack = {
-		player: Player.list,
-		touchedTile: World.getTouchedTile(),
-		worldItems: World.items
-	};
-}, 1000 / Server.FPS);

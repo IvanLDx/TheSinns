@@ -30,7 +30,23 @@ class Player extends List {
 		});
 
 		socket.on('placeGrabbedItem', (pack) => {
-			World.items.push(pack.grabbedItem);
+			let tile = World.tiles.findByID(pack.grabbedItem.touchedTile.id);
+			if (tile && !tile.occupied) {
+				World.items.push(pack.grabbedItem);
+				Socket.emit({ worldItems: World.items });
+				tile.occupied = true;
+			}
+		});
+
+		socket.on('removeItemFromWorld', (pack) => {
+			World.tiles.findByID(pack.item.touchedTile.id, (tile) => {
+				delete tile.occupied;
+			});
+			World.items.forEach((item, i) => {
+				if (pack.item.id === item.id) {
+					World.items.splice(i, 1);
+				}
+			});
 			Socket.emit({ worldItems: World.items });
 		});
 	}
