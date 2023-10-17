@@ -21,6 +21,8 @@ export class Color extends Button {
 	constructor() {
 		super();
 		this.w = 30;
+
+		Button.push(this);
 	}
 
 	paint() {
@@ -37,6 +39,10 @@ export class Color extends Button {
 		this.x = cv.width - totalColorWidth - marginRight - gap;
 	}
 
+	selectColor() {
+		return this.id;
+	}
+
 	static get() {
 		return new AllColors();
 	}
@@ -45,6 +51,7 @@ export class Color extends Button {
 export class Yellow extends Color {
 	constructor() {
 		super();
+		this.id = 'yellow';
 		this.color = '#e6c26c';
 	}
 }
@@ -52,6 +59,7 @@ export class Yellow extends Color {
 export class Red extends Color {
 	constructor() {
 		super();
+		this.id = 'red';
 		this.color = '#eb9486';
 	}
 }
@@ -59,6 +67,7 @@ export class Red extends Color {
 export class Blue extends Color {
 	constructor() {
 		super();
+		this.id = 'blue';
 		this.color = '#6c8bd5';
 	}
 }
@@ -66,6 +75,7 @@ export class Blue extends Color {
 export class Green extends Color {
 	constructor() {
 		super();
+		this.id = 'green';
 		this.color = '#89b188';
 	}
 }

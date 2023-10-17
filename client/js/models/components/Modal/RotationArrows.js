@@ -54,7 +54,10 @@ class ArrowButton {
 class leftArrow extends ArrowButton {
 	constructor(direction) {
 		super(direction);
+		this.id = 'leftArrow';
 		this.image = helpers.getImage('interface/leftArrow');
+
+		Button.push(this);
 	}
 
 	intersectionEvents(items) {
@@ -75,7 +78,10 @@ class leftArrow extends ArrowButton {
 class RightArrow extends ArrowButton {
 	constructor(direction) {
 		super(direction);
+		this.id = 'rightArrow';
 		this.image = helpers.getImage('interface/rightArrow');
+
+		Button.push(this);
 	}
 
 	intersectionEvents(items) {

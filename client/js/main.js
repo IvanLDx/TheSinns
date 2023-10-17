@@ -7,6 +7,7 @@ import { helpers } from './helpers.js';
 import { WorldItem } from './models/Item/WorldItem.js';
 import { SelfPlayer } from './models/SelfPlayer.js';
 import { Socket } from './models/Socket.js';
+import { Button } from './models/components/Modal/Button.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');

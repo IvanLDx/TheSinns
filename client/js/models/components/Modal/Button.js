@@ -8,6 +8,7 @@ export class Button {
 	repositioning() {
 		this.y = cv.height - 230;
 	}
+
 	paint() {
 		ctx.strokeStyle = '#2c4371';
 		ctx.lineWidth = 8;
@@ -16,4 +17,16 @@ export class Button {
 		ctx.fillStyle = '#e2b332';
 		ctx.fillRect(this.x, this.y, this.w, this.h);
 	}
+
+	static each(evt) {
+		this.list.forEach((button, i) => {
+			evt(button, i);
+		});
+	}
+
+	static push(button) {
+		this.list.push(button);
+	}
+
+	static list = [];
 }

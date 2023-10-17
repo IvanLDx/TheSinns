@@ -1,5 +1,6 @@
 import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
+import { Button } from './components/Modal/Button.js';
 import { Tile } from './Tile.js';
 
 export class MouseModel {
@@ -11,6 +12,8 @@ export class MouseModel {
 		this.pressing = false;
 		this.absoluteX = 0;
 		this.absoluteY = 0;
+		this.isThereIntersection = false;
+		this.selectedColor = null;
 	}
 
 	style(value) {
@@ -32,6 +35,8 @@ export class MouseModel {
 				}
 			}
 		}
+
+		this.intersections();
 	}
 
 	setPosition(e) {
@@ -49,6 +54,30 @@ export class MouseModel {
 				y: e?.clientY || this.y
 			};
 		}
+	}
+
+	intersections() {
+		this.isThereIntersection = false;
+		Button.each((button) => {
+			if (mouse.absoluteIntersects(button)) {
+				mouse.style('pointer');
+				this.selectedColor = button.id;
+				this.isThereIntersection = true;
+			}
+		});
+		if (!this.isThereIntersection) {
+			mouse.style('initial');
+			this.selectedColor = null;
+		}
+	}
+
+	absoluteIntersects(element) {
+		return (
+			this.absoluteX > element.x &&
+			this.absoluteX < element.x + element.w &&
+			this.absoluteY > element.y &&
+			this.absoluteY < element.y + element.h
+		);
 	}
 
 	setTouchedTile() {
@@ -84,7 +113,9 @@ export class MouseModel {
 
 	stop() {
 		this.drag = { x: 0, y: 0 };
-		this.style('initial');
+		if (!this.isThereIntersection) {
+			this.style('initial');
+		}
 	}
 
 	onLeftClick(e, evt) {
