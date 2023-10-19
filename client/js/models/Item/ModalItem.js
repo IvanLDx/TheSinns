@@ -1,10 +1,11 @@
 import { Item } from './Item.js';
 import { helpers } from '../../helpers.js';
+import { Modal } from '../components/Modal/Modal.js';
 const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
 
 export class ModalItem extends Item {
-	constructor({ x, y, w, h, name, rotation }) {
-		super({ x, y, w, h, name, rotation });
+	constructor({ x, y, w, h, url, name, rotation }) {
+		super({ x, y, w, h, url, name, rotation });
 		this.type = 'ModalItem';
 	}
 
@@ -31,17 +32,24 @@ export class ModalItem extends Item {
 
 	static createList(items) {
 		let list = {};
-		for (const [name, item] of Object.entries(items)) {
-			list[name] = {};
-			for (const [key, value] of Object.entries(item)) {
-				list[name][key] = new ModalItem(value);
-			}
-		}
+		Object.entries(items).forEach((item) => {
+			let key = item[0];
+			list[key] = {};
+			Object.entries(items[key]).forEach((subItem) => {
+				let subKey = subItem[0];
+				let array = subItem[1];
+				list[key][subKey] = [];
+				array.forEach((value) => {
+					list[key][subKey].push(new ModalItem(value));
+				});
+			});
+		});
 		this.list = list;
 	}
 
 	static each(evt) {
-		Object.values(this.list.wall).forEach((val) => {
+		let list = Modal.getItemUrl(this.list);
+		list.forEach((val) => {
 			evt(val);
 		});
 	}

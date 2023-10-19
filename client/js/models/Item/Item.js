@@ -6,8 +6,9 @@ export class Item {
 		this.y = item.y || 0;
 		this.w = item.w || 0;
 		this.h = item.h || 0;
+		this.url = item.url || '/';
 		this.name = item.name || 'default';
-		this.image = helpers.getImage(item.name);
+		this.image = helpers.getImage(item.url + '/' + item.name);
 		this.rotation = item.rotation || 0;
 	}
 

@@ -1,7 +1,7 @@
 import { helpers } from '../helpers.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
-let floorImg = helpers.getImage('floor');
-let floorImg2 = helpers.getImage('floor2');
+let floorImg = helpers.getImage('misc/floor');
+let floorImg2 = helpers.getImage('misc/floor2');
 
 export class Tile {
 	constructor(tile) {

@@ -9,6 +9,15 @@ export class Button {
 		this.y = cv.height - 230;
 	}
 
+	intersects() {
+		return (
+			mouse.absoluteX > this.x &&
+			mouse.absoluteX < this.x + this.w &&
+			mouse.absoluteY > this.y &&
+			mouse.absoluteY < this.y + this.h
+		);
+	}
+
 	paint() {
 		ctx.strokeStyle = '#2c4371';
 		ctx.lineWidth = 8;

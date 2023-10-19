@@ -12,6 +12,7 @@ window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
 window.cam = new Camera();
 window.mouse = new MouseModel();
+window._ = console.log.bind(window.console);
 
 const modal = Modal.create();
 let selfPlayer;
@@ -82,7 +83,7 @@ document.onmouseup = function () {
 	};
 	WorldItem.unselectItem();
 	GrabbedItem.completeGrab();
-	modal.clickOnArrowButton();
+	modal.clickOnButton();
 	mouse.stop();
 };
 

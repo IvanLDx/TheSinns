@@ -1,4 +1,5 @@
 import { Button } from './Button.js';
+import { Modal } from './Modal.js';
 
 class AllColors {
 	constructor() {
@@ -31,12 +32,22 @@ export class Color extends Button {
 		ctx.fillRect(this.x + 5, this.y + 5, this.w - 10, this.h - 10);
 	}
 
+	intersectionEvents() {
+		if (this.intersects()) {
+			Modal.getElement().setColor(this.color);
+		}
+	}
+
 	repositioning(i) {
 		super.repositioning();
 		let marginRight = 20;
 		let gap = 16 * i;
 		let totalColorWidth = this.w * (i + 1);
 		this.x = cv.width - totalColorWidth - marginRight - gap;
+	}
+
+	setModalColor() {
+		Modal.getElement().setColor(this.id);
 	}
 
 	selectColor() {
