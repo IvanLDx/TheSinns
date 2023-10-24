@@ -1,5 +1,6 @@
 import { RotationArrows } from './RotationArrows.js';
 import { Color } from './Color.js';
+import { ItemType } from './itemTypes.js';
 import { Button } from './Button.js';
 
 export class Modal {
@@ -13,6 +14,7 @@ export class Modal {
 		this.items = null;
 		this.rotationArrows = new RotationArrows();
 		this.color = Color.get();
+		this.itemType = ItemType.get();
 	}
 
 	resize() {
@@ -21,6 +23,7 @@ export class Modal {
 
 		this.rotationArrows.repositioning();
 		this.color.repositioning();
+		this.itemType.repositioning();
 	}
 
 	clickOnButton() {
@@ -45,10 +48,15 @@ export class Modal {
 
 		this.rotationArrows.paint();
 		this.color.paint();
+		this.itemType.paint();
 	}
 
 	setColor(color) {
 		this.subfolder = color;
+	}
+
+	setType(type) {
+		this.folder = type;
 	}
 
 	appendItems(items) {
