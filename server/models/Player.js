@@ -14,11 +14,6 @@ class Player extends List {
 		Player.create(this);
 	}
 
-	setMousePosition(pack) {
-		this.x += pack.mouse.drag.x;
-		this.y += pack.mouse.drag.y;
-	}
-
 	static connect(socket) {
 		new Player(socket.id);
 

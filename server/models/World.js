@@ -7,8 +7,6 @@ class World {
 			w: 20,
 			h: 10
 		};
-
-		World.active = this;
 	}
 
 	setMap() {
@@ -19,14 +17,8 @@ class World {
 		}
 	}
 
-	static getTouchedTile() {
-		return World.touchedTile;
-	}
-
-	static active;
 	static tiles = [];
 	static items = [];
-	static toucedTile = false;
 }
 
 class Tile {

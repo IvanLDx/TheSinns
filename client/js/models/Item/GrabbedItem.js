@@ -60,14 +60,6 @@ export class GrabbedItem extends ModalItem {
 		grabbedItem.move();
 	}
 
-	static tryToSelect() {
-		if (mouse.touchedTile) {
-			if (this.element.id === item.touchedTile.id) {
-				this.selected = item;
-			}
-		}
-	}
-
 	static remove() {
 		grabbedItem = null;
 		this.element = null;

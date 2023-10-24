@@ -34,7 +34,7 @@ export class Color extends Button {
 
 	intersectionEvents() {
 		if (this.intersects()) {
-			Modal.getElement().setColor(this.color);
+			Modal.getElement().setColor(this.id);
 		}
 	}
 
@@ -44,14 +44,6 @@ export class Color extends Button {
 		let gap = 16 * i;
 		let totalColorWidth = this.w * (i + 1);
 		this.x = cv.width - totalColorWidth - marginRight - gap;
-	}
-
-	setModalColor() {
-		Modal.getElement().setColor(this.id);
-	}
-
-	selectColor() {
-		return this.id;
 	}
 
 	static get() {
