@@ -26,21 +26,24 @@ class Player extends List {
 
 		socket.on('placeGrabbedItem', (pack) => {
 			let tile = World.tiles.findByID(pack.grabbedItem.touchedTile.id);
-			if (tile && !tile.occupied) {
-				World.items.push(pack.grabbedItem);
+			let grabbedItem = pack.grabbedItem;
+			if (tile && !tile.isTypeOccupied(grabbedItem)) {
+				World.items[grabbedItem.type].push(grabbedItem);
 				Socket.emit({ worldItems: World.items });
-				tile.occupied = true;
+				tile.occupied[grabbedItem.type] = true;
 			}
 		});
 
 		socket.on('removeItemFromWorld', (pack) => {
 			World.tiles.findByID(pack.item.touchedTile.id, (tile) => {
-				delete tile.occupied;
+				tile.occupied[pack.item.type] = false;
 			});
-			World.items.forEach((item, i) => {
-				if (pack.item.id === item.id) {
-					World.items.splice(i, 1);
-				}
+			Object.entries(World.items).forEach((itemTypes) => {
+				itemTypes[1].forEach((item, i) => {
+					if (pack.item.id === item.id) {
+						itemTypes[1].splice(i, 1);
+					}
+				});
 			});
 			Socket.emit({ worldItems: World.items });
 		});

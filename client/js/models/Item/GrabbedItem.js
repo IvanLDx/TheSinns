@@ -6,7 +6,7 @@ let grabbedItem;
 export class GrabbedItem extends ModalItem {
 	constructor(item) {
 		super(item);
-		this.type = 'GrabbedItem';
+		this.locationType = 'GrabbedItem';
 		this.id = this.id || this.createID();
 		this.touchedTile = null;
 	}

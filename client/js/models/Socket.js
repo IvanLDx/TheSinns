@@ -25,8 +25,10 @@ export class Socket {
 	newPosition() {
 		socket.on('newPosition', function (data) {
 			worldItems = WorldItem.create(data.worldItems);
-			worldItems = worldItems.sort(function (a, b) {
-				return a.touchedTile.row - b.touchedTile.row;
+			Object.entries(worldItems).forEach((worldItemTypes) => {
+				worldItemTypes[1] = worldItemTypes[1].sort(function (a, b) {
+					return a.touchedTile.row - b.touchedTile.row;
+				});
 			});
 		});
 	}

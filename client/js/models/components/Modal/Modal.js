@@ -59,6 +59,10 @@ export class Modal {
 		this.folder = type;
 	}
 
+	getType() {
+		return this.folder;
+	}
+
 	appendItems(items) {
 		this.items = items;
 	}
@@ -80,6 +84,10 @@ export class Modal {
 		return this.getElement().getItems()[this.element.folder][
 			this.element.subfolder
 		];
+	}
+
+	static getType() {
+		return this.getElement().getType();
 	}
 
 	static getElement() {

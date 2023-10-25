@@ -13,7 +13,6 @@ export class Tile {
 		this.img = tile.img;
 		this.center = tile.center;
 		this.touch = tile.touch;
-		this.occupiedBy = null;
 	}
 
 	intersects() {

@@ -18,7 +18,12 @@ class World {
 	}
 
 	static tiles = [];
-	static items = [];
+	static items = {
+		wall: [],
+		wallElement: [],
+		decoration: [],
+		floor: []
+	};
 }
 
 class Tile {
@@ -39,7 +44,18 @@ class Tile {
 			y: this.row + this.h / 2
 		};
 
+		this.occupied = {
+			wall: false,
+			wallElement: false,
+			decoration: false,
+			floor: false
+		};
+
 		World.tiles.push(this);
+	}
+
+	isTypeOccupied(grabbedItem) {
+		return this.occupied[grabbedItem.type];
 	}
 }
 

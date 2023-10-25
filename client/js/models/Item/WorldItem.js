@@ -4,7 +4,7 @@ import { Socket } from '../Socket.js';
 export class WorldItem extends Item {
 	constructor(worldItem) {
 		super(worldItem);
-		this.type = 'WorldItem';
+		this.locationType = 'WorldItem';
 		this.id = worldItem.id;
 		this.touchedTile = worldItem.touchedTile;
 		this.setPositionTile();
@@ -23,24 +23,40 @@ export class WorldItem extends Item {
 	}
 
 	static create(worldItems) {
-		this.list = [];
-		worldItems.forEach((worldItem) => {
-			let item = new WorldItem(worldItem);
-			this.list.push(item);
+		this.list = {
+			wall: [],
+			wallElement: [],
+			decoration: [],
+			floor: []
+		};
+
+		//
+		//
+		//
+		// Convertir OBJECT entry en custom forEach
+		Object.entries(worldItems).forEach((itemTypes) => {
+			itemTypes[1].forEach((worldItem) => {
+				let item = new WorldItem(worldItem);
+				this.list[item.type].push(item);
+			});
 		});
 
 		return this.list;
 	}
 
 	static paint() {
-		this.list.forEach((item) => {
-			item.paint();
+		Object.entries(this.list).forEach((listTypes) => {
+			listTypes[1].forEach((item) => {
+				item.paint();
+			});
 		});
 	}
 
 	static setPositionTile() {
-		this.list.forEach((item) => {
-			item.setPositionTile();
+		Object.entries(this.list).forEach((listTypes) => {
+			listTypes[1].forEach((item) => {
+				item.setPositionTile();
+			});
 		});
 	}
 
@@ -56,9 +72,15 @@ export class WorldItem extends Item {
 	static tryToSelect() {
 		let touchedItem = null;
 		if (mouse.touchedTile) {
-			touchedItem = this.list.find((item) => {
-				return mouse.touchedTile.id === item.touchedTile.id;
+			Object.entries(this.list).forEach((listTypes) => {
+				let thisItem = listTypes[1].find((item) => {
+					return mouse.touchedTile.id === item.touchedTile.id;
+				});
+				if (thisItem) {
+					touchedItem = thisItem;
+				}
 			});
+
 			if (touchedItem) {
 				this.selected = touchedItem;
 			}

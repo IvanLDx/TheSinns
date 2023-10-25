@@ -6,7 +6,9 @@ const MODAL_PIXEL_SIZE = utils.getModalPixelSize();
 export class ModalItem extends Item {
 	constructor({ x, y, w, h, url, name, rotation }) {
 		super({ x, y, w, h, url, name, rotation });
-		this.type = 'ModalItem';
+		this.locationType = 'ModalItem';
+		this.type = utils.getFolder(url);
+		this.backgroundImage = utils.getImage('misc/itemBackground');
 	}
 
 	setPosition(container, i) {
@@ -19,6 +21,22 @@ export class ModalItem extends Item {
 			w: this.w * MODAL_PIXEL_SIZE,
 			h: this.h * MODAL_PIXEL_SIZE
 		};
+	}
+
+	paint() {
+		ctx.drawImage(
+			this.backgroundImage,
+			0,
+			0,
+			this.w,
+			this.h,
+			this.position.x,
+			this.position.y,
+			this.position.w,
+			this.position.h
+		);
+
+		super.paint();
 	}
 
 	intersects() {

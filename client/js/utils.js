@@ -12,5 +12,8 @@ export const utils = {
 		ctx.fillStyle = '#64e29d';
 		ctx.fillRect(0, 0, cv.width, cv.height);
 		ctx.imageSmoothingEnabled = false;
+	},
+	getFolder(url) {
+		return url.split('/')[0];
 	}
 };
