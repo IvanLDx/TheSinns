@@ -15,6 +15,12 @@ const ServerModalItems = {
 		blue: [],
 		green: [],
 		red: []
+	},
+	wallElement: {
+		yellow: [],
+		blue: [],
+		green: [],
+		red: []
 	}
 };
 
@@ -31,5 +37,9 @@ getItems('wall/yellow');
 getItems('wall/blue');
 getItems('wall/green');
 getItems('wall/red');
+getItems('wallElement/yellow');
+getItems('wallElement/blue');
+getItems('wallElement/green');
+getItems('wallElement/red');
 
 module.exports = ServerModalItems;
