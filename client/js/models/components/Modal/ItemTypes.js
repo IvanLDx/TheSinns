@@ -1,4 +1,4 @@
-import { helpers } from '../../../helpers.js';
+import { utils } from '../../../utils.js';
 import { OptionItem } from './OptionItem.js';
 import { OptionButton } from './OptionButton.js';
 import { Modal } from './Modal.js';
@@ -51,7 +51,7 @@ export class ItemType extends OptionButton {
 	}
 
 	getImage() {
-		return helpers.getImage('/swatches/' + this.id);
+		return utils.getImage('/swatches/' + this.id);
 	}
 
 	static get() {

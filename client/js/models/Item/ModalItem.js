@@ -1,7 +1,7 @@
 import { Item } from './Item.js';
-import { helpers } from '../../helpers.js';
+import { utils } from '../../utils.js';
 import { Modal } from '../components/Modal/Modal.js';
-const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
+const MODAL_PIXEL_SIZE = utils.getModalPixelSize();
 
 export class ModalItem extends Item {
 	constructor({ x, y, w, h, url, name, rotation }) {

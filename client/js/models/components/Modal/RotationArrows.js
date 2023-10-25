@@ -1,4 +1,4 @@
-import { helpers } from '../../../helpers.js';
+import { utils } from '../../../utils.js';
 import { Button } from './Button.js';
 import { Modal } from './Modal.js';
 
@@ -57,7 +57,7 @@ class leftArrow extends ArrowButton {
 	constructor(direction) {
 		super(direction);
 		this.id = 'leftArrow';
-		this.image = helpers.getImage('interface/leftArrow');
+		this.image = utils.getImage('interface/leftArrow');
 
 		Button.push(this);
 	}
@@ -79,7 +79,7 @@ class RightArrow extends ArrowButton {
 	constructor(direction) {
 		super(direction);
 		this.id = 'rightArrow';
-		this.image = helpers.getImage('interface/rightArrow');
+		this.image = utils.getImage('interface/rightArrow');
 
 		Button.push(this);
 	}

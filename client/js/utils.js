@@ -1,4 +1,4 @@
-export const helpers = {
+export const utils = {
 	getImage(name) {
 		let image = new Image();
 		image.src = `./client/img/${name}.png`;

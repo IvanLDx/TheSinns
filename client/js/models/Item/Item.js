@@ -1,4 +1,4 @@
-import { helpers } from '../../helpers.js';
+import { utils } from '../../utils.js';
 
 export class Item {
 	constructor(item) {
@@ -8,7 +8,7 @@ export class Item {
 		this.h = item.h || 0;
 		this.url = item.url || '/';
 		this.name = item.name || 'default';
-		this.image = helpers.getImage(item.url + '/' + item.name);
+		this.image = utils.getImage(item.url + '/' + item.name);
 		this.rotation = item.rotation || 0;
 	}
 
