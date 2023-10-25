@@ -1,5 +1,6 @@
 import { Item } from './Item.js';
 import { Socket } from '../Socket.js';
+import { utils } from '../../utils.js';
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
@@ -30,33 +31,23 @@ export class WorldItem extends Item {
 			floor: []
 		};
 
-		//
-		//
-		//
-		// Convertir OBJECT entry en custom forEach
-		Object.entries(worldItems).forEach((itemTypes) => {
-			itemTypes[1].forEach((worldItem) => {
-				let item = new WorldItem(worldItem);
-				this.list[item.type].push(item);
-			});
+		utils.forEachType(worldItems, (worldItem) => {
+			let item = new WorldItem(worldItem);
+			this.list[item.type].push(item);
 		});
 
 		return this.list;
 	}
 
 	static paint() {
-		Object.entries(this.list).forEach((listTypes) => {
-			listTypes[1].forEach((item) => {
-				item.paint();
-			});
+		utils.forEachType(this.list, (item) => {
+			item.paint();
 		});
 	}
 
 	static setPositionTile() {
-		Object.entries(this.list).forEach((listTypes) => {
-			listTypes[1].forEach((item) => {
-				item.setPositionTile();
-			});
+		utils.forEachType(this.list, (item) => {
+			item.setPositionTile();
 		});
 	}
 
@@ -72,8 +63,8 @@ export class WorldItem extends Item {
 	static tryToSelect() {
 		let touchedItem = null;
 		if (mouse.touchedTile) {
-			Object.entries(this.list).forEach((listTypes) => {
-				let thisItem = listTypes[1].find((item) => {
+			utils.forEachObject(this.list, (listTypes) => {
+				let thisItem = listTypes.find((item) => {
 					return mouse.touchedTile.id === item.touchedTile.id;
 				});
 				if (thisItem) {

@@ -50,14 +50,11 @@ export class ModalItem extends Item {
 
 	static createList(items) {
 		let list = {};
-		Object.entries(items).forEach((item) => {
-			let key = item[0];
+		utils.forEachObject(items, (item, key) => {
 			list[key] = {};
-			Object.entries(items[key]).forEach((subItem) => {
-				let subKey = subItem[0];
-				let array = subItem[1];
+			utils.forEachObject(item, (subItem, subKey) => {
 				list[key][subKey] = [];
-				array.forEach((value) => {
+				subItem.forEach((value) => {
 					list[key][subKey].push(new ModalItem(value));
 				});
 			});

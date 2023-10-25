@@ -4,6 +4,7 @@ import { ModalItem } from './Item/ModalItem.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
+import { utils } from '../utils.js';
 
 const socket = io();
 let worldItems = [];
@@ -25,8 +26,8 @@ export class Socket {
 	newPosition() {
 		socket.on('newPosition', function (data) {
 			worldItems = WorldItem.create(data.worldItems);
-			Object.entries(worldItems).forEach((worldItemTypes) => {
-				worldItemTypes[1] = worldItemTypes[1].sort(function (a, b) {
+			utils.forEachObject(worldItems, (worldItemTypes) => {
+				worldItemTypes = worldItemTypes.sort(function (a, b) {
 					return a.touchedTile.row - b.touchedTile.row;
 				});
 			});
