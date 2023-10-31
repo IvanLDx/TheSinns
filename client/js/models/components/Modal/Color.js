@@ -1,4 +1,3 @@
-import { Button } from './Button.js';
 import { OptionItem } from './OptionItem.js';
 import { OptionButton } from './OptionButton.js';
 import { Modal } from './Modal.js';
@@ -13,6 +12,8 @@ class AllColors extends OptionItem {
 export class Color extends OptionButton {
 	constructor() {
 		super();
+		this.buttonType = 'color';
+		Color.list.push(this);
 	}
 
 	intersectionEvents() {

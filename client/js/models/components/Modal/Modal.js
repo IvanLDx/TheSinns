@@ -2,6 +2,7 @@ import { RotationArrows } from './RotationArrows.js';
 import { Color } from './Color.js';
 import { ItemType } from './itemTypes.js';
 import { Button } from './Button.js';
+import { OptionButton } from './OptionButton.js';
 
 export class Modal {
 	constructor(x, y, w, h) {
@@ -53,10 +54,16 @@ export class Modal {
 
 	setColor(color) {
 		this.subfolder = color;
+		OptionButton.setButtonStrokeColor('color', color);
+	}
+
+	getColor() {
+		return this.subfolder;
 	}
 
 	setType(type) {
 		this.folder = type;
+		OptionButton.setButtonStrokeColor('itemType', type);
 	}
 
 	getType() {
@@ -73,6 +80,8 @@ export class Modal {
 
 	static create() {
 		Modal.element = new Modal();
+		OptionButton.setButtonStrokeColor('itemType', Modal.element.getType());
+		OptionButton.setButtonStrokeColor('color', Modal.element.getColor());
 		return Modal.element;
 	}
 

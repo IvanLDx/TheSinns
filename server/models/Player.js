@@ -16,6 +16,7 @@ class Player extends List {
 
 	static connect(socket) {
 		new Player(socket.id);
+		Socket.emit({ worldItems: World.items });
 
 		socket.emit('init', {
 			id: socket.id,

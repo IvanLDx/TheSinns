@@ -3,6 +3,15 @@ export class Button {
 		this.x = 0;
 		this.y = 0;
 		this.h = 30;
+		this.setStandardStroke();
+	}
+
+	setSelectedStroke() {
+		this.strokeStyle = '#f2e8a2';
+	}
+
+	setStandardStroke() {
+		this.strokeStyle = '#2c4371';
 	}
 
 	repositioning() {
@@ -19,7 +28,7 @@ export class Button {
 	}
 
 	paint() {
-		ctx.strokeStyle = '#2c4371';
+		ctx.strokeStyle = this.strokeStyle;
 		ctx.lineWidth = 8;
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
 

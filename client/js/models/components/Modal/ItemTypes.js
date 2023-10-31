@@ -20,7 +20,10 @@ export class ItemType extends OptionButton {
 	constructor(id) {
 		super();
 		this.id = id;
+		this.buttonType = 'itemType';
 		this.swatch = this.getImage();
+
+		ItemType.list.push(this);
 	}
 
 	intersectionEvents() {
