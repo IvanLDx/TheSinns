@@ -6,7 +6,7 @@ let grabbedItem;
 export class GrabbedItem extends ModalItem {
 	constructor(item) {
 		super(item);
-		this.type = 'GrabbedItem';
+		this.locationType = 'GrabbedItem';
 		this.id = this.id || this.createID();
 		this.touchedTile = null;
 	}
@@ -58,14 +58,6 @@ export class GrabbedItem extends ModalItem {
 		grabbedItem = new GrabbedItem(item);
 		this.element = grabbedItem;
 		grabbedItem.move();
-	}
-
-	static tryToSelect() {
-		if (mouse.touchedTile) {
-			if (this.element.id === item.touchedTile.id) {
-				this.selected = item;
-			}
-		}
 	}
 
 	static remove() {

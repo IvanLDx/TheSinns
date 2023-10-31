@@ -4,6 +4,7 @@ import { ModalItem } from './Item/ModalItem.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
+import { utils } from '../utils.js';
 
 const socket = io();
 let worldItems = [];
@@ -18,15 +19,17 @@ export class Socket {
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
 			ModalItem.createList(data.itemData);
-			Modal.element.appendItems(ModalItem.list);
+			Modal.getElement().appendItems(ModalItem.list);
 		});
 	}
 
 	newPosition() {
 		socket.on('newPosition', function (data) {
 			worldItems = WorldItem.create(data.worldItems);
-			worldItems = worldItems.sort(function (a, b) {
-				return a.touchedTile.row - b.touchedTile.row;
+			utils.forEachObject(worldItems, (worldItemTypes) => {
+				worldItemTypes = worldItemTypes.sort(function (a, b) {
+					return a.touchedTile.row - b.touchedTile.row;
+				});
 			});
 		});
 	}

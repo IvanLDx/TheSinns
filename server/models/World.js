@@ -7,8 +7,6 @@ class World {
 			w: 20,
 			h: 10
 		};
-
-		World.active = this;
 	}
 
 	setMap() {
@@ -19,14 +17,13 @@ class World {
 		}
 	}
 
-	static getTouchedTile() {
-		return World.touchedTile;
-	}
-
-	static active;
 	static tiles = [];
-	static items = [];
-	static toucedTile = false;
+	static items = {
+		wall: [],
+		wallElement: [],
+		decoration: [],
+		floor: []
+	};
 }
 
 class Tile {
@@ -47,7 +44,18 @@ class Tile {
 			y: this.row + this.h / 2
 		};
 
+		this.occupied = {
+			wall: false,
+			wallElement: false,
+			decoration: false,
+			floor: false
+		};
+
 		World.tiles.push(this);
+	}
+
+	isTypeOccupied(grabbedItem) {
+		return this.occupied[grabbedItem.type];
 	}
 }
 

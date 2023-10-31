@@ -3,7 +3,7 @@ import { MouseModel } from './models/Mouse.js';
 import { Modal } from './models/components/Modal/Modal.js';
 import { Tile } from './models/Tile.js';
 import { GrabbedItem } from './models/Item/GrabbedItem.js';
-import { helpers } from './helpers.js';
+import { utils } from './utils.js';
 import { WorldItem } from './models/Item/WorldItem.js';
 import { SelfPlayer } from './models/SelfPlayer.js';
 import { Socket } from './models/Socket.js';
@@ -12,6 +12,7 @@ window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
 window.cam = new Camera();
 window.mouse = new MouseModel();
+window._ = console.log.bind(window.console);
 
 const modal = Modal.create();
 let selfPlayer;
@@ -34,7 +35,7 @@ function act() {
 }
 
 function paint() {
-	helpers.paintSettings();
+	utils.paintSettings();
 	Tile.paint();
 	WorldItem.paint();
 	modal.paint();
@@ -82,7 +83,7 @@ document.onmouseup = function () {
 	};
 	WorldItem.unselectItem();
 	GrabbedItem.completeGrab();
-	modal.clickOnArrowButton();
+	modal.clickOnButton();
 	mouse.stop();
 };
 

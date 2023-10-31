@@ -1,7 +1,7 @@
-import { helpers } from '../helpers.js';
+import { utils } from '../utils.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
-let floorImg = helpers.getImage('floor');
-let floorImg2 = helpers.getImage('floor2');
+let floorImg = utils.getImage('misc/floor');
+let floorImg2 = utils.getImage('misc/floor2');
 
 export class Tile {
 	constructor(tile) {
@@ -13,7 +13,6 @@ export class Tile {
 		this.img = tile.img;
 		this.center = tile.center;
 		this.touch = tile.touch;
-		this.occupiedBy = null;
 	}
 
 	intersects() {

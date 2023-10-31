@@ -1,5 +1,6 @@
-import { helpers } from '../../../helpers.js';
+import { utils } from '../../../utils.js';
 import { Button } from './Button.js';
+import { Modal } from './Modal.js';
 
 export class RotationArrows extends Button {
 	constructor() {
@@ -21,19 +22,20 @@ export class RotationArrows extends Button {
 	}
 }
 
-class ArrowButton {
+class ArrowButton extends Button {
 	constructor() {
+		super();
 		this.w = 20;
 		this.h = 20;
 	}
 
-	intersects() {
-		return (
-			mouse.absoluteX > this.x &&
-			mouse.absoluteX < this.x + this.w &&
-			mouse.absoluteY > this.y &&
-			mouse.absoluteY < this.y + this.h
-		);
+	intersectionEvents(evt) {
+		if (this.intersects()) {
+			let activeItems = Modal.getActiveItems();
+			activeItems.forEach((item) => {
+				evt(item);
+			});
+		}
 	}
 
 	paint() {
@@ -54,15 +56,16 @@ class ArrowButton {
 class leftArrow extends ArrowButton {
 	constructor(direction) {
 		super(direction);
-		this.image = helpers.getImage('interface/leftArrow');
+		this.id = 'leftArrow';
+		this.image = utils.getImage('interface/leftArrow');
+
+		Button.push(this);
 	}
 
-	intersectionEvents(items) {
-		if (this.intersects()) {
-			Object.entries(items.wall).forEach((wall) => {
-				wall[1].rotateLeft();
-			});
-		}
+	intersectionEvents() {
+		super.intersectionEvents((item) => {
+			item.rotateLeft();
+		});
 	}
 
 	paint(RotationModal) {
@@ -75,15 +78,16 @@ class leftArrow extends ArrowButton {
 class RightArrow extends ArrowButton {
 	constructor(direction) {
 		super(direction);
-		this.image = helpers.getImage('interface/rightArrow');
+		this.id = 'rightArrow';
+		this.image = utils.getImage('interface/rightArrow');
+
+		Button.push(this);
 	}
 
-	intersectionEvents(items) {
-		if (this.intersects()) {
-			Object.entries(items.wall).forEach((wall) => {
-				wall[1].rotateRight();
-			});
-		}
+	intersectionEvents() {
+		super.intersectionEvents((item) => {
+			item.rotateRight();
+		});
 	}
 
 	paint(RotationModal) {

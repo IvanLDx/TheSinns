@@ -1,11 +1,14 @@
 import { Item } from './Item.js';
-import { helpers } from '../../helpers.js';
-const MODAL_PIXEL_SIZE = helpers.getModalPixelSize();
+import { utils } from '../../utils.js';
+import { Modal } from '../components/Modal/Modal.js';
+const MODAL_PIXEL_SIZE = utils.getModalPixelSize();
 
 export class ModalItem extends Item {
-	constructor({ x, y, w, h, name, rotation }) {
-		super({ x, y, w, h, name, rotation });
-		this.type = 'ModalItem';
+	constructor({ x, y, w, h, url, name, rotation }) {
+		super({ x, y, w, h, url, name, rotation });
+		this.locationType = 'ModalItem';
+		this.type = utils.getFolder(url);
+		this.backgroundImage = utils.getImage('misc/itemBackground');
 	}
 
 	setPosition(container, i) {
@@ -20,6 +23,22 @@ export class ModalItem extends Item {
 		};
 	}
 
+	paint() {
+		ctx.drawImage(
+			this.backgroundImage,
+			0,
+			0,
+			this.w,
+			this.h,
+			this.position.x,
+			this.position.y,
+			this.position.w,
+			this.position.h
+		);
+
+		super.paint();
+	}
+
 	intersects() {
 		return (
 			mouse.absoluteX > this.containerX &&
@@ -31,17 +50,21 @@ export class ModalItem extends Item {
 
 	static createList(items) {
 		let list = {};
-		for (const [name, item] of Object.entries(items)) {
-			list[name] = {};
-			for (const [key, value] of Object.entries(item)) {
-				list[name][key] = new ModalItem(value);
-			}
-		}
+		utils.forEachObject(items, (item, key) => {
+			list[key] = {};
+			utils.forEachObject(item, (subItem, subKey) => {
+				list[key][subKey] = [];
+				subItem.forEach((value) => {
+					list[key][subKey].push(new ModalItem(value));
+				});
+			});
+		});
 		this.list = list;
 	}
 
 	static each(evt) {
-		Object.values(this.list.wall).forEach((val) => {
+		let list = Modal.getItemUrl(this.list);
+		list.forEach((val) => {
 			evt(val);
 		});
 	}
