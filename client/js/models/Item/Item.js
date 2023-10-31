@@ -11,6 +11,13 @@ export class Item {
 		this.name = item.name || 'default';
 		this.image = utils.getImage(item.url + '/' + item.name);
 		this.rotation = item.rotation || 0;
+		this.#setMaxRotationWhenImageLoads();
+	}
+
+	#setMaxRotationWhenImageLoads() {
+		this.image.addEventListener('load', () => {
+			this.maxRotation = this.image.width / this.w - 1;
+		});
 	}
 
 	paint() {
@@ -29,14 +36,14 @@ export class Item {
 
 	rotateRight() {
 		if (this.rotation <= 0) {
-			this.rotation = 3;
+			this.rotation = this.maxRotation;
 		} else {
 			this.rotation--;
 		}
 	}
 
 	rotateLeft() {
-		if (this.rotation >= 3) {
+		if (this.rotation >= this.maxRotation) {
 			this.rotation = 0;
 		} else {
 			this.rotation++;
