@@ -49,4 +49,10 @@ export class Item {
 			this.rotation++;
 		}
 	}
+
+	static each(evt) {
+		this.list.forEach((item, i) => {
+			evt(item, i);
+		});
+	}
 }

@@ -23,30 +23,34 @@ export class WorldItem extends Item {
 		};
 	}
 
-	static create(worldItems) {
-		this.list = {
-			wall: [],
-			wallElement: [],
-			decoration: [],
-			floor: []
-		};
+	static create(worldItems, occupiedTiles) {
+		this.list = [];
+		occupiedTiles.sort((a, b) => {
+			return a.split('-')[0] < b.split('-')[0];
+		});
 
-		utils.forEachType(worldItems, (worldItem) => {
-			let item = new WorldItem(worldItem);
-			this.list[item.type].push(item);
+		occupiedTiles.forEach((tile) => {
+			utils.forEachObject(worldItems, (itemTypes, type) => {
+				itemTypes.forEach((item, i) => {
+					if (tile === item.touchedTile.id) {
+						this.list.push(new WorldItem(item));
+						worldItems[type].splice(i, 1);
+					}
+				});
+			});
 		});
 
 		return this.list;
 	}
 
 	static paint() {
-		utils.forEachType(this.list, (item) => {
+		this.each((item) => {
 			item.paint();
 		});
 	}
 
 	static setPositionTile() {
-		utils.forEachType(this.list, (item) => {
+		this.each((item) => {
 			item.setPositionTile();
 		});
 	}
@@ -61,22 +65,12 @@ export class WorldItem extends Item {
 	}
 
 	static tryToSelect() {
-		let touchedItem = null;
 		if (mouse.touchedTile) {
-			utils.forEachObject(this.list, (listTypes) => {
-				let thisItem = listTypes.find((item) => {
-					return mouse.touchedTile.id === item.touchedTile.id;
-				});
-				if (thisItem) {
-					touchedItem = thisItem;
-				}
+			this.selected = this.list.find((item) => {
+				return mouse.touchedTile.id === item.touchedTile.id;
 			});
-
-			if (touchedItem) {
-				this.selected = touchedItem;
-			}
 		}
-		return touchedItem;
+		return this.selected;
 	}
 
 	static selected = null;
