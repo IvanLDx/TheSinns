@@ -1,5 +1,8 @@
-export class Button {
+import { List } from '../../List.js';
+
+export class Button extends List {
 	constructor() {
+		super();
 		this.x = 0;
 		this.y = 0;
 		this.h = 30;
@@ -35,16 +38,4 @@ export class Button {
 		ctx.fillStyle = '#e2b332';
 		ctx.fillRect(this.x, this.y, this.w, this.h);
 	}
-
-	static each(evt) {
-		this.list.forEach((button, i) => {
-			evt(button, i);
-		});
-	}
-
-	static push(button) {
-		this.list.push(button);
-	}
-
-	static list = [];
 }

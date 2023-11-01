@@ -11,7 +11,7 @@ export class OptionButton extends Button {
 	}
 
 	static setButtonStrokeColor(type, id) {
-		this.list.forEach((button) => {
+		this.each((button) => {
 			if (button.id === id) {
 				button.setSelectedStroke();
 			} else if (button.buttonType === type) {
@@ -19,6 +19,4 @@ export class OptionButton extends Button {
 			}
 		});
 	}
-
-	static list = [];
 }

@@ -3,13 +3,11 @@ import { Color } from './Color.js';
 import { ItemType } from './itemTypes.js';
 import { Button } from './Button.js';
 import { OptionButton } from './OptionButton.js';
+import { Container } from '../Container.js';
 
-export class Modal {
+export class Modal extends Container {
 	constructor(x, y, w, h) {
-		this.x = x || 10;
-		this.y = y || 0;
-		this.w = w || 0;
-		this.h = h || 200;
+		super(x, y, w, h);
 		this.folder = 'wall';
 		this.subfolder = 'yellow';
 		this.items = null;
@@ -34,12 +32,7 @@ export class Modal {
 	}
 
 	paint() {
-		ctx.strokeStyle = '#2c4371';
-		ctx.lineWidth = 8;
-		ctx.strokeRect(this.x, this.y, this.w, this.h);
-
-		ctx.fillStyle = '#e2b332';
-		ctx.fillRect(this.x, this.y, this.w, this.h);
+		super.paint();
 
 		let modalItems = Modal.getItemUrl(this.items);
 		modalItems.forEach((item, i) => {
@@ -79,10 +72,10 @@ export class Modal {
 	}
 
 	static create() {
-		Modal.element = new Modal();
-		OptionButton.setButtonStrokeColor('itemType', Modal.element.getType());
-		OptionButton.setButtonStrokeColor('color', Modal.element.getColor());
-		return Modal.element;
+		this.element = new Modal();
+		OptionButton.setButtonStrokeColor('itemType', this.element.getType());
+		OptionButton.setButtonStrokeColor('color', this.element.getColor());
+		return this.element;
 	}
 
 	static getItemUrl(root) {
@@ -102,6 +95,4 @@ export class Modal {
 	static getElement() {
 		return this.element;
 	}
-
-	static element = null;
 }

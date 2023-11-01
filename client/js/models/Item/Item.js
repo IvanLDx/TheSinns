@@ -1,7 +1,9 @@
 import { utils } from '../../utils.js';
+import { List } from '../List.js';
 
-export class Item {
+export class Item extends List {
 	constructor(item) {
+		super();
 		this.x = item.x || 0;
 		this.y = item.y || 0;
 		this.w = item.w || 0;
@@ -48,11 +50,5 @@ export class Item {
 		} else {
 			this.rotation++;
 		}
-	}
-
-	static each(evt) {
-		this.list.forEach((item, i) => {
-			evt(item, i);
-		});
 	}
 }

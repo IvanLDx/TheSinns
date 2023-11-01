@@ -33,7 +33,7 @@ export class WorldItem extends Item {
 			utils.forEachObject(worldItems, (itemTypes, type) => {
 				itemTypes.forEach((item, i) => {
 					if (tile === item.touchedTile.id) {
-						this.list.push(new WorldItem(item));
+						this.push(new WorldItem(item));
 						worldItems[type].splice(i, 1);
 					}
 				});
@@ -74,6 +74,4 @@ export class WorldItem extends Item {
 	}
 
 	static selected = null;
-
-	static list = [];
 }
