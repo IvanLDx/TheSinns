@@ -96,6 +96,7 @@ export class GrabbedItem extends ModalItem {
 				tile.w || grabbedItem.w * cam.pixelSize,
 				tile.h || grabbedItem.h * cam.pixelSize
 			);
+			ctx.globalAlpha = 1;
 		}
 	}
 

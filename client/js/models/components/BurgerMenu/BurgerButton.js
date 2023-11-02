@@ -1,15 +1,25 @@
-import { Container } from '../Container.js';
+import { Button } from '../Button.js';
+import { BurgerModal } from './BurgerModal.js';
 const barGap = 6;
 
-export class BurgerButton {
+export class BurgerButton extends Button {
 	constructor(x, y, w, h) {
+		super();
 		this.x = x;
 		this.y = y;
 		this.w = w;
 		this.h = h;
 
 		this.bars = this.#createBars();
-		this.container = new BurgerContainer(x, y, w, h);
+		this.modal = new BurgerModal(x, y, w, h);
+
+		Button.push(this);
+	}
+
+	intersectionEvents() {
+		if (this.intersects()) {
+			_('yeh');
+		}
 	}
 
 	#createBars() {
@@ -23,7 +33,7 @@ export class BurgerButton {
 	}
 
 	paint() {
-		this.container.paint();
+		this.modal.paint();
 		this.bars.forEach((bar) => {
 			bar.paint();
 		});
@@ -33,12 +43,11 @@ export class BurgerButton {
 		let gap = 10;
 		this.x = cv.width - this.w - gap;
 		this.y = gap;
-		this.container.x = this.x;
-		this.container.y = this.y;
 
 		this.bars.forEach((bar) => {
 			bar.resize(this);
 		});
+		this.modal.resize(gap);
 	}
 
 	static create() {
@@ -66,13 +75,5 @@ class Bar {
 		this.y = parent.y + this.betweenY + barGap;
 		this.w = parent.w - barGap * 2;
 		this.h = barGap;
-
-		_('asd', parent);
-	}
-}
-
-class BurgerContainer extends Container {
-	constructor(x, y, w, h) {
-		super(x, y, w, h);
 	}
 }

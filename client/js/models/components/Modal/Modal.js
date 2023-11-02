@@ -1,7 +1,7 @@
 import { RotationArrows } from './RotationArrows.js';
 import { Color } from './Color.js';
 import { ItemType } from './itemTypes.js';
-import { Button } from './Button.js';
+import { Button } from '../Button.js';
 import { OptionButton } from './OptionButton.js';
 import { Container } from '../Container.js';
 

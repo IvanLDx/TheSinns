@@ -1,4 +1,4 @@
-import { Button } from './Button.js';
+import { Button } from '../Button.js';
 
 export class OptionButton extends Button {
 	constructor() {

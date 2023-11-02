@@ -1,5 +1,5 @@
 import { utils } from '../../../utils.js';
-import { Button } from './Button.js';
+import { Button } from '../Button.js';
 import { Modal } from './Modal.js';
 
 export class RotationArrows extends Button {
