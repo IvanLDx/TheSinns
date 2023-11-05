@@ -8,6 +8,7 @@ import { utils } from '../utils.js';
 
 const socket = io();
 let worldItems = [];
+let occupiedTiles = [];
 
 export class Socket {
 	constructor() {
@@ -25,12 +26,8 @@ export class Socket {
 
 	newPosition() {
 		socket.on('newPosition', function (data) {
-			worldItems = WorldItem.create(data.worldItems);
-			utils.forEachObject(worldItems, (worldItemTypes) => {
-				worldItemTypes = worldItemTypes.sort(function (a, b) {
-					return a.touchedTile.row - b.touchedTile.row;
-				});
-			});
+			occupiedTiles = data.occupiedTiles.map((e) => e.id);
+			worldItems = WorldItem.create(data.worldItems, occupiedTiles);
 		});
 	}
 

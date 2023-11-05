@@ -1,12 +1,15 @@
 import { Camera } from './models/Camera.js';
+import { SelfPlayer } from './models/SelfPlayer.js';
 import { MouseModel } from './models/Mouse.js';
+import { Socket } from './models/Socket.js';
+import { utils } from './utils.js';
+
 import { Modal } from './models/components/Modal/Modal.js';
 import { Tile } from './models/Tile.js';
 import { GrabbedItem } from './models/Item/GrabbedItem.js';
-import { utils } from './utils.js';
 import { WorldItem } from './models/Item/WorldItem.js';
-import { SelfPlayer } from './models/SelfPlayer.js';
-import { Socket } from './models/Socket.js';
+
+import { BurgerButton } from './models/components/BurgerMenu/BurgerButton.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
@@ -15,12 +18,13 @@ window.mouse = new MouseModel();
 window._ = console.log.bind(window.console);
 
 const modal = Modal.create();
+const burgerButton = BurgerButton.create();
 let selfPlayer;
 Socket.start();
 
-cam.onResize(() => {
-	modal.resize();
-});
+const interfaceElements = [modal, burgerButton];
+
+cam.resizeInterface(interfaceElements);
 
 function act() {
 	selfPlayer = SelfPlayer.element;
@@ -40,6 +44,7 @@ function paint() {
 	WorldItem.paint();
 	modal.paint();
 	GrabbedItem.paint();
+	burgerButton.paint();
 }
 
 document.onwheel = function (e) {
@@ -47,9 +52,7 @@ document.onwheel = function (e) {
 };
 
 document.querySelector('body').onresize = function () {
-	cam.onResize(() => {
-		modal.resize();
-	});
+	cam.resizeInterface(interfaceElements);
 };
 
 document.onmousemove = function (e) {

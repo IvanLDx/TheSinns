@@ -23,6 +23,14 @@ export class Camera {
 		}
 	}
 
+	resizeInterface(elements) {
+		this.onResize(() => {
+			elements.forEach((element) => {
+				element.resize();
+			});
+		});
+	}
+
 	getScreenSize(size) {
 		let calc = size;
 		while (calc % 4 !== 0) {

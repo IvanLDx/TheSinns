@@ -1,6 +1,6 @@
 import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
-import { Button } from './components/Modal/Button.js';
+import { Button } from './components/Button.js';
 import { Tile } from './Tile.js';
 
 export class MouseModel {

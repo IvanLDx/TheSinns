@@ -1,5 +1,4 @@
 class List {
-	constructor() {}
 	static delete(id) {
 		this.list.forEach((element, i) => {
 			if (element.id === id) {

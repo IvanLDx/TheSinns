@@ -17,12 +17,18 @@ class World {
 		}
 	}
 
+	static getOccupiedTiles() {
+		return this.tiles.filter((tile) => {
+			return tile.occupied.some;
+		});
+	}
+
 	static tiles = [];
 	static items = {
-		wall: [],
-		wallElement: [],
+		floor: [],
 		decoration: [],
-		floor: []
+		wall: [],
+		wallElement: []
 	};
 }
 
@@ -45,6 +51,7 @@ class Tile {
 		};
 
 		this.occupied = {
+			some: false,
 			wall: false,
 			wallElement: false,
 			decoration: false,
@@ -56,6 +63,15 @@ class Tile {
 
 	isTypeOccupied(grabbedItem) {
 		return this.occupied[grabbedItem.type];
+	}
+
+	isOccupied() {
+		return (
+			this.occupied.wall ||
+			this.occupied.wallElement ||
+			this.occupied.decoration ||
+			this.occupied.floor
+		);
 	}
 }
 

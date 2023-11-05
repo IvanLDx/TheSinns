@@ -1,10 +1,12 @@
 import { utils } from '../utils.js';
+import { List } from './List.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
 let floorImg = utils.getImage('misc/floor');
 let floorImg2 = utils.getImage('misc/floor2');
 
-export class Tile {
+export class Tile extends List {
 	constructor(tile) {
+		super();
 		this.id = tile.id;
 		this.col = tile.col;
 		this.row = tile.row;
@@ -70,12 +72,4 @@ export class Tile {
 			);
 		});
 	}
-
-	static each(evt) {
-		this.list.forEach((tile) => {
-			evt(tile);
-		});
-	}
-
-	static list = [];
 }

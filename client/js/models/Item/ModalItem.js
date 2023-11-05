@@ -68,6 +68,4 @@ export class ModalItem extends Item {
 			evt(val);
 		});
 	}
-
-	static list = {};
 }

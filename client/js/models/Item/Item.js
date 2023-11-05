@@ -1,7 +1,9 @@
 import { utils } from '../../utils.js';
+import { List } from '../List.js';
 
-export class Item {
+export class Item extends List {
 	constructor(item) {
+		super();
 		this.x = item.x || 0;
 		this.y = item.y || 0;
 		this.w = item.w || 0;
@@ -11,6 +13,13 @@ export class Item {
 		this.name = item.name || 'default';
 		this.image = utils.getImage(item.url + '/' + item.name);
 		this.rotation = item.rotation || 0;
+		this.#setMaxRotationWhenImageLoads();
+	}
+
+	#setMaxRotationWhenImageLoads() {
+		this.image.addEventListener('load', () => {
+			this.maxRotation = this.image.width / this.w - 1;
+		});
 	}
 
 	paint() {
@@ -29,14 +38,14 @@ export class Item {
 
 	rotateRight() {
 		if (this.rotation <= 0) {
-			this.rotation = 3;
+			this.rotation = this.maxRotation;
 		} else {
 			this.rotation--;
 		}
 	}
 
 	rotateLeft() {
-		if (this.rotation >= 3) {
+		if (this.rotation >= this.maxRotation) {
 			this.rotation = 0;
 		} else {
 			this.rotation++;

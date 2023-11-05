@@ -1,8 +1,14 @@
-export class Button {
-	constructor() {
+import { utils } from '../../utils.js';
+import { List } from '../List.js';
+
+export class Button extends List {
+	constructor(image) {
+		super();
 		this.x = 0;
 		this.y = 0;
 		this.h = 30;
+		this.image = image ? utils.getImage(image) : null;
+
 		this.setStandardStroke();
 	}
 
@@ -27,7 +33,7 @@ export class Button {
 		);
 	}
 
-	paint() {
+	paintContainer() {
 		ctx.strokeStyle = this.strokeStyle;
 		ctx.lineWidth = 8;
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
@@ -36,15 +42,17 @@ export class Button {
 		ctx.fillRect(this.x, this.y, this.w, this.h);
 	}
 
-	static each(evt) {
-		this.list.forEach((button, i) => {
-			evt(button, i);
-		});
+	paintImage() {
+		ctx.drawImage(
+			this.image,
+			0,
+			0,
+			this.w,
+			this.h,
+			this.x,
+			this.y,
+			this.w,
+			this.h
+		);
 	}
-
-	static push(button) {
-		this.list.push(button);
-	}
-
-	static list = [];
 }

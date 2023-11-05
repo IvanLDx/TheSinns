@@ -14,9 +14,16 @@ class Player extends List {
 		Player.create(this);
 	}
 
+	static #getPack() {
+		return {
+			occupiedTiles: World.getOccupiedTiles(),
+			worldItems: World.items
+		};
+	}
+
 	static connect(socket) {
 		new Player(socket.id);
-		Socket.emit({ worldItems: World.items });
+		Socket.emit(this.#getPack());
 
 		socket.emit('init', {
 			id: socket.id,
@@ -30,23 +37,27 @@ class Player extends List {
 			let grabbedItem = pack.grabbedItem;
 			if (tile && !tile.isTypeOccupied(grabbedItem)) {
 				World.items[grabbedItem.type].push(grabbedItem);
-				Socket.emit({ worldItems: World.items });
+
 				tile.occupied[grabbedItem.type] = true;
+				tile.occupied.some = true;
+
+				Socket.emit(this.#getPack());
 			}
 		});
 
 		socket.on('removeItemFromWorld', (pack) => {
 			World.tiles.findByID(pack.item.touchedTile.id, (tile) => {
 				tile.occupied[pack.item.type] = false;
+				tile.occupied.some = tile.isOccupied();
 			});
-			Object.entries(World.items).forEach((itemTypes) => {
-				itemTypes[1].forEach((item, i) => {
-					if (pack.item.id === item.id) {
-						itemTypes[1].splice(i, 1);
-					}
-				});
+			const itemType = World.items[pack.item.type];
+			itemType.forEach((item, i) => {
+				if (pack.item.id === item.id) {
+					itemType.splice(i, 1);
+				}
 			});
-			Socket.emit({ worldItems: World.items });
+
+			Socket.emit(this.#getPack());
 		});
 	}
 
