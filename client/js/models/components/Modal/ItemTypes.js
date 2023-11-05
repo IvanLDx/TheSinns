@@ -39,7 +39,7 @@ export class ItemType extends OptionButton {
 	}
 
 	paint() {
-		super.paint();
+		super.paintContainer();
 		ctx.drawImage(
 			this.swatch,
 			0,

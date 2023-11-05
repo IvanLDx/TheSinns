@@ -16,15 +16,15 @@ export class RotationArrows extends Button {
 	}
 
 	paint() {
-		super.paint();
+		super.paintContainer();
 		this.leftArrow.paint(this);
 		this.rightArrow.paint(this);
 	}
 }
 
 class ArrowButton extends Button {
-	constructor() {
-		super();
+	constructor(image) {
+		super(image);
 		this.w = 20;
 		this.h = 20;
 	}
@@ -39,25 +39,14 @@ class ArrowButton extends Button {
 	}
 
 	paint() {
-		ctx.drawImage(
-			this.image,
-			0,
-			0,
-			this.w,
-			this.h,
-			this.x,
-			this.y,
-			this.w,
-			this.h
-		);
+		this.paintImage();
 	}
 }
 
 class leftArrow extends ArrowButton {
-	constructor(direction) {
-		super(direction);
+	constructor() {
+		super('interface/leftArrow');
 		this.id = 'leftArrow';
-		this.image = utils.getImage('interface/leftArrow');
 
 		Button.push(this);
 	}
@@ -76,10 +65,9 @@ class leftArrow extends ArrowButton {
 }
 
 class RightArrow extends ArrowButton {
-	constructor(direction) {
-		super(direction);
+	constructor() {
+		super('interface/rightArrow');
 		this.id = 'rightArrow';
-		this.image = utils.getImage('interface/rightArrow');
 
 		Button.push(this);
 	}

@@ -29,7 +29,7 @@ export class Color extends OptionButton {
 	}
 
 	paint() {
-		super.paint();
+		super.paintContainer();
 		ctx.fillStyle = this.swatch;
 		ctx.fillRect(this.x + 5, this.y + 5, this.w - 10, this.h - 10);
 	}

@@ -1,11 +1,14 @@
+import { utils } from '../../utils.js';
 import { List } from '../List.js';
 
 export class Button extends List {
-	constructor() {
+	constructor(image) {
 		super();
 		this.x = 0;
 		this.y = 0;
 		this.h = 30;
+		this.image = image ? utils.getImage(image) : null;
+
 		this.setStandardStroke();
 	}
 
@@ -30,12 +33,26 @@ export class Button extends List {
 		);
 	}
 
-	paint() {
+	paintContainer() {
 		ctx.strokeStyle = this.strokeStyle;
 		ctx.lineWidth = 8;
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
 
 		ctx.fillStyle = '#e2b332';
 		ctx.fillRect(this.x, this.y, this.w, this.h);
+	}
+
+	paintImage() {
+		ctx.drawImage(
+			this.image,
+			0,
+			0,
+			this.w,
+			this.h,
+			this.x,
+			this.y,
+			this.w,
+			this.h
+		);
 	}
 }
