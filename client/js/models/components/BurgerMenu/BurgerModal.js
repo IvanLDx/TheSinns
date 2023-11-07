@@ -1,4 +1,4 @@
-import { Button } from '../Button.js';
+import { ModalButton } from './ModalButton.js';
 import { Container } from '../Container.js';
 
 export class BurgerModal extends Container {
@@ -9,10 +9,11 @@ export class BurgerModal extends Container {
 		this.loading = false;
 		this.contractHeight = h;
 		this.expandedHeight = 120;
+		this.expandInterval = 2;
 	}
 
 	#getButtons() {
-		return [];
+		return [new ModalButton('save', this)];
 	}
 
 	#clearInterval(interval) {
@@ -29,16 +30,16 @@ export class BurgerModal extends Container {
 	#loadingActivated() {
 		if (this.expanded) {
 			this.#loadingInterval((interval) => {
-				this.h += (this.expandedHeight - this.h) / 2;
-				if (this.h >= this.expandedHeight - 2) {
+				this.h += (this.expandedHeight - this.h) / this.expandInterval;
+				if (this.h >= this.expandedHeight - this.expandInterval) {
 					this.h = this.expandedHeight;
 					this.#clearInterval(interval);
 				}
 			});
 		} else {
 			this.#loadingInterval((interval) => {
-				this.h -= (this.h - this.contractHeight) / 2;
-				if (this.h <= this.contractHeight + 2) {
+				this.h -= (this.h - this.contractHeight) / this.expandInterval;
+				if (this.h <= this.contractHeight + this.expandInterval) {
 					this.h = this.contractHeight;
 					this.loading = false;
 					this.#clearInterval(interval);
@@ -57,10 +58,14 @@ export class BurgerModal extends Container {
 
 	paint() {
 		super.paint();
+		this.buttons[0].paintImage();
 	}
 
 	resize(gap) {
 		this.x = cv.width - this.w - gap;
 		this.y = gap;
+
+		this.buttons[0].x = this.x + 5;
+		this.buttons[0].y = this.y + 50;
 	}
 }
