@@ -37,11 +37,7 @@ class Player extends List {
 			let tile = World.tiles.findByID(pack.grabbedItem.touchedTile.id);
 			let grabbedItem = pack.grabbedItem;
 			if (tile && !tile.isTypeOccupied(grabbedItem)) {
-				World.items[grabbedItem.type].push(grabbedItem);
-
-				tile.occupied[grabbedItem.type] = true;
-				tile.occupied.some = true;
-
+				World.placeItem(grabbedItem, tile);
 				Socket.emit(this.#getPack());
 			}
 		});

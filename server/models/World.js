@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 class World {
 	constructor(size) {
 		let [w, h] = size.split('x');
@@ -17,6 +19,17 @@ class World {
 		}
 	}
 
+	openMap() {
+		let worldItemsRaw = fs.readFileSync(
+			'server/data/savedWorld.json',
+			'utf-8'
+		);
+		let worldItems = JSON.parse(worldItemsRaw);
+		worldItems.forEach((item) => {
+			World.placeItem(item);
+		});
+	}
+
 	static getOccupiedTiles() {
 		return this.tiles.filter((tile) => {
 			return tile.occupied.some;
@@ -30,6 +43,14 @@ class World {
 		wall: [],
 		wallElement: []
 	};
+
+	static placeItem(item, tile) {
+		World.items[item.type].push(item);
+
+		tile = tile || World.tiles.findByID(item.touchedTile.id);
+		tile.occupied[item.type] = true;
+		tile.occupied.some = true;
+	}
 }
 
 class Tile {
