@@ -1,3 +1,4 @@
+const fs = require('fs');
 const List = require('./List');
 const World = require('./World');
 const Socket = require('../Socket');
@@ -43,6 +44,11 @@ class Player extends List {
 
 				Socket.emit(this.#getPack());
 			}
+		});
+
+		socket.on('saveWorld', (pack) => {
+			let worldItems = JSON.stringify(pack.worldItems, null, 4);
+			fs.writeFileSync('server/data/savedWorld.json', worldItems);
 		});
 
 		socket.on('removeItemFromWorld', (pack) => {

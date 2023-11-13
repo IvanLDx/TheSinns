@@ -1,0 +1,27 @@
+[
+    {
+        "x": 768,
+        "y": 289,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/yellow",
+        "name": "stone",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20231113-225546-3389",
+        "touchedTile": {
+            "id": "1-4",
+            "col": 50,
+            "row": 15
+        },
+        "position": {
+            "x": 766,
+            "y": 290,
+            "w": 80,
+            "h": 112
+        },
+        "maxRotation": 1
+    }
+]

@@ -31,6 +31,12 @@ export class Socket {
 		});
 	}
 
+	static saveWorld() {
+		socket.emit('saveWorld', {
+			worldItems: WorldItem.list
+		});
+	}
+
 	static placeGrabbedItem() {
 		socket.emit('placeGrabbedItem', {
 			grabbedItem: GrabbedItem.element

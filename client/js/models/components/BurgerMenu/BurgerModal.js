@@ -19,7 +19,7 @@ export class BurgerModal extends Container {
 		let buttonConfigs = [{ type: 'save' }, { type: 'open' }];
 		this.buttons = [];
 		buttonConfigs.forEach((config, i) => {
-			this.buttons.push(new ModalButton(config.type, this, i));
+			this.buttons.push(ModalButton.create(config.type, this, i));
 		});
 	}
 

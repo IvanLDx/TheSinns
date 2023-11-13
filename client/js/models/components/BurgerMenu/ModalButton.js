@@ -1,3 +1,4 @@
+import { Socket } from '../../Socket.js';
 import { Button } from '../Button.js';
 
 export class ModalButton extends Button {
@@ -11,6 +12,7 @@ export class ModalButton extends Button {
 		this.x = this.modal.x + 5;
 		this.marginTop = 10;
 		this.y = this.#setY();
+		this.type = type;
 
 		Button.push(this);
 	}
@@ -22,12 +24,6 @@ export class ModalButton extends Button {
 			this.modal.contractHeight +
 			this.modal.contractHeight * this.i
 		);
-	}
-
-	intersectionEvents() {
-		if (this.intersects()) {
-			_('nice');
-		}
 	}
 
 	#getPercentageImageSight() {
@@ -56,5 +52,38 @@ export class ModalButton extends Button {
 			this.w,
 			this.h * percentage
 		);
+	}
+
+	static create(type, modal, i) {
+		let button = null;
+		switch (type) {
+			case 'save':
+				button = new SaveButton(type, modal, i);
+				break;
+			case 'open':
+				button = new OpenButton(type, modal, i);
+				break;
+		}
+
+		return button;
+	}
+}
+
+class SaveButton extends ModalButton {
+	constructor(type, modal, i) {
+		super(type, modal, i);
+	}
+	intersectionEvents() {
+		if (this.intersects()) {
+			Socket.saveWorld();
+		}
+	}
+}
+
+class OpenButton extends ModalButton {
+	intersectionEvents() {
+		if (this.intersects()) {
+			_('qwe');
+		}
 	}
 }
