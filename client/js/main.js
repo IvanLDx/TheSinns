@@ -45,6 +45,7 @@ function paint() {
 	modal.paint();
 	GrabbedItem.paint();
 	burgerButton.paint();
+	mouse.paintToolkit();
 }
 
 document.onwheel = function (e) {

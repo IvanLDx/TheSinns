@@ -63,6 +63,8 @@ export class ModalButton extends Button {
 			case 'open':
 				button = new OpenButton(type, modal, i);
 				break;
+			case 'toolkit':
+				button = new ToolkitButton(type, modal, i);
 		}
 
 		return button;
@@ -84,6 +86,14 @@ class OpenButton extends ModalButton {
 	intersectionEvents() {
 		if (this.intersects()) {
 			_('qwe');
+		}
+	}
+}
+
+class ToolkitButton extends ModalButton {
+	intersectionEvents() {
+		if (this.intersects()) {
+			mouse.toggleToolkit();
 		}
 	}
 }
