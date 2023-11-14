@@ -1,4 +1,5 @@
 import { GrabbedItem } from './Item/GrabbedItem.js';
+import { Toolkit } from './components/Toolkit.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { Button } from './components/Button.js';
 import { Tile } from './Tile.js';
@@ -45,6 +46,10 @@ export class MouseModel {
 
 		this.absoluteX = e.clientX;
 		this.absoluteY = e.clientY;
+
+		if (this.toolkit) {
+			this.toolkit.setPosition(this);
+		}
 	}
 
 	setPress(e) {
@@ -115,6 +120,20 @@ export class MouseModel {
 		this.drag = { x: 0, y: 0 };
 		if (!this.isThereIntersection) {
 			this.style('initial');
+		}
+	}
+
+	paintToolkit() {
+		if (this.toolkit) {
+			this.toolkit.paint();
+		}
+	}
+
+	toggleToolkit() {
+		if (this.toolkit) {
+			this.toolkit = null;
+		} else {
+			this.toolkit = new Toolkit(this);
 		}
 	}
 
