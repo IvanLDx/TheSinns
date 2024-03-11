@@ -9,6 +9,7 @@ export class BurgerButton extends Button {
 		this.y = y;
 		this.w = w - padding;
 		this.h = h - padding;
+		this.imageSize = w - padding;
 		this.open = false;
 		this.openImage = utils.getImage('interface/openMenu');
 		this.closeImage = utils.getImage('interface/closeMenu');

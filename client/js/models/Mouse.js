@@ -15,6 +15,7 @@ export class MouseModel {
 		this.absoluteY = 0;
 		this.isThereIntersection = false;
 		this.selectedColor = null;
+		this.openToolkitOnStart = true;
 	}
 
 	style(value) {
@@ -22,6 +23,10 @@ export class MouseModel {
 	}
 
 	move(e) {
+		if (this.openToolkitOnStart) {
+			this.toggleToolkit();
+			this.openToolkitOnStart = false;
+		}
 		let grabbedItem = GrabbedItem.element;
 		this.setPosition(e);
 		if (grabbedItem) {
@@ -48,7 +53,7 @@ export class MouseModel {
 		this.absoluteY = e.clientY;
 
 		if (this.toolkit) {
-			this.toolkit.setPosition(this);
+			this.toolkit.handleEvents(this);
 		}
 	}
 
@@ -83,6 +88,18 @@ export class MouseModel {
 			this.absoluteY > element.y &&
 			this.absoluteY < element.y + element.h
 		);
+	}
+
+	absoluteIntersectsInModal(element) {
+		let isThereIntersection = false;
+		if (element.position) {
+			isThereIntersection =
+				this.absoluteX > element.position.x &&
+				this.absoluteX < element.position.x + element.position.w &&
+				this.absoluteY > element.position.y &&
+				this.absoluteY < element.position.y + element.position.h;
+		}
+		return isThereIntersection;
 	}
 
 	setTouchedTile() {

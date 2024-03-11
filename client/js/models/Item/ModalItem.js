@@ -63,7 +63,7 @@ export class ModalItem extends Item {
 	}
 
 	static each(evt) {
-		let list = Modal.getItemUrl(this.list);
+		let list = Modal.getItemUrl(this.list) || [];
 		list.forEach((val) => {
 			evt(val);
 		});

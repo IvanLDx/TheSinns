@@ -85,7 +85,6 @@ class SaveButton extends ModalButton {
 class OpenButton extends ModalButton {
 	intersectionEvents() {
 		if (this.intersects()) {
-			_('qwe');
 		}
 	}
 }

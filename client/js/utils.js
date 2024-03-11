@@ -26,5 +26,13 @@ export const utils = {
 		Object.entries(items).forEach((itemTypes) => {
 			evt(itemTypes[1], itemTypes[0]);
 		});
+	},
+	testTime(evt) {
+		let start = new Date().getTime();
+		evt();
+		let stop = new Date().getTime();
+		let result = stop - start;
+		_(result);
+		return result;
 	}
 };

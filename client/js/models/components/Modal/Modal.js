@@ -79,7 +79,10 @@ export class Modal extends Container {
 	}
 
 	static getItemUrl(root) {
-		return root[this.element.folder][this.element.subfolder];
+		return (
+			root[this.element.folder] &&
+			root[this.element.folder][this.element.subfolder]
+		);
 	}
 
 	static getActiveItems() {
