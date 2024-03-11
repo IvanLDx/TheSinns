@@ -27,6 +27,7 @@ class ArrowButton extends Button {
 		super(image);
 		this.w = 20;
 		this.h = 20;
+		this.imageSize = this.w;
 	}
 
 	intersectionEvents(evt) {

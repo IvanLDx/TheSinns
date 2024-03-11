@@ -1,4 +1,5 @@
 import { ModalButton } from './ModalButton.js';
+import { Button } from '../Button.js';
 import { Container } from '../Container.js';
 
 export class BurgerModal extends Container {
@@ -12,6 +13,18 @@ export class BurgerModal extends Container {
 	}
 
 	#removeButtons() {
+		let buttonToRemoveIndex = [];
+		Button.list.forEach((buttonInList, i) => {
+			this.buttons.forEach((button) => {
+				if (buttonInList === button) {
+					buttonToRemoveIndex.push(i);
+				}
+			});
+		});
+		buttonToRemoveIndex.reverse();
+		buttonToRemoveIndex.forEach((iter) => {
+			Button.list.splice(iter, 1);
+		});
 		this.buttons = [];
 	}
 

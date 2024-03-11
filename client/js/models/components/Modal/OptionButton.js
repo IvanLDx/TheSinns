@@ -6,6 +6,7 @@ export class OptionButton extends Button {
 		this.w = 30;
 		this.marginRight = 20;
 		this.gap = 16;
+		this.imageSize = 10;
 
 		Button.push(this);
 	}

@@ -13,7 +13,6 @@ export class Color extends OptionButton {
 	constructor() {
 		super();
 		this.buttonType = 'color';
-		Color.list.push(this);
 	}
 
 	intersectionEvents() {

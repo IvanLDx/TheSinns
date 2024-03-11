@@ -22,8 +22,6 @@ export class ItemType extends OptionButton {
 		this.id = id;
 		this.buttonType = 'itemType';
 		this.swatch = this.getImage();
-
-		ItemType.list.push(this);
 	}
 
 	intersectionEvents() {
@@ -44,8 +42,8 @@ export class ItemType extends OptionButton {
 			this.swatch,
 			0,
 			0,
-			10,
-			10,
+			this.imageSize,
+			this.imageSize,
 			this.x + 3,
 			this.y + 3,
 			this.w - 6,

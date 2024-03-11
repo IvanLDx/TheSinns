@@ -13,6 +13,7 @@ export class Tile extends List {
 		this.w = tile.w;
 		this.h = tile.h;
 		this.img = tile.img;
+		this.image = floorImg;
 		this.center = tile.center;
 		this.touch = tile.touch;
 	}
@@ -25,6 +26,7 @@ export class Tile extends List {
 
 		this.mouseTotalPos = this.calculateTotalXYPosition();
 		this.touch = this.mouseIsInside();
+		this.image = this.touch ? floorImg2 : floorImg;
 		return this.touch;
 	}
 
@@ -60,7 +62,7 @@ export class Tile extends List {
 	static paint() {
 		this.each((tile) => {
 			ctx.drawImage(
-				tile.touch ? floorImg2 : floorImg,
+				tile.image,
 				0,
 				0,
 				tile.img.w + 2,
