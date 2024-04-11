@@ -1,3 +1,9 @@
+/**
+ * @ServerModalItem
+ * Represents every item that will be shown withing
+ * the world item modal (lower part of interface).
+ * It's used by data from data/serverModalItems.
+ */
 class ServerModalItem {
 	constructor({ x, y, w, h, url, name }) {
 		this.x = x || 0;

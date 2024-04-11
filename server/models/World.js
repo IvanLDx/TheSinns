@@ -1,5 +1,23 @@
 const fs = require('fs');
 
+/**
+ * @World_Class
+ * This class represents the game world. It initializes
+ * the size of the world based on input parameters, sets up the map grid
+ * and provides methods for opening a saved map and placing items within
+ * the world.
+ *
+ * Static Properties and Methods
+ * The World class contains static properties to keep track of
+ * all tiles (tiles) and items (items) within the world. It also has
+ * static methods for placing items on tiles andretrieving occupied tiles.
+ *
+ * @Tile_Class
+ * This class represents individual tiles within the game world grid.
+ * Each tile has an ID, position, dimensions, image information
+ * and occupancy status.
+ */
+
 class World {
 	constructor(size) {
 		let [w, h] = size.split('x');
@@ -31,9 +49,17 @@ class World {
 	}
 
 	static getOccupiedTiles() {
-		return this.tiles.filter((tile) => {
+		return World.tiles.filter((tile) => {
 			return tile.occupied.some;
 		});
+	}
+
+	static placeItem(item, tile) {
+		World.items[item.type].push(item);
+
+		tile = tile || World.tiles.findByID(item.touchedTile.id);
+		tile.occupied[item.type] = true;
+		tile.occupied.some = true;
 	}
 
 	static tiles = [];
@@ -43,14 +69,6 @@ class World {
 		wall: [],
 		wallElement: []
 	};
-
-	static placeItem(item, tile) {
-		World.items[item.type].push(item);
-
-		tile = tile || World.tiles.findByID(item.touchedTile.id);
-		tile.occupied[item.type] = true;
-		tile.occupied.some = true;
-	}
 }
 
 class Tile {
@@ -61,6 +79,8 @@ class Tile {
 			w: 20,
 			h: 10
 		};
+		this.col = col;
+		this.row = row;
 		this.w = this.img.w;
 		this.h = this.img.h;
 		this.col = (row / 2) * this.w + (col * this.w) / 2;

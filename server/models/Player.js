@@ -11,8 +11,13 @@ class Player extends List {
 		this.w = 10;
 		this.h = 10;
 		this.id = id;
+		this.socket = null;
 
 		Player.create(this);
+	}
+
+	bindSocket(socket) {
+		this.socket = socket;
 	}
 
 	static #getPack() {
