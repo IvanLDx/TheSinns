@@ -50,6 +50,10 @@ export class WorldItem extends Item {
 	}
 
 	static setPositionTile() {
+		this.sort((a, b) => {
+			return b.touchedTile.colID - a.touchedTile.colID;
+		});
+
 		this.each((item) => {
 			item.setPositionTile();
 		});

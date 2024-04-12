@@ -105,7 +105,9 @@ export class GrabbedItem extends ModalItem {
 			this.element.touchedTile = {
 				id: tile.id,
 				col: tile.col,
-				row: tile.row
+				row: tile.row,
+				colID: tile.colID,
+				rowID: tile.rowID
 			};
 		}
 	}

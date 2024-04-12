@@ -79,8 +79,8 @@ class Tile {
 			w: 20,
 			h: 10
 		};
-		this.col = col;
-		this.row = row;
+		this.colID = col;
+		this.rowID = row;
 		this.w = this.img.w;
 		this.h = this.img.h;
 		this.col = (row / 2) * this.w + (col * this.w) / 2;
