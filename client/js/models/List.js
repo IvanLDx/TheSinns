@@ -19,5 +19,10 @@ export class List {
 			return callback(a, b);
 		});
 	}
+	static filter(condition) {
+		return this.list.filter((item) => {
+			return condition(item);
+		});
+	}
 	static list = [];
 }

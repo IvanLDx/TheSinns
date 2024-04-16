@@ -108,17 +108,17 @@
         "maxRotation": 1
     },
     {
-        "x": 786,
-        "y": 325,
+        "x": 781,
+        "y": 328,
         "w": 20,
         "h": 28,
-        "type": "wall",
-        "url": "wall/yellow",
-        "name": "stone",
+        "type": "floor",
+        "url": "floor/yellow",
+        "name": "tile2",
         "image": {},
         "rotation": 0,
         "locationType": "WorldItem",
-        "id": "20240412-231818-4369",
+        "id": "20240416-201631-3613",
         "touchedTile": {
             "id": "1-6",
             "col": 70,
@@ -133,5 +133,86 @@
             "h": 112
         },
         "maxRotation": 1
+    },
+    {
+        "x": 790,
+        "y": 334,
+        "w": 20,
+        "h": 28,
+        "type": "decoration",
+        "url": "decoration/yellow",
+        "name": "cactus3",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20240416-201638-7954",
+        "touchedTile": {
+            "id": "1-6",
+            "col": 70,
+            "row": 25,
+            "colID": 1,
+            "rowID": 6
+        },
+        "position": {
+            "x": 788,
+            "y": 330,
+            "w": 80,
+            "h": 112
+        },
+        "maxRotation": 1
+    },
+    {
+        "x": 780,
+        "y": 323,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/yellow",
+        "name": "stone",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20240416-201629-1785",
+        "touchedTile": {
+            "id": "1-6",
+            "col": 70,
+            "row": 25,
+            "colID": 1,
+            "rowID": 6
+        },
+        "position": {
+            "x": 788,
+            "y": 330,
+            "w": 80,
+            "h": 112
+        },
+        "maxRotation": 1
+    },
+    {
+        "x": 779,
+        "y": 323,
+        "w": 20,
+        "h": 28,
+        "type": "wallElement",
+        "url": "wallElement/yellow",
+        "name": "door2",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20240416-201634-1306",
+        "touchedTile": {
+            "id": "1-6",
+            "col": 70,
+            "row": 25,
+            "colID": 1,
+            "rowID": 6
+        },
+        "position": {
+            "x": 788,
+            "y": 330,
+            "w": 80,
+            "h": 112
+        },
+        "maxRotation": 3
     }
 ]

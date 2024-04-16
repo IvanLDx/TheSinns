@@ -68,11 +68,34 @@ export class WorldItem extends Item {
 		this.selected = null;
 	}
 
+	static getAboveItem() {
+		const touchedItems = this.filter((item) => {
+			return mouse.touchedTile.id === item.touchedTile.id;
+		});
+		let aboveItem = touchedItems.find((item) => {
+			return item.type === 'decoration';
+		});
+		if (!aboveItem) {
+			aboveItem = touchedItems.find((item) => {
+				return item.type === 'wallElement';
+			});
+		}
+		if (!aboveItem) {
+			aboveItem = touchedItems.find((item) => {
+				return item.type === 'wall';
+			});
+		}
+		if (!aboveItem) {
+			aboveItem = touchedItems.find((item) => {
+				return item.type === 'floor';
+			});
+		}
+		return aboveItem;
+	}
+
 	static tryToSelect() {
 		if (mouse.touchedTile) {
-			this.selected = this.list.find((item) => {
-				return mouse.touchedTile.id === item.touchedTile.id;
-			});
+			this.selected = WorldItem.getAboveItem();
 		}
 		return this.selected;
 	}
