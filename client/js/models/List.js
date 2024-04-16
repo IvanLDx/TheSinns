@@ -9,9 +9,14 @@ export class List {
 	static push(socket) {
 		this.list.push(socket);
 	}
-	static each(evt) {
+	static each(callback) {
 		this.list.forEach((player, i) => {
-			evt(player, i);
+			callback(player, i);
+		});
+	}
+	static sort(callback) {
+		this.list.sort((a, b) => {
+			return callback(a, b);
 		});
 	}
 	static list = [];

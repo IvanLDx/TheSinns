@@ -4,8 +4,8 @@
   "main": "app.js",
   "scripts": {
     "develop": "node app.js",
-    "nmn": "nodemon -e js, ejs",
-    "start": "./node_modules/.bin/nodemon.cmd  ./bin/www",
+    "start": "nodemon -e js, ejs",
+    "nmn": "./node_modules/.bin/nodemon.cmd  ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

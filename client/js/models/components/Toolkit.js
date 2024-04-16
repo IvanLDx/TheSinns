@@ -1,4 +1,3 @@
-import { utils } from '../../utils.js';
 import { Container } from './Container.js';
 import { ModalItem } from '../Item/ModalItem.js';
 import { WorldItem } from '../Item/WorldItem.js';

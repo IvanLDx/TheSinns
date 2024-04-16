@@ -10,6 +10,8 @@ export class Tile extends List {
 		this.id = tile.id;
 		this.col = tile.col;
 		this.row = tile.row;
+		this.colID = tile.colID;
+		this.rowID = tile.rowID;
 		this.w = tile.w;
 		this.h = tile.h;
 		this.img = tile.img;

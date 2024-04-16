@@ -4,7 +4,6 @@ import { ModalItem } from './Item/ModalItem.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
-import { utils } from '../utils.js';
 
 const socket = io();
 let worldItems = [];

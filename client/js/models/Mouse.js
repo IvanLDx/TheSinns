@@ -15,7 +15,7 @@ export class MouseModel {
 		this.absoluteY = 0;
 		this.isThereIntersection = false;
 		this.selectedColor = null;
-		this.openToolkitOnStart = true;
+		this.openToolkitOnStart = false;
 	}
 
 	style(value) {

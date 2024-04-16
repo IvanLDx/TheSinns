@@ -1,5 +1,4 @@
 const Server = require('./server');
-require('./server/Global')();
 
 global.dirName = __dirname;
 const Player = require('./server/models/Player');
@@ -15,7 +14,6 @@ io.sockets.on('connection', function (socket) {
 	let id = ~~(Math.random() * 8999) + 1000;
 	socket.id = id;
 	Socket.create(socket);
-	Player.connect(socket);
 
 	socket.on('disconnect', function () {
 		Socket.delete(socket.id);
