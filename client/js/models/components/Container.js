@@ -4,14 +4,16 @@ export class Container {
 		this.y = y || 0;
 		this.w = w || 0;
 		this.h = h || 200;
+		this.strokeColor = '#2c4371';
+		this.fillColor = '#e2b332';
 	}
 
 	paint() {
-		ctx.strokeStyle = '#2c4371';
+		ctx.strokeStyle = this.strokeColor;
 		ctx.lineWidth = 8;
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
 
-		ctx.fillStyle = '#e2b332';
+		ctx.fillStyle = this.fillColor;
 		ctx.fillRect(this.x, this.y, this.w, this.h);
 	}
 

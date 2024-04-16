@@ -1,6 +1,9 @@
 import { Item } from './Item.js';
 import { Socket } from '../Socket.js';
 import { utils } from '../../utils.js';
+import { PreferencesModal } from './WorldItem/PreferencesModal.js';
+
+const preferencesModal = PreferencesModal.get();
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
@@ -60,6 +63,7 @@ export class WorldItem extends Item {
 	}
 
 	static removeItem() {
+		preferencesModal.hide();
 		Socket.removeItemFromWorld();
 		this.unselectItem();
 	}
