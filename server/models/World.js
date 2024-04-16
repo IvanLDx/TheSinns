@@ -57,9 +57,26 @@ class World {
 	static placeItem(item, tile) {
 		World.items[item.type].push(item);
 
-		tile = tile || World.tiles.findByID(item.touchedTile.id);
+		tile = tile || World.findByID(item.touchedTile.id);
 		tile.occupied[item.type] = true;
 		tile.occupied.some = true;
+	}
+
+	static findByID(id, callback = null) {
+		let found = World.tiles.find((el) => {
+			return el.id === id;
+		});
+		if (found && callback) {
+			callback(found);
+		}
+		return found;
+	}
+
+	static getPack() {
+		return {
+			occupiedTiles: World.getOccupiedTiles(),
+			worldItems: World.items
+		};
 	}
 
 	static tiles = [];
