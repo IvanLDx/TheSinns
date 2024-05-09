@@ -2,10 +2,9 @@ import { GrabbedItem } from './Item/GrabbedItem.js';
 import { Toolkit } from './components/Toolkit.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { Button } from './components/Button.js';
-import { PreferencesModal } from './Item/WorldItem/PreferencesModal.js';
 import { Tile } from './Tile.js';
+import { PreferencesModal } from './Item/components/PreferencesModal.js';
 
-const preferencesModal = PreferencesModal.get();
 export class MouseModel {
 	constructor() {
 		this.x = 0;
@@ -134,7 +133,7 @@ export class MouseModel {
 		}
 		this.style('grabbing');
 
-		preferencesModal.setPosition();
+		PreferencesModal.close();
 	}
 
 	stop() {

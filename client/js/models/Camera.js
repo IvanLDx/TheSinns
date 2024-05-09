@@ -1,7 +1,3 @@
-import { PreferencesModal } from './Item/WorldItem/PreferencesModal.js';
-
-const preferencesModal = PreferencesModal.get();
-
 export class Camera {
 	constructor() {
 		this.x = 0;
@@ -50,7 +46,5 @@ export class Camera {
 		} else if (e.deltaY > 0 && this.pixelSize > 1) {
 			this.pixelSize--;
 		}
-
-		preferencesModal.hide();
 	}
 }

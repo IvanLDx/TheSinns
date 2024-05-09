@@ -1,8 +1,6 @@
 import { ModalItem } from './ModalItem.js';
 import { Socket } from '../Socket.js';
-import { PreferencesModal } from './WorldItem/PreferencesModal.js';
-
-const preferencesModal = PreferencesModal.get();
+import { PreferencesModal } from './components/PreferencesModal.js';
 let grabbedItem;
 
 export class GrabbedItem extends ModalItem {
@@ -60,7 +58,8 @@ export class GrabbedItem extends ModalItem {
 		grabbedItem = new GrabbedItem(item);
 		this.element = grabbedItem;
 		grabbedItem.move();
-		preferencesModal.show(item);
+
+		PreferencesModal.setPosition(item);
 	}
 
 	static remove() {
@@ -100,10 +99,6 @@ export class GrabbedItem extends ModalItem {
 				tile.h || grabbedItem.h * cam.pixelSize
 			);
 			ctx.globalAlpha = 1;
-		}
-
-		if (preferencesModal.shown) {
-			preferencesModal.paint();
 		}
 	}
 

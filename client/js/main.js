@@ -10,6 +10,7 @@ import { GrabbedItem } from './models/Item/GrabbedItem.js';
 import { WorldItem } from './models/Item/WorldItem.js';
 
 import { BurgerButton } from './models/components/BurgerMenu/BurgerButton.js';
+import { PreferencesModal } from './models/Item/components/PreferencesModal.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
@@ -35,6 +36,7 @@ function act() {
 		WorldItem.setPositionTile();
 		Tile.setTouchedTile();
 		paint();
+		PreferencesModal.update();
 	}
 }
 
@@ -45,6 +47,8 @@ function paint() {
 	modal.paint();
 	GrabbedItem.paint();
 	burgerButton.paint();
+	PreferencesModal.paint();
+
 	mouse.paintToolkit();
 	if (mouse.toolkit) {
 		mouse.toolkit.drawContent();
