@@ -18,12 +18,7 @@ export class ModalButton extends Button {
 	}
 
 	#setY() {
-		return (
-			this.marginTop * (this.i + 1) +
-			this.modal.y +
-			this.modal.contractHeight +
-			this.modal.contractHeight * this.i
-		);
+		return this.marginTop * (this.i + 1) + this.modal.y + this.modal.contractHeight + this.modal.contractHeight * this.i;
 	}
 
 	#getPercentageImageSight() {
@@ -41,16 +36,20 @@ export class ModalButton extends Button {
 
 	paintImage() {
 		let percentage = this.#getPercentageImageSight();
-		ctx.drawImage(
+		utils.drawImage(
 			this.image,
-			0,
-			0,
-			this.imageSize,
-			this.imageSize * percentage,
-			this.x,
-			this.y,
-			this.w,
-			this.h * percentage
+			{
+				x: 0,
+				y: 0,
+				w: this.imageSize,
+				h: this.imageSize * percentage
+			},
+			{
+				x: this.x,
+				y: this.y,
+				w: this.w,
+				h: this.h * percentage
+			}
 		);
 	}
 

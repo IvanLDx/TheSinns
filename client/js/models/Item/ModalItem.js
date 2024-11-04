@@ -1,5 +1,6 @@
 import { Item } from './Item.js';
 import { utils } from '../../utils.js';
+import { imageHelpers } from '../../helpers/imagehelpers.js';
 import { Modal } from '../components/Modal/Modal.js';
 const MODAL_PIXEL_SIZE = utils.getModalPixelSize();
 
@@ -8,12 +9,11 @@ export class ModalItem extends Item {
 		super({ x, y, w, h, url, name, rotation });
 		this.locationType = 'ModalItem';
 		this.type = utils.getFolder(url);
-		this.backgroundImage = utils.getImage('misc/itemBackground');
+		this.backgroundImage = imageHelpers.getImage('misc/itemBackground');
 	}
 
 	setPosition(container, i) {
-		this.containerX =
-			container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
+		this.containerX = container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
 		this.containerY = container.y + 20;
 		this.position = {
 			x: this.containerX,
@@ -24,16 +24,15 @@ export class ModalItem extends Item {
 	}
 
 	paint() {
-		ctx.drawImage(
+		imageHelpers.drawImage(
 			this.backgroundImage,
-			0,
-			0,
-			this.w,
-			this.h,
-			this.position.x,
-			this.position.y,
-			this.position.w,
-			this.position.h
+			{
+				x: 0,
+				y: 0,
+				w: this.w,
+				h: this.h
+			},
+			this.position
 		);
 
 		super.paint();

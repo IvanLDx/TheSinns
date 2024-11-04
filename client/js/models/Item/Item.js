@@ -1,4 +1,5 @@
 import { utils } from '../../utils.js';
+import { imageHelpers } from '../../helpers/imagehelpers.js';
 import { List } from '../List.js';
 
 export class Item extends List {
@@ -11,7 +12,7 @@ export class Item extends List {
 		this.type = utils.getFolder(item.url) || null;
 		this.url = item.url || '/';
 		this.name = item.name || 'default';
-		this.image = utils.getImage(item.url + '/' + item.name);
+		this.image = imageHelpers.getImage(item.url + '/' + item.name);
 		this.rotation = item.rotation || 0;
 		this.#setMaxRotationWhenImageLoads();
 	}
@@ -23,16 +24,20 @@ export class Item extends List {
 	}
 
 	paint() {
-		ctx.drawImage(
+		imageHelpers.drawImage(
 			this.image,
-			this.rotation * this.w,
-			0,
-			this.w,
-			this.h,
-			this.position.x,
-			this.position.y,
-			this.position.w,
-			this.position.h
+			{
+				x: this.rotation * this.w,
+				y: 0,
+				w: this.w,
+				h: this.h
+			},
+			{
+				x: this.position.x,
+				y: this.position.y,
+				w: this.position.w,
+				h: this.position.h
+			}
 		);
 	}
 

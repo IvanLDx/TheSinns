@@ -1,3 +1,4 @@
+import { imageHelpers } from '../../../helpers/imagehelpers.js';
 import { Container } from '../../components/Container.js';
 
 export class PreferencesModalButton extends Container {
@@ -17,6 +18,10 @@ export class PreferencesModalButton extends Container {
 		this.url = worldItem.url;
 	}
 
+	paintItem() {
+		imageHelpers.drawImage(this.image, { x: this.rotation * this.w, y: 0, w: this.w, h: this.h }, this);
+	}
+
 	paint() {
 		ctx.beginPath();
 		ctx.fillStyle = this.fillColor;
@@ -24,6 +29,7 @@ export class PreferencesModalButton extends Container {
 		ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
 		ctx.fill();
 		ctx.stroke();
+		this.paintItem();
 	}
 
 	static create(touchedItems, size) {

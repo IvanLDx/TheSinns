@@ -1,16 +1,11 @@
-import { utils } from '../../../utils.js';
+import { imageHelpers } from '../../../helpers/imagehelpers.js';
 import { OptionItem } from './OptionItem.js';
 import { OptionButton } from './OptionButton.js';
 import { Modal } from './Modal.js';
 
 class AllTypes extends OptionItem {
 	constructor() {
-		const list = [
-			new Wall(),
-			new WallElement(),
-			new Decoration(),
-			new Floor()
-		];
+		const list = [new Wall(), new WallElement(), new Decoration(), new Floor()];
 
 		super(list);
 	}
@@ -38,21 +33,16 @@ export class ItemType extends OptionButton {
 
 	paint() {
 		super.paintContainer();
-		ctx.drawImage(
-			this.swatch,
-			0,
-			0,
-			this.imageSize,
-			this.imageSize,
-			this.x + 3,
-			this.y + 3,
-			this.w - 6,
-			this.h - 6
-		);
+		imageHelpers.drawImage(this.swatch, imageHelpers.getSource(this.imageSize), {
+			x: this.x + 3,
+			y: this.y + 3,
+			w: this.w - 6,
+			h: this.h - 6
+		});
 	}
 
 	getImage() {
-		return utils.getImage('/swatches/' + this.id);
+		return imageHelpers.getImage('/swatches/' + this.id);
 	}
 
 	static get() {

@@ -1,4 +1,4 @@
-import { utils } from '../../../utils.js';
+import { imageHelpers } from '../../../helpers/imagehelpers.js';
 import { Button } from '../Button.js';
 import { BurgerModal } from './BurgerModal.js';
 let padding = 2.5;
@@ -11,8 +11,8 @@ export class BurgerButton extends Button {
 		this.h = h - padding;
 		this.imageSize = w - padding;
 		this.open = false;
-		this.openImage = utils.getImage('interface/openMenu');
-		this.closeImage = utils.getImage('interface/closeMenu');
+		this.openImage = imageHelpers.getImage('interface/openMenu');
+		this.closeImage = imageHelpers.getImage('interface/closeMenu');
 		this.#setCurrentImage();
 
 		this.modal = new BurgerModal(x, y, w, h);

@@ -1,4 +1,4 @@
-import { utils } from '../../utils.js';
+import { imageHelpers } from '../../helpers/imagehelpers.js';
 import { List } from '../List.js';
 
 export class Button extends List {
@@ -7,7 +7,7 @@ export class Button extends List {
 		this.x = 0;
 		this.y = 0;
 		this.h = 30;
-		this.image = image ? utils.getImage(image) : null;
+		this.image = image ? imageHelpers.getImage(image) : null;
 
 		this.setStandardStroke();
 	}
@@ -25,12 +25,7 @@ export class Button extends List {
 	}
 
 	intersects() {
-		return (
-			mouse.absoluteX > this.x &&
-			mouse.absoluteX < this.x + this.w &&
-			mouse.absoluteY > this.y &&
-			mouse.absoluteY < this.y + this.h
-		);
+		return mouse.absoluteX > this.x && mouse.absoluteX < this.x + this.w && mouse.absoluteY > this.y && mouse.absoluteY < this.y + this.h;
 	}
 
 	paintContainer() {
@@ -43,16 +38,6 @@ export class Button extends List {
 	}
 
 	paintImage() {
-		ctx.drawImage(
-			this.image,
-			0,
-			0,
-			this.imageSize,
-			this.imageSize,
-			this.x,
-			this.y,
-			this.w,
-			this.h
-		);
+		imageHelpers.drawImage(this.image, imageHelpers.getSource(this.imageSize), this);
 	}
 }
