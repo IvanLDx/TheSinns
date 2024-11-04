@@ -24,5 +24,10 @@ export class List {
 			return condition(item);
 		});
 	}
+	static find(condition) {
+		return this.list.find((item) => {
+			return condition(item);
+		});
+	}
 	static list = [];
 }

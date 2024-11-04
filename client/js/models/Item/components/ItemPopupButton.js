@@ -1,12 +1,13 @@
 import { imageHelpers } from '../../../helpers/imagehelpers.js';
 import { Container } from '../../components/Container.js';
 
-export class PreferencesModalButton extends Container {
+export class ItemPopupButton extends Container {
 	constructor(worldItem, x, y) {
 		super();
 		this.id = worldItem.id;
 		this.name = worldItem.name;
-		this.size = 40;
+		this.radius = 40;
+		this.margin = 6;
 		this.x = x + worldItem.position.w / 2;
 		this.y = y + worldItem.position.h / 2;
 		this.w = worldItem.w;
@@ -19,14 +20,26 @@ export class PreferencesModalButton extends Container {
 	}
 
 	paintItem() {
-		imageHelpers.drawImage(this.image, { x: this.rotation * this.w, y: 0, w: this.w, h: this.h }, this);
+		const destinationHeight = this.radius * 2 - this.margin * 2;
+		const destinationWidth = (destinationHeight * this.w) / this.h;
+
+		imageHelpers.drawImage(
+			this.image,
+			{ x: this.rotation * this.w, y: 0, w: this.w, h: this.h },
+			{
+				x: this.x - destinationWidth / 2,
+				y: this.y - this.radius + this.margin,
+				w: destinationWidth,
+				h: destinationHeight
+			}
+		);
 	}
 
 	paint() {
 		ctx.beginPath();
 		ctx.fillStyle = this.fillColor;
 		ctx.strokeStyle = this.strokeColor;
-		ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+		ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
 		ctx.fill();
 		ctx.stroke();
 		this.paintItem();
@@ -46,7 +59,7 @@ export class PreferencesModalButton extends Container {
 			const degrees = (i * 2 * Math.PI) / touchedItems.length + position;
 			const x = sourceX + size * Math.cos(degrees);
 			const y = sourceY + size * Math.sin(degrees);
-			buttons.push(new PreferencesModalButton(item, x, y));
+			buttons.push(new ItemPopupButton(item, x, y));
 		});
 
 		return buttons;

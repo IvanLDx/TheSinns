@@ -1,7 +1,7 @@
 import { Item } from './Item.js';
 import { Socket } from '../Socket.js';
 import { utils } from '../../utils.js';
-import { PreferencesModal } from './components/PreferencesModal.js';
+import { ItemPopup } from './components/ItemPopup.js';
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
@@ -16,10 +16,7 @@ export class WorldItem extends Item {
 	setPositionTile() {
 		this.position = {
 			x: (this.touchedTile.col + 1) * cam.pixelSize - cam.x,
-			y:
-				(this.touchedTile.row + 1) * cam.pixelSize -
-				cam.y -
-				(this.h - 10) * cam.pixelSize,
+			y: (this.touchedTile.row + 1) * cam.pixelSize - cam.y - (this.h - 10) * cam.pixelSize,
 			w: (this.w - 2) * cam.pixelSize + cam.pixelSize * 2,
 			h: (this.h - 1) * cam.pixelSize + cam.pixelSize
 		};
@@ -66,6 +63,10 @@ export class WorldItem extends Item {
 		WorldItem.unselectItem();
 	}
 
+	static selectItem(item) {
+		WorldItem.selected = item;
+	}
+
 	static unselectItem() {
 		WorldItem.selected = null;
 	}
@@ -97,13 +98,19 @@ export class WorldItem extends Item {
 			WorldItem.touchedItems = WorldItem.filter((item) => {
 				return mouse.touchedTile.id === item.touchedTile.id;
 			});
-			WorldItem.selected = WorldItem.getAboveItem();
-
-			if (WorldItem.touchedItems.length) {
-				PreferencesModal.create(WorldItem.touchedItems);
-			}
+			WorldItem.selectItem(WorldItem.getAboveItem());
 		}
 		return WorldItem.selected;
+	}
+
+	static getItemByID(id) {
+		return WorldItem.find((item) => {
+			return item.id === id;
+		});
+	}
+
+	static untouchItems() {
+		WorldItem.touchedItems = [];
 	}
 
 	static selected = null;

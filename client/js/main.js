@@ -10,7 +10,7 @@ import { GrabbedItem } from './models/Item/GrabbedItem.js';
 import { WorldItem } from './models/Item/WorldItem.js';
 
 import { BurgerButton } from './models/components/BurgerMenu/BurgerButton.js';
-import { PreferencesModal } from './models/Item/components/PreferencesModal.js';
+import { ItemPopup } from './models/Item/components/ItemPopup.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
@@ -31,12 +31,11 @@ function act() {
 	selfPlayer = SelfPlayer.element;
 	if (selfPlayer) {
 		cam.focus(selfPlayer);
-		mouse.setPress();
 
 		WorldItem.setPositionTile();
 		Tile.setTouchedTile();
 		paint();
-		PreferencesModal.update();
+		ItemPopup.update();
 	}
 }
 
@@ -47,7 +46,7 @@ function paint() {
 	modal.paint();
 	GrabbedItem.paint();
 	burgerButton.paint();
-	PreferencesModal.paint();
+	ItemPopup.paint();
 
 	mouse.paintToolkit();
 	if (mouse.toolkit) {
@@ -69,14 +68,27 @@ document.onmousemove = function (e) {
 
 document.onmousedown = function (e) {
 	mouse.onLeftClick(e, (e) => {
+		ItemPopup.close();
 		mouse.setPress(e);
-		mouse.setTouchedTile();
 
-		let selectedItem = WorldItem.tryToSelect();
-		if (selectedItem) {
-			GrabbedItem.grab(selectedItem);
+		const touchedItemPopupButton = ItemPopup.getTouchedButton();
+		if (touchedItemPopupButton) {
+			const selectedItem = WorldItem.getItemByID(touchedItemPopupButton.id);
+			if (selectedItem) {
+				mouse.setItemTile(selectedItem);
+				WorldItem.selectItem(selectedItem);
+				GrabbedItem.grab(selectedItem);
+				WorldItem.removeItem();
+			}
 		} else {
-			GrabbedItem.tryToCreate();
+			mouse.setTouchedTile();
+
+			let selectedItem = WorldItem.tryToSelect();
+			if (selectedItem) {
+				GrabbedItem.grab(selectedItem);
+			} else {
+				GrabbedItem.tryToCreate();
+			}
 		}
 	});
 
@@ -95,7 +107,14 @@ document.onmouseup = function () {
 	WorldItem.unselectItem();
 	GrabbedItem.completeGrab();
 	modal.clickOnButton();
+
+	if (!mouse.dragging && WorldItem.touchedItems && WorldItem.touchedItems.length) {
+		ItemPopup.create(WorldItem.touchedItems);
+		ItemPopup.setPosition(WorldItem.getAboveItem());
+	}
+
 	mouse.stop();
+	WorldItem.untouchItems();
 };
 
 document.oncontextmenu = function (e) {

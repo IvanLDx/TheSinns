@@ -1,7 +1,7 @@
 import { Container } from '../../components/Container.js';
-import { PreferencesModalButton } from './PreferencesModalButton.js';
+import { ItemPopupButton } from './ItemPopupButton.js';
 
-export class PreferencesModal extends Container {
+export class ItemPopup extends Container {
 	constructor(touchedItems) {
 		super();
 		this.id = touchedItems[0].touchedTile.id;
@@ -10,10 +10,7 @@ export class PreferencesModal extends Container {
 		this.opening = true;
 		this.closing = false;
 		this.fillColor = 'transparent';
-		this.buttons = PreferencesModalButton.create(
-			touchedItems,
-			this.maxSize
-		);
+		this.buttons = ItemPopupButton.create(touchedItems, this.maxSize);
 	}
 
 	paint() {
@@ -54,7 +51,7 @@ export class PreferencesModal extends Container {
 		}
 
 		if (!needsResize) {
-			PreferencesModal.remove(this.id);
+			ItemPopup.remove(this.id);
 		}
 	}
 
@@ -67,11 +64,11 @@ export class PreferencesModal extends Container {
 
 	static create(touchedItems) {
 		const id = touchedItems[0].touchedTile.id;
-		const modal = PreferencesModal.get(id);
+		const modal = ItemPopup.get(id);
 		if (!modal) {
-			PreferencesModal.list.push(new PreferencesModal(touchedItems));
+			ItemPopup.list.push(new ItemPopup(touchedItems));
 		}
-		PreferencesModal.forEach((modal) => {
+		ItemPopup.forEach((modal) => {
 			if (modal.id !== id) {
 				modal.closing = true;
 			}
@@ -79,42 +76,44 @@ export class PreferencesModal extends Container {
 	}
 
 	static setPosition(grabbedItem) {
-		const modal = PreferencesModal.get(grabbedItem.touchedTile.id);
-		modal.setPosition(grabbedItem);
+		if (grabbedItem.touchedTile) {
+			const modal = ItemPopup.get(grabbedItem.touchedTile.id);
+			modal.setPosition(grabbedItem);
+		}
 	}
 
 	static get(id) {
-		return PreferencesModal.list.find((modal) => {
+		return ItemPopup.list.find((modal) => {
 			return modal.id === id;
 		});
 	}
 
 	static forEach(callback) {
-		PreferencesModal.list.forEach((modal, i) => {
+		ItemPopup.list.forEach((modal, i) => {
 			callback(modal, i);
 		});
 	}
 
 	static remove(id) {
-		PreferencesModal.forEach((modal, i) => {
+		ItemPopup.forEach((modal, i) => {
 			if (modal.id === id) {
-				PreferencesModal.list.splice(i, 1);
+				ItemPopup.list.splice(i, 1);
 			}
 		});
 	}
 
 	static close() {
-		PreferencesModal.forEach((modal, i) => {
+		ItemPopup.forEach((modal, i) => {
 			modal.closing = true;
 		});
 	}
 
 	static length() {
-		return PreferencesModal.list.length;
+		return ItemPopup.list.length;
 	}
 
 	static update() {
-		PreferencesModal.forEach((modal) => {
+		ItemPopup.forEach((modal) => {
 			if (modal.opening) {
 				modal.resize = modal.maximize;
 				this.opening = false;
@@ -130,9 +129,29 @@ export class PreferencesModal extends Container {
 	}
 
 	static paint() {
-		PreferencesModal.forEach((modal) => {
+		ItemPopup.forEach((modal) => {
 			modal.paint();
 		});
+	}
+
+	static getTouchedButton() {
+		let touchedButton = null;
+		ItemPopup.forEach((popup) => {
+			popup.buttons.forEach((button) => {
+				const buttonObject = {
+					x: button.x - button.radius,
+					y: button.y - button.radius,
+					w: button.radius * 2,
+					h: button.radius * 2
+				};
+
+				if (mouse.absoluteIntersects(buttonObject)) {
+					touchedButton = button;
+				}
+			});
+		});
+
+		return touchedButton;
 	}
 
 	static list = [];

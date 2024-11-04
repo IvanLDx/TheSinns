@@ -1,6 +1,6 @@
 import { ModalItem } from './ModalItem.js';
 import { Socket } from '../Socket.js';
-import { PreferencesModal } from './components/PreferencesModal.js';
+import { ItemPopup } from './components/ItemPopup.js';
 import { imageHelpers } from '../../helpers/imagehelpers.js';
 let grabbedItem;
 
@@ -59,8 +59,6 @@ export class GrabbedItem extends ModalItem {
 		grabbedItem = new GrabbedItem(item);
 		this.element = grabbedItem;
 		grabbedItem.move();
-
-		PreferencesModal.setPosition(item);
 	}
 
 	static remove() {
