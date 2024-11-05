@@ -1,6 +1,6 @@
 import { ModalItem } from './ModalItem.js';
 import { Socket } from '../Socket.js';
-import { ItemPopup } from './components/ItemPopup.js';
+import { utils } from '../../utils.js';
 import { imageHelpers } from '../../helpers/imagehelpers.js';
 let grabbedItem;
 
@@ -10,6 +10,7 @@ export class GrabbedItem extends ModalItem {
 		this.locationType = 'GrabbedItem';
 		this.id = this.id || this.createID();
 		this.touchedTile = null;
+		this.destinationY = null;
 	}
 
 	move() {
@@ -70,11 +71,14 @@ export class GrabbedItem extends ModalItem {
 		let tile = {};
 		if (grabbedItem) {
 			if (grabbedItem.touchedTile) {
+				const y = (grabbedItem.touchedTile.row + 1) * cam.pixelSize - cam.y - (grabbedItem.h - 10) * cam.pixelSize;
+				const h = (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize;
+				grabbedItem.destinationY = utils.getDestinationYByType(y, h, grabbedItem.type);
 				tile = {
 					x: (grabbedItem.touchedTile.col + 1) * cam.pixelSize - cam.x,
-					y: (grabbedItem.touchedTile.row + 1) * cam.pixelSize - cam.y - (grabbedItem.h - 10) * cam.pixelSize,
+					y: grabbedItem.destinationY,
 					w: (grabbedItem.w - 2) * cam.pixelSize + cam.pixelSize * 2,
-					h: (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize
+					h: h
 				};
 			} else {
 				tile = {};

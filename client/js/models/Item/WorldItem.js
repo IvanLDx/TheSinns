@@ -1,7 +1,6 @@
 import { Item } from './Item.js';
 import { Socket } from '../Socket.js';
 import { utils } from '../../utils.js';
-import { ItemPopup } from './components/ItemPopup.js';
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
@@ -10,7 +9,8 @@ export class WorldItem extends Item {
 		this.id = worldItem.id;
 		this.touchedTile = worldItem.touchedTile;
 		this.touchedItems = [];
-		this.setPositionTile();
+		this.position = this.setPositionTile();
+		this.destinationY = null;
 	}
 
 	setPositionTile() {
@@ -20,6 +20,8 @@ export class WorldItem extends Item {
 			w: (this.w - 2) * cam.pixelSize + cam.pixelSize * 2,
 			h: (this.h - 1) * cam.pixelSize + cam.pixelSize
 		};
+
+		return this.position;
 	}
 
 	static create(worldItems, occupiedTiles) {
@@ -55,6 +57,7 @@ export class WorldItem extends Item {
 
 		WorldItem.each((item) => {
 			item.setPositionTile();
+			item.destinationY = utils.getDestinationYByType(item.position.y, item.position.h, item.type);
 		});
 	}
 
@@ -78,6 +81,11 @@ export class WorldItem extends Item {
 		if (!aboveItem) {
 			aboveItem = WorldItem.touchedItems.find((item) => {
 				return item.type === 'wallElement';
+			});
+		}
+		if (!aboveItem) {
+			aboveItem = WorldItem.touchedItems.find((item) => {
+				return item.type === 'roof';
 			});
 		}
 		if (!aboveItem) {

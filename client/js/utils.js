@@ -29,5 +29,12 @@ export const utils = {
 		let result = stop - start;
 		_(result);
 		return result;
+	},
+	getDestinationYByType(y, h, type) {
+		let destinationY = y;
+		if (y && h && type === 'roof') {
+			destinationY = y - h / 1.7;
+		}
+		return destinationY;
 	}
 };

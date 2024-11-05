@@ -34,7 +34,7 @@ export class Item extends List {
 			},
 			{
 				x: this.position.x,
-				y: this.position.y,
+				y: this.destinationY || this.position.y,
 				w: this.position.w,
 				h: this.position.h
 			}

@@ -1,6 +1,7 @@
 import { Container } from './Container.js';
 import { ModalItem } from '../Item/ModalItem.js';
 import { WorldItem } from '../Item/WorldItem.js';
+import { imageHelpers } from '../../helpers/imagehelpers.js';
 import { Button } from './Button.js';
 import { Tile } from '../Tile.js';
 
@@ -60,7 +61,7 @@ export class Toolkit extends Container {
 		this.list.forEach((item, i) => {
 			const image = item.image || item.swatch;
 			if (typeof image === 'object') {
-				utils.drawImage(
+				imageHelpers.drawImage(
 					image,
 					{
 						x: 0,

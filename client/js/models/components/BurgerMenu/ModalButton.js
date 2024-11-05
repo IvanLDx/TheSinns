@@ -1,5 +1,6 @@
 import { Socket } from '../../Socket.js';
 import { Button } from '../Button.js';
+import { imageHelpers } from '../../../helpers/imagehelpers.js';
 
 export class ModalButton extends Button {
 	constructor(type, modal, i) {
@@ -36,7 +37,7 @@ export class ModalButton extends Button {
 
 	paintImage() {
 		let percentage = this.#getPercentageImageSight();
-		utils.drawImage(
+		imageHelpers.drawImage(
 			this.image,
 			{
 				x: 0,

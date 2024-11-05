@@ -5,7 +5,7 @@ import { Modal } from './Modal.js';
 
 class AllTypes extends OptionItem {
 	constructor() {
-		const list = [new Wall(), new WallElement(), new Decoration(), new Floor()];
+		const list = [new Roof(), new Wall(), new WallElement(), new Decoration(), new Floor()];
 
 		super(list);
 	}
@@ -47,6 +47,12 @@ export class ItemType extends OptionButton {
 
 	static get() {
 		return new AllTypes();
+	}
+}
+
+class Roof extends ItemType {
+	constructor() {
+		super('roof');
 	}
 }
 

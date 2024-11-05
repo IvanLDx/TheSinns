@@ -10,14 +10,21 @@ export class ModalItem extends Item {
 		this.locationType = 'ModalItem';
 		this.type = utils.getFolder(url);
 		this.backgroundImage = imageHelpers.getImage('misc/itemBackground');
+		this.destinationY = this.getDestinationY();
+	}
+
+	getDestinationY(container) {
+		if (container && !this.destinationY) {
+			this.destinationY = this.containerY = container.y + 20;
+		}
+		return this.destinationY;
 	}
 
 	setPosition(container, i) {
 		this.containerX = container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
-		this.containerY = container.y + 20;
 		this.position = {
 			x: this.containerX,
-			y: this.containerY,
+			y: this.getDestinationY(container),
 			w: this.w * MODAL_PIXEL_SIZE,
 			h: this.h * MODAL_PIXEL_SIZE
 		};

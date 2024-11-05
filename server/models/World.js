@@ -38,10 +38,7 @@ class World {
 	}
 
 	openMap() {
-		let worldItemsRaw = fs.readFileSync(
-			'server/data/savedWorld.json',
-			'utf-8'
-		);
+		let worldItemsRaw = fs.readFileSync('server/data/savedWorld.json', 'utf-8');
 		let worldItems = JSON.parse(worldItemsRaw);
 		worldItems.forEach((item) => {
 			World.placeItem(item);
@@ -84,6 +81,7 @@ class World {
 		floor: [],
 		decoration: [],
 		wall: [],
+		roof: [],
 		wallElement: []
 	};
 }
@@ -110,6 +108,7 @@ class Tile {
 
 		this.occupied = {
 			some: false,
+			roof: false,
 			wall: false,
 			wallElement: false,
 			decoration: false,
@@ -124,12 +123,7 @@ class Tile {
 	}
 
 	isOccupied() {
-		return (
-			this.occupied.wall ||
-			this.occupied.wallElement ||
-			this.occupied.decoration ||
-			this.occupied.floor
-		);
+		return this.occupied.roof || this.occupied.wall || this.occupied.wallElement || this.occupied.decoration || this.occupied.floor;
 	}
 }
 
