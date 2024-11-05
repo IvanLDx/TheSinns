@@ -38,3 +38,9 @@ export const utils = {
 		return destinationY;
 	}
 };
+
+export function ifis(element, callback) {
+	if (element) {
+		callback(element);
+	}
+}

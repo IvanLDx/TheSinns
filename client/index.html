@@ -1,31 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="client/favicon.ico">
-    <title>Document</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-</head>
-<body>
-    <canvas class="canvas"></canvas>
-    
-    <script src="https://cdn.socket.io/4.5.4/socket.io.js"></script>
-    <script src="./client/js/main.js" type="module"></script>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/x-icon" href="client/favicon.ico" />
+		<title>Document</title>
+		<style>
+			html,
+			body {
+				font-family: 'Segoe UI';
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.canvas {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: none;
+			}
+			.canvas.show {
+				display: block;
+			}
+
+			.expiration-msg {
+				display: none;
+			}
+
+			.expiration-msg.show {
+				display: block;
+			}
+
+			body:has(.expiration-msg.show) .login-form {
+				display: none;
+			}
+
+			body:has(.canvas.show) .login-form,
+			body:has(.canvas.show) .expiration-msg {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="expiration-msg">Rematou a sesión</div>
+
+		<form class="login-form" action="/login">
+			<input type="hidden" name="resurl" value="<%=resUrl%>" />
+			<label for="username">Nome</label>
+			<input id="username" name="username" type="text" />
+			<label for="password">Contrasinal</label>
+			<input id="password" name="password" type="password" />
+
+			<input name="honeypot" type="hidden" />
+			<input class="csrf-token" type="hidden" name="csrf_token" />
+
+			<input type="submit" value="Dálle!" />
+			<span class="error-msg"></span>
+
+			<div class="loader hidden">
+				<div class="backdrop"></div>
+				<div class="spinner"></div>
+			</div>
+		</form>
+
+		<canvas class="canvas"></canvas>
+
+		<script src="https://cdn.socket.io/4.5.4/socket.io.js"></script>
+		<script src="./client/js/login.js" type="module"></script>
+		<script src="./client/js/main.js" type="module"></script>
+	</body>
 </html>

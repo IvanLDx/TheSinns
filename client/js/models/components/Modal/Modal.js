@@ -72,23 +72,20 @@ export class Modal extends Container {
 	}
 
 	static create() {
-		this.element = new Modal();
-		OptionButton.setButtonStrokeColor('itemType', this.element.getType());
-		OptionButton.setButtonStrokeColor('color', this.element.getColor());
+		if (!this.element) {
+			this.element = new Modal();
+			OptionButton.setButtonStrokeColor('itemType', this.element.getType());
+			OptionButton.setButtonStrokeColor('color', this.element.getColor());
+		}
 		return this.element;
 	}
 
 	static getItemUrl(root) {
-		return (
-			root[this.element.folder] &&
-			root[this.element.folder][this.element.subfolder]
-		);
+		return root[this.element.folder] && root[this.element.folder][this.element.subfolder];
 	}
 
 	static getActiveItems() {
-		return this.getElement().getItems()[this.element.folder][
-			this.element.subfolder
-		];
+		return this.getElement().getItems()[this.element.folder][this.element.subfolder];
 	}
 
 	static getType() {
