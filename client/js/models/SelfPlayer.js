@@ -22,5 +22,9 @@ export class SelfPlayer {
 			});
 	}
 
+	static get() {
+		return this.element;
+	}
+
 	static element = null;
 }

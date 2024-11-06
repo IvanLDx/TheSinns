@@ -2,7 +2,6 @@ const utils = require('./utils');
 
 class Middleware {
 	login(req, res, next) {
-		console.info(req.session);
 		if (!req.session || (req.session && !req.session.userId)) {
 			const path = utils.getPath('pages/login');
 			res.render('login', { path: path });

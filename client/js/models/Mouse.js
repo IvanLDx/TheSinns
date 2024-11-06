@@ -49,6 +49,11 @@ export class MouseModel {
 		if (this.pressing) {
 			this.dragging = true;
 		}
+
+		const touchedTile = Tile.find((item) => item.touch);
+		WorldItem.list.forEach((worldItem) => {
+			worldItem.touchedByMouse = touchedTile && touchedTile.id === worldItem.touchedTile.id;
+		});
 	}
 
 	setPosition(e) {

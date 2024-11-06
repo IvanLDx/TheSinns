@@ -77,7 +77,7 @@ export class Modal extends Container {
 			OptionButton.setButtonStrokeColor('itemType', this.element.getType());
 			OptionButton.setButtonStrokeColor('color', this.element.getColor());
 		}
-		return this.element;
+		return this.getElement();
 	}
 
 	static getItemUrl(root) {

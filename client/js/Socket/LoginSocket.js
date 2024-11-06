@@ -26,7 +26,7 @@ export class LoginSocket {
 
 		socket.on('signIn-OK', (data) => {
 			if (data.success) {
-				document.querySelector('.canvas').classList.add('show');
+				document.querySelector('.login').classList.remove('show');
 
 				const interfaceElements = [Modal.create(), BurgerButton.create()];
 				cam.resizeInterface(interfaceElements);

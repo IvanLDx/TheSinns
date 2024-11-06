@@ -20,10 +20,18 @@
 				left: 0;
 				width: 100%;
 				height: 100%;
+			}
+
+			.login {
 				display: none;
 			}
-			.canvas.show {
+
+			.login.show {
 				display: block;
+			}
+
+			body:has(.login.show) .canvas {
+				display: none;
 			}
 
 			.expiration-msg {
@@ -37,34 +45,33 @@
 			body:has(.expiration-msg.show) .login-form {
 				display: none;
 			}
-
-			body:has(.canvas.show) .login-form,
-			body:has(.canvas.show) .expiration-msg {
-				display: none;
-			}
 		</style>
 	</head>
 	<body>
-		<div class="expiration-msg">Rematou a sesión</div>
+		<!-- add class "show" to login -->
+		<section class="login">
+			<h1>The House of the Pixel Sun</h1>
 
-		<form class="login-form" action="/login">
-			<input type="hidden" name="resurl" value="<%=resUrl%>" />
-			<label for="username">Nome</label>
-			<input id="username" name="username" type="text" />
-			<label for="password">Contrasinal</label>
-			<input id="password" name="password" type="password" />
+			<div class="expiration-msg">Rematou a sesión</div>
 
-			<input name="honeypot" type="hidden" />
-			<input class="csrf-token" type="hidden" name="csrf_token" />
+			<form class="login-form">
+				<label for="username">Nome</label>
+				<input id="username" name="username" type="text" />
+				<label for="password">Contrasinal</label>
+				<input id="password" name="password" type="password" />
 
-			<input type="submit" value="Dálle!" />
-			<span class="error-msg"></span>
+				<input name="honeypot" type="hidden" />
+				<input class="csrf-token" type="hidden" name="csrf_token" />
 
-			<div class="loader hidden">
-				<div class="backdrop"></div>
-				<div class="spinner"></div>
-			</div>
-		</form>
+				<input class="submit" type="submit" value="Dálle!" />
+				<span class="error-msg"></span>
+
+				<div class="loader hidden">
+					<div class="backdrop"></div>
+					<div class="spinner"></div>
+				</div>
+			</form>
+		</section>
 
 		<canvas class="canvas"></canvas>
 

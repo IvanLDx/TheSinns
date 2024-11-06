@@ -24,6 +24,10 @@ export class Item extends List {
 	}
 
 	paint() {
+		if (this.touchedByMouse) {
+			ctx.globalAlpha = 0.7;
+		}
+
 		imageHelpers.drawImage(
 			this.image,
 			{
@@ -39,6 +43,8 @@ export class Item extends List {
 				h: this.position.h
 			}
 		);
+
+		ctx.globalAlpha = 1;
 	}
 
 	rotateRight() {

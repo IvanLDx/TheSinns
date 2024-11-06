@@ -11,6 +11,7 @@ export class WorldItem extends Item {
 		this.touchedItems = [];
 		this.position = this.setPositionTile();
 		this.destinationY = null;
+		this.touchedByMouse = false;
 	}
 
 	setPositionTile() {

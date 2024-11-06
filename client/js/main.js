@@ -3,6 +3,7 @@ import { SelfPlayer } from './models/SelfPlayer.js';
 import { MouseModel } from './models/Mouse.js';
 import { Socket } from './models/Socket.js';
 import { utils } from './utils.js';
+import { documentListeners } from './helpers/documentListeners.js';
 
 import { Modal } from './models/components/Modal/Modal.js';
 import { Tile } from './models/Tile.js';
@@ -54,68 +55,17 @@ function paint() {
 	}
 }
 
-document.onwheel = function (e) {
-	cam.zoom(e);
-};
-
 document.querySelector('body').onresize = function () {
 	cam.resizeInterface(interfaceElements);
 };
 
-document.onmousemove = function (e) {
-	mouse.move(e);
-};
+document.onwheel = documentListeners.onwheel;
 
-document.onmousedown = function (e) {
-	mouse.onLeftClick(e, (e) => {
-		ItemPopup.close();
-		mouse.setPress(e);
+document.onmousemove = documentListeners.onmousemove;
+document.onmousedown = documentListeners.onmousedown;
+document.ontouchstart = documentListeners.onmousedown;
 
-		const touchedItemPopupButton = ItemPopup.getTouchedButton();
-		if (touchedItemPopupButton) {
-			const selectedItem = WorldItem.getItemByID(touchedItemPopupButton.id);
-			if (selectedItem) {
-				mouse.setItemTile(selectedItem);
-				WorldItem.selectItem(selectedItem);
-				GrabbedItem.grab(selectedItem);
-				WorldItem.removeItem();
-			}
-		} else {
-			mouse.setTouchedTile();
-
-			let selectedItem = WorldItem.tryToSelect();
-			if (selectedItem) {
-				GrabbedItem.grab(selectedItem);
-			} else {
-				GrabbedItem.tryToCreate();
-			}
-		}
-	});
-
-	mouse.onRightClick(e, () => {
-		document.onmousemove = function (e) {
-			mouse.setDrag(e);
-			selfPlayer.updatePosition();
-		};
-	});
-};
-
-document.onmouseup = function () {
-	document.onmousemove = function (e) {
-		mouse.move(e);
-	};
-	WorldItem.unselectItem();
-	GrabbedItem.completeGrab();
-	modal.clickOnButton();
-
-	if (!mouse.dragging && WorldItem.touchedItems && WorldItem.touchedItems.length) {
-		ItemPopup.create(WorldItem.touchedItems);
-		ItemPopup.setPosition(WorldItem.getAboveItem());
-	}
-
-	mouse.stop();
-	WorldItem.untouchItems();
-};
+document.onmouseup = documentListeners.onmouseup;
 
 document.oncontextmenu = function (e) {
 	e.preventDefault();

@@ -3,7 +3,7 @@ const loginSocket = LoginSocket.start();
 
 const $form = document.querySelector('.login-form');
 
-$form.addEventListener('submit', (e) => {
+$form.onsubmit = (e) => {
 	e.preventDefault();
 
 	const formData = new FormData(e.target);
@@ -14,4 +14,4 @@ $form.addEventListener('submit', (e) => {
 	});
 
 	loginSocket.signIn(data);
-});
+};
