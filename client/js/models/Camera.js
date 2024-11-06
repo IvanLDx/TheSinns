@@ -14,12 +14,12 @@ export class Camera {
 		}
 	}
 
-	onResize(evt) {
+	onResize(callback) {
 		cv.width = this.getScreenSize(cv.clientWidth);
 		cv.height = this.getScreenSize(cv.clientHeight);
 
-		if (evt) {
-			evt();
+		if (callback) {
+			callback();
 		}
 	}
 

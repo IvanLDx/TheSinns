@@ -10,7 +10,7 @@ export class Modal extends Container {
 		super(x, y, w, h);
 		this.folder = 'wall';
 		this.subfolder = 'yellow';
-		this.items = null;
+		this.items = {};
 		this.rotationArrows = new RotationArrows();
 		this.color = Color.get();
 		this.itemType = ItemType.get();

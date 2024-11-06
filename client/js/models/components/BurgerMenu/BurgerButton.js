@@ -46,7 +46,9 @@ export class BurgerButton extends Button {
 	}
 
 	static create() {
-		this.element = new BurgerButton(0, 0, 40, 40);
+		if (!this.element) {
+			this.element = new BurgerButton(0, 0, 40, 40);
+		}
 		return this.element;
 	}
 }

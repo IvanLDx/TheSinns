@@ -14,7 +14,7 @@ export class ModalItem extends Item {
 	}
 
 	getDestinationY(container) {
-		if (container && !this.destinationY) {
+		if (container) {
 			this.destinationY = this.containerY = container.y + 20;
 		}
 		return this.destinationY;
