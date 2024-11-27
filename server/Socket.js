@@ -4,6 +4,7 @@ const Player = require('./models/Player');
 const World = require('./models/World');
 const Login = require('./models/Login');
 const itemData = require('./data/serverModalitems');
+const Token = require('./scripts/Token');
 
 class Socket extends List {
 	constructor(socket) {
@@ -14,12 +15,14 @@ class Socket extends List {
 		this.login = new Login(socket.id, this);
 		this.#initOnEvents();
 		this.#initEmitEvents();
+		this.token = null;
 
 		this.login.initEvents();
 	}
 
 	#initOnEvents() {
 		this.on('placeGrabbedItem', (pack) => {
+			this.token.restore();
 			let tile = World.findByID(pack.grabbedItem.touchedTile.id);
 			let grabbedItem = pack.grabbedItem;
 			if (tile && !tile.isTypeOccupied(grabbedItem)) {
@@ -29,11 +32,13 @@ class Socket extends List {
 		});
 
 		this.on('saveWorld', (pack) => {
+			this.token.restore();
 			let worldItems = JSON.stringify(pack.worldItems, null, 4);
 			fs.writeFileSync('server/data/savedWorld.json', worldItems);
 		});
 
 		this.on('removeItemFromWorld', (pack) => {
+			this.token.restore();
 			World.findByID(pack.item.touchedTile.id, (tile) => {
 				tile.occupied[pack.item.type] = false;
 				tile.occupied.some = tile.isOccupied();
@@ -56,6 +61,10 @@ class Socket extends List {
 			playerList: Player.list,
 			world: World.tiles
 		});
+	}
+
+	setToken() {
+		this.token = Token.get(this.id);
 	}
 
 	emit(eventName, options) {

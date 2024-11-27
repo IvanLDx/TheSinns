@@ -1,5 +1,5 @@
 const fs = require('fs');
-const token = require('../scripts/Token').get();
+const Token = require('../scripts/Token');
 
 class Login {
 	constructor(id, socket) {
@@ -14,14 +14,16 @@ class Login {
 	}
 
 	initEvents() {
+		const csrfToken = Token.create(this.id, () => this.#csrfExpirationMsg());
 		this.socket.emit('login', {
 			id: this.id,
-			csrfToken: token.create(this.id, () => this.#csrfExpirationMsg())
+			csrfToken: csrfToken.value
 		});
 
 		this.socket.on('signIn', (data) => {
-			const selfToken = token.get(this.id);
-			if (selfToken.has(data.csrf_token) && data.honeypot === '') {
+			const token = Token.get(this.id);
+			if (token.has(data.csrf_token) && data.honeypot === '') {
+				token.restore();
 				const responseToClient = {};
 
 				if (!data.username || !data.password) {
@@ -56,6 +58,7 @@ class Login {
 					responseToClient.success = true;
 
 					this.socket.emit('signIn-OK', responseToClient);
+					this.socket.setToken();
 				}
 			} else {
 				console.info('caca');

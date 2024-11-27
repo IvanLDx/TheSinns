@@ -1,12 +1,32 @@
+const utils = require('./utils');
+
 class Token {
-	constructor() {
+	constructor(sessionID) {
+		this.sessionID = sessionID;
 		this.hex = '123456789abcdef';
 		this.format = '########-####-####-####-############';
-		this.expiringTime = this.getMinutes(0.1);
-		this.tokens = new Map();
+		this.expiringTime = utils.getMinutes(10);
+		this.value = this.setValue();
+		this.timeout = null;
+		this.callback = null;
 	}
 
-	createToken() {
+	restore() {
+		clearTimeout(this.timeout);
+
+		this.timeout = this.setTimeout();
+	}
+
+	setTimeout() {
+		return setTimeout(() => {
+			Token.map.delete(this.sessionID);
+			if (this.callback) {
+				this.callback();
+			}
+		}, this.expiringTime);
+	}
+
+	setValue() {
 		let chars = this.hex;
 		let token = this.format;
 		do {
@@ -16,51 +36,24 @@ class Token {
 		return token;
 	}
 
-	create(sessionID, expirationCallback) {
-		const token = this.createToken();
-		this.get(sessionID);
-		this.get(sessionID).add(token);
-		setTimeout(() => {
-			this.get(sessionID).delete(token);
-			expirationCallback(sessionID);
-		}, this.expiringTime);
+	has(csrfToken) {
+		return this.value && this.value === csrfToken;
+	}
 
+	static create(sessionID, callback) {
+		const token = new Token(sessionID);
+		token.callback = callback;
+		token.timeout = token.setTimeout();
+
+		this.map.set(sessionID, token);
 		return token;
 	}
 
-	getMinutes(minutes) {
-		return 1000 * 60 * minutes;
+	static get(sessionID) {
+		return this.map.get(sessionID);
 	}
 
-	get(sessionID) {
-		let session = this.tokens.get(sessionID);
-		if (!session) {
-			session = this.set(sessionID);
-		}
-		return session;
-	}
-
-	set(sessionID) {
-		return this.tokens.set(sessionID, new Set());
-	}
-
-	exists(sessionID, csrf) {
-		return this.get(sessionID).has(csrf);
-	}
-
-	restore(sessionID, csrf) {
-		this.get(sessionID).delete(csrf);
-		return this.create(sessionID);
-	}
-
-	static get() {
-		if (!this.element) {
-			this.element = new Token();
-		}
-		return this.element;
-	}
-
-	static element = null;
+	static map = new Map();
 }
 
 module.exports = Token;

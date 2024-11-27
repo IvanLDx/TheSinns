@@ -11,8 +11,6 @@ world.openMap();
 
 var io = require('socket.io')(Server.start(dirName), {});
 io.sockets.on('connection', function (socket) {
-	let id = ~~(Math.random() * 8999) + 1000;
-	socket.id = id;
 	Socket.create(socket);
 
 	socket.on('disconnect', function () {

@@ -5,7 +5,7 @@ import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
 
-const socket = io();
+window.socket = io();
 let worldItems = [];
 let occupiedTiles = [];
 

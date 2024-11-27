@@ -1,6 +1,6 @@
 import { RotationArrows } from './RotationArrows.js';
 import { Color } from './Color.js';
-import { ItemType } from './itemTypes.js';
+import { ItemType } from './ItemTypes.js';
 import { Button } from '../Button.js';
 import { OptionButton } from './OptionButton.js';
 import { Container } from '../Container.js';
@@ -14,15 +14,23 @@ export class Modal extends Container {
 		this.rotationArrows = new RotationArrows();
 		this.color = Color.get();
 		this.itemType = ItemType.get();
+		this.needsToPositionItems = false;
 	}
 
 	resize() {
 		this.y = cv.height - 210;
 		this.w = cv.width - 20;
+		this.right = this.x + this.w;
 
 		this.rotationArrows.repositioning();
 		this.color.repositioning();
 		this.itemType.repositioning();
+
+		this.updatePositionItems();
+	}
+
+	updatePositionItems() {
+		this.needsToPositionItems = true;
 	}
 
 	clickOnButton() {
@@ -36,9 +44,16 @@ export class Modal extends Container {
 
 		let modalItems = Modal.getItemUrl(this.items);
 		modalItems.forEach((item, i) => {
-			item.setPosition(this, i);
+			if (this.needsToPositionItems) {
+				item.setPosition(this, i);
+			}
+
 			item.paint();
 		});
+
+		if (this.needsToPositionItems) {
+			this.needsToPositionItems = false;
+		}
 
 		this.rotationArrows.paint();
 		this.color.paint();
@@ -48,6 +63,7 @@ export class Modal extends Container {
 	setColor(color) {
 		this.subfolder = color;
 		OptionButton.setButtonStrokeColor('color', color);
+		this.updatePositionItems();
 	}
 
 	getColor() {
@@ -57,6 +73,7 @@ export class Modal extends Container {
 	setType(type) {
 		this.folder = type;
 		OptionButton.setButtonStrokeColor('itemType', type);
+		this.updatePositionItems();
 	}
 
 	getType() {
@@ -76,6 +93,7 @@ export class Modal extends Container {
 			this.element = new Modal();
 			OptionButton.setButtonStrokeColor('itemType', this.element.getType());
 			OptionButton.setButtonStrokeColor('color', this.element.getColor());
+			this.element.updatePositionItems();
 		}
 		return this.getElement();
 	}

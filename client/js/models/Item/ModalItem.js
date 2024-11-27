@@ -11,6 +11,8 @@ export class ModalItem extends Item {
 		this.type = utils.getFolder(url);
 		this.backgroundImage = imageHelpers.getImage('misc/itemBackground');
 		this.destinationY = this.getDestinationY();
+		this.containerX = 0;
+		this.containerY = 0;
 	}
 
 	getDestinationY(container) {
@@ -22,6 +24,10 @@ export class ModalItem extends Item {
 
 	setPosition(container, i) {
 		this.containerX = container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
+		const itemRight = this.containerX + this.w * MODAL_PIXEL_SIZE;
+		if (itemRight > container.right - 60) {
+			console.info(this.containerX + this.w * MODAL_PIXEL_SIZE, container.x + container.w, container);
+		}
 		this.position = {
 			x: this.containerX,
 			y: this.getDestinationY(container),
