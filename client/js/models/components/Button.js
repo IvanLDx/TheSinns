@@ -7,6 +7,7 @@ export class Button extends List {
 		this.x = 0;
 		this.y = 0;
 		this.h = 30;
+		this.w = 30;
 		this.image = image ? imageHelpers.getImage(image) : null;
 
 		this.setStandardStroke();

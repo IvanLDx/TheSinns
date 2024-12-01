@@ -29,5 +29,8 @@ export class List {
 			return condition(item);
 		});
 	}
+	static getList() {
+		return this.list;
+	}
 	static list = [];
 }

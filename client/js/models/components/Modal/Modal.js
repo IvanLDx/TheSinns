@@ -1,4 +1,6 @@
-import { RotationArrows } from './RotationArrows.js';
+import { utils } from '../../../utils.js';
+import { PaginationArrows, RotationArrows } from './Arrows.js';
+import { Pagination } from './Pagination.js';
 import { Color } from './Color.js';
 import { ItemType } from './ItemTypes.js';
 import { Button } from '../Button.js';
@@ -11,10 +13,14 @@ export class Modal extends Container {
 		this.folder = 'wall';
 		this.subfolder = 'yellow';
 		this.items = {};
-		this.rotationArrows = new RotationArrows();
+		this.rotationArrows = new RotationArrows(this);
+		this.paginationArrows = new PaginationArrows(this);
+		this.pagination = new Pagination(this);
 		this.color = Color.get();
 		this.itemType = ItemType.get();
 		this.needsToPositionItems = false;
+		this.isSmallerThanItemList = false;
+		this.modalItems = [];
 	}
 
 	resize() {
@@ -23,10 +29,19 @@ export class Modal extends Container {
 		this.right = this.x + this.w;
 
 		this.rotationArrows.repositioning();
+		this.paginationArrows.repositioning();
 		this.color.repositioning();
 		this.itemType.repositioning();
 
 		this.updatePositionItems();
+	}
+
+	checkIsSmallerThanItemList(itemRight) {
+		if (itemRight) {
+			this.isSmallerThanItemList = itemRight > this.x + this.w - 45;
+		}
+
+		return this.isSmallerThanItemList;
 	}
 
 	updatePositionItems() {
@@ -39,22 +54,33 @@ export class Modal extends Container {
 		});
 	}
 
+	update() {
+		this.modalItems = Modal.getItemUrl(this.items);
+
+		if (this.needsToPositionItems) {
+			this.pagination.resetPagination();
+			this.pagination.setPagination(this.modalItems);
+
+			this.modalItems.forEach((item, i) => {
+				item.setPosition(this, i, this.pagination);
+			});
+
+			this.needsToPositionItems = false;
+		}
+	}
+
 	paint() {
 		super.paint();
 
-		let modalItems = Modal.getItemUrl(this.items);
-		modalItems.forEach((item, i) => {
-			if (this.needsToPositionItems) {
-				item.setPosition(this, i);
-			}
+		const currentPageItems = this.modalItems.filter((item) => {
+			return item.page === this.pagination.currentPage;
+		});
 
+		currentPageItems.forEach((item) => {
 			item.paint();
 		});
 
-		if (this.needsToPositionItems) {
-			this.needsToPositionItems = false;
-		}
-
+		this.paginationArrows.paint();
 		this.rotationArrows.paint();
 		this.color.paint();
 		this.itemType.paint();

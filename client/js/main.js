@@ -33,6 +33,7 @@ function act() {
 	if (selfPlayer) {
 		cam.focus(selfPlayer);
 
+		modal.update();
 		WorldItem.setPositionTile();
 		Tile.setTouchedTile();
 		paint();

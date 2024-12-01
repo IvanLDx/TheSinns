@@ -39,7 +39,8 @@ const ServerModalItems = {
 		blue: [],
 		green: [],
 		red: []
-	}
+	},
+	itemwidth: 20
 };
 
 function getItems(url) {

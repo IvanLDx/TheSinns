@@ -13,6 +13,8 @@ export class ModalItem extends Item {
 		this.destinationY = this.getDestinationY();
 		this.containerX = 0;
 		this.containerY = 0;
+		this.right = 0;
+		this.page = 1;
 	}
 
 	getDestinationY(container) {
@@ -22,18 +24,22 @@ export class ModalItem extends Item {
 		return this.destinationY;
 	}
 
-	setPosition(container, i) {
-		this.containerX = container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
-		const itemRight = this.containerX + this.w * MODAL_PIXEL_SIZE;
-		if (itemRight > container.right - 60) {
-			console.info(this.containerX + this.w * MODAL_PIXEL_SIZE, container.x + container.w, container);
+	setPosition(container, i, pagination) {
+		const position = i % pagination.getItemsByPage();
+		if (position === 0) {
+			pagination.totalPages++;
 		}
+
+		this.page = pagination.totalPages;
+		this.containerX = container.x + 10 + this.w * MODAL_PIXEL_SIZE * ModalItem.getMarginRight(position);
+
 		this.position = {
 			x: this.containerX,
 			y: this.getDestinationY(container),
 			w: this.w * MODAL_PIXEL_SIZE,
 			h: this.h * MODAL_PIXEL_SIZE
 		};
+		console.info(this.page);
 	}
 
 	paint() {
@@ -63,13 +69,17 @@ export class ModalItem extends Item {
 	static createList(items) {
 		let list = {};
 		utils.forEachObject(items, (item, key) => {
-			list[key] = {};
-			utils.forEachObject(item, (subItem, subKey) => {
-				list[key][subKey] = [];
-				subItem.forEach((value) => {
-					list[key][subKey].push(new ModalItem(value));
+			if (key === 'itemwidth') {
+				this.itemWidth = item;
+			} else {
+				list[key] = {};
+				utils.forEachObject(item, (subItem, subKey) => {
+					list[key][subKey] = [];
+					subItem.forEach((value) => {
+						list[key][subKey].push(new ModalItem(value));
+					});
 				});
-			});
+			}
 		});
 		this.list = list;
 	}
@@ -80,4 +90,12 @@ export class ModalItem extends Item {
 			evt(val);
 		});
 	}
+
+	static getMarginRight(i) {
+		return i * this.marginRight;
+	}
+
+	static itemWidth = 0;
+
+	static marginRight = 1.1;
 }

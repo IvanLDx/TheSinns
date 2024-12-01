@@ -19,7 +19,9 @@ export class Socket {
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
 			ModalItem.createList(data.itemData);
-			Modal.getElement().appendItems(ModalItem.list);
+			const modal = Modal.getElement();
+			modal.appendItems(ModalItem.list);
+			modal.pagination.set();
 		});
 	}
 
