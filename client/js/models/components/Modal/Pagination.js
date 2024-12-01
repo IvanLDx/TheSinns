@@ -36,7 +36,26 @@ export class Pagination {
 		return ModalItem.itemWidth;
 	}
 
+	setTotalPages() {
+		this.totalPages++;
+		if (this.currentPage > this.totalPages) {
+			this.currentPage = this.totalPages;
+		}
+	}
+
 	resetPagination() {
 		this.totalPages = 0;
+	}
+
+	goPrevPage() {
+		if (this.currentPage > 1) {
+			this.currentPage--;
+		}
+	}
+
+	goNextPage() {
+		if (this.currentPage < this.totalPages) {
+			this.currentPage++;
+		}
 	}
 }

@@ -118,7 +118,9 @@ class UpArrow extends ArrowButton {
 	}
 
 	intersectionEvents() {
-		super.intersectionEvents((item) => {});
+		if (this.intersects()) {
+			Modal.getElement().pagination.goPrevPage();
+		}
 	}
 
 	paint(RotationModal) {
@@ -137,7 +139,10 @@ class DownArrow extends ArrowButton {
 	}
 
 	intersectionEvents() {
-		super.intersectionEvents((item) => {});
+		if (this.intersects()) {
+			const pag = Modal.getElement().pagination;
+			pag.goNextPage();
+		}
 	}
 
 	paint(RotationModal) {

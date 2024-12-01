@@ -27,7 +27,7 @@ export class ModalItem extends Item {
 	setPosition(container, i, pagination) {
 		const position = i % pagination.getItemsByPage();
 		if (position === 0) {
-			pagination.totalPages++;
+			pagination.setTotalPages();
 		}
 
 		this.page = pagination.totalPages;
