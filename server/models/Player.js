@@ -7,9 +7,14 @@ class Player extends List {
 		this.w = 10;
 		this.h = 10;
 		this.id = id;
+		this.name = null;
 		this.socket = null;
 
 		Player.create(this);
+	}
+
+	setName(name) {
+		this.name = name;
 	}
 
 	static list = [];

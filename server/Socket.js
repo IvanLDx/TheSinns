@@ -2,7 +2,8 @@ const fs = require('fs');
 const List = require('./models/List');
 const Player = require('./models/Player');
 const World = require('./models/World');
-const Login = require('./models/Login');
+const Login = require('./socket/Login');
+const UserMenu = require('./socket/UserMenu');
 const itemData = require('./data/serverModalitems');
 const Token = require('./scripts/Token');
 
@@ -12,11 +13,13 @@ class Socket extends List {
 		this.id = socket.id;
 		this.self = socket;
 		this.player = new Player(socket.id);
-		this.login = new Login(socket.id, this);
+		this.login = new Login(this);
+		this.userMenu = new UserMenu(this);
 		this.#initOnEvents();
 		this.token = null;
 
 		this.login.initEvents();
+		this.userMenu.initEvents();
 	}
 
 	#initOnEvents() {

@@ -3,6 +3,7 @@ import { ifis } from '../utils.js';
 import { Modal } from '../models/components/Modal/Modal.js';
 import { BurgerButton } from '../models/components/BurgerMenu/BurgerButton.js';
 import * as documentListeners from '../helpers/documentListeners.js';
+import { stage } from '../models/Stage.js';
 
 export class LoginSocket {
 	constructor() {
@@ -18,7 +19,7 @@ export class LoginSocket {
 		socket.on('csrfExpirationMsg', (data) => {
 			if (data.expired) {
 				document.querySelector('.expiration-msg').classList.add('show');
-				document.querySelector('.login').classList.add('show');
+				stage.change('login');
 			}
 		});
 	}
@@ -28,7 +29,13 @@ export class LoginSocket {
 
 		socket.on('signIn-OK', (data) => {
 			if (data.success) {
-				document.querySelector('.login').classList.remove('show');
+				stage.change('menu');
+			}
+		});
+
+		socket.on('enterWorld', (data) => {
+			if (data.success) {
+				stage.change('world');
 
 				const interfaceElements = [Modal.create(), BurgerButton.create()];
 				cam.resizeInterface(interfaceElements);

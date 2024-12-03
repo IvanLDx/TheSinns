@@ -1,0 +1,20 @@
+.prototype__world-sheet {
+	display: none;
+}
+
+.worlds-container {
+	padding: 10px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+	grid-gap: 10px;
+}
+
+.world-sheet {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.world-image {
+	height: 400px;
+	border: 1px solid black;
+}
