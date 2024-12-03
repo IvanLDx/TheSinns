@@ -14,7 +14,6 @@ class Socket extends List {
 		this.player = new Player(socket.id);
 		this.login = new Login(socket.id, this);
 		this.#initOnEvents();
-		this.#initEmitEvents();
 		this.token = null;
 
 		this.login.initEvents();
@@ -54,7 +53,7 @@ class Socket extends List {
 		});
 	}
 
-	#initEmitEvents() {
+	initEmitEvents() {
 		this.emit('init', {
 			id: this.self.id,
 			itemData: itemData,

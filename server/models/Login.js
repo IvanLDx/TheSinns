@@ -59,6 +59,7 @@ class Login {
 
 					this.socket.emit('signIn-OK', responseToClient);
 					this.socket.setToken();
+					this.socket.initEmitEvents();
 				}
 			} else {
 				console.info('caca');

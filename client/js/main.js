@@ -3,7 +3,6 @@ import { SelfPlayer } from './models/SelfPlayer.js';
 import { MouseModel } from './models/Mouse.js';
 import { Socket } from './models/Socket.js';
 import { utils } from './utils.js';
-import { documentListeners } from './helpers/documentListeners.js';
 
 import { Modal } from './models/components/Modal/Modal.js';
 import { Tile } from './models/Tile.js';
@@ -59,14 +58,6 @@ function paint() {
 document.querySelector('body').onresize = function () {
 	cam.resizeInterface(interfaceElements);
 };
-
-document.onwheel = documentListeners.onwheel;
-
-document.onmousemove = documentListeners.onmousemove;
-document.onmousedown = documentListeners.onmousedown;
-document.ontouchstart = documentListeners.onmousedown;
-
-document.onmouseup = documentListeners.onmouseup;
 
 document.oncontextmenu = function (e) {
 	e.preventDefault();

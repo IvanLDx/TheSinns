@@ -15,3 +15,7 @@ $form.onsubmit = (e) => {
 
 	loginSocket.signIn(data);
 };
+
+document.querySelector('.refresh').onclick = () => {
+	location.reload();
+};

@@ -6,7 +6,17 @@ import { Modal } from '../models/components/Modal/Modal.js';
 
 const modal = Modal.create();
 
-export const documentListeners = {
+export function init() {
+	document.onwheel = documentListeners.onwheel;
+
+	document.onmousemove = documentListeners.onmousemove;
+	document.onmousedown = documentListeners.onmousedown;
+	document.ontouchstart = documentListeners.onmousedown;
+
+	document.onmouseup = documentListeners.onmouseup;
+}
+
+const documentListeners = {
 	onwheel: function (e) {
 		cam.zoom(e);
 	},
