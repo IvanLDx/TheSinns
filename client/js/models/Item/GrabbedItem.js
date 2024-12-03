@@ -1,6 +1,7 @@
 import { ModalItem } from './ModalItem.js';
 import { Socket } from '../Socket.js';
-
+import { utils } from '../../utils.js';
+import { imageHelpers } from '../../helpers/imagehelpers.js';
 let grabbedItem;
 
 export class GrabbedItem extends ModalItem {
@@ -9,6 +10,7 @@ export class GrabbedItem extends ModalItem {
 		this.locationType = 'GrabbedItem';
 		this.id = this.id || this.createID();
 		this.touchedTile = null;
+		this.destinationY = null;
 	}
 
 	move() {
@@ -69,32 +71,34 @@ export class GrabbedItem extends ModalItem {
 		let tile = {};
 		if (grabbedItem) {
 			if (grabbedItem.touchedTile) {
+				const y = (grabbedItem.touchedTile.row + 1) * cam.pixelSize - cam.y - (grabbedItem.h - 10) * cam.pixelSize;
+				const h = (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize;
+				grabbedItem.destinationY = utils.getDestinationYByType(y, h, grabbedItem.type);
 				tile = {
-					x:
-						(grabbedItem.touchedTile.col + 1) * cam.pixelSize -
-						cam.x,
-					y:
-						(grabbedItem.touchedTile.row + 1) * cam.pixelSize -
-						cam.y -
-						(grabbedItem.h - 10) * cam.pixelSize,
+					x: (grabbedItem.touchedTile.col + 1) * cam.pixelSize - cam.x,
+					y: grabbedItem.destinationY,
 					w: (grabbedItem.w - 2) * cam.pixelSize + cam.pixelSize * 2,
-					h: (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize
+					h: h
 				};
 			} else {
 				tile = {};
 			}
 
 			ctx.globalAlpha = 0.6;
-			ctx.drawImage(
+			imageHelpers.drawImage(
 				grabbedItem.image,
-				grabbedItem.rotation * grabbedItem.w,
-				0,
-				grabbedItem.w,
-				grabbedItem.h,
-				tile.x || grabbedItem.x,
-				tile.y || grabbedItem.y,
-				tile.w || grabbedItem.w * cam.pixelSize,
-				tile.h || grabbedItem.h * cam.pixelSize
+				{
+					x: grabbedItem.rotation * grabbedItem.w,
+					y: 0,
+					w: grabbedItem.w,
+					h: grabbedItem.h
+				},
+				{
+					x: tile.x || grabbedItem.x,
+					y: tile.y || grabbedItem.y,
+					w: tile.w || grabbedItem.w * cam.pixelSize,
+					h: tile.h || grabbedItem.h * cam.pixelSize
+				}
 			);
 			ctx.globalAlpha = 1;
 		}

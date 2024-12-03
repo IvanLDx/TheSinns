@@ -1,6 +1,7 @@
 import { Container } from './Container.js';
 import { ModalItem } from '../Item/ModalItem.js';
 import { WorldItem } from '../Item/WorldItem.js';
+import { imageHelpers } from '../../helpers/imagehelpers.js';
 import { Button } from './Button.js';
 import { Tile } from '../Tile.js';
 
@@ -59,15 +60,21 @@ export class Toolkit extends Container {
 
 		this.list.forEach((item, i) => {
 			const image = item.image || item.swatch;
-			const rectPosition = [this.x + this.padding, currentY, 40, 40];
 			if (typeof image === 'object') {
-				ctx.drawImage(
+				imageHelpers.drawImage(
 					image,
-					0,
-					0,
-					item.imageSize || item.imageWidth || item.w,
-					item.imageSize || item.imageHeight || item.h,
-					...rectPosition
+					{
+						x: 0,
+						y: 0,
+						w: item.imageSize || item.imageWidth || item.w,
+						h: item.imageSize || item.imageHeight || item.h
+					},
+					{
+						x: this.x + this.padding,
+						y: currentY,
+						w: 40,
+						h: 40
+					}
 				);
 			} else {
 				ctx.fillStyle = image;
@@ -76,13 +83,7 @@ export class Toolkit extends Container {
 
 			ctx.font = '16px Segoe UI';
 			ctx.fillStyle = '#374a6d';
-			ctx.fillText(
-				'Class ' +
-					item.constructor.name +
-					(item.type ? ` - ${item.type}` : ''),
-				this.x + this.padding + 50,
-				currentY + 14
-			);
+			ctx.fillText('Class ' + item.constructor.name + (item.type ? ` - ${item.type}` : ''), this.x + this.padding + 50, currentY + 14);
 
 			currentY += 50;
 		});

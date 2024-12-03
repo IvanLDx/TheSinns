@@ -3,6 +3,7 @@ import { Toolkit } from './components/Toolkit.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { Button } from './components/Button.js';
 import { Tile } from './Tile.js';
+import { ItemPopup } from './Item/components/ItemPopup.js';
 
 export class MouseModel {
 	constructor() {
@@ -11,6 +12,7 @@ export class MouseModel {
 		this.press = { x: 0, y: 0 };
 		this.drag = { x: 0, y: 0 };
 		this.pressing = false;
+		this.dragging = false;
 		this.absoluteX = 0;
 		this.absoluteY = 0;
 		this.isThereIntersection = false;
@@ -43,6 +45,15 @@ export class MouseModel {
 		}
 
 		this.intersections();
+
+		if (this.pressing) {
+			this.dragging = true;
+		}
+
+		const touchedTile = Tile.find((item) => item.touch);
+		WorldItem.list.forEach((worldItem) => {
+			worldItem.touchedByMouse = touchedTile && touchedTile.id === worldItem.touchedTile.id;
+		});
 	}
 
 	setPosition(e) {
@@ -58,36 +69,34 @@ export class MouseModel {
 	}
 
 	setPress(e) {
-		if (mouse.pressing) {
-			this.press = {
-				x: e?.clientX || this.x,
-				y: e?.clientY || this.y
-			};
-		}
+		this.pressing = !!e;
+		this.press = {
+			x: e?.clientX || this.x,
+			y: e?.clientY || this.y
+		};
+	}
+
+	unsetPress() {
+		this.pressing = false;
 	}
 
 	intersections() {
 		this.isThereIntersection = false;
 		Button.each((button) => {
-			if (mouse.absoluteIntersects(button)) {
-				mouse.style('pointer');
+			if (this.absoluteIntersects(button)) {
+				this.style('pointer');
 				this.selectedColor = button.id;
 				this.isThereIntersection = true;
 			}
 		});
 		if (!this.isThereIntersection) {
-			mouse.style('initial');
+			this.style('initial');
 			this.selectedColor = null;
 		}
 	}
 
 	absoluteIntersects(element) {
-		return (
-			this.absoluteX > element.x &&
-			this.absoluteX < element.x + element.w &&
-			this.absoluteY > element.y &&
-			this.absoluteY < element.y + element.h
-		);
+		return this.absoluteX > element.x && this.absoluteX < element.x + element.w && this.absoluteY > element.y && this.absoluteY < element.y + element.h;
 	}
 
 	absoluteIntersectsInModal(element) {
@@ -115,6 +124,10 @@ export class MouseModel {
 		}
 	}
 
+	setItemTile(item) {
+		this.touchedTile = item.touchedTile;
+	}
+
 	setDrag(e) {
 		this.press = {
 			x: this.x,
@@ -131,6 +144,8 @@ export class MouseModel {
 			this.drag = { x: x, y: y };
 		}
 		this.style('grabbing');
+
+		ItemPopup.close();
 	}
 
 	stop() {
@@ -138,6 +153,8 @@ export class MouseModel {
 		if (!this.isThereIntersection) {
 			this.style('initial');
 		}
+		this.pressing = false;
+		this.dragging = false;
 	}
 
 	paintToolkit() {

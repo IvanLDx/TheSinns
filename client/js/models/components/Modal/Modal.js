@@ -1,6 +1,8 @@
-import { RotationArrows } from './RotationArrows.js';
+import { utils } from '../../../utils.js';
+import { PaginationArrows, RotationArrows } from './Arrows.js';
+import { Pagination } from './Pagination.js';
 import { Color } from './Color.js';
-import { ItemType } from './itemTypes.js';
+import { ItemType } from './ItemTypes.js';
 import { Button } from '../Button.js';
 import { OptionButton } from './OptionButton.js';
 import { Container } from '../Container.js';
@@ -10,19 +12,40 @@ export class Modal extends Container {
 		super(x, y, w, h);
 		this.folder = 'wall';
 		this.subfolder = 'yellow';
-		this.items = null;
-		this.rotationArrows = new RotationArrows();
+		this.items = {};
+		this.rotationArrows = new RotationArrows(this);
+		this.paginationArrows = new PaginationArrows(this);
+		this.pagination = new Pagination(this);
 		this.color = Color.get();
 		this.itemType = ItemType.get();
+		this.needsToPositionItems = false;
+		this.isSmallerThanItemList = false;
+		this.modalItems = [];
 	}
 
 	resize() {
 		this.y = cv.height - 210;
 		this.w = cv.width - 20;
+		this.right = this.x + this.w;
 
 		this.rotationArrows.repositioning();
+		this.paginationArrows.repositioning();
 		this.color.repositioning();
 		this.itemType.repositioning();
+
+		this.updatePositionItems();
+	}
+
+	checkIsSmallerThanItemList(itemRight) {
+		if (itemRight) {
+			this.isSmallerThanItemList = itemRight > this.x + this.w - 45;
+		}
+
+		return this.isSmallerThanItemList;
+	}
+
+	updatePositionItems() {
+		this.needsToPositionItems = true;
 	}
 
 	clickOnButton() {
@@ -31,15 +54,33 @@ export class Modal extends Container {
 		});
 	}
 
+	update() {
+		this.modalItems = Modal.getItemUrl(this.items);
+
+		if (this.needsToPositionItems) {
+			this.pagination.resetPagination();
+			this.pagination.setPagination(this.modalItems);
+
+			this.modalItems.forEach((item, i) => {
+				item.setPosition(this, i, this.pagination);
+			});
+
+			this.needsToPositionItems = false;
+		}
+	}
+
 	paint() {
 		super.paint();
 
-		let modalItems = Modal.getItemUrl(this.items);
-		modalItems.forEach((item, i) => {
-			item.setPosition(this, i);
+		const currentPageItems = this.modalItems.filter((item) => {
+			return item.page === this.pagination.currentPage;
+		});
+
+		currentPageItems.forEach((item) => {
 			item.paint();
 		});
 
+		this.paginationArrows.paint();
 		this.rotationArrows.paint();
 		this.color.paint();
 		this.itemType.paint();
@@ -48,6 +89,7 @@ export class Modal extends Container {
 	setColor(color) {
 		this.subfolder = color;
 		OptionButton.setButtonStrokeColor('color', color);
+		this.updatePositionItems();
 	}
 
 	getColor() {
@@ -57,6 +99,7 @@ export class Modal extends Container {
 	setType(type) {
 		this.folder = type;
 		OptionButton.setButtonStrokeColor('itemType', type);
+		this.updatePositionItems();
 	}
 
 	getType() {
@@ -72,23 +115,21 @@ export class Modal extends Container {
 	}
 
 	static create() {
-		this.element = new Modal();
-		OptionButton.setButtonStrokeColor('itemType', this.element.getType());
-		OptionButton.setButtonStrokeColor('color', this.element.getColor());
-		return this.element;
+		if (!this.element) {
+			this.element = new Modal();
+			OptionButton.setButtonStrokeColor('itemType', this.element.getType());
+			OptionButton.setButtonStrokeColor('color', this.element.getColor());
+			this.element.updatePositionItems();
+		}
+		return this.getElement();
 	}
 
 	static getItemUrl(root) {
-		return (
-			root[this.element.folder] &&
-			root[this.element.folder][this.element.subfolder]
-		);
+		return root[this.element.folder] && root[this.element.folder][this.element.subfolder];
 	}
 
 	static getActiveItems() {
-		return this.getElement().getItems()[this.element.folder][
-			this.element.subfolder
-		];
+		return this.getElement().getItems()[this.element.folder][this.element.subfolder];
 	}
 
 	static getType() {

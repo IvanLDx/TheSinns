@@ -8,23 +8,25 @@ export class WorldItem extends Item {
 		this.locationType = 'WorldItem';
 		this.id = worldItem.id;
 		this.touchedTile = worldItem.touchedTile;
-		this.setPositionTile();
+		this.touchedItems = [];
+		this.position = this.setPositionTile();
+		this.destinationY = null;
+		this.touchedByMouse = false;
 	}
 
 	setPositionTile() {
 		this.position = {
 			x: (this.touchedTile.col + 1) * cam.pixelSize - cam.x,
-			y:
-				(this.touchedTile.row + 1) * cam.pixelSize -
-				cam.y -
-				(this.h - 10) * cam.pixelSize,
+			y: (this.touchedTile.row + 1) * cam.pixelSize - cam.y - (this.h - 10) * cam.pixelSize,
 			w: (this.w - 2) * cam.pixelSize + cam.pixelSize * 2,
 			h: (this.h - 1) * cam.pixelSize + cam.pixelSize
 		};
+
+		return this.position;
 	}
 
 	static create(worldItems, occupiedTiles) {
-		this.list = [];
+		WorldItem.list = [];
 		occupiedTiles.sort((a, b) => {
 			return a.split('-')[0] < b.split('-')[0];
 		});
@@ -33,48 +35,91 @@ export class WorldItem extends Item {
 			utils.forEachObject(worldItems, (itemTypes, type) => {
 				itemTypes.forEach((item, i) => {
 					if (tile === item.touchedTile.id) {
-						this.push(new WorldItem(item));
+						WorldItem.push(new WorldItem(item));
 						worldItems[type].splice(i, 1);
 					}
 				});
 			});
 		});
 
-		return this.list;
+		return WorldItem.list;
 	}
 
 	static paint() {
-		this.each((item) => {
+		WorldItem.each((item) => {
 			item.paint();
 		});
 	}
 
 	static setPositionTile() {
-		this.sort((a, b) => {
+		WorldItem.sort((a, b) => {
 			return b.touchedTile.colID - a.touchedTile.colID;
 		});
 
-		this.each((item) => {
+		WorldItem.each((item) => {
 			item.setPositionTile();
+			item.destinationY = utils.getDestinationYByType(item.position.y, item.position.h, item.type);
 		});
 	}
 
 	static removeItem() {
 		Socket.removeItemFromWorld();
-		this.unselectItem();
+		WorldItem.unselectItem();
+	}
+
+	static selectItem(item) {
+		WorldItem.selected = item;
 	}
 
 	static unselectItem() {
-		this.selected = null;
+		WorldItem.selected = null;
+	}
+
+	static getAboveItem() {
+		let aboveItem = WorldItem.touchedItems.find((item) => {
+			return item.type === 'decoration';
+		});
+		if (!aboveItem) {
+			aboveItem = WorldItem.touchedItems.find((item) => {
+				return item.type === 'wallElement';
+			});
+		}
+		if (!aboveItem) {
+			aboveItem = WorldItem.touchedItems.find((item) => {
+				return item.type === 'roof';
+			});
+		}
+		if (!aboveItem) {
+			aboveItem = WorldItem.touchedItems.find((item) => {
+				return item.type === 'wall';
+			});
+		}
+		if (!aboveItem) {
+			aboveItem = WorldItem.touchedItems.find((item) => {
+				return item.type === 'floor';
+			});
+		}
+		return aboveItem;
 	}
 
 	static tryToSelect() {
 		if (mouse.touchedTile) {
-			this.selected = this.list.find((item) => {
+			WorldItem.touchedItems = WorldItem.filter((item) => {
 				return mouse.touchedTile.id === item.touchedTile.id;
 			});
+			WorldItem.selectItem(WorldItem.getAboveItem());
 		}
-		return this.selected;
+		return WorldItem.selected;
+	}
+
+	static getItemByID(id) {
+		return WorldItem.find((item) => {
+			return item.id === id;
+		});
+	}
+
+	static untouchItems() {
+		WorldItem.touchedItems = [];
 	}
 
 	static selected = null;

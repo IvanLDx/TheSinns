@@ -5,7 +5,7 @@ import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
 
-const socket = io();
+window.socket = io();
 let worldItems = [];
 let occupiedTiles = [];
 
@@ -19,7 +19,9 @@ export class Socket {
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
 			ModalItem.createList(data.itemData);
-			Modal.getElement().appendItems(ModalItem.list);
+			const modal = Modal.getElement();
+			modal.appendItems(ModalItem.list);
+			modal.pagination.set();
 		});
 	}
 

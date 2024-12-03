@@ -14,6 +14,24 @@ class List {
 			evt(player, i);
 		});
 	}
+
+	static find(callback) {
+		return this.list.find((instance) => {
+			return callback(instance);
+		});
+	}
+
+	static add(instance) {
+		this.list.push[instance];
+	}
+
+	static findByID(id) {
+		return this.list.find((instance) => {
+			return (instance.id = id);
+		});
+	}
+
+	static list = [];
 }
 
 module.exports = List;

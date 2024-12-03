@@ -7,6 +7,7 @@ export class OptionButton extends Button {
 		this.marginRight = 20;
 		this.gap = 16;
 		this.imageSize = 10;
+		this.selected = false;
 
 		Button.push(this);
 	}
@@ -14,9 +15,11 @@ export class OptionButton extends Button {
 	static setButtonStrokeColor(type, id) {
 		this.each((button) => {
 			if (button.id === id) {
+				button.selected = true;
 				button.setSelectedStroke();
 			} else if (button.buttonType === type) {
 				button.setStandardStroke();
+				button.selected = false;
 			}
 		});
 	}

@@ -1,8 +1,8 @@
-import { utils } from '../utils.js';
+import { imageHelpers } from '../helpers/imagehelpers.js';
 import { List } from './List.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
-let floorImg = utils.getImage('misc/floor');
-let floorImg2 = utils.getImage('misc/floor2');
+let floorImg = imageHelpers.getImage('misc/floor');
+let floorImg2 = imageHelpers.getImage('misc/floor2');
 
 export class Tile extends List {
 	constructor(tile) {
@@ -63,16 +63,20 @@ export class Tile extends List {
 
 	static paint() {
 		this.each((tile) => {
-			ctx.drawImage(
+			imageHelpers.drawImage(
 				tile.image,
-				0,
-				0,
-				tile.img.w + 2,
-				tile.img.h + 1,
-				tile.col * cam.pixelSize - cam.x,
-				tile.row * cam.pixelSize - cam.y,
-				tile.w * cam.pixelSize + cam.pixelSize * 2,
-				tile.h * cam.pixelSize + cam.pixelSize
+				{
+					x: 0,
+					y: 0,
+					w: tile.img.w + 2,
+					h: tile.img.h + 1
+				},
+				{
+					x: tile.col * cam.pixelSize - cam.x,
+					y: tile.row * cam.pixelSize - cam.y,
+					w: tile.w * cam.pixelSize + cam.pixelSize * 2,
+					h: tile.h * cam.pixelSize + cam.pixelSize
+				}
 			);
 		});
 	}

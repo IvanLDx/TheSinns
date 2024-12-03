@@ -1,5 +1,6 @@
 import { Item } from './Item.js';
 import { utils } from '../../utils.js';
+import { imageHelpers } from '../../helpers/imagehelpers.js';
 import { Modal } from '../components/Modal/Modal.js';
 const MODAL_PIXEL_SIZE = utils.getModalPixelSize();
 
@@ -8,32 +9,49 @@ export class ModalItem extends Item {
 		super({ x, y, w, h, url, name, rotation });
 		this.locationType = 'ModalItem';
 		this.type = utils.getFolder(url);
-		this.backgroundImage = utils.getImage('misc/itemBackground');
+		this.backgroundImage = imageHelpers.getImage('misc/itemBackground');
+		this.destinationY = this.getDestinationY();
+		this.containerX = 0;
+		this.containerY = 0;
+		this.right = 0;
+		this.page = 1;
 	}
 
-	setPosition(container, i) {
-		this.containerX =
-			container.x + 10 + this.w * MODAL_PIXEL_SIZE * i * 1.1;
-		this.containerY = container.y + 20;
+	getDestinationY(container) {
+		if (container) {
+			this.destinationY = this.containerY = container.y + 20;
+		}
+		return this.destinationY;
+	}
+
+	setPosition(container, i, pagination) {
+		const position = i % pagination.getItemsByPage();
+		if (position === 0) {
+			pagination.setTotalPages();
+		}
+
+		this.page = pagination.totalPages;
+		this.containerX = container.x + 10 + this.w * MODAL_PIXEL_SIZE * ModalItem.getMarginRight(position);
+
 		this.position = {
 			x: this.containerX,
-			y: this.containerY,
+			y: this.getDestinationY(container),
 			w: this.w * MODAL_PIXEL_SIZE,
 			h: this.h * MODAL_PIXEL_SIZE
 		};
+		console.info(this.page);
 	}
 
 	paint() {
-		ctx.drawImage(
+		imageHelpers.drawImage(
 			this.backgroundImage,
-			0,
-			0,
-			this.w,
-			this.h,
-			this.position.x,
-			this.position.y,
-			this.position.w,
-			this.position.h
+			{
+				x: 0,
+				y: 0,
+				w: this.w,
+				h: this.h
+			},
+			this.position
 		);
 
 		super.paint();
@@ -51,13 +69,17 @@ export class ModalItem extends Item {
 	static createList(items) {
 		let list = {};
 		utils.forEachObject(items, (item, key) => {
-			list[key] = {};
-			utils.forEachObject(item, (subItem, subKey) => {
-				list[key][subKey] = [];
-				subItem.forEach((value) => {
-					list[key][subKey].push(new ModalItem(value));
+			if (key === 'itemwidth') {
+				this.itemWidth = item;
+			} else {
+				list[key] = {};
+				utils.forEachObject(item, (subItem, subKey) => {
+					list[key][subKey] = [];
+					subItem.forEach((value) => {
+						list[key][subKey].push(new ModalItem(value));
+					});
 				});
-			});
+			}
 		});
 		this.list = list;
 	}
@@ -68,4 +90,12 @@ export class ModalItem extends Item {
 			evt(val);
 		});
 	}
+
+	static getMarginRight(i) {
+		return i * this.marginRight;
+	}
+
+	static itemWidth = 0;
+
+	static marginRight = 1.1;
 }

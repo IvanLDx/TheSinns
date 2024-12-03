@@ -10,6 +10,7 @@ import { GrabbedItem } from './models/Item/GrabbedItem.js';
 import { WorldItem } from './models/Item/WorldItem.js';
 
 import { BurgerButton } from './models/components/BurgerMenu/BurgerButton.js';
+import { ItemPopup } from './models/Item/components/ItemPopup.js';
 
 window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
@@ -30,11 +31,12 @@ function act() {
 	selfPlayer = SelfPlayer.element;
 	if (selfPlayer) {
 		cam.focus(selfPlayer);
-		mouse.setPress();
 
+		modal.update();
 		WorldItem.setPositionTile();
 		Tile.setTouchedTile();
 		paint();
+		ItemPopup.update();
 	}
 }
 
@@ -45,53 +47,16 @@ function paint() {
 	modal.paint();
 	GrabbedItem.paint();
 	burgerButton.paint();
+	ItemPopup.paint();
+
 	mouse.paintToolkit();
 	if (mouse.toolkit) {
 		mouse.toolkit.drawContent();
 	}
 }
 
-document.onwheel = function (e) {
-	cam.zoom(e);
-};
-
 document.querySelector('body').onresize = function () {
 	cam.resizeInterface(interfaceElements);
-};
-
-document.onmousemove = function (e) {
-	mouse.move(e);
-};
-
-document.onmousedown = function (e) {
-	mouse.onLeftClick(e, (e) => {
-		mouse.setPress(e);
-		mouse.setTouchedTile();
-
-		let selectedItem = WorldItem.tryToSelect();
-		if (selectedItem) {
-			GrabbedItem.grab(selectedItem);
-		} else {
-			GrabbedItem.tryToCreate();
-		}
-	});
-
-	mouse.onRightClick(e, () => {
-		document.onmousemove = function (e) {
-			mouse.setDrag(e);
-			selfPlayer.updatePosition();
-		};
-	});
-};
-
-document.onmouseup = function () {
-	document.onmousemove = function (e) {
-		mouse.move(e);
-	};
-	WorldItem.unselectItem();
-	GrabbedItem.completeGrab();
-	modal.clickOnButton();
-	mouse.stop();
 };
 
 document.oncontextmenu = function (e) {

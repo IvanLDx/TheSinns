@@ -19,5 +19,18 @@ export class List {
 			return callback(a, b);
 		});
 	}
+	static filter(condition) {
+		return this.list.filter((item) => {
+			return condition(item);
+		});
+	}
+	static find(condition) {
+		return this.list.find((item) => {
+			return condition(item);
+		});
+	}
+	static getList() {
+		return this.list;
+	}
 	static list = [];
 }

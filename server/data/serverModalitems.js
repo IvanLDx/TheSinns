@@ -10,6 +10,12 @@ function getFilesFromPath(selectedPath) {
 const ServerModalItem = require('../models/ServerModalItem');
 
 const ServerModalItems = {
+	roof: {
+		yellow: [],
+		blue: [],
+		green: [],
+		red: []
+	},
 	wall: {
 		yellow: [],
 		blue: [],
@@ -33,30 +39,37 @@ const ServerModalItems = {
 		blue: [],
 		green: [],
 		red: []
-	}
+	},
+	itemwidth: 20
 };
 
 function getItems(url) {
 	let folders = url.split('/');
 	getFilesFromPath(url).forEach((item) => {
-		ServerModalItems[folders[0]][folders[1]].push(
-			new ServerModalItem({ url: url, name: item })
-		);
+		ServerModalItems[folders[0]][folders[1]].push(new ServerModalItem({ url: url, name: item }));
 	});
 }
+
+getItems('roof/yellow');
+getItems('roof/blue');
+getItems('roof/green');
+getItems('roof/red');
 
 getItems('wall/yellow');
 getItems('wall/blue');
 getItems('wall/green');
 getItems('wall/red');
+
 getItems('wallElement/yellow');
 getItems('wallElement/blue');
 getItems('wallElement/green');
 getItems('wallElement/red');
+
 getItems('decoration/yellow');
 getItems('decoration/blue');
 getItems('decoration/green');
 getItems('decoration/red');
+
 getItems('floor/yellow');
 getItems('floor/blue');
 getItems('floor/green');
