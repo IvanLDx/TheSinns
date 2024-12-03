@@ -2,7 +2,7 @@ const socket = window.socket;
 import { ifis } from '../utils.js';
 import { Modal } from '../models/components/Modal/Modal.js';
 import { BurgerButton } from '../models/components/BurgerMenu/BurgerButton.js';
-import { documentListeners } from '../helpers/documentListeners.js';
+import * as documentListeners from '../helpers/documentListeners.js';
 
 export class LoginSocket {
 	constructor() {
