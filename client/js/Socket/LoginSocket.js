@@ -1,8 +1,8 @@
-const socket = window.socket;
 import { ifis } from '../utils.js';
-import { Modal } from '../models/components/Modal/Modal.js';
-import { BurgerButton } from '../models/components/BurgerMenu/BurgerButton.js';
-import { documentListeners } from '../helpers/documentListeners.js';
+import { stage } from '../models/Stage.js';
+import { Socket } from '../models/Socket.js';
+import * as menuHelpers from '../stages/menuHelpers.js';
+const socket = Socket.get();
 
 export class LoginSocket {
 	constructor() {
@@ -18,7 +18,7 @@ export class LoginSocket {
 		socket.on('csrfExpirationMsg', (data) => {
 			if (data.expired) {
 				document.querySelector('.expiration-msg').classList.add('show');
-				document.querySelector('.login').classList.add('show');
+				stage.change('login');
 			}
 		});
 	}
@@ -28,12 +28,8 @@ export class LoginSocket {
 
 		socket.on('signIn-OK', (data) => {
 			if (data.success) {
-				document.querySelector('.login').classList.remove('show');
-
-				const interfaceElements = [Modal.create(), BurgerButton.create()];
-				cam.resizeInterface(interfaceElements);
-
-				documentListeners.init();
+				stage.change('menu');
+				menuHelpers.paintWorlds(data.worlds);
 			}
 		});
 	}

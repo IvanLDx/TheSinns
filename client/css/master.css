@@ -1,0 +1,49 @@
+html,
+body {
+	font-family: 'Segoe UI';
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+.canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.login,
+.user-menu,
+.canvas {
+	display: none;
+}
+
+body[data-stage='login'] .login {
+	display: block;
+}
+
+body[data-stage='menu'] .user-menu {
+	display: block;
+}
+
+body[data-stage='world'] .canvas {
+	display: block;
+}
+
+.expiration-msg {
+	display: none;
+}
+
+.expiration-msg.show {
+	display: block;
+}
+
+body:has(.expiration-msg.show) .login-form {
+	display: none;
+}
+
+.submit {
+	font-size: 60px;
+}

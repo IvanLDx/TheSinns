@@ -1,4 +1,4 @@
-import { LoginSocket } from './Socket/LoginSocket.js';
+import { LoginSocket } from '../Socket/LoginSocket.js';
 const loginSocket = LoginSocket.start();
 
 const $form = document.querySelector('.login-form');

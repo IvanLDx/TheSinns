@@ -39,7 +39,6 @@ export class ModalItem extends Item {
 			w: this.w * MODAL_PIXEL_SIZE,
 			h: this.h * MODAL_PIXEL_SIZE
 		};
-		console.info(this.page);
 	}
 
 	paint() {

@@ -5,51 +5,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/x-icon" href="client/favicon.ico" />
 		<title>Document</title>
-		<style>
-			html,
-			body {
-				font-family: 'Segoe UI';
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-			}
-			.canvas {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-
-			.login {
-				display: none;
-			}
-
-			.login.show {
-				display: block;
-			}
-
-			body:has(.login.show) .canvas {
-				display: none;
-			}
-
-			.expiration-msg {
-				display: none;
-			}
-
-			.expiration-msg.show {
-				display: block;
-			}
-
-			body:has(.expiration-msg.show) .login-form {
-				display: none;
-			}
-		</style>
+		<link rel="stylesheet" href="./client/css/master.css" />
+		<link rel="stylesheet" href="./client/css/userMenu.css" />
 	</head>
-	<body>
-		<!-- add class "show" to login -->
-		<section class="login show">
+
+	<body data-stage="login">
+		<!-- LOGIN -->
+		<section class="login">
 			<h1>The House of the Pixel Sun</h1>
 
 			<div class="expiration-msg">Rematou a sesión <button class="refresh">Ingresa outra vez!</button></div>
@@ -73,10 +35,27 @@
 			</form>
 		</section>
 
+		<!-- USER MENU -->
+		<section class="user-menu">
+			<h1 class="name"></h1>
+
+			<div class="worlds-container">
+				<div class="prototype__world-sheet">
+					<div class="world-image"></div>
+					<p class="world-name">Name yeah</p>
+				</div>
+			</div>
+
+			<div class="buttons"></div>
+		</section>
+
+		<!-- WORLD -->
 		<canvas class="canvas"></canvas>
 
+		<!-- SCRIPTS -->
 		<script src="https://cdn.socket.io/4.5.4/socket.io.js"></script>
-		<script src="./client/js/login.js" type="module"></script>
+		<script src="./client/js/stages/menu.js" type="module"></script>
+		<script src="./client/js/stages/login.js" type="module"></script>
 		<script src="./client/js/main.js" type="module"></script>
 	</body>
 </html>
