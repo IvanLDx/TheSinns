@@ -5,9 +5,9 @@ import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
 
-window.socket = io();
 let worldItems = [];
 let occupiedTiles = [];
+let socket = null;
 
 export class Socket {
 	constructor() {
@@ -15,6 +15,8 @@ export class Socket {
 		this.newPosition();
 	}
 	init() {
+		socket = Socket.get();
+
 		socket.on('init', (data) => {
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
@@ -53,4 +55,14 @@ export class Socket {
 	static start() {
 		new Socket();
 	}
+
+	static get() {
+		if (!this.io) {
+			this.io = io();
+		}
+
+		return this.io;
+	}
+
+	static io = null;
 }

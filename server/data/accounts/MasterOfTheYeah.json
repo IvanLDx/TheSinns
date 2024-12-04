@@ -3,7 +3,12 @@
 	"name": "MasterOfTheYeah",
 	"worlds": [
 		{
-			"id": "123"
+			"id": "123",
+			"name": "The beginning"
+		},
+		{
+			"id": "asd",
+			"name": "The other"
 		}
 	]
 }

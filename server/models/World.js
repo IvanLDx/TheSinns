@@ -1,4 +1,4 @@
-const fs = require('fs');
+const FS = require('./FS');
 
 /**
  * @World_Class
@@ -38,7 +38,7 @@ class World {
 	}
 
 	openMap() {
-		let worldItemsRaw = fs.readFileSync('server/data/savedWorld.json', 'utf-8');
+		let worldItemsRaw = FS.readOld('server/data/savedWorld.json', 'utf-8');
 		let worldItems = JSON.parse(worldItemsRaw);
 		worldItems.forEach((item) => {
 			World.placeItem(item);

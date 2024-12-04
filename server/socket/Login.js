@@ -1,4 +1,4 @@
-const fs = require('fs');
+const FS = require('../models/FS');
 const Token = require('../scripts/Token');
 
 class Login {
@@ -32,11 +32,7 @@ class Login {
 			return result;
 		}
 
-		const passFile = fs
-			.readFileSync('../.htpasswds/.theSinnsHtpasswd', {
-				encoding: 'utf-8'
-			})
-			.replaceAll('\r', '');
+		const passFile = FS.readHtpasswd().replaceAll('\r', '');
 
 		const usersRaw = passFile.split('\n');
 
@@ -77,6 +73,9 @@ class Login {
 			const customerResult = this.checkCustomer(data);
 			if (customerResult.success) {
 				customerResult.socket = this.socket.player;
+				const account = FS.readAccount(data.username);
+				customerResult.worlds = account.worlds;
+
 				this.socket.emit('signIn-OK', customerResult);
 				this.socket.setToken();
 			} else {
