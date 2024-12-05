@@ -143,5 +143,34 @@
         },
         "destinationY": 310,
         "maxRotation": 1
+    },
+    {
+        "x": 829,
+        "y": 359,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/yellow",
+        "name": "stone",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241205-233836-3335",
+        "touchedTile": {
+            "id": "0-7",
+            "col": 70,
+            "row": 35,
+            "colID": 0,
+            "rowID": 7
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 824,
+            "y": 370,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 370,
+        "maxRotation": 1
     }
 ]

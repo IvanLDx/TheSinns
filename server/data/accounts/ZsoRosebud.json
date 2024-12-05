@@ -1,0 +1,16 @@
+{
+	"id": "000",
+	"name": "MasterOfTheYeah",
+	"worlds": [
+		{
+			"id": "1223",
+			"name": "The asd",
+			"size": "4x8"
+		},
+		{
+			"id": "aasdsd",
+			"name": "The qweqwe",
+			"size": "4x8"
+		}
+	]
+}

@@ -54,6 +54,10 @@ export class Socket {
 		});
 	}
 
+	static exitWorld() {
+		this.saveWorld();
+	}
+
 	static placeGrabbedItem() {
 		socket.emit('placeGrabbedItem', {
 			grabbedItem: GrabbedItem.element
