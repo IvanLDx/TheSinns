@@ -1,4 +1,4 @@
-const List = require('./List');
+const List = req('models/List');
 class Player extends List {
 	constructor(id) {
 		super();

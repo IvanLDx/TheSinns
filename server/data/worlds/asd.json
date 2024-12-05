@@ -29,6 +29,64 @@
         "maxRotation": 0
     },
     {
+        "x": 632,
+        "y": 218,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/yellow",
+        "name": "halfbrick",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241205-234955-4429",
+        "touchedTile": {
+            "id": "1-1",
+            "col": 20,
+            "row": 0,
+            "colID": 1,
+            "rowID": 1
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 624,
+            "y": 230,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 230,
+        "maxRotation": 0
+    },
+    {
+        "x": 619,
+        "y": 235,
+        "w": 20,
+        "h": 28,
+        "type": "wallElement",
+        "url": "wallElement/yellow",
+        "name": "door2",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241205-234958-3807",
+        "touchedTile": {
+            "id": "1-1",
+            "col": 20,
+            "row": 0,
+            "colID": 1,
+            "rowID": 1
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 624,
+            "y": 230,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 230,
+        "maxRotation": 3
+    },
+    {
         "x": 732,
         "y": 297,
         "w": 20,

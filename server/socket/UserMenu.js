@@ -1,6 +1,6 @@
-const World = require('../models/World');
-const Player = require('../models/Player');
-const itemData = require('../data/serverModalitems');
+const World = req('models/World');
+const Player = req('models/Player');
+const itemData = req('data/serverModalitems');
 
 class UserMenu {
 	constructor(socket, SocketClass) {

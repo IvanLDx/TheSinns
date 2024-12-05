@@ -9,7 +9,7 @@ function getFilesFromPath(selectedPath) {
 	return fileNames;
 }
 
-const ServerModalItem = require('../models/ServerModalItem');
+const ServerModalItem = req('models/ServerModalItem');
 
 const serverModalItems = {
 	roof: {

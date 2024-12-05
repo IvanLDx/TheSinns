@@ -1,5 +1,5 @@
-const FS = require('../models/FS');
-const Token = require('../scripts/Token');
+const FS = req('models/FS');
+const Token = req('scripts/Token');
 
 class Login {
 	constructor(socket) {

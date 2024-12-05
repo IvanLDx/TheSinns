@@ -1,11 +1,11 @@
-const FS = require('../server/models/FS');
-const List = require('./models/List');
-const Player = require('./models/Player');
-const World = require('./models/World');
-const Login = require('./socket/Login');
-const UserMenu = require('./socket/UserMenu');
-const itemData = require('./data/serverModalitems');
-const Token = require('./scripts/Token');
+const FS = req('models/FS');
+const List = req('models/List');
+const Player = req('models/Player');
+const World = req('models/World');
+const Login = req('socket/Login');
+const UserMenu = req('socket/UserMenu');
+const itemData = req('data/serverModalitems');
+const Token = req('scripts/Token');
 
 class Socket extends List {
 	constructor(socket) {
