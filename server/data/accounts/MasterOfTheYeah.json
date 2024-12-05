@@ -4,11 +4,13 @@
 	"worlds": [
 		{
 			"id": "123",
-			"name": "The beginning"
+			"name": "The beginning",
+			"size": "4x8"
 		},
 		{
 			"id": "asd",
-			"name": "The other"
+			"name": "The other",
+			"size": "4x8"
 		}
 	]
 }

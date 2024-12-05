@@ -24,9 +24,12 @@ export class LoginSocket {
 	}
 
 	signIn(data) {
-		socket.emit('signIn', data);
+		socket.off('signIn');
+		socket.off('signIn-OK');
 
+		socket.emit('signIn', data);
 		socket.on('signIn-OK', (data) => {
+			console.info(data);
 			if (data.success) {
 				stage.change('menu');
 				menuHelpers.paintWorlds(data.worlds);

@@ -1,12 +1,31 @@
+const World = require('../models/World');
+const Player = require('../models/Player');
+const itemData = require('../data/serverModalitems');
+
 class UserMenu {
-	constructor(socket) {
+	constructor(socket, SocketClass) {
 		this.id = socket.id;
 		this.socket = socket;
+		this.SocketClass = SocketClass;
 	}
 
 	initEvents() {
-		this.socket.on('enterWorld', (data) => {
+		this.socket.on('enterWorld', () => {
 			this.socket.emit('enterWorld-OK', {});
+		});
+
+		this.socket.on('selectWorld', (data) => {
+			const world = new World(data.world);
+			world.setMap();
+			world.openMap(data.world.id).then(() => {
+				this.socket.emit('newPosition', World.getPack());
+				this.socket.emit('selectWorld-OK', {
+					id: this.socket.id,
+					itemData: itemData,
+					playerList: Player.list,
+					world: World.tiles
+				});
+			});
 		});
 	}
 }
