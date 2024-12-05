@@ -14,7 +14,7 @@ class Socket extends List {
 		this.self = socket;
 		this.player = new Player(socket.id);
 		this.login = new Login(this);
-		this.userMenu = new UserMenu(this);
+		this.userMenu = new UserMenu(this, Socket);
 		this.#initOnEvents();
 		this.token = null;
 
@@ -88,7 +88,6 @@ class Socket extends List {
 	static create(socket) {
 		const newSocket = new Socket(socket);
 		Socket.list.push(newSocket);
-		Socket.emitWorldPosition(World.getPack());
 	}
 
 	static list = [];

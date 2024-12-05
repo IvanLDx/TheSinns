@@ -71,6 +71,7 @@ class Login {
 
 		this.socket.on('signIn', (data) => {
 			const customerResult = this.checkCustomer(data);
+
 			if (customerResult.success) {
 				customerResult.socket = this.socket.player;
 				const account = FS.readAccount(data.username);
@@ -79,7 +80,7 @@ class Login {
 				this.socket.emit('signIn-OK', customerResult);
 				this.socket.setToken();
 			} else {
-				console.info('signIn:', customerResult.message);
+				console.trace('signIn:', customerResult.message);
 			}
 		});
 	}

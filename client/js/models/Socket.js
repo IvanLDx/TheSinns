@@ -17,7 +17,7 @@ export class Socket {
 	init() {
 		socket = Socket.get();
 
-		socket.on('init', (data) => {
+		socket.on('selectWorld-OK', (data) => {
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
 			ModalItem.createList(data.itemData);

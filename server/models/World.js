@@ -19,8 +19,9 @@ const FS = require('./FS');
  */
 
 class World {
-	constructor(size) {
-		let [w, h] = size.split('x');
+	constructor(worldData) {
+		let [w, h] = worldData.size.split('x');
+		this.id = worldData.id;
 		this.w = parseInt(w, 10);
 		this.h = parseInt(h, 10);
 		this.tile = {
@@ -30,6 +31,9 @@ class World {
 	}
 
 	setMap() {
+		World.removeTiles();
+		World.items = World.resetItems();
+
 		for (let row = 0; row < this.h; row += 1) {
 			for (let col = 0; col < this.w; col += 1) {
 				new Tile(col, row);
@@ -37,11 +41,13 @@ class World {
 		}
 	}
 
-	openMap() {
-		let worldItemsRaw = FS.readOld('server/data/savedWorld.json', 'utf-8');
-		let worldItems = JSON.parse(worldItemsRaw);
-		worldItems.forEach((item) => {
-			World.placeItem(item);
+	openMap(worldID) {
+		return new Promise((resolve, reject) => {
+			const worldItems = FS.readWorld(worldID);
+			worldItems.forEach((item) => {
+				World.placeItem(item);
+			});
+			resolve();
 		});
 	}
 
@@ -76,14 +82,22 @@ class World {
 		};
 	}
 
+	static removeTiles() {
+		World.tiles = [];
+	}
+
+	static resetItems() {
+		return {
+			floor: [],
+			decoration: [],
+			wall: [],
+			roof: [],
+			wallElement: []
+		};
+	}
+
 	static tiles = [];
-	static items = {
-		floor: [],
-		decoration: [],
-		wall: [],
-		roof: [],
-		wallElement: []
-	};
+	static items = this.resetItems();
 }
 
 class Tile {

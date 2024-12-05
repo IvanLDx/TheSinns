@@ -28,6 +28,10 @@ class FS {
 		return tryCatch(() => JSON.parse(this.read('server/data/accounts/' + accountName + '.json')));
 	}
 
+	static readWorld(worldID) {
+		return tryCatch(() => JSON.parse(this.read('server/data/worlds/' + worldID + '.json')));
+	}
+
 	static readHtpasswd() {
 		return this.read('../.htpasswds/.theSinnsHtpasswd');
 	}
