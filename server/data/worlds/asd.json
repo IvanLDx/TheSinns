@@ -1,31 +1,147 @@
 [
-	{
-		"x": 527,
-		"y": 164,
-		"w": 20,
-		"h": 28,
-		"type": "floor",
-		"url": "floor/blue",
-		"name": "tile1",
-		"image": {},
-		"rotation": 0,
-		"locationType": "WorldItem",
-		"id": "20241104-131947-7561",
-		"touchedTile": {
-			"id": "3-0",
-			"col": 30,
-			"row": -15,
-			"colID": 3,
-			"rowID": 0
-		},
-		"touchedItems": [],
-		"position": {
-			"x": 588,
-			"y": 222,
-			"w": 80,
-			"h": 112
-		},
-		"destinationY": 222,
-		"maxRotation": 0
-	}
+    {
+        "x": 527,
+        "y": 164,
+        "w": 20,
+        "h": 28,
+        "type": "floor",
+        "url": "floor/blue",
+        "name": "tile1",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241104-131947-7561",
+        "touchedTile": {
+            "id": "3-0",
+            "col": 30,
+            "row": -15,
+            "colID": 3,
+            "rowID": 0
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 664,
+            "y": 170,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 170,
+        "maxRotation": 0
+    },
+    {
+        "x": 732,
+        "y": 297,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/yellow",
+        "name": "halfbrick",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241205-225602-8602",
+        "touchedTile": {
+            "id": "1-4",
+            "col": 50,
+            "row": 15,
+            "colID": 1,
+            "rowID": 4
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 744,
+            "y": 290,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 290,
+        "maxRotation": 0
+    },
+    {
+        "x": 755,
+        "y": 310,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/yellow",
+        "name": "worn",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241205-225538-6649",
+        "touchedTile": {
+            "id": "1-5",
+            "col": 60,
+            "row": 20,
+            "colID": 1,
+            "rowID": 5
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 784,
+            "y": 310,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 310,
+        "maxRotation": 3
+    },
+    {
+        "x": 798,
+        "y": 307,
+        "w": 20,
+        "h": 28,
+        "type": "wallElement",
+        "url": "wallElement/blue",
+        "name": "doorWindow2",
+        "image": {},
+        "rotation": 1,
+        "locationType": "WorldItem",
+        "id": "20241205-230842-8097",
+        "touchedTile": {
+            "id": "1-5",
+            "col": 60,
+            "row": 20,
+            "colID": 1,
+            "rowID": 5
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 784,
+            "y": 310,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 310,
+        "maxRotation": 3
+    },
+    {
+        "x": 706,
+        "y": 295,
+        "w": 20,
+        "h": 28,
+        "type": "floor",
+        "url": "floor/yellow",
+        "name": "tile2",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241205-225607-7475",
+        "touchedTile": {
+            "id": "0-4",
+            "col": 40,
+            "row": 20,
+            "colID": 0,
+            "rowID": 4
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 704,
+            "y": 310,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 310,
+        "maxRotation": 1
+    }
 ]

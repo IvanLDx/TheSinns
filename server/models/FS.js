@@ -32,6 +32,13 @@ class FS {
 		return tryCatch(() => JSON.parse(this.read('server/data/worlds/' + worldID + '.json')));
 	}
 
+	static writeWorld(worldID, worldItemsObj) {
+		if (typeof worldItemsObj === 'object') {
+			let worldItems = JSON.stringify(worldItemsObj, null, 4);
+			fs.writeFileSync('server/data/worlds/' + worldID + '.json', worldItems);
+		}
+	}
+
 	static readHtpasswd() {
 		return this.read('../.htpasswds/.theSinnsHtpasswd');
 	}

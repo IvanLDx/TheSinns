@@ -1,9 +1,12 @@
 import { Tile } from './Tile.js';
 import { Modal } from './components/Modal/Modal.js';
+import { BurgerButton } from './components/BurgerMenu/BurgerButton.js';
+import * as documentListeners from '../helpers/documentListeners.js';
 import { ModalItem } from './Item/ModalItem.js';
 import { GrabbedItem } from './Item/GrabbedItem.js';
 import { WorldItem } from './Item/WorldItem.js';
 import { SelfPlayer } from './SelfPlayer.js';
+import { stage } from './Stage.js';
 
 let worldItems = [];
 let occupiedTiles = [];
@@ -18,12 +21,23 @@ export class Socket {
 		socket = Socket.get();
 
 		socket.on('selectWorld-OK', (data) => {
+			stage.change('world');
+
+			const interfaceElements = [Modal.create(), BurgerButton.create()];
+			cam.resizeInterface(interfaceElements);
+			documentListeners.init();
+
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
 			ModalItem.createList(data.itemData);
 			const modal = Modal.getElement();
 			modal.appendItems(ModalItem.list);
 			modal.pagination.set();
+		});
+
+		socket.on('disconnect', (reason) => {
+			stage.change('login');
+			stage.sendDisconnectedMsg();
 		});
 	}
 

@@ -1,4 +1,4 @@
-const fs = require('fs');
+const FS = require('../server/models/FS');
 const List = require('./models/List');
 const Player = require('./models/Player');
 const World = require('./models/World');
@@ -17,6 +17,7 @@ class Socket extends List {
 		this.userMenu = new UserMenu(this, Socket);
 		this.#initOnEvents();
 		this.token = null;
+		this.worldID;
 
 		this.login.initEvents();
 		this.userMenu.initEvents();
@@ -35,8 +36,9 @@ class Socket extends List {
 
 		this.on('saveWorld', (pack) => {
 			this.token.restore();
-			let worldItems = JSON.stringify(pack.worldItems, null, 4);
-			fs.writeFileSync('server/data/savedWorld.json', worldItems);
+			if (this.worldID) {
+				FS.writeWorld(this.worldID, pack.worldItems);
+			}
 		});
 
 		this.on('removeItemFromWorld', (pack) => {
@@ -67,6 +69,10 @@ class Socket extends List {
 
 	setToken() {
 		this.token = Token.get(this.id);
+	}
+
+	setWorldID(worldID) {
+		this.worldID = worldID;
 	}
 
 	emit(eventName, options) {

@@ -1,6 +1,8 @@
+const fs = require('fs');
+let initialized = false;
+
 function getFilesFromPath(selectedPath) {
 	const path = require('path');
-	const fs = require('fs');
 	const directoryPath = path.join(dirName, 'client/img/' + selectedPath);
 	const files = fs.readdirSync(directoryPath);
 	const fileNames = files.map((file) => file.replace('.png', ''));
@@ -9,7 +11,7 @@ function getFilesFromPath(selectedPath) {
 
 const ServerModalItem = require('../models/ServerModalItem');
 
-const ServerModalItems = {
+const serverModalItems = {
 	roof: {
 		yellow: [],
 		blue: [],
@@ -46,33 +48,22 @@ const ServerModalItems = {
 function getItems(url) {
 	let folders = url.split('/');
 	getFilesFromPath(url).forEach((item) => {
-		ServerModalItems[folders[0]][folders[1]].push(new ServerModalItem({ url: url, name: item }));
+		serverModalItems[folders[0]][folders[1]].push(new ServerModalItem({ url: url, name: item }));
 	});
 }
 
-getItems('roof/yellow');
-getItems('roof/blue');
-getItems('roof/green');
-getItems('roof/red');
+function initialize() {
+	if (!initialized) {
+		Object.entries(serverModalItems).forEach(([section, type]) => {
+			Object.entries(type).forEach(([key, val]) => {
+				getItems(`${section}/${key}`);
+			});
+		});
 
-getItems('wall/yellow');
-getItems('wall/blue');
-getItems('wall/green');
-getItems('wall/red');
+		initialized = true;
+	}
 
-getItems('wallElement/yellow');
-getItems('wallElement/blue');
-getItems('wallElement/green');
-getItems('wallElement/red');
+	return serverModalItems;
+}
 
-getItems('decoration/yellow');
-getItems('decoration/blue');
-getItems('decoration/green');
-getItems('decoration/red');
-
-getItems('floor/yellow');
-getItems('floor/blue');
-getItems('floor/green');
-getItems('floor/red');
-
-module.exports = ServerModalItems;
+module.exports = initialize();

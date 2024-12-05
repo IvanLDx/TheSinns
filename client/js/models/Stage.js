@@ -1,3 +1,5 @@
+import { $ } from '../dom.js';
+
 class Stage {
 	constructor() {
 		this.body = document.body;
@@ -10,6 +12,14 @@ class Stage {
 		if (this[stage]) {
 			this.body.setAttribute('data-stage', this[stage]);
 		}
+	}
+
+	sendDisconnectedMsg() {
+		const $disconnectedMsg = $('.disconnected-msg');
+		$disconnectedMsg.addClass('show');
+		setTimeout(() => {
+			$disconnectedMsg.removeClass('show');
+		}, 5000);
 	}
 
 	static get() {

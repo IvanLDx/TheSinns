@@ -32,11 +32,11 @@ body[data-stage='world'] .canvas {
 	display: block;
 }
 
-.expiration-msg {
+.login-msg {
 	display: none;
 }
 
-.expiration-msg.show {
+.login-msg.show {
 	display: block;
 }
 

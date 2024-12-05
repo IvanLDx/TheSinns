@@ -10,15 +10,15 @@ class UserMenu {
 	}
 
 	initEvents() {
-		this.socket.on('enterWorld', () => {
-			this.socket.emit('enterWorld-OK', {});
-		});
-
 		this.socket.on('selectWorld', (data) => {
 			const world = new World(data.world);
 			world.setMap();
+
+			this.socket.setWorldID(data.world.id);
+
 			world.openMap(data.world.id).then(() => {
 				this.socket.emit('newPosition', World.getPack());
+
 				this.socket.emit('selectWorld-OK', {
 					id: this.socket.id,
 					itemData: itemData,
