@@ -1,10 +1,8 @@
 const FS = req('models/FS');
 const List = req('models/List');
 const Player = req('models/Player');
-const World = req('models/World');
 const Login = req('socket/Login');
 const UserMenu = req('socket/UserMenu');
-const itemData = req('data/serverModalitems');
 const Token = req('scripts/Token');
 
 class Socket extends List {
@@ -17,6 +15,7 @@ class Socket extends List {
 		this.userMenu = new UserMenu(this, Socket);
 		this.#initOnEvents();
 		this.token = null;
+		this.world = null;
 		this.worldID;
 
 		this.login.initEvents();
@@ -26,11 +25,11 @@ class Socket extends List {
 	#initOnEvents() {
 		this.on('placeGrabbedItem', (pack) => {
 			this.token.restore();
-			let tile = World.findByID(pack.grabbedItem.touchedTile.id);
+			let tile = this.world.findByID(pack.grabbedItem.touchedTile.id);
 			let grabbedItem = pack.grabbedItem;
 			if (tile && !tile.isTypeOccupied(grabbedItem)) {
-				World.placeItem(grabbedItem, tile);
-				Socket.emitWorldPosition(World.getPack());
+				this.world.placeItem(grabbedItem, tile);
+				Socket.emitWorldPosition(this.world.getPack());
 			}
 		});
 
@@ -43,32 +42,28 @@ class Socket extends List {
 
 		this.on('removeItemFromWorld', (pack) => {
 			this.token.restore();
-			World.findByID(pack.item.touchedTile.id, (tile) => {
+			this.world.findByID(pack.item.touchedTile.id, (tile) => {
 				tile.occupied[pack.item.type] = false;
 				tile.occupied.some = tile.isOccupied();
 			});
-			const itemType = World.items[pack.item.type];
+			const itemType = this.world.items[pack.item.type];
 			itemType.forEach((item, i) => {
 				if (pack.item.id === item.id) {
 					itemType.splice(i, 1);
 				}
 			});
 
-			Socket.emitWorldPosition(World.getPack());
-		});
-	}
-
-	initEmitEvents() {
-		this.emit('init', {
-			id: this.self.id,
-			itemData: itemData,
-			playerList: Player.list,
-			world: World.tiles
+			Socket.emitWorldPosition(this.world.getPack());
 		});
 	}
 
 	setToken() {
 		this.token = Token.get(this.id);
+	}
+
+	setWorld(world) {
+		this.world = world;
+		return this.world;
 	}
 
 	setWorldID(worldID) {

@@ -11,19 +11,20 @@ class UserMenu {
 
 	initEvents() {
 		this.socket.on('selectWorld', (data) => {
-			const world = new World(data.world);
+			const world = World.create(data.world);
 			world.setMap();
 
+			this.socket.setWorld(world);
 			this.socket.setWorldID(data.world.id);
 
 			world.openMap(data.world.id).then(() => {
-				this.socket.emit('newPosition', World.getPack());
+				this.socket.emit('newPosition', world.getPack());
 
 				this.socket.emit('selectWorld-OK', {
 					id: this.socket.id,
 					itemData: itemData,
 					playerList: Player.list,
-					world: World.tiles
+					world: world.tiles
 				});
 			});
 		});

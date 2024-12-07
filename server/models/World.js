@@ -1,4 +1,5 @@
 const FS = require('./FS');
+const List = req('models/List');
 
 /**
  * @World_Class
@@ -18,8 +19,9 @@ const FS = require('./FS');
  * and occupancy status.
  */
 
-class World {
+class World extends List {
 	constructor(worldData) {
+		super();
 		let [w, h] = worldData.size.split('x');
 		this.id = worldData.id;
 		this.w = parseInt(w, 10);
@@ -28,45 +30,25 @@ class World {
 			w: 20,
 			h: 10
 		};
+		this.tiles = [];
+		this.items = this.resetItems();
 	}
 
-	setMap() {
-		World.removeTiles();
-		World.items = World.resetItems();
-
-		for (let row = 0; row < this.h; row += 1) {
-			for (let col = 0; col < this.w; col += 1) {
-				new Tile(col, row);
-			}
-		}
-	}
-
-	openMap(worldID) {
-		return new Promise((resolve, reject) => {
-			const worldItems = FS.readWorld(worldID);
-			worldItems.forEach((item) => {
-				World.placeItem(item);
-			});
-			resolve();
-		});
-	}
-
-	static getOccupiedTiles() {
-		return World.tiles.filter((tile) => {
+	getOccupiedTiles() {
+		return this.tiles.filter((tile) => {
 			return tile.occupied.some;
 		});
 	}
 
-	static placeItem(item, tile) {
-		World.items[item.type].push(item);
-
-		tile = tile || World.findByID(item.touchedTile.id);
-		tile.occupied[item.type] = true;
-		tile.occupied.some = true;
+	getPack() {
+		return {
+			occupiedTiles: this.getOccupiedTiles(),
+			worldItems: this.items
+		};
 	}
 
-	static findByID(id, callback = null) {
-		let found = World.tiles.find((el) => {
+	findByID(id, callback = null) {
+		let found = this.tiles.find((el) => {
 			return el.id === id;
 		});
 		if (found && callback) {
@@ -75,18 +57,15 @@ class World {
 		return found;
 	}
 
-	static getPack() {
-		return {
-			occupiedTiles: World.getOccupiedTiles(),
-			worldItems: World.items
-		};
+	placeItem(item, tile) {
+		this.items[item.type].push(item);
+
+		tile = tile || this.findByID(item.touchedTile.id);
+		tile.occupied[item.type] = true;
+		tile.occupied.some = true;
 	}
 
-	static removeTiles() {
-		World.tiles = [];
-	}
-
-	static resetItems() {
+	resetItems() {
 		return {
 			floor: [],
 			decoration: [],
@@ -96,12 +75,40 @@ class World {
 		};
 	}
 
-	static tiles = [];
-	static items = this.resetItems();
+	removeTiles() {
+		this.tiles = [];
+	}
+
+	setMap() {
+		this.removeTiles();
+		this.items = this.resetItems();
+
+		for (let row = 0; row < this.h; row += 1) {
+			for (let col = 0; col < this.w; col += 1) {
+				new Tile(col, row, this);
+			}
+		}
+	}
+
+	openMap(worldID) {
+		return new Promise((resolve, reject) => {
+			const worldItems = FS.readWorld(worldID);
+			worldItems.forEach((item) => {
+				this.placeItem(item);
+			});
+			resolve();
+		});
+	}
+
+	static create(worldData) {
+		const world = new World(worldData);
+		super.create(world);
+		return world;
+	}
 }
 
 class Tile {
-	constructor(col, row) {
+	constructor(col, row, world) {
 		this.id = col + '-' + row;
 		this.img = {
 			file: 'floor',
@@ -129,7 +136,7 @@ class Tile {
 			floor: false
 		};
 
-		World.tiles.push(this);
+		world.tiles.push(this);
 	}
 
 	isTypeOccupied(grabbedItem) {
