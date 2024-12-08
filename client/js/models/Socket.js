@@ -15,7 +15,7 @@ let socket = null;
 export class Socket {
 	constructor() {
 		this.init();
-		this.newPosition();
+		this.positionEvents();
 	}
 	init() {
 		socket = Socket.get();
@@ -41,10 +41,29 @@ export class Socket {
 		});
 	}
 
-	newPosition() {
+	positionEvents() {
 		socket.on('newPosition', function (data) {
 			occupiedTiles = data.occupiedTiles.map((e) => e.id);
 			worldItems = WorldItem.create(data.worldItems, occupiedTiles);
+		});
+
+		socket.on('placeGrabbedItem-OK', function (data) {
+			Tile.setOccupiedTile(occupiedTiles, data.tileToUpdate);
+			worldItems = WorldItem.push(data.item);
+		});
+
+		socket.on('removeItemFromWorld-OK', function (data) {
+			if (data.tileToUpdate.some) {
+				Tile.setOccupiedTile(occupiedTiles, data.tileToUpdate);
+			} else {
+				occupiedTiles.forEach((tile, i) => {
+					if (tile.id === data.tileToUpdate.id) {
+						occupiedTiles.splice(i, 1);
+					}
+				});
+			}
+
+			WorldItem.delete(data.itemToRemove);
 		});
 	}
 

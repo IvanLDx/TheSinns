@@ -29,7 +29,12 @@ class Socket extends List {
 			let grabbedItem = pack.grabbedItem;
 			if (tile && !tile.isTypeOccupied(grabbedItem)) {
 				this.world.placeItem(grabbedItem, tile);
-				Socket.emitWorldPosition(this.world.getPack());
+				const tileToUpdateLite = this.world.getTileToUpdateLite(tile);
+
+				this.self.emit('placeGrabbedItem-OK', {
+					item: grabbedItem,
+					tileToUpdate: tileToUpdateLite
+				});
 			}
 		});
 
@@ -42,7 +47,7 @@ class Socket extends List {
 
 		this.on('removeItemFromWorld', (pack) => {
 			this.token.restore();
-			this.world.findByID(pack.item.touchedTile.id, (tile) => {
+			const tileToUpdate = this.world.findByID(pack.item.touchedTile.id, (tile) => {
 				tile.occupied[pack.item.type] = false;
 				tile.occupied.some = tile.isOccupied();
 			});
@@ -53,7 +58,10 @@ class Socket extends List {
 				}
 			});
 
-			Socket.emitWorldPosition(this.world.getPack());
+			this.removeItemFromWorldOK({
+				item: pack.item,
+				tileToUpdate: tileToUpdate
+			});
 		});
 	}
 
@@ -80,18 +88,35 @@ class Socket extends List {
 		});
 	}
 
-	static emitWorldPosition(pack) {
-		Socket.each((socket) => {
-			socket.self.emit('newPosition', pack);
+	emitNewPosition() {
+		this.self.emit('newPosition', this.world.getPack());
+	}
+
+	removeItemFromWorldOK(pack) {
+		const tileToUpdateLite = this.world.getTileToUpdateLite(pack.tileToUpdate);
+
+		this.self.emit('removeItemFromWorld-OK', {
+			tileToUpdate: tileToUpdateLite,
+			itemToRemove: pack.item.id
+		});
+	}
+
+	emitUpdatePosition(pack) {
+		const tileToUpdate = {
+			id: pack.tileToUpdate.id,
+			occupied: pack.tileToUpdate.occupied
+		};
+
+		this.self.emit('removeTileItemPosition', {
+			tileToUpdate: tileToUpdate,
+			itemToRemove: pack.item.id
 		});
 	}
 
 	static create(socket) {
 		const newSocket = new Socket(socket);
-		Socket.list.push(newSocket);
+		super.create(newSocket);
 	}
-
-	static list = [];
 }
 
 module.exports = Socket;

@@ -35,7 +35,7 @@ export class WorldItem extends Item {
 			utils.forEachObject(worldItems, (itemTypes, type) => {
 				itemTypes.forEach((item, i) => {
 					if (tile === item.touchedTile.id) {
-						WorldItem.push(new WorldItem(item));
+						WorldItem.push(item);
 						worldItems[type].splice(i, 1);
 					}
 				});
@@ -43,6 +43,10 @@ export class WorldItem extends Item {
 		});
 
 		return WorldItem.list;
+	}
+
+	static push(item) {
+		return super.push(new WorldItem(item));
 	}
 
 	static paint() {

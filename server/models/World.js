@@ -1,5 +1,4 @@
 const FS = require('./FS');
-const List = req('models/List');
 
 /**
  * @World_Class
@@ -19,9 +18,8 @@ const List = req('models/List');
  * and occupancy status.
  */
 
-class World extends List {
+class World {
 	constructor(worldData) {
-		super();
 		let [w, h] = worldData.size.split('x');
 		this.id = worldData.id;
 		this.w = parseInt(w, 10);
@@ -38,6 +36,13 @@ class World extends List {
 		return this.tiles.filter((tile) => {
 			return tile.occupied.some;
 		});
+	}
+
+	getTileToUpdateLite(tileToUpdate) {
+		return {
+			id: tileToUpdate.id,
+			occupied: tileToUpdate.occupied
+		};
 	}
 
 	getPack() {
@@ -102,7 +107,6 @@ class World extends List {
 
 	static create(worldData) {
 		const world = new World(worldData);
-		super.create(world);
 		return world;
 	}
 }

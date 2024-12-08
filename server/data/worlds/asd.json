@@ -29,93 +29,6 @@
         "maxRotation": 0
     },
     {
-        "x": 632,
-        "y": 218,
-        "w": 20,
-        "h": 28,
-        "type": "wall",
-        "url": "wall/yellow",
-        "name": "halfbrick",
-        "image": {},
-        "rotation": 0,
-        "locationType": "WorldItem",
-        "id": "20241205-234955-4429",
-        "touchedTile": {
-            "id": "1-1",
-            "col": 20,
-            "row": 0,
-            "colID": 1,
-            "rowID": 1
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 624,
-            "y": 230,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 230,
-        "maxRotation": 0
-    },
-    {
-        "x": 619,
-        "y": 235,
-        "w": 20,
-        "h": 28,
-        "type": "wallElement",
-        "url": "wallElement/yellow",
-        "name": "door2",
-        "image": {},
-        "rotation": 0,
-        "locationType": "WorldItem",
-        "id": "20241205-234958-3807",
-        "touchedTile": {
-            "id": "1-1",
-            "col": 20,
-            "row": 0,
-            "colID": 1,
-            "rowID": 1
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 624,
-            "y": 230,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 230,
-        "maxRotation": 3
-    },
-    {
-        "x": 732,
-        "y": 297,
-        "w": 20,
-        "h": 28,
-        "type": "wall",
-        "url": "wall/yellow",
-        "name": "halfbrick",
-        "image": {},
-        "rotation": 0,
-        "locationType": "WorldItem",
-        "id": "20241205-225602-8602",
-        "touchedTile": {
-            "id": "1-4",
-            "col": 50,
-            "row": 15,
-            "colID": 1,
-            "rowID": 4
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 744,
-            "y": 290,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 290,
-        "maxRotation": 0
-    },
-    {
         "x": 755,
         "y": 310,
         "w": 20,
@@ -145,66 +58,8 @@
         "maxRotation": 3
     },
     {
-        "x": 798,
-        "y": 307,
-        "w": 20,
-        "h": 28,
-        "type": "wallElement",
-        "url": "wallElement/blue",
-        "name": "doorWindow2",
-        "image": {},
-        "rotation": 1,
-        "locationType": "WorldItem",
-        "id": "20241205-230842-8097",
-        "touchedTile": {
-            "id": "1-5",
-            "col": 60,
-            "row": 20,
-            "colID": 1,
-            "rowID": 5
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 784,
-            "y": 310,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 310,
-        "maxRotation": 3
-    },
-    {
-        "x": 706,
-        "y": 295,
-        "w": 20,
-        "h": 28,
-        "type": "floor",
-        "url": "floor/yellow",
-        "name": "tile2",
-        "image": {},
-        "rotation": 0,
-        "locationType": "WorldItem",
-        "id": "20241205-225607-7475",
-        "touchedTile": {
-            "id": "0-4",
-            "col": 40,
-            "row": 20,
-            "colID": 0,
-            "rowID": 4
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 704,
-            "y": 310,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 310,
-        "maxRotation": 1
-    },
-    {
-        "x": 829,
-        "y": 359,
+        "x": 544,
+        "y": 222,
         "w": 20,
         "h": 28,
         "type": "wall",
@@ -213,22 +68,51 @@
         "image": {},
         "rotation": 0,
         "locationType": "WorldItem",
-        "id": "20241205-233836-3335",
+        "id": "20241208-213926-3198",
         "touchedTile": {
-            "id": "0-7",
-            "col": 70,
-            "row": 35,
+            "id": "0-0",
+            "col": 0,
+            "row": 0,
             "colID": 0,
-            "rowID": 7
+            "rowID": 0
         },
         "touchedItems": [],
         "position": {
-            "x": 824,
-            "y": 370,
+            "x": 544,
+            "y": 230,
             "w": 80,
             "h": 112
         },
-        "destinationY": 370,
+        "destinationY": 230,
         "maxRotation": 1
+    },
+    {
+        "x": 591,
+        "y": 258,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/yellow",
+        "name": "halfbrick",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241208-213929-6086",
+        "touchedTile": {
+            "id": "0-1",
+            "col": 10,
+            "row": 5,
+            "colID": 0,
+            "rowID": 1
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 584,
+            "y": 250,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 250,
+        "maxRotation": 0
     }
 ]

@@ -1073,8 +1073,8 @@
         "maxRotation": 0
     },
     {
-        "x": 537,
-        "y": 229,
+        "x": 543,
+        "y": 225,
         "w": 20,
         "h": 28,
         "type": "floor",
@@ -1083,7 +1083,7 @@
         "image": {},
         "rotation": 0,
         "locationType": "WorldItem",
-        "id": "20241206-001951-8888",
+        "id": "20241207-120619-4625",
         "touchedTile": {
             "id": "0-0",
             "col": 0,
@@ -1102,8 +1102,8 @@
         "maxRotation": 1
     },
     {
-        "x": 451,
-        "y": 240,
+        "x": 581,
+        "y": 243,
         "w": 20,
         "h": 28,
         "type": "floor",
@@ -1112,7 +1112,7 @@
         "image": {},
         "rotation": 0,
         "locationType": "WorldItem",
-        "id": "20241104-131935-1818",
+        "id": "20241207-120546-8597",
         "touchedTile": {
             "id": "0-1",
             "col": 10,
