@@ -27,7 +27,6 @@ export const utils = {
 		evt();
 		let stop = new Date().getTime();
 		let result = stop - start;
-		_(result);
 		return result;
 	},
 	getDestinationYByType(y, h, type) {
@@ -43,4 +42,17 @@ export function ifis(element, callback) {
 	if (element) {
 		callback(element);
 	}
+}
+
+let debouncingTimeout = null;
+export function debounce(callback, delay = 200) {
+	return function () {
+		if (debouncingTimeout) {
+			clearTimeout(debouncingTimeout);
+		}
+		debouncingTimeout = setTimeout(() => {
+			callback();
+			clearTimeout(debouncingTimeout);
+		}, delay);
+	};
 }

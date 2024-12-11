@@ -16,10 +16,16 @@ class Socket extends List {
 		this.#initOnEvents();
 		this.token = null;
 		this.world = null;
-		this.worldID;
 
 		this.login.initEvents();
 		this.userMenu.initEvents();
+	}
+
+	#saveWorld(worldItems) {
+		this.token.restore();
+		if (this.world && this.world.id) {
+			FS.writeWorld(this.world.id, worldItems);
+		}
 	}
 
 	#initOnEvents() {
@@ -29,20 +35,18 @@ class Socket extends List {
 			let grabbedItem = pack.grabbedItem;
 			if (tile && !tile.isTypeOccupied(grabbedItem)) {
 				this.world.placeItem(grabbedItem, tile);
-				const tileToUpdateLite = this.world.getTileToUpdateLite(tile);
-
-				this.self.emit('placeGrabbedItem-OK', {
-					item: grabbedItem,
-					tileToUpdate: tileToUpdateLite
-				});
+				this.self.emit('newPosition', this.world.getPack());
 			}
 		});
 
 		this.on('saveWorld', (pack) => {
-			this.token.restore();
-			if (this.worldID) {
-				FS.writeWorld(this.worldID, pack.worldItems);
-			}
+			this.#saveWorld(pack.worldItems);
+		});
+
+		this.on('exitWorld', (pack) => {
+			this.#saveWorld(pack.worldItems);
+			this.world = null;
+			this.emit('exitWorld-OK');
 		});
 
 		this.on('removeItemFromWorld', (pack) => {
@@ -72,10 +76,6 @@ class Socket extends List {
 	setWorld(world) {
 		this.world = world;
 		return this.world;
-	}
-
-	setWorldID(worldID) {
-		this.worldID = worldID;
 	}
 
 	emit(eventName, options) {

@@ -114,6 +114,11 @@ export class Modal extends Container {
 		return this.items;
 	}
 
+	static delete() {
+		this.element = null;
+		return null;
+	}
+
 	static create() {
 		if (!this.element) {
 			this.element = new Modal();

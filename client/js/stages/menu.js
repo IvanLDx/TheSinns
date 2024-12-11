@@ -3,7 +3,7 @@ import * as menuHelpers from './menuHelpers.js';
 let initialized = false;
 
 function initializeSocket() {
-	const socket = Socket.get();
+	const socket = Socket.getLibrary();
 
 	menuHelpers.onClickWorldSheet((e, $worldSheet) => {
 		const world = {

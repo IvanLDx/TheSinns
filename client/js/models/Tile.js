@@ -82,12 +82,12 @@ export class Tile extends List {
 	}
 
 	static setOccupiedTile(occupiedTiles, tileToUpdate) {
-		const occupiedTile = occupiedTiles.find((tile) => {
-			return tile.id === tileToUpdate.id;
+		const occupiedTile = occupiedTiles.some((tileID) => {
+			return tileID === tileToUpdate.id;
 		});
 
-		if (occupiedTile) {
-			occupiedTile.occupied = tileToUpdate.occupied;
+		if (!occupiedTile) {
+			occupiedTiles.push(tileToUpdate.id);
 		}
 	}
 }

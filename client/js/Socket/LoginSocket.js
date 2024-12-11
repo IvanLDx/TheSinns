@@ -2,7 +2,7 @@ import { ifis } from '../utils.js';
 import { stage } from '../models/Stage.js';
 import { Socket } from '../models/Socket.js';
 import * as menuHelpers from '../stages/menuHelpers.js';
-const socket = Socket.get();
+const socket = Socket.getLibrary();
 
 export class LoginSocket {
 	constructor() {

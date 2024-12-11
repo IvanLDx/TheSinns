@@ -2,13 +2,14 @@ import { Camera } from './models/Camera.js';
 import { SelfPlayer } from './models/SelfPlayer.js';
 import { MouseModel } from './models/Mouse.js';
 import { Socket } from './models/Socket.js';
-import { utils } from './utils.js';
+import { utils, debounce } from './utils.js';
 
 import { Modal } from './models/components/Modal/Modal.js';
 import { Tile } from './models/Tile.js';
 import { GrabbedItem } from './models/Item/GrabbedItem.js';
 import { WorldItem } from './models/Item/WorldItem.js';
 
+import { Button } from './models/components/Button.js';
 import { BurgerButton } from './models/components/BurgerMenu/BurgerButton.js';
 import { ItemPopup } from './models/Item/components/ItemPopup.js';
 
@@ -16,16 +17,13 @@ window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
 window.cam = new Camera();
 window.mouse = new MouseModel();
-window._ = console.log.bind(window.console);
 
-const modal = Modal.create();
-const burgerButton = BurgerButton.create();
+const socket = Socket.getLibrary();
+let modal;
+let burgerButton;
 let selfPlayer;
+let gameInterval = null;
 Socket.start();
-
-const interfaceElements = [modal, burgerButton];
-
-cam.resizeInterface(interfaceElements);
 
 function act() {
 	selfPlayer = SelfPlayer.element;
@@ -55,12 +53,37 @@ function paint() {
 	}
 }
 
-document.querySelector('body').onresize = function () {
+function init() {
+	modal = Modal.create();
+	burgerButton = BurgerButton.create();
+
+	const interfaceElements = [modal, burgerButton];
 	cam.resizeInterface(interfaceElements);
-};
+
+	gameInterval = setInterval(act, 1000 / 60);
+
+	document.querySelector('body').onresize = debounce(() => {
+		cam.resizeInterface(interfaceElements);
+	});
+}
+
+function stopEvents() {
+	modal = Modal.delete();
+	burgerButton = BurgerButton.delete();
+	Button.deleteList();
+
+	document.querySelector('body').onresize = null;
+}
 
 document.oncontextmenu = function (e) {
 	e.preventDefault();
 };
 
-setInterval(act, 1000 / 60);
+socket.on('selectWorld-OK', (data) => {
+	init();
+});
+
+socket.on('exitWorld-OK', () => {
+	stopEvents();
+	clearInterval(gameInterval);
+});

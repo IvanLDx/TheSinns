@@ -18,7 +18,7 @@ export class Socket {
 		this.positionEvents();
 	}
 	init() {
-		socket = Socket.get();
+		socket = Socket.getLibrary();
 
 		socket.on('selectWorld-OK', (data) => {
 			stage.change('world');
@@ -48,22 +48,29 @@ export class Socket {
 		});
 
 		socket.on('placeGrabbedItem-OK', function (data) {
-			Tile.setOccupiedTile(occupiedTiles, data.tileToUpdate);
-			worldItems = WorldItem.push(data.item);
+			occupiedTiles = data.occupiedTiles.map((e) => e.id);
+			worldItems = WorldItem.update(data.worldItems, occupiedTiles);
 		});
 
 		socket.on('removeItemFromWorld-OK', function (data) {
 			if (data.tileToUpdate.some) {
 				Tile.setOccupiedTile(occupiedTiles, data.tileToUpdate);
 			} else {
-				occupiedTiles.forEach((tile, i) => {
-					if (tile.id === data.tileToUpdate.id) {
+				occupiedTiles.forEach((tileID, i) => {
+					if (tileID === data.tileToUpdate.id) {
 						occupiedTiles.splice(i, 1);
 					}
 				});
 			}
 
 			WorldItem.delete(data.itemToRemove);
+		});
+
+		socket.on('exitWorld-OK', () => {
+			Modal.delete();
+			BurgerButton.delete();
+			documentListeners.stop();
+			stage.change('menu');
 		});
 	}
 
@@ -74,7 +81,9 @@ export class Socket {
 	}
 
 	static exitWorld() {
-		this.saveWorld();
+		socket.emit('exitWorld', {
+			worldItems: WorldItem.list
+		});
 	}
 
 	static placeGrabbedItem() {
@@ -90,10 +99,20 @@ export class Socket {
 	}
 
 	static start() {
-		new Socket();
+		return this.get();
 	}
 
 	static get() {
+		if (!this.instance) {
+			this.instance = new Socket();
+		}
+
+		return this.instance;
+	}
+
+	static instance = null;
+
+	static getLibrary() {
 		if (!this.io) {
 			this.io = io();
 		}

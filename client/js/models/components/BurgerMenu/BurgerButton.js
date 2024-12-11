@@ -51,4 +51,9 @@ export class BurgerButton extends Button {
 		}
 		return this.element;
 	}
+
+	static delete() {
+		this.element = null;
+		return null;
+	}
 }

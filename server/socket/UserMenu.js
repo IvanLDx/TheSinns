@@ -15,7 +15,6 @@ class UserMenu {
 			world.setMap();
 
 			this.socket.setWorld(world);
-			this.socket.setWorldID(data.world.id);
 
 			world.openMap(data.world.id).then(() => {
 				this.socket.emit('newPosition', world.getPack());

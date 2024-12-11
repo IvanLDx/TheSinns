@@ -34,5 +34,8 @@ export class List {
 	static getList() {
 		return this.list;
 	}
+	static deleteList() {
+		this.list = [];
+	}
 	static list = [];
 }
