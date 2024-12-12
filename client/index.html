@@ -23,7 +23,7 @@
 				<label for="password">Contrasinal</label>
 				<input id="password" name="password" type="password" autocomplete="current-password" />
 
-				<input name="honeypot" type="hidden" />
+				<input name="honeypot" type="text" />
 				<input class="csrf-token" type="hidden" name="csrf_token" />
 
 				<input class="submit" type="submit" value="Dálle!" />
@@ -43,7 +43,33 @@
 			<div class="worlds-container">
 				<div class="prototype__world-sheet">
 					<div class="world-image"></div>
-					<p class="world-name">Name yeah</p>
+					<p class="world-name"></p>
+				</div>
+
+				<div class="world-sheet world-sheet--new" data-type="new">
+					<div class="world-sheet--new__container">
+						<div class="world-image"></div>
+
+						<p class="world-name">Crea un novo terreo</p>
+
+						<form class="new-world-form">
+							<label for="world-name">
+								<span>Nome:</span>
+								<input id="world-name" type="text" name="world-name" autocomplete="off" />
+							</label>
+							<input type="range" min="6" max="60" name="world-width" value="10" />
+							<input type="range" min="6" max="60" name="world-height" value="18" />
+							<input type="text" name="honeypot" />
+							<input class="csrf-token" type="hidden" name="csrf_token" />
+
+							<div class="world-cta__container">
+								<button class="world-cta world-create" type="submit">Dálle!</button>
+								<button class="world-cta world-cancel" type="button">Cancelar</button>
+							</div>
+
+							<p class="error-msg"></p>
+						</form>
+					</div>
 				</div>
 			</div>
 

@@ -1,6 +1,8 @@
 import { $ } from '../dom.js';
 let $worldsContainer;
 let $prototypeWorldSheet;
+let $newWorldSheet;
+let $errorMsg;
 
 export function paintWorlds(worlds) {
 	worlds.forEach((world) => {
@@ -13,20 +15,30 @@ export function paintWorlds(worlds) {
 
 		const $worldName = $worldSheet.find('.world-name');
 		$worldName.textContent = world.name;
-		$worldsContainer.appendChild($worldSheet);
+		$newWorldSheet.insertAdjacentElement('beforebegin', $worldSheet);
 	});
 }
 
 export function onClickWorldSheet(callback) {
 	$worldsContainer.click('.world-sheet', (e, $worldSheet) => {
-		callback(e, $worldSheet);
+		$errorMsg.removeClass('show');
+		if (!$worldSheet.hasClass('edit') && !e.target.closest('.world-cta')) {
+			callback(e, $worldSheet);
+		}
 	});
+}
+
+export function closeWorldEditForm(e) {
+	e.preventDefault();
+	$newWorldSheet.removeClass('edit');
 }
 
 function init() {
 	if (!$worldsContainer) {
 		$worldsContainer = $('.worlds-container');
 		$prototypeWorldSheet = $worldsContainer.find('.prototype__world-sheet');
+		$newWorldSheet = $worldsContainer.find('.world-sheet--new');
+		$errorMsg = $newWorldSheet.find('.error-msg');
 	}
 	return $prototypeWorldSheet;
 }

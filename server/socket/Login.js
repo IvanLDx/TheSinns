@@ -1,5 +1,6 @@
 const FS = req('models/FS');
 const Token = req('scripts/Token');
+const basicCheck = req('scripts/basicCheck');
 
 class Login {
 	constructor(socket) {
@@ -14,16 +15,11 @@ class Login {
 	}
 
 	checkCustomer(data) {
-		const token = Token.get(this.id);
-		const result = {};
-		if (!token.has(data.csrf_token) || data.honeypot !== '') {
-			result.message = 'Token is expired';
-			result.error = true;
+		const result = basicCheck(this.id, data);
 
+		if (result.error) {
 			return result;
 		}
-
-		token.restore();
 
 		if (!data.username || !data.password) {
 			result.message = 'Fill all the fields';

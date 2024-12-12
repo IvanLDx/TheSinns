@@ -12,9 +12,70 @@
 .world-sheet {
 	border: 1px solid black;
 	padding: 10px;
+	cursor: pointer;
+	background-color: white;
+	transition: background-color 0.2s;
 }
 
 .world-image {
 	height: 400px;
 	border: 1px solid black;
+}
+
+/* Edit new world */
+.world-sheet.edit {
+	cursor: initial;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.world-sheet.edit .world-sheet--new__container {
+	position: fixed;
+	bottom: 50%;
+	right: 50%;
+	transform: translate(50%, 50%);
+	width: 400px;
+	height: 320px;
+	max-width: 90%;
+	max-height: 90%;
+	background-color: white;
+	border: 1px solid black;
+	padding: 20px;
+}
+
+.world-sheet.edit .world-image {
+	display: none;
+}
+
+.world-sheet:not(.edit) .new-world-form {
+	display: none;
+}
+
+.world-sheet--new .world-cta__container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.world-sheet--new .world-cta {
+	background-color: inherit;
+	border: 1px solid #222;
+	width: 100%;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.world-sheet .error-msg {
+	opacity: 0;
+	transition: 0.2s;
+	color: #dc142c;
+}
+
+.world-sheet .error-msg.show {
+	opacity: 1;
+	transition: 0s;
 }

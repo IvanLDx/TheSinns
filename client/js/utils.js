@@ -35,6 +35,22 @@ export const utils = {
 			destinationY = y - h / 1.7;
 		}
 		return destinationY;
+	},
+	convertFormDataToObject($form) {
+		const formObject = {};
+		const formData = new FormData($form);
+		formData.forEach((value, key) => {
+			if (formObject[key]) {
+				if (Array.isArray(formObject[key])) {
+					formObject[key].push(value);
+				} else {
+					formObject[key] = [formObject[key], value];
+				}
+			} else {
+				formObject[key] = value;
+			}
+		});
+		return formObject;
 	}
 };
 

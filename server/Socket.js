@@ -67,6 +67,19 @@ class Socket extends List {
 				tileToUpdate: tileToUpdate
 			});
 		});
+
+		this.on('createWorld', (formData) => {
+			const result = this.userMenu.createWorld(formData);
+
+			if (result.error) {
+				this.emit('createWorld-FAIL', result);
+				return;
+			}
+
+			if (result.success) {
+				this.emit('createWorld-OK', result);
+			}
+		});
 	}
 
 	setToken() {

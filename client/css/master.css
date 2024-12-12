@@ -48,3 +48,7 @@ body:has(.expiration-msg.show) .login-form {
 .submit {
 	font-size: 60px;
 }
+
+[name='honeypot'] {
+	display: none;
+}

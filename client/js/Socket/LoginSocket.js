@@ -13,6 +13,10 @@ export class LoginSocket {
 			ifis(document.querySelector('.login-form .csrf-token'), ($csrfToken) => {
 				$csrfToken.value = data.csrfToken;
 			});
+
+			ifis(document.querySelector('.new-world-form .csrf-token'), ($csrfToken) => {
+				$csrfToken.value = data.csrfToken;
+			});
 		});
 
 		socket.on('csrfExpirationMsg', (data) => {
