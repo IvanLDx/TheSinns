@@ -18,30 +18,21 @@ basicCheck.isInteger = function (number) {
 };
 
 basicCheck.checkRangeInputs = function (...numbers) {
-	const result = {};
 	const integers = numbers.map((number) => {
 		return this.isInteger(number);
 	});
 
 	const allAreIntegers = integers.every((integer) => integer !== null);
 	if (!allAreIntegers) {
-		result = {
-			error: true,
-			message: 'Some range input value is not an integer.'
-		};
-		return result;
+		return false;
 	}
 
 	const areInRange = integers.every((integer) => integer >= 6 && integer <= 60);
 	if (!areInRange) {
-		result = {
-			error: true,
-			message: 'Some range input value is not in expected range.'
-		};
-		return result;
+		return false;
 	}
 
-	return result;
+	return true;
 };
 
 module.exports = basicCheck;
