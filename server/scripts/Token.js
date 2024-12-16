@@ -1,4 +1,5 @@
 const utils = req('scripts/utils');
+const IdentityCreation = req('scripts/IdentityCreation');
 
 class Token {
 	constructor(sessionID) {
@@ -27,12 +28,12 @@ class Token {
 	}
 
 	setValue() {
-		let chars = this.hex;
-		let token = this.format;
-		do {
-			let newChar = chars[Math.floor(Math.random() * chars.length)];
-			token = token.replace('#', newChar);
-		} while (token.match('#'));
+		const identityCreation = IdentityCreation.get();
+		const token = identityCreation.setValue({
+			type: 'hex',
+			format: 'uuid'
+		});
+
 		return token;
 	}
 

@@ -69,14 +69,15 @@ class Socket extends List {
 		});
 
 		this.on('createWorld', (formData) => {
-			const result = this.userMenu.createWorld(formData);
+			let result = this.userMenu.createWorldCheck(formData);
+
+			if (result.success) {
+				result = this.userMenu.createWorldData(formData, this.player.name);
+			}
 
 			if (result.error) {
 				this.emit('createWorld-FAIL', result);
-				return;
-			}
-
-			if (result.success) {
+			} else {
 				this.emit('createWorld-OK', result);
 			}
 		});

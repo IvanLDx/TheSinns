@@ -2,6 +2,8 @@ const World = req('models/World');
 const Player = req('models/Player');
 const itemData = req('data/serverModalitems');
 const basicCheck = req('scripts/basicCheck');
+const IdentityCreation = req('scripts/IdentityCreation');
+const FS = req('models/FS');
 
 class UserMenu {
 	constructor(socket, SocketClass) {
@@ -30,7 +32,31 @@ class UserMenu {
 		});
 	}
 
-	createWorld(formData) {
+	createWorldData(formData, playerName) {
+		const worldID = IdentityCreation.get().setValue({
+			type: 'nameAndDate',
+			name: formData['world-name']
+		});
+
+		let result = FS.writeWorld(worldID, []);
+
+		if (result.success) {
+			const playerData = FS.readAccount(playerName);
+
+			const newWorld = {
+				id: worldID,
+				name: formData['world-name'],
+				size: `${formData['world-width']}x${formData['world-height']}`
+			};
+
+			playerData.worlds.push(newWorld);
+			result = FS.writeAccount(playerName, playerData);
+		}
+
+		return result;
+	}
+
+	createWorldCheck(formData) {
 		const result = basicCheck(this.socket.id, formData);
 
 		if (result.error) {
