@@ -51,6 +51,7 @@ class UserMenu {
 
 			playerData.worlds.push(newWorld);
 			result = FS.writeAccount(playerName, playerData);
+			result.world = newWorld;
 		}
 
 		return result;

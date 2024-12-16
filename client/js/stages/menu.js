@@ -21,6 +21,11 @@ function initNewWorldCreation() {
 		$errorMsg.addClass('show');
 	});
 
+	socket.on('createWorld-OK', (res) => {
+		menuHelpers.closeWorldEditForm();
+		menuHelpers.paintNewWorld(res.world);
+	});
+
 	const $cancelBtn = $('.world-cancel');
 	$cancelBtn.onclick = menuHelpers.closeWorldEditForm;
 }

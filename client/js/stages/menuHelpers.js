@@ -6,17 +6,21 @@ let $errorMsg;
 
 export function paintWorlds(worlds) {
 	worlds.forEach((world) => {
-		const $worldSheet = $($prototypeWorldSheet.cloneNode(true));
-		$worldSheet.removeClass('prototype__world-sheet').addClass('world-sheet');
-		$worldSheet.attr({
-			'data-id': world.id,
-			'data-size': world.size
-		});
-
-		const $worldName = $worldSheet.find('.world-name');
-		$worldName.textContent = world.name;
-		$newWorldSheet.insertAdjacentElement('beforebegin', $worldSheet);
+		paintNewWorld(world);
 	});
+}
+
+export function paintNewWorld(world) {
+	const $worldSheet = $($prototypeWorldSheet.cloneNode(true));
+	$worldSheet.removeClass('prototype__world-sheet').addClass('world-sheet');
+	$worldSheet.attr({
+		'data-id': world.id,
+		'data-size': world.size
+	});
+
+	const $worldName = $worldSheet.find('.world-name');
+	$worldName.textContent = world.name;
+	$newWorldSheet.insertAdjacentElement('beforebegin', $worldSheet);
 }
 
 export function onClickWorldSheet(callback) {
@@ -29,7 +33,9 @@ export function onClickWorldSheet(callback) {
 }
 
 export function closeWorldEditForm(e) {
-	e.preventDefault();
+	if (e) {
+		e.preventDefault();
+	}
 	$newWorldSheet.removeClass('edit');
 }
 
