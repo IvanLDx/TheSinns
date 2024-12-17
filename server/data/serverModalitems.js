@@ -3,7 +3,7 @@ let initialized = false;
 
 function getFilesFromPath(selectedPath) {
 	const path = require('path');
-	const directoryPath = path.join(dirName, 'client/img/' + selectedPath);
+	const directoryPath = path.join(dirName, 'client/img/worldItems/' + selectedPath);
 	const files = fs.readdirSync(directoryPath);
 	const fileNames = files.map((file) => file.replace('.png', ''));
 	return fileNames;

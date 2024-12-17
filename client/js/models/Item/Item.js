@@ -12,7 +12,7 @@ export class Item extends List {
 		this.type = utils.getFolder(item.url) || null;
 		this.url = item.url || '/';
 		this.name = item.name || 'default';
-		this.image = imageHelpers.getImage(item.url + '/' + item.name);
+		this.image = imageHelpers.getWorldItemImage(item.url + '/' + item.name);
 		this.rotation = item.rotation || 0;
 		this.#setMaxRotationWhenImageLoads();
 	}

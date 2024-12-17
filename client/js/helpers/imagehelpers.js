@@ -4,6 +4,9 @@ export const imageHelpers = {
 		image.src = `./client/img/${name}.png`;
 		return image;
 	},
+	getWorldItemImage(name) {
+		return this.getImage(`worldItems/${name}`);
+	},
 	drawImage(image, source, destination) {
 		ctx.drawImage(image, source.x, source.y, source.w, source.h, destination.x, destination.y, destination.w, destination.h);
 	},
