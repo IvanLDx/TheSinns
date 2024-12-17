@@ -1,3 +1,17 @@
+:root {
+	--green1: #64e29d;
+	--yellow1: #e2b332;
+	--yellow2: #f2e8a2;
+	--blue1: #2c4371;
+	--red: #dc142c;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
 html,
 body {
 	font-family: 'Segoe UI';
@@ -6,6 +20,8 @@ body {
 	width: 100%;
 	height: 100%;
 	-webkit-tap-highlight-color: transparent;
+	background-color: var(--green1);
+	color: var(--blue1);
 }
 .canvas {
 	position: fixed;
@@ -45,10 +61,22 @@ body:has(.expiration-msg.show) .login-form {
 	display: none;
 }
 
-.submit {
-	font-size: 60px;
-}
-
 [name='honeypot'] {
 	display: none;
+}
+
+input[type='text'] {
+	width: 100%;
+	padding: 2px 4px;
+	border: none;
+	border-bottom: 1px solid var(--blue);
+	outline: none;
+}
+
+input[type='range'] {
+	width: 100%;
+	padding: 2px 4px;
+	border: none;
+	border-bottom: 1px solid var(--blue);
+	outline: none;
 }

@@ -5,8 +5,32 @@ import { $ } from '../dom.js';
 let initialized = false;
 let socket;
 
+function initRangeInputEvents() {
+	const $worldWidth = {
+		input: $('[name=world-width]'),
+		value: $('.world-width-value')
+	};
+
+	const $worldHeight = {
+		input: $('[name=world-height]'),
+		value: $('.world-height-value')
+	};
+
+	$worldWidth.value.textContent = $worldWidth.input.value;
+	$worldHeight.value.textContent = $worldHeight.input.value;
+
+	$worldWidth.input.addEventListener('input', (e) => {
+		$worldWidth.value.textContent = e.target.value;
+	});
+
+	$worldHeight.input.addEventListener('input', (e) => {
+		$worldHeight.value.textContent = e.target.value;
+	});
+}
+
 function initNewWorldCreation() {
 	const $form = $('.new-world-form');
+	initRangeInputEvents();
 
 	$form.onsubmit = (e) => {
 		e.preventDefault();

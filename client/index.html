@@ -6,34 +6,40 @@
 		<link rel="icon" type="image/x-icon" href="client/favicon.ico" />
 		<title>Document</title>
 		<link rel="stylesheet" href="./client/css/master.css" />
+		<link rel="stylesheet" href="./client/css/login.css" />
 		<link rel="stylesheet" href="./client/css/userMenu.css" />
 	</head>
 
 	<body data-stage="login">
 		<!-- LOGIN -->
 		<section class="login">
-			<h1>The House of the Pixel Sun</h1>
+			<h1 class="login__title">The House of the Pixel Sun</h1>
+			<section class="login__wrapper">
+				<div class="login-msg disconnected-msg">Disconnected from server.</div>
+				<div class="login-msg expiration-msg">Rematou a sesión <button class="refresh">Ingresa outra vez!</button></div>
 
-			<div class="login-msg disconnected-msg">Disconnected from server.</div>
-			<div class="login-msg expiration-msg">Rematou a sesión <button class="refresh">Ingresa outra vez!</button></div>
+				<form class="login-form">
+					<label class="form-input" for="username">
+						<span>Nome</span>
+						<input id="username" name="username" type="text" autocomplete="username" />
+					</label>
+					<label class="form-input" for="password">
+						<span> Contrasinal </span>
+						<input id="password" name="password" type="password" autocomplete="current-password" />
+					</label>
 
-			<form class="login-form">
-				<label for="username">Nome</label>
-				<input id="username" name="username" type="text" autocomplete="username" />
-				<label for="password">Contrasinal</label>
-				<input id="password" name="password" type="password" autocomplete="current-password" />
+					<input name="honeypot" type="text" />
+					<input class="csrf-token" type="hidden" name="csrf_token" />
 
-				<input name="honeypot" type="text" />
-				<input class="csrf-token" type="hidden" name="csrf_token" />
+					<input class="submit" type="submit" value="Dálle!" />
+					<span class="error-msg"></span>
 
-				<input class="submit" type="submit" value="Dálle!" />
-				<span class="error-msg"></span>
-
-				<div class="loader hidden">
-					<div class="backdrop"></div>
-					<div class="spinner"></div>
-				</div>
-			</form>
+					<div class="loader hidden">
+						<div class="backdrop"></div>
+						<div class="spinner"></div>
+					</div>
+				</form>
+			</section>
 		</section>
 
 		<!-- USER MENU -->
@@ -57,8 +63,22 @@
 								<span>Nome:</span>
 								<input id="world-name" type="text" name="world-name" autocomplete="off" />
 							</label>
-							<input type="range" min="6" max="60" name="world-width" value="10" />
-							<input type="range" min="6" max="60" name="world-height" value="18" />
+
+							<div class="range__wrapper">
+								<div class="range__wrapper-items">
+									<span class="range__wrapper-items-title">Tamaño:</span>
+									<input type="range" min="6" max="60" name="world-width" value="10" />
+									<input type="range" min="6" max="60" name="world-height" value="18" />
+								</div>
+
+								<div class="range__wrapper-value-container">
+									<div class="range__wrapper-value">
+										<span class="world-width-value"></span>
+										x
+										<span class="world-height-value"></span>
+									</div>
+								</div>
+							</div>
 							<input type="text" name="honeypot" />
 							<input class="csrf-token" type="hidden" name="csrf_token" />
 
