@@ -1,6 +1,7 @@
 import { ModalButton } from './ModalButton.js';
 import { Button } from '../Button.js';
 import { Container } from '../Container.js';
+import { Toolkit } from '../Toolkit.js';
 
 export class BurgerModal extends Container {
 	constructor(x, y, w, h) {
@@ -29,7 +30,11 @@ export class BurgerModal extends Container {
 	}
 
 	#setButtons() {
-		let buttonConfigs = [{ type: 'save' }, { type: 'open' }, { type: 'toolkit' }];
+		let buttonConfigs = [{ type: 'save' }, { type: 'open' }];
+		if (Toolkit.enabled) {
+			buttonConfigs.push({ type: 'toolkit' });
+		}
+
 		this.buttons = [];
 		buttonConfigs.forEach((config, i) => {
 			this.buttons.push(ModalButton.create(config.type, this, i));

@@ -8,6 +8,8 @@ export class List {
 	}
 	static push(socket) {
 		this.list.push(socket);
+
+		return this.list;
 	}
 	static each(callback) {
 		this.list.forEach((player, i) => {
@@ -31,6 +33,9 @@ export class List {
 	}
 	static getList() {
 		return this.list;
+	}
+	static deleteList() {
+		this.list = [];
 	}
 	static list = [];
 }

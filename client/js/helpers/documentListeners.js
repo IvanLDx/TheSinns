@@ -16,6 +16,16 @@ export function init() {
 	document.onmouseup = documentListeners.onmouseup;
 }
 
+export function stop() {
+	document.onwheel = null;
+
+	document.onmousemove = null;
+	document.onmousedown = null;
+	document.ontouchstart = null;
+
+	document.onmouseup = null;
+}
+
 const documentListeners = {
 	onwheel: function (e) {
 		cam.zoom(e);

@@ -1,4 +1,4 @@
-const utils = require('./utils');
+const utils = req('scripts/utils');
 
 class Middleware {
 	login(req, res, next) {

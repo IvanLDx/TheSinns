@@ -2,7 +2,7 @@ import { ifis } from '../utils.js';
 import { stage } from '../models/Stage.js';
 import { Socket } from '../models/Socket.js';
 import * as menuHelpers from '../stages/menuHelpers.js';
-const socket = Socket.get();
+const socket = Socket.getLibrary();
 
 export class LoginSocket {
 	constructor() {
@@ -11,6 +11,10 @@ export class LoginSocket {
 	login() {
 		socket.on('login', (data) => {
 			ifis(document.querySelector('.login-form .csrf-token'), ($csrfToken) => {
+				$csrfToken.value = data.csrfToken;
+			});
+
+			ifis(document.querySelector('.new-world-form .csrf-token'), ($csrfToken) => {
 				$csrfToken.value = data.csrfToken;
 			});
 		});
@@ -28,8 +32,8 @@ export class LoginSocket {
 		socket.off('signIn-OK');
 
 		socket.emit('signIn', data);
+
 		socket.on('signIn-OK', (data) => {
-			console.info(data);
 			if (data.success) {
 				stage.change('menu');
 				menuHelpers.paintWorlds(data.worlds);

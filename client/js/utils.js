@@ -27,7 +27,6 @@ export const utils = {
 		evt();
 		let stop = new Date().getTime();
 		let result = stop - start;
-		_(result);
 		return result;
 	},
 	getDestinationYByType(y, h, type) {
@@ -36,6 +35,22 @@ export const utils = {
 			destinationY = y - h / 1.7;
 		}
 		return destinationY;
+	},
+	convertFormDataToObject($form) {
+		const formObject = {};
+		const formData = new FormData($form);
+		formData.forEach((value, key) => {
+			if (formObject[key]) {
+				if (Array.isArray(formObject[key])) {
+					formObject[key].push(value);
+				} else {
+					formObject[key] = [formObject[key], value];
+				}
+			} else {
+				formObject[key] = value;
+			}
+		});
+		return formObject;
 	}
 };
 
@@ -43,4 +58,17 @@ export function ifis(element, callback) {
 	if (element) {
 		callback(element);
 	}
+}
+
+let debouncingTimeout = null;
+export function debounce(callback, delay = 200) {
+	return function () {
+		if (debouncingTimeout) {
+			clearTimeout(debouncingTimeout);
+		}
+		debouncingTimeout = setTimeout(() => {
+			callback();
+			clearTimeout(debouncingTimeout);
+		}, delay);
+	};
 }

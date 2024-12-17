@@ -104,4 +104,7 @@ export class Toolkit extends Container {
 			this.y = mouse.absoluteY;
 		}
 	}
+
+	static enabled = false;
+	static activeOnStart = false;
 }

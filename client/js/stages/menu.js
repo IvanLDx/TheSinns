@@ -1,30 +1,76 @@
-import { stage } from '../models/Stage.js';
 import { Socket } from '../models/Socket.js';
-import { Modal } from '../models/components/Modal/Modal.js';
-import { BurgerButton } from '../models/components/BurgerMenu/BurgerButton.js';
-import * as documentListeners from '../helpers/documentListeners.js';
 import * as menuHelpers from './menuHelpers.js';
+import { utils } from '../utils.js';
+import { $ } from '../dom.js';
 let initialized = false;
+let socket;
 
-function initializeSocket() {
-	const socket = Socket.get();
+function initRangeInputEvents() {
+	const $worldWidth = {
+		input: $('[name=world-width]'),
+		value: $('.world-width-value')
+	};
 
-	socket.on('enterWorld', (data) => {});
+	const $worldHeight = {
+		input: $('[name=world-height]'),
+		value: $('.world-height-value')
+	};
 
-	socket.on('selectWorld-OK', (data) => {
-		stage.change('world');
-		const interfaceElements = [Modal.create(), BurgerButton.create()];
-		cam.resizeInterface(interfaceElements);
+	$worldWidth.value.textContent = $worldWidth.input.value;
+	$worldHeight.value.textContent = $worldHeight.input.value;
 
-		documentListeners.init();
+	$worldWidth.input.addEventListener('input', (e) => {
+		$worldWidth.value.textContent = e.target.value;
 	});
 
+	$worldHeight.input.addEventListener('input', (e) => {
+		$worldHeight.value.textContent = e.target.value;
+	});
+}
+
+function initNewWorldCreation() {
+	const $form = $('.new-world-form');
+	initRangeInputEvents();
+
+	$form.onsubmit = (e) => {
+		e.preventDefault();
+
+		const formData = utils.convertFormDataToObject($form);
+		socket.emit('createWorld', formData);
+	};
+
+	socket.on('createWorld-FAIL', (res) => {
+		const $errorMsg = $form.find('.error-msg');
+		$errorMsg.textContent = res.message;
+		$errorMsg.addClass('show');
+	});
+
+	socket.on('createWorld-OK', (res) => {
+		menuHelpers.closeWorldEditForm();
+		menuHelpers.paintNewWorld(res.world);
+	});
+
+	const $cancelBtn = $('.world-cancel');
+	$cancelBtn.onclick = menuHelpers.closeWorldEditForm;
+}
+
+function initializeSocket() {
+	socket = Socket.getLibrary();
+	initNewWorldCreation();
+
 	menuHelpers.onClickWorldSheet((e, $worldSheet) => {
-		const world = {
-			id: $worldSheet.getAttribute('data-id'),
-			size: $worldSheet.getAttribute('data-size')
-		};
-		socket.emit('selectWorld', { world: world });
+		switch ($worldSheet.getAttribute('data-type')) {
+			case 'new':
+				$worldSheet.addClass('edit');
+				break;
+			default:
+				const world = {
+					id: $worldSheet.getAttribute('data-id'),
+					size: $worldSheet.getAttribute('data-size')
+				};
+				socket.emit('selectWorld', { world: world });
+				break;
+		}
 	});
 
 	initialized = true;

@@ -17,7 +17,6 @@ export class MouseModel {
 		this.absoluteY = 0;
 		this.isThereIntersection = false;
 		this.selectedColor = null;
-		this.openToolkitOnStart = false;
 	}
 
 	style(value) {
@@ -25,9 +24,9 @@ export class MouseModel {
 	}
 
 	move(e) {
-		if (this.openToolkitOnStart) {
+		if (Toolkit.activeOnStart) {
 			this.toggleToolkit();
-			this.openToolkitOnStart = false;
+			Toolkit.activeOnStart = false;
 		}
 		let grabbedItem = GrabbedItem.element;
 		this.setPosition(e);

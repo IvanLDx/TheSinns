@@ -80,4 +80,14 @@ export class Tile extends List {
 			);
 		});
 	}
+
+	static setOccupiedTile(occupiedTiles, tileToUpdate) {
+		const occupiedTile = occupiedTiles.some((tileID) => {
+			return tileID === tileToUpdate.id;
+		});
+
+		if (!occupiedTile) {
+			occupiedTiles.push(tileToUpdate.id);
+		}
+	}
 }

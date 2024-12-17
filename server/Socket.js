@@ -1,11 +1,9 @@
-const fs = require('fs');
-const List = require('./models/List');
-const Player = require('./models/Player');
-const World = require('./models/World');
-const Login = require('./socket/Login');
-const UserMenu = require('./socket/UserMenu');
-const itemData = require('./data/serverModalitems');
-const Token = require('./scripts/Token');
+const FS = req('models/FS');
+const List = req('models/List');
+const Player = req('models/Player');
+const Login = req('socket/Login');
+const UserMenu = req('socket/UserMenu');
+const Token = req('scripts/Token');
 
 class Socket extends List {
 	constructor(socket) {
@@ -17,56 +15,81 @@ class Socket extends List {
 		this.userMenu = new UserMenu(this, Socket);
 		this.#initOnEvents();
 		this.token = null;
+		this.world = null;
 
 		this.login.initEvents();
 		this.userMenu.initEvents();
 	}
 
+	#saveWorld(worldItems) {
+		this.token.restore();
+		if (this.world && this.world.id) {
+			FS.writeWorld(this.world.id, worldItems);
+		}
+	}
+
 	#initOnEvents() {
 		this.on('placeGrabbedItem', (pack) => {
 			this.token.restore();
-			let tile = World.findByID(pack.grabbedItem.touchedTile.id);
+			let tile = this.world.findByID(pack.grabbedItem.touchedTile.id);
 			let grabbedItem = pack.grabbedItem;
 			if (tile && !tile.isTypeOccupied(grabbedItem)) {
-				World.placeItem(grabbedItem, tile);
-				Socket.emitWorldPosition(World.getPack());
+				this.world.placeItem(grabbedItem, tile);
+				this.self.emit('newPosition', this.world.getPack());
 			}
 		});
 
 		this.on('saveWorld', (pack) => {
-			this.token.restore();
-			let worldItems = JSON.stringify(pack.worldItems, null, 4);
-			fs.writeFileSync('server/data/savedWorld.json', worldItems);
+			this.#saveWorld(pack.worldItems);
+		});
+
+		this.on('exitWorld', (pack) => {
+			this.#saveWorld(pack.worldItems);
+			this.world = null;
+			this.emit('exitWorld-OK');
 		});
 
 		this.on('removeItemFromWorld', (pack) => {
 			this.token.restore();
-			World.findByID(pack.item.touchedTile.id, (tile) => {
+			const tileToUpdate = this.world.findByID(pack.item.touchedTile.id, (tile) => {
 				tile.occupied[pack.item.type] = false;
 				tile.occupied.some = tile.isOccupied();
 			});
-			const itemType = World.items[pack.item.type];
+			const itemType = this.world.items[pack.item.type];
 			itemType.forEach((item, i) => {
 				if (pack.item.id === item.id) {
 					itemType.splice(i, 1);
 				}
 			});
 
-			Socket.emitWorldPosition(World.getPack());
+			this.removeItemFromWorldOK({
+				item: pack.item,
+				tileToUpdate: tileToUpdate
+			});
 		});
-	}
 
-	initEmitEvents() {
-		this.emit('init', {
-			id: this.self.id,
-			itemData: itemData,
-			playerList: Player.list,
-			world: World.tiles
+		this.on('createWorld', (formData) => {
+			let result = this.userMenu.createWorldCheck(formData);
+
+			if (result.success) {
+				result = this.userMenu.createWorldData(formData, this.player.name);
+			}
+
+			if (result.error) {
+				this.emit('createWorld-FAIL', result);
+			} else {
+				this.emit('createWorld-OK', result);
+			}
 		});
 	}
 
 	setToken() {
 		this.token = Token.get(this.id);
+	}
+
+	setWorld(world) {
+		this.world = world;
+		return this.world;
 	}
 
 	emit(eventName, options) {
@@ -79,18 +102,35 @@ class Socket extends List {
 		});
 	}
 
-	static emitWorldPosition(pack) {
-		Socket.each((socket) => {
-			socket.self.emit('newPosition', pack);
+	emitNewPosition() {
+		this.self.emit('newPosition', this.world.getPack());
+	}
+
+	removeItemFromWorldOK(pack) {
+		const tileToUpdateLite = this.world.getTileToUpdateLite(pack.tileToUpdate);
+
+		this.self.emit('removeItemFromWorld-OK', {
+			tileToUpdate: tileToUpdateLite,
+			itemToRemove: pack.item.id
+		});
+	}
+
+	emitUpdatePosition(pack) {
+		const tileToUpdate = {
+			id: pack.tileToUpdate.id,
+			occupied: pack.tileToUpdate.occupied
+		};
+
+		this.self.emit('removeTileItemPosition', {
+			tileToUpdate: tileToUpdate,
+			itemToRemove: pack.item.id
 		});
 	}
 
 	static create(socket) {
 		const newSocket = new Socket(socket);
-		Socket.list.push(newSocket);
+		super.create(newSocket);
 	}
-
-	static list = [];
 }
 
 module.exports = Socket;
