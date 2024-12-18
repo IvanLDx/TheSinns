@@ -11,7 +11,7 @@ export class Modal extends Container {
 	constructor(x, y, w, h) {
 		super(x, y, w, h);
 		this.folder = 'wall';
-		this.subfolder = 'yellow';
+		this.subfolder = 'flat';
 		this.items = {};
 		this.rotationArrows = new RotationArrows(this);
 		this.paginationArrows = new PaginationArrows(this);
@@ -130,7 +130,17 @@ export class Modal extends Container {
 	}
 
 	static getItemUrl(root) {
-		return root[this.element.folder] && root[this.element.folder][this.element.subfolder];
+		const subFolder = root[this.element.folder][this.element.subfolder];
+		if (!subFolder) {
+			const keys = Object.keys(root[this.element.folder]);
+			const firstKey = keys.length > 0 ? keys[0] : null;
+
+			if (firstKey) {
+				this.element.subfolder = firstKey;
+			}
+		}
+
+		return root[this.element.folder][this.element.subfolder];
 	}
 
 	static getActiveItems() {

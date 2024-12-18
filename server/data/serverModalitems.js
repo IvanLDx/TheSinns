@@ -19,10 +19,9 @@ const serverModalItems = {
 		red: []
 	},
 	wall: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		flat: [],
+		brick: [],
+		old: []
 	},
 	wallElement: {
 		yellow: [],
