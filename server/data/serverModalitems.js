@@ -13,10 +13,7 @@ const ServerModalItem = req('models/ServerModalItem');
 
 const serverModalItems = {
 	roof: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		ceramic: []
 	},
 	wall: {
 		flat: [],
@@ -24,22 +21,14 @@ const serverModalItems = {
 		old: []
 	},
 	wallElement: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		door: [],
+		window: []
 	},
 	decoration: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		plant: []
 	},
 	floor: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		stone: []
 	},
 	itemwidth: 20
 };

@@ -130,17 +130,18 @@ export class Modal extends Container {
 	}
 
 	static getItemUrl(root) {
-		const subFolder = root[this.element.folder][this.element.subfolder];
-		if (!subFolder) {
+		let subfolder = root[this.element.folder][this.element.subfolder];
+		if (!subfolder) {
 			const keys = Object.keys(root[this.element.folder]);
 			const firstKey = keys.length > 0 ? keys[0] : null;
 
 			if (firstKey) {
 				this.element.subfolder = firstKey;
+				subfolder = root[this.element.folder][this.element.subfolder];
 			}
 		}
 
-		return root[this.element.folder][this.element.subfolder];
+		return subfolder;
 	}
 
 	static getActiveItems() {
