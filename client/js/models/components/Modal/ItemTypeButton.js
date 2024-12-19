@@ -1,22 +1,34 @@
 import { imageHelpers } from '../../../helpers/imagehelpers.js';
 import { OptionItem } from './OptionItem.js';
 import { OptionButton } from './OptionButton.js';
+import { ModalItem } from '../../Item/ModalItem.js';
 import { Modal } from './Modal.js';
+
+function getList(itemList) {
+	const list = [];
+	if (!itemList.length) {
+		Object.entries(itemList).forEach(([key, val]) => {
+			list.push(new ItemTypeButton(key, val));
+		});
+	}
+
+	return list;
+}
 
 class AllTypes extends OptionItem {
 	constructor() {
-		const list = [new Roof(), new Wall(), new WallElement(), new Decoration(), new Floor()];
-
-		super(list);
+		const itemList = getList(ModalItem.list);
+		super(itemList);
 	}
 }
 
-export class ItemType extends OptionButton {
-	constructor(id) {
+export class ItemTypeButton extends OptionButton {
+	constructor(id, itemSubTypes) {
 		super();
 		this.id = id;
-		this.buttonType = 'itemType';
+		this.buttonType = 'item';
 		this.swatch = this.getImage();
+		console.info(itemSubTypes);
 	}
 
 	intersectionEvents() {
@@ -47,35 +59,5 @@ export class ItemType extends OptionButton {
 
 	static get() {
 		return new AllTypes();
-	}
-}
-
-class Roof extends ItemType {
-	constructor() {
-		super('roof');
-	}
-}
-
-class Wall extends ItemType {
-	constructor() {
-		super('wall');
-	}
-}
-
-class WallElement extends ItemType {
-	constructor() {
-		super('wallElement');
-	}
-}
-
-class Decoration extends ItemType {
-	constructor() {
-		super('decoration');
-	}
-}
-
-class Floor extends ItemType {
-	constructor() {
-		super('floor');
 	}
 }

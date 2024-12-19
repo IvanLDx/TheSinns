@@ -1,7 +1,7 @@
 [
     {
-        "x": 640,
-        "y": 302,
+        "x": 506,
+        "y": 251,
         "w": 20,
         "h": 28,
         "type": "wall",
@@ -10,22 +10,51 @@
         "image": {},
         "rotation": 0,
         "locationType": "WorldItem",
-        "id": "20241218-191355-5203",
+        "id": "20241219-193634-8328",
         "touchedTile": {
-            "id": "1-5",
-            "col": 60,
-            "row": 20,
+            "id": "1-3",
+            "col": 40,
+            "row": 10,
             "colID": 1,
-            "rowID": 5
+            "rowID": 3
         },
         "touchedItems": [],
         "position": {
-            "x": 656,
-            "y": 310,
+            "x": 538,
+            "y": 270,
             "w": 80,
             "h": 112
         },
-        "destinationY": 310,
+        "destinationY": 270,
+        "maxRotation": 0
+    },
+    {
+        "x": 725,
+        "y": 388,
+        "w": 20,
+        "h": 28,
+        "type": "wall",
+        "url": "wall/flat",
+        "name": "empty-red",
+        "image": {},
+        "rotation": 0,
+        "locationType": "WorldItem",
+        "id": "20241218-210837-6516",
+        "touchedTile": {
+            "id": "0-8",
+            "col": 80,
+            "row": 40,
+            "colID": 0,
+            "rowID": 8
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 698,
+            "y": 390,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 390,
         "maxRotation": 0
     }
 ]

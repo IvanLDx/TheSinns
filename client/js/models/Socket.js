@@ -23,13 +23,14 @@ export class Socket {
 		socket.on('selectWorld-OK', (data) => {
 			stage.change('world');
 
-			const interfaceElements = [Modal.create(), BurgerButton.create()];
+			ModalItem.createList(data.itemData); // IMPORTANT! Create list before modal reset
+			const interfaceElements = [Modal.reset(), BurgerButton.create()];
 			cam.resizeInterface(interfaceElements);
 			documentListeners.init();
 
 			SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
-			ModalItem.createList(data.itemData);
+
 			const modal = Modal.getElement();
 			modal.appendItems(ModalItem.list);
 			modal.pagination.set();

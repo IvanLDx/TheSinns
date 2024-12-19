@@ -55,10 +55,10 @@ class Socket extends List {
 				tile.occupied[pack.item.type] = false;
 				tile.occupied.some = tile.isOccupied();
 			});
-			const itemType = this.world.items[pack.item.type];
-			itemType.forEach((item, i) => {
+			const ItemTypeButton = this.world.items[pack.item.type];
+			ItemTypeButton.forEach((item, i) => {
 				if (pack.item.id === item.id) {
-					itemType.splice(i, 1);
+					ItemTypeButton.splice(i, 1);
 				}
 			});
 

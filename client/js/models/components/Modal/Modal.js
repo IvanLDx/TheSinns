@@ -1,8 +1,7 @@
-import { utils } from '../../../utils.js';
 import { PaginationArrows, RotationArrows } from './Arrows.js';
 import { Pagination } from './Pagination.js';
-import { Color } from './Color.js';
-import { ItemType } from './ItemTypes.js';
+import { ItemSubType } from './ItemSubType.js';
+import { ItemTypeButton } from './ItemTypeButton.js';
 import { Button } from '../Button.js';
 import { OptionButton } from './OptionButton.js';
 import { Container } from '../Container.js';
@@ -16,8 +15,8 @@ export class Modal extends Container {
 		this.rotationArrows = new RotationArrows(this);
 		this.paginationArrows = new PaginationArrows(this);
 		this.pagination = new Pagination(this);
-		this.color = Color.get();
-		this.itemType = ItemType.get();
+		this.itemSubType = ItemSubType.get();
+		this.ItemTypeButton = ItemTypeButton.get();
 		this.needsToPositionItems = false;
 		this.isSmallerThanItemList = false;
 		this.modalItems = [];
@@ -30,8 +29,8 @@ export class Modal extends Container {
 
 		this.rotationArrows.repositioning();
 		this.paginationArrows.repositioning();
-		this.color.repositioning();
-		this.itemType.repositioning();
+		this.itemSubType.repositioning();
+		this.ItemTypeButton.repositioning();
 
 		this.updatePositionItems();
 	}
@@ -82,13 +81,13 @@ export class Modal extends Container {
 
 		this.paginationArrows.paint();
 		this.rotationArrows.paint();
-		this.color.paint();
-		this.itemType.paint();
+		this.itemSubType.paint();
+		this.ItemTypeButton.paint();
 	}
 
 	setColor(color) {
 		this.subfolder = color;
-		OptionButton.setButtonStrokeColor('color', color);
+		OptionButton.setButtonStrokeColor('itemSubType', color);
 		this.updatePositionItems();
 	}
 
@@ -98,7 +97,7 @@ export class Modal extends Container {
 
 	setType(type) {
 		this.folder = type;
-		OptionButton.setButtonStrokeColor('itemType', type);
+		OptionButton.setButtonStrokeColor('item', type);
 		this.updatePositionItems();
 	}
 
@@ -119,11 +118,16 @@ export class Modal extends Container {
 		return null;
 	}
 
+	static reset() {
+		this.element = null;
+		return this.create();
+	}
+
 	static create() {
 		if (!this.element) {
 			this.element = new Modal();
-			OptionButton.setButtonStrokeColor('itemType', this.element.getType());
-			OptionButton.setButtonStrokeColor('color', this.element.getColor());
+			OptionButton.setButtonStrokeColor('item', this.element.getType());
+			OptionButton.setButtonStrokeColor('itemSubType', this.element.getColor());
 			this.element.updatePositionItems();
 		}
 		return this.getElement();

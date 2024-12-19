@@ -32,8 +32,8 @@ export class WorldItem extends Item {
 		});
 
 		occupiedTiles.forEach((tile) => {
-			utils.forEachObject(worldItems, (itemTypes, type) => {
-				itemTypes.forEach((item, i) => {
+			utils.forEachObject(worldItems, (itemTypeButtons, type) => {
+				itemTypeButtons.forEach((item, i) => {
 					if (tile === item.touchedTile.id) {
 						WorldItem.push(item);
 						worldItems[type].splice(i, 1);

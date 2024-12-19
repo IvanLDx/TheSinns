@@ -11,15 +11,15 @@ export const utils = {
 		return url.split('/')[0];
 	},
 	forEachType(items, evt) {
-		Object.entries(items).forEach((itemTypes) => {
-			itemTypes[1].forEach((item) => {
+		Object.entries(items).forEach((itemTypeButtons) => {
+			itemTypeButtons[1].forEach((item) => {
 				evt(item);
 			});
 		});
 	},
 	forEachObject(items, evt) {
-		Object.entries(items).forEach((itemTypes) => {
-			evt(itemTypes[1], itemTypes[0]);
+		Object.entries(items).forEach((itemTypeButtons) => {
+			evt(itemTypeButtons[1], itemTypeButtons[0]);
 		});
 	},
 	testTime(evt) {
