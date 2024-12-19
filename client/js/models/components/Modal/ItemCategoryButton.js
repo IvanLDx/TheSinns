@@ -8,7 +8,7 @@ function getList(itemList) {
 	const list = [];
 	if (!itemList.length) {
 		Object.entries(itemList).forEach(([key, val]) => {
-			list.push(new ItemTypeButton(key, val));
+			list.push(new ItemCategoryButton(key, val));
 		});
 	}
 
@@ -22,13 +22,13 @@ class AllTypes extends OptionItem {
 	}
 }
 
-export class ItemTypeButton extends OptionButton {
-	constructor(id, itemSubTypes) {
+export class ItemCategoryButton extends OptionButton {
+	constructor(id, itemStyles) {
 		super();
 		this.id = id;
 		this.buttonType = 'item';
 		this.swatch = this.getImage();
-		console.info(itemSubTypes);
+		console.info(itemStyles);
 	}
 
 	intersectionEvents() {

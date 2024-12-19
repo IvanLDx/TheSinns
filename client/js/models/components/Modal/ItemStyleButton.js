@@ -2,17 +2,17 @@ import { OptionItem } from './OptionItem.js';
 import { OptionButton } from './OptionButton.js';
 import { Modal } from './Modal.js';
 
-class AllItemSubTypes extends OptionItem {
+class AllItemStyleButtons extends OptionItem {
 	constructor() {
 		const list = [new Yellow(), new Red(), new Blue(), new Green()];
 		super(list);
 	}
 }
 
-export class ItemSubType extends OptionButton {
+export class ItemStyleButton extends OptionButton {
 	constructor() {
 		super();
-		this.buttonType = 'itemSubType';
+		this.buttonType = 'itemStyle';
 	}
 
 	intersectionEvents() {
@@ -34,11 +34,11 @@ export class ItemSubType extends OptionButton {
 	}
 
 	static get() {
-		return new AllItemSubTypes();
+		return new AllItemStyleButtons();
 	}
 }
 
-class Yellow extends ItemSubType {
+class Yellow extends ItemStyleButton {
 	constructor() {
 		super();
 		this.id = 'yellow';
@@ -46,7 +46,7 @@ class Yellow extends ItemSubType {
 	}
 }
 
-class Red extends ItemSubType {
+class Red extends ItemStyleButton {
 	constructor() {
 		super();
 		this.id = 'red';
@@ -54,7 +54,7 @@ class Red extends ItemSubType {
 	}
 }
 
-class Blue extends ItemSubType {
+class Blue extends ItemStyleButton {
 	constructor() {
 		super();
 		this.id = 'blue';
@@ -62,7 +62,7 @@ class Blue extends ItemSubType {
 	}
 }
 
-class Green extends ItemSubType {
+class Green extends ItemStyleButton {
 	constructor() {
 		super();
 		this.id = 'green';

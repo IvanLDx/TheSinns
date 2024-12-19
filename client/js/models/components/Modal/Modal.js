@@ -1,7 +1,7 @@
 import { PaginationArrows, RotationArrows } from './Arrows.js';
 import { Pagination } from './Pagination.js';
-import { ItemSubType } from './ItemSubType.js';
-import { ItemTypeButton } from './ItemTypeButton.js';
+import { ItemStyleButton } from './ItemStyleButton.js';
+import { ItemCategoryButton } from './ItemCategoryButton.js';
 import { Button } from '../Button.js';
 import { OptionButton } from './OptionButton.js';
 import { Container } from '../Container.js';
@@ -15,8 +15,8 @@ export class Modal extends Container {
 		this.rotationArrows = new RotationArrows(this);
 		this.paginationArrows = new PaginationArrows(this);
 		this.pagination = new Pagination(this);
-		this.itemSubType = ItemSubType.get();
-		this.ItemTypeButton = ItemTypeButton.get();
+		this.itemStyle = ItemStyleButton.get();
+		this.itemCategoryButton = ItemCategoryButton.get();
 		this.needsToPositionItems = false;
 		this.isSmallerThanItemList = false;
 		this.modalItems = [];
@@ -29,8 +29,8 @@ export class Modal extends Container {
 
 		this.rotationArrows.repositioning();
 		this.paginationArrows.repositioning();
-		this.itemSubType.repositioning();
-		this.ItemTypeButton.repositioning();
+		this.itemStyle.repositioning();
+		this.itemCategoryButton.repositioning();
 
 		this.updatePositionItems();
 	}
@@ -81,13 +81,13 @@ export class Modal extends Container {
 
 		this.paginationArrows.paint();
 		this.rotationArrows.paint();
-		this.itemSubType.paint();
-		this.ItemTypeButton.paint();
+		this.itemStyle.paint();
+		this.itemCategoryButton.paint();
 	}
 
 	setColor(color) {
 		this.subfolder = color;
-		OptionButton.setButtonStrokeColor('itemSubType', color);
+		OptionButton.setButtonStrokeColor('itemStyle', color);
 		this.updatePositionItems();
 	}
 
@@ -127,7 +127,7 @@ export class Modal extends Container {
 		if (!this.element) {
 			this.element = new Modal();
 			OptionButton.setButtonStrokeColor('item', this.element.getType());
-			OptionButton.setButtonStrokeColor('itemSubType', this.element.getColor());
+			OptionButton.setButtonStrokeColor('itemStyle', this.element.getColor());
 			this.element.updatePositionItems();
 		}
 		return this.getElement();
