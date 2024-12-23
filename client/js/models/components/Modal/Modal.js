@@ -1,25 +1,28 @@
 import { PaginationArrows, RotationArrows } from './Arrows.js';
 import { Pagination } from './Pagination.js';
-import { ItemStyleButton } from './ItemStyleButton.js';
 import { ItemCategoryButton } from './ItemCategoryButton.js';
 import { Button } from '../Button.js';
-import { OptionButton } from './OptionButton.js';
 import { Container } from '../Container.js';
+import { ItemStyleButton } from './ItemStyleButton.js';
 
 export class Modal extends Container {
 	constructor(x, y, w, h) {
 		super(x, y, w, h);
 		this.folder = 'wall';
-		this.subfolder = 'flat';
+		this.subfolder = 'old';
 		this.items = {};
 		this.rotationArrows = new RotationArrows(this);
 		this.paginationArrows = new PaginationArrows(this);
 		this.pagination = new Pagination(this);
-		this.itemStyle = ItemStyleButton.get();
-		this.itemCategoryButton = ItemCategoryButton.get();
+		this.itemCategoryButtons = ItemCategoryButton.get();
 		this.needsToPositionItems = false;
 		this.isSmallerThanItemList = false;
 		this.modalItems = [];
+	}
+
+	setItemStyleButtons() {
+		this.itemStyleButtons = ItemCategoryButton.getStyles(this.getType());
+		return this.itemStyleButtons;
 	}
 
 	resize() {
@@ -29,8 +32,8 @@ export class Modal extends Container {
 
 		this.rotationArrows.repositioning();
 		this.paginationArrows.repositioning();
-		this.itemStyle.repositioning();
-		this.itemCategoryButton.repositioning();
+		// this.itemStyleButtons.repositioning();
+		this.itemCategoryButtons.repositioning();
 
 		this.updatePositionItems();
 	}
@@ -81,24 +84,12 @@ export class Modal extends Container {
 
 		this.paginationArrows.paint();
 		this.rotationArrows.paint();
-		this.itemStyle.paint();
-		this.itemCategoryButton.paint();
-	}
-
-	setColor(color) {
-		this.subfolder = color;
-		OptionButton.setButtonStrokeColor('itemStyle', color);
-		this.updatePositionItems();
+		// this.itemStyleButtons.paint();
+		this.itemCategoryButtons.paint();
 	}
 
 	getColor() {
 		return this.subfolder;
-	}
-
-	setType(type) {
-		this.folder = type;
-		OptionButton.setButtonStrokeColor('item', type);
-		this.updatePositionItems();
 	}
 
 	getType() {
@@ -126,8 +117,8 @@ export class Modal extends Container {
 	static create() {
 		if (!this.element) {
 			this.element = new Modal();
-			OptionButton.setButtonStrokeColor('item', this.element.getType());
-			OptionButton.setButtonStrokeColor('itemStyle', this.element.getColor());
+			ItemCategoryButton.setButtonStrokeColor(this.element.getType());
+			ItemStyleButton.setButtonStrokeColor(this.element.getColor());
 			this.element.updatePositionItems();
 		}
 		return this.getElement();

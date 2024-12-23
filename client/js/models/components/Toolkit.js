@@ -76,9 +76,6 @@ export class Toolkit extends Container {
 						h: 40
 					}
 				);
-			} else {
-				ctx.fillStyle = image;
-				ctx.fillRect(...rectPosition);
 			}
 
 			ctx.font = '16px Segoe UI';
