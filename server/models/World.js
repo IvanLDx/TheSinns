@@ -63,10 +63,10 @@ class World {
 	}
 
 	placeItem(item, tile) {
-		this.items[item.type].push(item);
+		this.items[item.category].push(item);
 
 		tile = tile || this.findByID(item.touchedTile.id);
-		tile.occupied[item.type] = true;
+		tile.occupied[item.category] = true;
 		tile.occupied.some = true;
 	}
 
@@ -143,8 +143,8 @@ class Tile {
 		world.tiles.push(this);
 	}
 
-	isTypeOccupied(grabbedItem) {
-		return this.occupied[grabbedItem.type];
+	isCategoryOccupied(grabbedItem) {
+		return this.occupied[grabbedItem.category];
 	}
 
 	isOccupied() {

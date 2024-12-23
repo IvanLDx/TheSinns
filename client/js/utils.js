@@ -7,15 +7,11 @@ export const utils = {
 		ctx.fillRect(0, 0, cv.width, cv.height);
 		ctx.imageSmoothingEnabled = false;
 	},
-	getFolder(url) {
+	getCategory(url) {
 		return url.split('/')[0];
 	},
-	forEachType(items, evt) {
-		Object.entries(items).forEach((itemCategoryButtons) => {
-			itemCategoryButton[1].forEach((item) => {
-				evt(item);
-			});
-		});
+	getStyle(url) {
+		return url.split('/')[1];
 	},
 	forEachObject(items, evt) {
 		Object.entries(items).forEach((itemCategoryButton) => {
@@ -29,9 +25,9 @@ export const utils = {
 		let result = stop - start;
 		return result;
 	},
-	getDestinationYByType(y, h, type) {
+	getDestinationYByCategory(y, h, category) {
 		let destinationY = y;
-		if (y && h && type === 'roof') {
+		if (y && h && category === 'roof') {
 			destinationY = y - h / 1.7;
 		}
 		return destinationY;

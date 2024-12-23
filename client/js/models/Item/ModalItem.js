@@ -8,7 +8,8 @@ export class ModalItem extends Item {
 	constructor({ x, y, w, h, url, name, rotation }) {
 		super({ x, y, w, h, url, name, rotation });
 		this.locationType = 'ModalItem';
-		this.type = utils.getFolder(url);
+		this.category = utils.getCategory(url);
+		this.style = utils.getStyle(url);
 		this.backgroundImage = imageHelpers.getImage('misc/itemBackground');
 		this.destinationY = this.getDestinationY();
 		this.containerX = 0;

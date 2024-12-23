@@ -33,7 +33,7 @@ class Socket extends List {
 			this.token.restore();
 			let tile = this.world.findByID(pack.grabbedItem.touchedTile.id);
 			let grabbedItem = pack.grabbedItem;
-			if (tile && !tile.isTypeOccupied(grabbedItem)) {
+			if (tile && !tile.isCategoryOccupied(grabbedItem)) {
 				this.world.placeItem(grabbedItem, tile);
 				this.self.emit('newPosition', this.world.getPack());
 			}
@@ -52,10 +52,10 @@ class Socket extends List {
 		this.on('removeItemFromWorld', (pack) => {
 			this.token.restore();
 			const tileToUpdate = this.world.findByID(pack.item.touchedTile.id, (tile) => {
-				tile.occupied[pack.item.type] = false;
+				tile.occupied[pack.item.category] = false;
 				tile.occupied.some = tile.isOccupied();
 			});
-			const itemCategoryButton = this.world.items[pack.item.type];
+			const itemCategoryButton = this.world.items[pack.item.category];
 			itemCategoryButton.forEach((item, i) => {
 				if (pack.item.id === item.id) {
 					itemCategoryButton.splice(i, 1);

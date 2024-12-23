@@ -73,7 +73,7 @@ export class GrabbedItem extends ModalItem {
 			if (grabbedItem.touchedTile) {
 				const y = (grabbedItem.touchedTile.row + 1) * cam.pixelSize - cam.y - (grabbedItem.h - 10) * cam.pixelSize;
 				const h = (grabbedItem.h - 1) * cam.pixelSize + cam.pixelSize;
-				grabbedItem.destinationY = utils.getDestinationYByType(y, h, grabbedItem.type);
+				grabbedItem.destinationY = utils.getDestinationYByCategory(y, h, grabbedItem.category);
 				tile = {
 					x: (grabbedItem.touchedTile.col + 1) * cam.pixelSize - cam.x,
 					y: grabbedItem.destinationY,

@@ -4,7 +4,7 @@
         "y": 227,
         "w": 20,
         "h": 28,
-        "type": "wall",
+        "category": "wall",
         "url": "wall/flat",
         "name": "empty-red",
         "image": {},
@@ -27,5 +27,34 @@
         },
         "destinationY": 230,
         "maxRotation": 0
+    },
+    {
+        "x": 614,
+        "y": 236,
+        "w": 20,
+        "h": 28,
+        "category": "wallElement",
+        "url": "wallElement/door",
+        "name": "doorWindow2-blue",
+        "image": {},
+        "rotation": 1,
+        "locationType": "WorldItem",
+        "id": "20241224-000815-9137",
+        "touchedTile": {
+            "id": "3-3",
+            "col": 60,
+            "row": 0,
+            "colID": 3,
+            "rowID": 3
+        },
+        "touchedItems": [],
+        "position": {
+            "x": 618,
+            "y": 230,
+            "w": 80,
+            "h": 112
+        },
+        "destinationY": 230,
+        "maxRotation": 3
     }
 ]

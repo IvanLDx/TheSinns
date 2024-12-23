@@ -80,7 +80,7 @@ export class Toolkit extends Container {
 
 			ctx.font = '16px Segoe UI';
 			ctx.fillStyle = '#374a6d';
-			ctx.fillText('Class ' + item.constructor.name + (item.type ? ` - ${item.type}` : ''), this.x + this.padding + 50, currentY + 14);
+			ctx.fillText('Class ' + item.constructor.name + (item.category ? ` - ${item.category}` : ''), this.x + this.padding + 50, currentY + 14);
 
 			currentY += 50;
 		});

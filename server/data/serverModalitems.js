@@ -42,8 +42,8 @@ function getItems(url) {
 
 function initialize() {
 	if (!initialized) {
-		Object.entries(serverModalItems).forEach(([section, type]) => {
-			Object.entries(type).forEach(([key, val]) => {
+		Object.entries(serverModalItems).forEach(([section, category]) => {
+			Object.entries(category).forEach(([key, val]) => {
 				getItems(`${section}/${key}`);
 			});
 		});

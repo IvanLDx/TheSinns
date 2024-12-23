@@ -16,7 +16,7 @@ function getList(itemList) {
 	return list;
 }
 
-class AllTypes extends OptionItem {
+class AllCategories extends OptionItem {
 	constructor() {
 		const itemList = getList(ModalItem.list);
 		super(itemList);
@@ -27,7 +27,6 @@ export class ItemCategoryButton extends OptionButton {
 	constructor(id, itemStyles) {
 		super();
 		this.id = id;
-		this.buttonType = 'item';
 		this.swatch = this.getImage();
 		this.itemStyleButtons = this.setItemStyleButtons(itemStyles);
 
@@ -46,16 +45,18 @@ export class ItemCategoryButton extends OptionButton {
 	intersectionEvents() {
 		if (this.intersects()) {
 			const modal = Modal.getElement();
-			modal.folder = this.id;
-			ItemCategoryButton.setButtonStrokeColor(this.id);
+			modal.setCategory(this.id);
+			modal.setModalItems();
+			ItemCategoryButton.setButtonStrokeColor(modal.getCategory());
+			ItemStyleButton.setButtonStrokeColor(modal.getStyle());
 			modal.updatePositionItems();
 		}
 	}
 
 	repositioning(i) {
 		super.repositioning();
-		let totalItemTypeWidth = this.w * i;
-		this.x = totalItemTypeWidth + this.marginRight + this.gap * i;
+		let totalItemWidth = this.w * i;
+		this.x = totalItemWidth + this.marginRight + this.gap * i;
 
 		this.itemStyleButtons.forEach((button, i) => {
 			button.repositioning(i);
@@ -71,7 +72,7 @@ export class ItemCategoryButton extends OptionButton {
 			h: this.h - 6
 		});
 
-		if (this.id === Modal.getElement().folder) {
+		if (this.id === Modal.getElement().getCategory()) {
 			this.itemStyleButtons.forEach((button) => {
 				button.paint();
 			});
@@ -83,11 +84,7 @@ export class ItemCategoryButton extends OptionButton {
 	}
 
 	static get() {
-		return new AllTypes();
-	}
-
-	static getStyles() {
-		console.info(OptionItem.list);
+		return new AllCategories();
 	}
 
 	static setButtonStrokeColor(id) {

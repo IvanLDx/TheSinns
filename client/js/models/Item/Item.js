@@ -9,7 +9,7 @@ export class Item extends List {
 		this.y = item.y || 0;
 		this.w = item.w || 0;
 		this.h = item.h || 0;
-		this.type = utils.getFolder(item.url) || null;
+		this.category = utils.getCategory(item.url) || null;
 		this.url = item.url || '/';
 		this.name = item.name || 'default';
 		this.image = imageHelpers.getWorldItemImage(item.url + '/' + item.name);

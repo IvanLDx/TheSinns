@@ -15,7 +15,7 @@ export class ItemPopupButton extends Container {
 		this.image = worldItem.image;
 		this.locationType = worldItem.locationType;
 		this.rotation = worldItem.rotation;
-		this.type = worldItem.type;
+		this.category = worldItem.category;
 		this.url = worldItem.url;
 	}
 

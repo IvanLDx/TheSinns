@@ -8,8 +8,8 @@ import { ItemStyleButton } from './ItemStyleButton.js';
 export class Modal extends Container {
 	constructor(x, y, w, h) {
 		super(x, y, w, h);
-		this.folder = 'wall';
-		this.subfolder = 'old';
+		this.category = 'wall';
+		this.style = 'flat';
 		this.items = {};
 		this.rotationArrows = new RotationArrows(this);
 		this.paginationArrows = new PaginationArrows(this);
@@ -18,11 +18,6 @@ export class Modal extends Container {
 		this.needsToPositionItems = false;
 		this.isSmallerThanItemList = false;
 		this.modalItems = [];
-	}
-
-	setItemStyleButtons() {
-		this.itemStyleButtons = ItemCategoryButton.getStyles(this.getType());
-		return this.itemStyleButtons;
 	}
 
 	resize() {
@@ -88,12 +83,22 @@ export class Modal extends Container {
 		this.itemCategoryButtons.paint();
 	}
 
-	getColor() {
-		return this.subfolder;
+	getStyle() {
+		return this.style;
 	}
 
-	getType() {
-		return this.folder;
+	setStyle(style) {
+		this.style = style;
+		return style;
+	}
+
+	getCategory() {
+		return this.category;
+	}
+
+	setCategory(category) {
+		this.category = category;
+		return category;
 	}
 
 	appendItems(items) {
@@ -102,6 +107,10 @@ export class Modal extends Container {
 
 	getItems() {
 		return this.items;
+	}
+
+	setModalItems() {
+		this.modalItems = Modal.getItemUrl(this.getItems());
 	}
 
 	static delete() {
@@ -117,34 +126,32 @@ export class Modal extends Container {
 	static create() {
 		if (!this.element) {
 			this.element = new Modal();
-			ItemCategoryButton.setButtonStrokeColor(this.element.getType());
-			ItemStyleButton.setButtonStrokeColor(this.element.getColor());
+			ItemCategoryButton.setButtonStrokeColor(this.element.getCategory());
+			ItemStyleButton.setButtonStrokeColor(this.element.getStyle());
 			this.element.updatePositionItems();
 		}
 		return this.getElement();
 	}
 
 	static getItemUrl(root) {
-		let subfolder = root[this.element.folder][this.element.subfolder];
-		if (!subfolder) {
-			const keys = Object.keys(root[this.element.folder]);
+		const modal = this.getElement();
+		let style = root[modal.getCategory()][modal.getStyle()];
+		if (!style) {
+			const keys = Object.keys(root[modal.getCategory()]);
 			const firstKey = keys.length > 0 ? keys[0] : null;
 
 			if (firstKey) {
-				this.element.subfolder = firstKey;
-				subfolder = root[this.element.folder][this.element.subfolder];
+				modal.setStyle(firstKey);
+				style = root[modal.getCategory()][modal.getStyle()];
 			}
 		}
 
-		return subfolder;
+		return style;
 	}
 
 	static getActiveItems() {
-		return this.getElement().getItems()[this.element.folder][this.element.subfolder];
-	}
-
-	static getType() {
-		return this.getElement().getType();
+		const modal = this.getElement();
+		return this.getElement().getItems()[modal.getCategory()][modal.getStyle()];
 	}
 
 	static getElement() {

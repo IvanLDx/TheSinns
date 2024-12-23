@@ -8,14 +8,13 @@ export class ItemStyleButton extends OptionButton {
 		this.swatch = '#e6c26c';
 		this.style = key;
 		this.category = category;
-		this.buttonType = 'itemStyle';
 	}
 
 	intersectionEvents() {
 		if (this.intersects()) {
 			const modal = Modal.getElement();
-			if (modal.folder === this.category) {
-				modal.subfolder = this.id;
+			if (modal.category === this.category) {
+				modal.setStyle(this.id);
 				ItemStyleButton.setButtonStrokeColor(this.id);
 				modal.updatePositionItems();
 			}
@@ -24,8 +23,8 @@ export class ItemStyleButton extends OptionButton {
 
 	repositioning(i) {
 		super.repositioning();
-		let totalColorWidth = this.w * (i + 1);
-		this.x = cv.width - totalColorWidth - this.marginRight - this.gap * i;
+		let totalWidth = this.w * (i + 1);
+		this.x = cv.width - totalWidth - this.marginRight - this.gap * i;
 	}
 
 	paint() {
@@ -36,9 +35,8 @@ export class ItemStyleButton extends OptionButton {
 
 	static setButtonStrokeColor(id) {
 		this.filter((button) => {
-			return button.category === Modal.getElement().folder;
+			return button.category === Modal.getElement().getCategory();
 		}).forEach((button) => {
-			console.log(button, id);
 			if (button.id === id) {
 				button.selected = true;
 				button.setSelectedStroke();
