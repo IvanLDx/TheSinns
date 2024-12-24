@@ -1,13 +1,14 @@
 import { OptionButton } from './OptionButton.js';
 import { Modal } from './Modal.js';
+import { imageHelpers } from '../../../helpers/imagehelpers.js';
 
 export class ItemStyleButton extends OptionButton {
 	constructor(key, category) {
 		super();
 		this.id = key;
-		this.swatch = '#e6c26c';
 		this.style = key;
 		this.category = category;
+		this.swatch = this.getImage();
 	}
 
 	intersectionEvents() {
@@ -21,6 +22,10 @@ export class ItemStyleButton extends OptionButton {
 		}
 	}
 
+	getImage() {
+		return imageHelpers.getImage('/swatches/' + this.category + '/' + this.id);
+	}
+
 	repositioning(i) {
 		super.repositioning();
 		let totalWidth = this.w * (i + 1);
@@ -29,8 +34,12 @@ export class ItemStyleButton extends OptionButton {
 
 	paint() {
 		super.paintContainer();
-		ctx.fillStyle = this.swatch;
-		ctx.fillRect(this.x + 5, this.y + 5, this.w - 10, this.h - 10);
+		imageHelpers.drawImage(this.swatch, imageHelpers.getSource(this.imageSize), {
+			x: this.x + 3,
+			y: this.y + 3,
+			w: this.w - 6,
+			h: this.h - 6
+		});
 	}
 
 	static setButtonStrokeColor(id) {
