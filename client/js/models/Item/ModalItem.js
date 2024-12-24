@@ -59,6 +59,7 @@ export class ModalItem extends Item {
 
 	intersects() {
 		return (
+			Modal.getElement().pagination.currentPage === this.page &&
 			mouse.absoluteX > this.containerX &&
 			mouse.absoluteX < this.containerX + this.w * MODAL_PIXEL_SIZE &&
 			mouse.absoluteY > this.containerY &&
@@ -68,6 +69,7 @@ export class ModalItem extends Item {
 
 	static createList(items) {
 		let list = {};
+
 		utils.forEachObject(items, (item, key) => {
 			if (key === 'itemwidth') {
 				this.itemWidth = item;

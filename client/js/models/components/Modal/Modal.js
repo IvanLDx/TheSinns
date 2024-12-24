@@ -4,12 +4,13 @@ import { ItemCategoryButton } from './ItemCategoryButton.js';
 import { Button } from '../Button.js';
 import { Container } from '../Container.js';
 import { ItemStyleButton } from './ItemStyleButton.js';
+import { ModalItem } from '../../Item/ModalItem.js';
 
 export class Modal extends Container {
 	constructor(x, y, w, h) {
 		super(x, y, w, h);
-		this.category = 'wall';
-		this.style = 'flat';
+		this.category = 'wallElement';
+		this.style = 'door';
 		this.items = {};
 		this.rotationArrows = new RotationArrows(this);
 		this.paginationArrows = new PaginationArrows(this);
@@ -27,7 +28,6 @@ export class Modal extends Container {
 
 		this.rotationArrows.repositioning();
 		this.paginationArrows.repositioning();
-		// this.itemStyleButtons.repositioning();
 		this.itemCategoryButtons.repositioning();
 
 		this.updatePositionItems();
@@ -79,7 +79,6 @@ export class Modal extends Container {
 
 		this.paginationArrows.paint();
 		this.rotationArrows.paint();
-		// this.itemStyleButtons.paint();
 		this.itemCategoryButtons.paint();
 	}
 
@@ -109,8 +108,16 @@ export class Modal extends Container {
 		return this.items;
 	}
 
+	getModalItems() {
+		return this.modalItems;
+	}
+
 	setModalItems() {
 		this.modalItems = Modal.getItemUrl(this.getItems());
+	}
+
+	getItemListFromRoot(root) {
+		return root[this.getCategory()][this.getStyle()];
 	}
 
 	static delete() {
@@ -126,6 +133,7 @@ export class Modal extends Container {
 	static create() {
 		if (!this.element) {
 			this.element = new Modal();
+
 			ItemCategoryButton.setButtonStrokeColor(this.element.getCategory());
 			ItemStyleButton.setButtonStrokeColor(this.element.getStyle());
 			this.element.updatePositionItems();
@@ -135,14 +143,14 @@ export class Modal extends Container {
 
 	static getItemUrl(root) {
 		const modal = this.getElement();
-		let style = root[modal.getCategory()][modal.getStyle()];
+		let style = modal.getItemListFromRoot(root);
 		if (!style) {
 			const keys = Object.keys(root[modal.getCategory()]);
 			const firstKey = keys.length > 0 ? keys[0] : null;
 
 			if (firstKey) {
 				modal.setStyle(firstKey);
-				style = root[modal.getCategory()][modal.getStyle()];
+				style = modal.getItemListFromRoot(root);
 			}
 		}
 
@@ -150,8 +158,13 @@ export class Modal extends Container {
 	}
 
 	static getActiveItems() {
-		const modal = this.getElement();
-		return this.getElement().getItems()[modal.getCategory()][modal.getStyle()];
+		return this.getElement().getModalItems();
+	}
+
+	static loopActiveItems(evt) {
+		return this.getActiveItems().forEach((item) => {
+			evt(item);
+		});
 	}
 
 	static getElement() {

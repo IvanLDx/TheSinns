@@ -21,11 +21,11 @@
         "touchedItems": [],
         "position": {
             "x": 618,
-            "y": 230,
+            "y": 226,
             "w": 80,
             "h": 112
         },
-        "destinationY": 230,
+        "destinationY": 226,
         "maxRotation": 0
     },
     {
@@ -50,11 +50,11 @@
         "touchedItems": [],
         "position": {
             "x": 618,
-            "y": 230,
+            "y": 226,
             "w": 80,
             "h": 112
         },
-        "destinationY": 230,
+        "destinationY": 226,
         "maxRotation": 3
     }
 ]
