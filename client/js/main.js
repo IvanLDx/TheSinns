@@ -30,7 +30,6 @@ function act() {
 	if (selfPlayer) {
 		cam.focus(selfPlayer);
 
-		modal.update();
 		WorldItem.setPositionTile();
 		Tile.setTouchedTile();
 		paint();
@@ -55,6 +54,7 @@ function paint() {
 
 function init() {
 	modal = Modal.create();
+	modal.update();
 	burgerButton = BurgerButton.create();
 
 	const interfaceElements = [modal, burgerButton];

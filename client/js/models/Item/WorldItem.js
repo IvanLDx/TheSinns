@@ -32,11 +32,11 @@ export class WorldItem extends Item {
 		});
 
 		occupiedTiles.forEach((tile) => {
-			utils.forEachObject(worldItems, (itemTypes, type) => {
-				itemTypes.forEach((item, i) => {
+			utils.forEachObject(worldItems, (itemCategoryButton, category) => {
+				itemCategoryButton.forEach((item, i) => {
 					if (tile === item.touchedTile.id) {
 						WorldItem.push(item);
-						worldItems[type].splice(i, 1);
+						worldItems[category].splice(i, 1);
 					}
 				});
 			});
@@ -62,7 +62,7 @@ export class WorldItem extends Item {
 
 		WorldItem.each((item) => {
 			item.setPositionTile();
-			item.destinationY = utils.getDestinationYByType(item.position.y, item.position.h, item.type);
+			item.destinationY = utils.getDestinationYByCategory(item.position.y, item.position.h, item.category);
 		});
 	}
 
@@ -81,26 +81,26 @@ export class WorldItem extends Item {
 
 	static getAboveItem() {
 		let aboveItem = WorldItem.touchedItems.find((item) => {
-			return item.type === 'decoration';
+			return item.category === 'decoration';
 		});
 		if (!aboveItem) {
 			aboveItem = WorldItem.touchedItems.find((item) => {
-				return item.type === 'wallElement';
+				return item.category === 'wallElement';
 			});
 		}
 		if (!aboveItem) {
 			aboveItem = WorldItem.touchedItems.find((item) => {
-				return item.type === 'roof';
+				return item.category === 'roof';
 			});
 		}
 		if (!aboveItem) {
 			aboveItem = WorldItem.touchedItems.find((item) => {
-				return item.type === 'wall';
+				return item.category === 'wall';
 			});
 		}
 		if (!aboveItem) {
 			aboveItem = WorldItem.touchedItems.find((item) => {
-				return item.type === 'floor';
+				return item.category === 'floor';
 			});
 		}
 		return aboveItem;

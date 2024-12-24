@@ -11,16 +11,4 @@ export class OptionButton extends Button {
 
 		Button.push(this);
 	}
-
-	static setButtonStrokeColor(type, id) {
-		this.each((button) => {
-			if (button.id === id) {
-				button.selected = true;
-				button.setSelectedStroke();
-			} else if (button.buttonType === type) {
-				button.setStandardStroke();
-				button.selected = false;
-			}
-		});
-	}
 }

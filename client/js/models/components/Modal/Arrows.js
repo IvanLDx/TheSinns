@@ -55,8 +55,7 @@ class ArrowButton extends Button {
 
 	intersectionEvents(evt) {
 		if (this.intersects()) {
-			let activeItems = Modal.getActiveItems();
-			activeItems.forEach((item) => {
+			Modal.loopActiveItems((item) => {
 				evt(item);
 			});
 		}

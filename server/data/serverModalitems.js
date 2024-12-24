@@ -3,7 +3,7 @@ let initialized = false;
 
 function getFilesFromPath(selectedPath) {
 	const path = require('path');
-	const directoryPath = path.join(dirName, 'client/img/' + selectedPath);
+	const directoryPath = path.join(dirName, 'client/img/worldItems/' + selectedPath);
 	const files = fs.readdirSync(directoryPath);
 	const fileNames = files.map((file) => file.replace('.png', ''));
 	return fileNames;
@@ -13,34 +13,22 @@ const ServerModalItem = req('models/ServerModalItem');
 
 const serverModalItems = {
 	roof: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		ceramic: []
 	},
 	wall: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		flat: [],
+		brick: [],
+		old: []
 	},
 	wallElement: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		door: [],
+		window: []
 	},
 	decoration: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		plant: []
 	},
 	floor: {
-		yellow: [],
-		blue: [],
-		green: [],
-		red: []
+		stone: []
 	},
 	itemwidth: 20
 };
@@ -54,8 +42,8 @@ function getItems(url) {
 
 function initialize() {
 	if (!initialized) {
-		Object.entries(serverModalItems).forEach(([section, type]) => {
-			Object.entries(type).forEach(([key, val]) => {
+		Object.entries(serverModalItems).forEach(([section, category]) => {
+			Object.entries(category).forEach(([key, val]) => {
 				getItems(`${section}/${key}`);
 			});
 		});

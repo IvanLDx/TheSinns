@@ -10,7 +10,7 @@ class ServerModalItem {
 		this.y = y || 0;
 		this.w = w || 20;
 		this.h = h || 28;
-		this.url = url || 'client/img/';
+		this.url = url || 'client/img/worldItems/';
 		this.name = name || 'default';
 	}
 

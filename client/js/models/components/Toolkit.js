@@ -76,14 +76,11 @@ export class Toolkit extends Container {
 						h: 40
 					}
 				);
-			} else {
-				ctx.fillStyle = image;
-				ctx.fillRect(...rectPosition);
 			}
 
 			ctx.font = '16px Segoe UI';
 			ctx.fillStyle = '#374a6d';
-			ctx.fillText('Class ' + item.constructor.name + (item.type ? ` - ${item.type}` : ''), this.x + this.padding + 50, currentY + 14);
+			ctx.fillText('Class ' + item.constructor.name + (item.category ? ` - ${item.category}` : ''), this.x + this.padding + 50, currentY + 14);
 
 			currentY += 50;
 		});
@@ -105,6 +102,6 @@ export class Toolkit extends Container {
 		}
 	}
 
-	static enabled = false;
+	static enabled = true;
 	static activeOnStart = false;
 }
