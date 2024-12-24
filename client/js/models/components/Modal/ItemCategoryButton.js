@@ -49,7 +49,7 @@ export class ItemCategoryButton extends OptionButton {
 			modal.setModalItems();
 			ItemCategoryButton.setButtonStrokeColor(modal.getCategory());
 			ItemStyleButton.setButtonStrokeColor(modal.getStyle());
-			modal.updatePositionItems();
+			modal.update();
 		}
 	}
 

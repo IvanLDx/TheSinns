@@ -16,7 +16,6 @@ export class Modal extends Container {
 		this.paginationArrows = new PaginationArrows(this);
 		this.pagination = new Pagination(this);
 		this.itemCategoryButtons = ItemCategoryButton.get();
-		this.needsToPositionItems = false;
 		this.isSmallerThanItemList = false;
 		this.modalItems = [];
 	}
@@ -29,8 +28,6 @@ export class Modal extends Container {
 		this.rotationArrows.repositioning();
 		this.paginationArrows.repositioning();
 		this.itemCategoryButtons.repositioning();
-
-		this.updatePositionItems();
 	}
 
 	checkIsSmallerThanItemList(itemRight) {
@@ -39,10 +36,6 @@ export class Modal extends Container {
 		}
 
 		return this.isSmallerThanItemList;
-	}
-
-	updatePositionItems() {
-		this.needsToPositionItems = true;
 	}
 
 	clickOnButton() {
@@ -54,16 +47,12 @@ export class Modal extends Container {
 	update() {
 		this.modalItems = Modal.getItemUrl(this.items);
 
-		if (this.needsToPositionItems) {
-			this.pagination.resetPagination();
-			this.pagination.setPagination(this.modalItems);
+		this.pagination.resetPagination();
+		this.pagination.setPagination(this.modalItems);
 
-			this.modalItems.forEach((item, i) => {
-				item.setPosition(this, i, this.pagination);
-			});
-
-			this.needsToPositionItems = false;
-		}
+		this.modalItems.forEach((item, i) => {
+			item.setPosition(this, i, this.pagination);
+		});
 	}
 
 	paint() {
@@ -136,7 +125,6 @@ export class Modal extends Container {
 
 			ItemCategoryButton.setButtonStrokeColor(this.element.getCategory());
 			ItemStyleButton.setButtonStrokeColor(this.element.getStyle());
-			this.element.updatePositionItems();
 		}
 		return this.getElement();
 	}

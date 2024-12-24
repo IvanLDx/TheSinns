@@ -17,7 +17,7 @@ export class ItemStyleButton extends OptionButton {
 			if (modal.category === this.category) {
 				modal.setStyle(this.id);
 				ItemStyleButton.setButtonStrokeColor(this.id);
-				modal.updatePositionItems();
+				modal.update();
 			}
 		}
 	}
