@@ -8,19 +8,20 @@
 		<link rel="stylesheet" href="./client/css/master.css" />
 		<link rel="stylesheet" href="./client/css/login.css" />
 		<link rel="stylesheet" href="./client/css/userMenu.css" />
+		<link rel="stylesheet" href="./client/css/messages.css" />
 	</head>
 
 	<body data-stage="login">
 		<!-- LOGIN -->
 		<section class="login">
-			<h1 class="login__title">The House of the Pixel Sun</h1>
 			<section class="login__wrapper">
 				<div class="login-msg disconnected-msg">Disconnected from server.</div>
 				<div class="login-msg expiration-msg">Rematou a sesión <button class="refresh">Ingresa outra vez!</button></div>
 
 				<form class="login-form">
+					<h1 class="login__title">The House of the Pixel Sun</h1>
 					<label class="form-input" for="username">
-						<span>Nome</span>
+						<span>Email</span>
 						<input id="username" name="username" type="text" autocomplete="username" />
 					</label>
 					<label class="form-input" for="password">
@@ -31,8 +32,10 @@
 					<input name="honeypot" type="text" />
 					<input class="csrf-token" type="hidden" name="csrf_token" />
 
-					<input class="submit" type="submit" value="Dálle!" />
+					<input class="submit login-button" type="submit" value="Dálle!" />
 					<span class="error-msg"></span>
+
+					<input type="submit" class="signup login-button" value="Ou crea unha nova conta." />
 
 					<div class="loader hidden">
 						<div class="backdrop"></div>

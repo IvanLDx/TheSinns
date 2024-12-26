@@ -30,6 +30,7 @@ export class LoginSocket {
 	signIn(data) {
 		socket.off('signIn');
 		socket.off('signIn-OK');
+		socket.off('signIn-FAIL');
 
 		socket.emit('signIn', data);
 
@@ -37,6 +38,38 @@ export class LoginSocket {
 			if (data.success) {
 				stage.change('menu');
 				menuHelpers.paintWorlds(data.worlds);
+			}
+		});
+
+		socket.on('signIn-FAIL', (data) => {
+			if (data.error && data.message) {
+				const $formError = $('.login-form .error-msg');
+				$formError.textContent = data.message;
+				$formError.addClass('show');
+			}
+		});
+	}
+
+	signUp(data) {
+		socket.off('signUp');
+		socket.off('signUp-OK');
+		socket.off('signUp-FAIL');
+
+		socket.emit('signUp', data);
+
+		socket.on('signUp-OK', (data) => {
+			console.info(data);
+			if (data.success) {
+				stage.change('menu');
+				menuHelpers.paintWorlds(data.worlds);
+			}
+		});
+
+		socket.on('signUp-FAIL', (data) => {
+			if (data.error && data.message) {
+				const $formError = $('.login-form .error-msg');
+				$formError.textContent = data.message;
+				$formError.addClass('show');
 			}
 		});
 	}

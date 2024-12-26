@@ -2,6 +2,7 @@ import { LoginSocket } from '../Socket/LoginSocket.js';
 const loginSocket = LoginSocket.start();
 
 const $form = document.querySelector('.login-form');
+let $errorMsg = null;
 
 $form.onsubmit = (e) => {
 	e.preventDefault();
@@ -13,7 +14,20 @@ $form.onsubmit = (e) => {
 		data[key] = value;
 	});
 
-	loginSocket.signIn(data);
+	const $submitter = $(e.submitter);
+	if ($submitter.hasClass('submit')) {
+		loginSocket.signIn(data);
+	} else if ($submitter.hasClass('signup')) {
+		loginSocket.signUp(data);
+	}
+};
+
+$form.onclick = () => {
+	if (!$errorMsg) {
+		$errorMsg = $('.login-form .error-msg');
+	}
+
+	$errorMsg.removeClass('show');
 };
 
 document.querySelector('.refresh').onclick = () => {

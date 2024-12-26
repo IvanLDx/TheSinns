@@ -14,6 +14,32 @@ class Login {
 		});
 	}
 
+	customerExists(data) {
+		const result = basicCheck(this.id, data);
+
+		if (result.error) {
+			return result;
+		}
+
+		if (!data.username || !data.password) {
+			result.message = 'Fill all the fields';
+			result.error = true;
+
+			return result;
+		}
+
+		const users = FS.readHtpasswd();
+
+		const user = users.find((user) => user.email === data.username);
+		if (!user) {
+			result.isSlotFree = true;
+		} else {
+			result.error = true;
+			result.message = 'The account arleady exists, please login.';
+		}
+		return result;
+	}
+
 	checkCustomer(data) {
 		const result = basicCheck(this.id, data);
 
@@ -28,19 +54,9 @@ class Login {
 			return result;
 		}
 
-		const passFile = FS.readHtpasswd().replaceAll('\r', '');
+		const users = FS.readHtpasswd();
 
-		const usersRaw = passFile.split('\n');
-
-		const users = usersRaw.map((user) => {
-			const creds = user.split(':');
-			return {
-				username: creds[0],
-				password: creds[1]
-			};
-		});
-
-		const user = users.find((user) => user.username === data.username);
+		const user = users.find((user) => user.email === data.username);
 		if (!user || user.password !== data.password) {
 			result.message = 'Invalid credentials!';
 			result.error = true;
@@ -52,7 +68,7 @@ class Login {
 			result.message = 'Token saved';
 			result.success = true;
 
-			this.socket.player.setName(user.username);
+			this.socket.player.setName(user.email);
 
 			return result;
 		}
@@ -77,6 +93,31 @@ class Login {
 				this.socket.setToken();
 			} else {
 				console.trace('signIn:', customerResult.message);
+				this.socket.emit('signIn-FAIL', customerResult);
+			}
+		});
+
+		this.socket.on('signUp', (data) => {
+			let customerResult = this.customerExists(data);
+
+			if (customerResult.isSlotFree) {
+				customerResult = FS.createAccount(data.username);
+				customerResult.socket = this.socket.player;
+				this.socket.player.setName(data.username);
+			}
+			if (customerResult.success) {
+				customerResult = FS.writeHtpasswd(data);
+				customerResult.worlds = [];
+			}
+
+			if (customerResult.success) {
+				this.socket.emit('signUp-OK', customerResult);
+				this.socket.setToken();
+			}
+
+			if (customerResult.error) {
+				console.trace('signUp:', customerResult);
+				this.socket.emit('signUp-FAIL', customerResult);
 			}
 		});
 	}

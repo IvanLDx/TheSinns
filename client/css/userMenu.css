@@ -86,21 +86,6 @@
 	border-color: var(--yellow2);
 }
 
-.world-sheet .error-msg {
-	margin-top: 10px;
-	opacity: 0;
-	transition: 0.2s;
-	color: var(--red);
-	background-color: white;
-	padding: 4px 8px;
-	border: 1px solid var(--red);
-}
-
-.world-sheet .error-msg.show {
-	opacity: 1;
-	transition: 0s;
-}
-
 .range__wrapper {
 	margin-top: 10px;
 	display: grid;

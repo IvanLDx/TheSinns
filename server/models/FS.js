@@ -1,4 +1,5 @@
 const fs = require('fs');
+const IdentityCreation = req('scripts/IdentityCreation');
 
 function tryCatch(callback) {
 	const result = {};
@@ -26,6 +27,26 @@ class FS {
 
 	static readAccount(accountName) {
 		return tryCatch(() => JSON.parse(this.read('server/data/accounts/' + accountName + '.json')));
+	}
+
+	static createAccount(accountName) {
+		return tryCatch(() => {
+			const accountID = IdentityCreation.get().setValue({
+				type: 'nameAndDate',
+				name: accountName
+			});
+			const account = {
+				id: accountID,
+				name: accountName,
+				worlds: []
+			};
+
+			fs.writeFileSync('server/data/accounts/' + accountName + '.json', JSON.stringify(account, null, 4));
+			return {
+				success: true,
+				account: account
+			};
+		});
 	}
 
 	static writeAccount(accountName, playerDataObj) {
@@ -63,7 +84,20 @@ class FS {
 	}
 
 	static readHtpasswd() {
-		return this.read('../.htpasswds/.theSinnsHtpasswd');
+		return tryCatch(() => JSON.parse(this.read('../.htpasswds/theSinnsAccounts.json')));
+	}
+
+	static writeHtpasswd(newAccount) {
+		return tryCatch(() => {
+			const htpasswd = this.readHtpasswd();
+			htpasswd.push({
+				email: newAccount.username,
+				password: newAccount.password
+			});
+
+			fs.writeFileSync('../.htpasswds/theSinnsAccounts.json', JSON.stringify(htpasswd, null, 4));
+			return { success: true };
+		});
 	}
 }
 
