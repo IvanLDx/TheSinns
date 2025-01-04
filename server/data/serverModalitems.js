@@ -18,7 +18,8 @@ const serverModalItems = {
 	wall: {
 		flat: [],
 		brick: [],
-		old: []
+		old: [],
+		fence: []
 	},
 	wallElement: {
 		door: [],
