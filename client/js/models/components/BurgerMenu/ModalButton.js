@@ -60,7 +60,7 @@ export class ModalButton extends Button {
 			case 'save':
 				button = new SaveButton(type, modal, i);
 				break;
-			case 'open':
+			case 'exit':
 				button = new OpenButton(type, modal, i);
 				break;
 			case 'toolkit':

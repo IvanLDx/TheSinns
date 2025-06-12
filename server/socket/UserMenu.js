@@ -67,7 +67,7 @@ class UserMenu {
 		const checkedWorldName = formData['world-name'].trim().match(/^[a-zÀ-ÖØ-öø-ÿĀ-žẀ-ỹẞ0-9_.-](?: ?[a-zÀ-ÖØ-öø-ÿĀ-žẀ-ỹẞ0-9_.-])*$/i);
 		if (!checkedWorldName) {
 			result.error = true;
-			result.message = `World name doesn't match the pattern`;
+			result.message = `O nome do terreo soamente permite letras, números, espazos, puntos e os símbolos _ e -.`;
 			return result;
 		}
 

@@ -126,5 +126,24 @@ export class WorldItem extends Item {
 		WorldItem.touchedItems = [];
 	}
 
+	static getList() {
+		const list = super.getList().map((item) => {
+			return {
+				x: item.x,
+				y: item.y,
+				w: item.w,
+				h: item.h,
+				category: item.category,
+				url: item.url,
+				name: item.name,
+				rotation: item.rotation,
+				id: item.id,
+				touchedTile: item.touchedTile
+			};
+		});
+
+		return list;
+	}
+
 	static selected = null;
 }

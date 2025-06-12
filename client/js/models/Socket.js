@@ -40,6 +40,10 @@ export class Socket {
 			stage.change('login');
 			stage.sendDisconnectedMsg();
 		});
+
+		socket.on('requestWorldToSave', () => {
+			socket.emit('requestWorldToSave-OK', { worldItems: WorldItem.getList() });
+		});
 	}
 
 	positionEvents() {
@@ -77,13 +81,13 @@ export class Socket {
 
 	static saveWorld() {
 		socket.emit('saveWorld', {
-			worldItems: WorldItem.list
+			worldItems: WorldItem.getList()
 		});
 	}
 
 	static exitWorld() {
 		socket.emit('exitWorld', {
-			worldItems: WorldItem.list
+			worldItems: WorldItem.getList()
 		});
 	}
 

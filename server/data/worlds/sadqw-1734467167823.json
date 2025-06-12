@@ -1,147 +1,147 @@
 [
-    {
-        "x": 647,
-        "y": 227,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-red",
-        "image": {},
-        "rotation": 0,
-        "locationType": "WorldItem",
-        "id": "20241223-211250-9250",
-        "touchedTile": {
-            "id": "3-3",
-            "col": 60,
-            "row": 0,
-            "colID": 3,
-            "rowID": 3
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 622,
-            "y": 230,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 230,
-        "maxRotation": 0
-    },
-    {
-        "x": 609,
-        "y": 232,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-blue",
-        "image": {},
-        "rotation": 1,
-        "locationType": "WorldItem",
-        "id": "20241224-115536-2451",
-        "touchedTile": {
-            "id": "3-3",
-            "col": 60,
-            "row": 0,
-            "colID": 3,
-            "rowID": 3
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 622,
-            "y": 230,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 164.11764705882354,
-        "maxRotation": 3
-    },
-    {
-        "x": 614,
-        "y": 236,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/door",
-        "name": "doorWindow2-blue",
-        "image": {},
-        "rotation": 1,
-        "locationType": "WorldItem",
-        "id": "20241224-000815-9137",
-        "touchedTile": {
-            "id": "3-3",
-            "col": 60,
-            "row": 0,
-            "colID": 3,
-            "rowID": 3
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 622,
-            "y": 230,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 230,
-        "maxRotation": 3
-    },
-    {
-        "x": 781,
-        "y": 383,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/window",
-        "name": "window2-blue",
-        "image": {},
-        "rotation": 0,
-        "locationType": "WorldItem",
-        "id": "20241224-115124-1658",
-        "touchedTile": {
-            "id": "1-9",
-            "col": 100,
-            "row": 40,
-            "colID": 1,
-            "rowID": 9
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 782,
-            "y": 390,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 390,
-        "maxRotation": 3
-    },
-    {
-        "x": 624,
-        "y": 342,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/window",
-        "name": "window-red",
-        "image": {},
-        "rotation": 1,
-        "locationType": "WorldItem",
-        "id": "20241224-115127-3555",
-        "touchedTile": {
-            "id": "0-6",
-            "col": 60,
-            "row": 30,
-            "colID": 0,
-            "rowID": 6
-        },
-        "touchedItems": [],
-        "position": {
-            "x": 622,
-            "y": 350,
-            "w": 80,
-            "h": 112
-        },
-        "destinationY": 350,
-        "maxRotation": 3
-    }
+	{
+		"x": 647,
+		"y": 227,
+		"w": 20,
+		"h": 28,
+		"category": "wall",
+		"url": "wall/flat",
+		"name": "empty-red",
+		"image": {},
+		"rotation": 0,
+		"locationType": "WorldItem",
+		"id": "20241223-211250-9250",
+		"touchedTile": {
+			"id": "3-3",
+			"col": 60,
+			"row": 0,
+			"colID": 3,
+			"rowID": 3
+		},
+		"touchedItems": [],
+		"position": {
+			"x": 622,
+			"y": 230,
+			"w": 80,
+			"h": 112
+		},
+		"destinationY": 230,
+		"maxRotation": 0
+	},
+	{
+		"x": 609,
+		"y": 232,
+		"w": 20,
+		"h": 28,
+		"category": "roof",
+		"url": "roof/ceramic",
+		"name": "roof1-blue",
+		"image": {},
+		"rotation": 1,
+		"locationType": "WorldItem",
+		"id": "20241224-115536-2451",
+		"touchedTile": {
+			"id": "3-3",
+			"col": 60,
+			"row": 0,
+			"colID": 3,
+			"rowID": 3
+		},
+		"touchedItems": [],
+		"position": {
+			"x": 622,
+			"y": 230,
+			"w": 80,
+			"h": 112
+		},
+		"destinationY": 164.11764705882354,
+		"maxRotation": 3
+	},
+	{
+		"x": 614,
+		"y": 236,
+		"w": 20,
+		"h": 28,
+		"category": "wallElement",
+		"url": "wallElement/door",
+		"name": "doorWindow2-blue",
+		"image": {},
+		"rotation": 1,
+		"locationType": "WorldItem",
+		"id": "20241224-000815-9137",
+		"touchedTile": {
+			"id": "3-3",
+			"col": 60,
+			"row": 0,
+			"colID": 3,
+			"rowID": 3
+		},
+		"touchedItems": [],
+		"position": {
+			"x": 622,
+			"y": 230,
+			"w": 80,
+			"h": 112
+		},
+		"destinationY": 230,
+		"maxRotation": 3
+	},
+	{
+		"x": 781,
+		"y": 383,
+		"w": 20,
+		"h": 28,
+		"category": "wallElement",
+		"url": "wallElement/window",
+		"name": "window2-blue",
+		"image": {},
+		"rotation": 0,
+		"locationType": "WorldItem",
+		"id": "20241224-115124-1658",
+		"touchedTile": {
+			"id": "1-9",
+			"col": 100,
+			"row": 40,
+			"colID": 1,
+			"rowID": 9
+		},
+		"touchedItems": [],
+		"position": {
+			"x": 782,
+			"y": 390,
+			"w": 80,
+			"h": 112
+		},
+		"destinationY": 390,
+		"maxRotation": 3
+	},
+	{
+		"x": 624,
+		"y": 342,
+		"w": 20,
+		"h": 28,
+		"category": "wallElement",
+		"url": "wallElement/window",
+		"name": "window-red",
+		"image": {},
+		"rotation": 1,
+		"locationType": "WorldItem",
+		"id": "20241224-115127-3555",
+		"touchedTile": {
+			"id": "0-6",
+			"col": 60,
+			"row": 30,
+			"colID": 0,
+			"rowID": 6
+		},
+		"touchedItems": [],
+		"position": {
+			"x": 622,
+			"y": 350,
+			"w": 80,
+			"h": 112
+		},
+		"destinationY": 350,
+		"maxRotation": 3
+	}
 ]

@@ -30,7 +30,7 @@ export class BurgerModal extends Container {
 	}
 
 	#setButtons() {
-		let buttonConfigs = [{ type: 'save' }, { type: 'open' }];
+		let buttonConfigs = [{ type: 'save' }, { type: 'exit' }];
 		if (Toolkit.enabled) {
 			buttonConfigs.push({ type: 'toolkit' });
 		}

@@ -102,6 +102,6 @@ export class Toolkit extends Container {
 		}
 	}
 
-	static enabled = true;
+	static enabled = false;
 	static activeOnStart = false;
 }

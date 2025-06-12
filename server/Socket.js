@@ -115,6 +115,13 @@ class Socket extends List {
 		});
 	}
 
+	requestWorldToSave() {
+		this.self.emit('requestWorldToSave');
+		this.self.on('requestWorldToSave-OK', (pack) => {
+			this.#saveWorld(pack.worldItems);
+		});
+	}
+
 	emitUpdatePosition(pack) {
 		const tileToUpdate = {
 			id: pack.tileToUpdate.id,

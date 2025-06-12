@@ -18,3 +18,11 @@ io.sockets.on('connection', function (socket) {
 		Player.delete(socket.id);
 	});
 });
+
+setInterval(() => {
+	Socket.each((socket) => {
+		if (socket.world) {
+			socket.requestWorldToSave();
+		}
+	});
+}, 20000);
