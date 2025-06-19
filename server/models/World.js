@@ -1,4 +1,5 @@
 const FS = require('./FS');
+const FullItem = req('models/serverItem/FullItem');
 
 /**
  * @World_Class
@@ -63,7 +64,8 @@ class World {
 	}
 
 	placeItem(item, tile) {
-		this.items[item.category].push(item);
+		const fullItem = FullItem.get(item);
+		this.items[fullItem.category].push(fullItem);
 
 		tile = tile || this.findByID(item.touchedTile.id);
 		tile.occupied[item.category] = true;

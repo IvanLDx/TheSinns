@@ -89,7 +89,9 @@ export class MouseModel {
 			}
 		});
 		if (!this.isThereIntersection) {
-			this.style('initial');
+			if (!keyboard.pressing.Space) {
+				this.style('initial');
+			}
 			this.selectedColor = null;
 		}
 	}
@@ -150,7 +152,11 @@ export class MouseModel {
 	stop() {
 		this.drag = { x: 0, y: 0 };
 		if (!this.isThereIntersection) {
-			this.style('initial');
+			if (keyboard.pressing.Space) {
+				this.style('grab');
+			} else {
+				this.style('initial');
+			}
 		}
 		this.pressing = false;
 		this.dragging = false;

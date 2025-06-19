@@ -1,0 +1,310 @@
+[
+	{
+		"sku": "ROCE-R1B",
+		"primaryCategory": "roof/ceramic",
+		"name": "roof1-blue"
+	},
+	{
+		"sku": "ROCE-R1G",
+		"primaryCategory": "roof/ceramic",
+		"name": "roof1-green"
+	},
+	{
+		"sku": "ROCE-R1R",
+		"primaryCategory": "roof/ceramic",
+		"name": "roof1-red"
+	},
+	{
+		"sku": "ROCE-R1Y",
+		"primaryCategory": "roof/ceramic",
+		"name": "roof1-yellow"
+	},
+
+	{
+		"sku": "WABR-BRB",
+		"primaryCategory": "wall/brick",
+		"name": "brick-blue"
+	},
+	{
+		"sku": "WABR-BRG",
+		"primaryCategory": "wall/brick",
+		"name": "brick-green"
+	},
+	{
+		"sku": "WABR-BRR",
+		"primaryCategory": "wall/brick",
+		"name": "brick-red"
+	},
+	{
+		"sku": "WABR-BRY",
+		"primaryCategory": "wall/brick",
+		"name": "brick-yellow"
+	},
+	{
+		"sku": "WABR-FEG",
+		"primaryCategory": "wall/brick",
+		"name": "fence-grey"
+	},
+	{
+		"sku": "WABR-HBB",
+		"primaryCategory": "wall/brick",
+		"name": "halfbrick-blue"
+	},
+	{
+		"sku": "WABR-HBG",
+		"primaryCategory": "wall/brick",
+		"name": "halfbrick-green"
+	},
+	{
+		"sku": "WABR-HBR",
+		"primaryCategory": "wall/brick",
+		"name": "halfbrick-red"
+	},
+	{
+		"sku": "WABR-HBY",
+		"primaryCategory": "wall/brick",
+		"name": "halfbrick-yellow"
+	},
+	{
+		"sku": "WABR-MG1",
+		"primaryCategory": "wall/brick",
+		"name": "masonry-grey1"
+	},
+	{
+		"sku": "WABR-MG2",
+		"primaryCategory": "wall/brick",
+		"name": "masonry-grey2"
+	},
+
+	{
+		"sku": "WAFE-GR1",
+		"primaryCategory": "wall/fence",
+		"name": "grey"
+	},
+	{
+		"sku": "WAFE-GR2",
+		"primaryCategory": "wall/fence",
+		"name": "grey2"
+	},
+
+	{
+		"sku": "WAFL-EMB",
+		"primaryCategory": "wall/flat",
+		"name": "empty-blue"
+	},
+	{
+		"sku": "WAFL-EMG",
+		"primaryCategory": "wall/flat",
+		"name": "empty-green"
+	},
+	{
+		"sku": "WAFL-EMR",
+		"primaryCategory": "wall/flat",
+		"name": "empty-red"
+	},
+	{
+		"sku": "WAFL-EMY",
+		"primaryCategory": "wall/flat",
+		"name": "empty-yellow"
+	},
+
+	{
+		"sku": "WAOL-STB",
+		"primaryCategory": "wall/old",
+		"name": "stone-blue"
+	},
+	{
+		"sku": "WAOL-STG",
+		"primaryCategory": "wall/old",
+		"name": "stone-green"
+	},
+	{
+		"sku": "WAOL-STR",
+		"primaryCategory": "wall/old",
+		"name": "stone-red"
+	},
+	{
+		"sku": "WAOL-STY",
+		"primaryCategory": "wall/old",
+		"name": "stone-yellow"
+	},
+	{
+		"sku": "WAOL-WOB",
+		"primaryCategory": "wall/old",
+		"name": "worn-blue"
+	},
+	{
+		"sku": "WAOL-WOG",
+		"primaryCategory": "wall/old",
+		"name": "worn-green"
+	},
+	{
+		"sku": "WAOL-WOR",
+		"primaryCategory": "wall/old",
+		"name": "worn-red"
+	},
+	{
+		"sku": "WAOL-WOY",
+		"primaryCategory": "wall/old",
+		"name": "worn-yellow"
+	},
+
+	{
+		"sku": "WEDO-D2B",
+		"primaryCategory": "wallElement/door",
+		"name": "door2-blue"
+	},
+	{
+		"sku": "WEDO-D2R",
+		"primaryCategory": "wallElement/door",
+		"name": "door2-red"
+	},
+	{
+		"sku": "WEDO-D2Y",
+		"primaryCategory": "wallElement/door",
+		"name": "door2-yellow"
+	},
+	{
+		"sku": "WEDO-DOB",
+		"primaryCategory": "wallElement/door",
+		"name": "door-blue"
+	},
+	{
+		"sku": "WEDO-DOR",
+		"primaryCategory": "wallElement/door",
+		"name": "door-red"
+	},
+	{
+		"sku": "WEDO-W2B",
+		"primaryCategory": "wallElement/door",
+		"name": "doorWindow2-blue"
+	},
+	{
+		"sku": "WEDO-W2R",
+		"primaryCategory": "wallElement/door",
+		"name": "doorWindow2-red"
+	},
+	{
+		"sku": "WEDO-W2Y",
+		"primaryCategory": "wallElement/door",
+		"name": "doorWindow2-yellow"
+	},
+	{
+		"sku": "WEDO-WIB",
+		"primaryCategory": "wallElement/door",
+		"name": "doorWindow-blue"
+	},
+	{
+		"sku": "WEDO-WIR",
+		"primaryCategory": "wallElement/door",
+		"name": "doorWindow-red"
+	},
+	{
+		"sku": "WEDO-WIY",
+		"primaryCategory": "wallElement/door",
+		"name": "doorWindow-yellow"
+	},
+	{
+		"sku": "WEDO-DOY",
+		"primaryCategory": "wallElement/door",
+		"name": "door-yellow"
+	},
+
+	{
+		"sku": "WEWI-W2B",
+		"primaryCategory": "wallElement/window",
+		"name": "window2-blue"
+	},
+	{
+		"sku": "WEWI-W2G",
+		"primaryCategory": "wallElement/window",
+		"name": "window2-green"
+	},
+	{
+		"sku": "WEWI-W2R",
+		"primaryCategory": "wallElement/window",
+		"name": "window2-red"
+	},
+	{
+		"sku": "WEWI-W2Y",
+		"primaryCategory": "wallElement/window",
+		"name": "window2-yellow"
+	},
+	{
+		"sku": "WEWI-W3B",
+		"primaryCategory": "wallElement/window",
+		"name": "window3-blue"
+	},
+	{
+		"sku": "WEWI-W3G",
+		"primaryCategory": "wallElement/window",
+		"name": "window3-green"
+	},
+	{
+		"sku": "WEWI-W3R",
+		"primaryCategory": "wallElement/window",
+		"name": "window3-red"
+	},
+	{
+		"sku": "WEWI-W3Y",
+		"primaryCategory": "wallElement/window",
+		"name": "window3-yellow"
+	},
+	{
+		"sku": "WEWI-WIB",
+		"primaryCategory": "wallElement/window",
+		"name": "window-blue"
+	},
+	{
+		"sku": "WEWI-WIG",
+		"primaryCategory": "wallElement/window",
+		"name": "window-green"
+	},
+	{
+		"sku": "WEWI-WIR",
+		"primaryCategory": "wallElement/window",
+		"name": "window-red"
+	},
+	{
+		"sku": "WEWI-WIY",
+		"primaryCategory": "wallElement/window",
+		"name": "window-yellow"
+	},
+
+	{
+		"sku": "DEPL-CA1",
+		"primaryCategory": "decoration/plant",
+		"name": "cactus1"
+	},
+	{
+		"sku": "DEPL-CA2",
+		"primaryCategory": "decoration/plant",
+		"name": "cactus2"
+	},
+	{
+		"sku": "DEPL-CA3",
+		"primaryCategory": "decoration/plant",
+		"name": "cactus3"
+	},
+	{
+		"sku": "DEPL-SA1",
+		"primaryCategory": "decoration/plant",
+		"name": "sakura1"
+	},
+	{
+		"sku": "DEPL-SA2",
+		"primaryCategory": "decoration/plant",
+		"name": "sakura2"
+	},
+
+	{
+		"sku": "FLST-TI1",
+		"primaryCategory": "floor/stone",
+		"name": "tile1"
+	},
+	{
+		"sku": "FLST-TI2",
+		"primaryCategory": "floor/stone",
+		"name": "tile2"
+	}
+]

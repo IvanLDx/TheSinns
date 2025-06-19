@@ -1,6 +1,6 @@
 const World = req('models/World');
 const Player = req('models/Player');
-const itemData = req('data/serverModalitems');
+const itemData = req('models/serverItem/itemData');
 const basicCheck = req('scripts/basicCheck');
 const IdentityCreation = req('scripts/IdentityCreation');
 const FS = req('models/FS');

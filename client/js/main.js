@@ -1,6 +1,7 @@
 import { Camera } from './models/Camera.js';
 import { SelfPlayer } from './models/SelfPlayer.js';
 import { MouseModel } from './models/Mouse.js';
+import { KeyboardModel } from './models/Keyboard.js';
 import { Socket } from './models/Socket.js';
 import { utils, debounce } from './utils.js';
 
@@ -17,6 +18,7 @@ window.cv = document.querySelector('.canvas');
 window.ctx = cv.getContext('2d');
 window.cam = new Camera();
 window.mouse = new MouseModel();
+window.keyboard = new KeyboardModel();
 
 const socket = Socket.getLibrary();
 let modal;

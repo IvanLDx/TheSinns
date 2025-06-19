@@ -4,9 +4,13 @@ import { utils } from '../../utils.js';
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
+		worldItem.w = 20;
+		worldItem.h = 28;
 		super(worldItem);
+
 		this.locationType = 'WorldItem';
 		this.id = worldItem.id;
+		this.sku = worldItem.sku;
 		this.touchedTile = worldItem.touchedTile;
 		this.touchedItems = [];
 		this.position = this.setPositionTile();
@@ -129,15 +133,9 @@ export class WorldItem extends Item {
 	static getList() {
 		const list = super.getList().map((item) => {
 			return {
-				x: item.x,
-				y: item.y,
-				w: item.w,
-				h: item.h,
-				category: item.category,
-				url: item.url,
-				name: item.name,
 				rotation: item.rotation,
 				id: item.id,
+				sku: item.sku,
 				touchedTile: item.touchedTile
 			};
 		});

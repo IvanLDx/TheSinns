@@ -7,23 +7,15 @@ import { Modal } from '../models/components/Modal/Modal.js';
 const modal = Modal.create();
 
 export function init() {
-	document.onwheel = documentListeners.onwheel;
-
-	document.onmousemove = documentListeners.onmousemove;
-	document.onmousedown = documentListeners.onmousedown;
-	document.ontouchstart = documentListeners.onmousedown;
-
-	document.onmouseup = documentListeners.onmouseup;
+	Object.entries(documentListeners).forEach(([key]) => {
+		document[key] = documentListeners[key];
+	});
 }
 
 export function stop() {
-	document.onwheel = null;
-
-	document.onmousemove = null;
-	document.onmousedown = null;
-	document.ontouchstart = null;
-
-	document.onmouseup = null;
+	Object.entries(documentListeners).forEach(([key]) => {
+		document[key] = null;
+	});
 }
 
 const documentListeners = {
@@ -54,15 +46,16 @@ const documentListeners = {
 			} else {
 				mouse.setTouchedTile();
 
+				if (keyboard.pressing.Space) {
+					document.onmousemove = documentListeners.onmousedrag;
+					return;
+				}
+
 				let selectedItem = WorldItem.tryToSelect();
 				if (selectedItem) {
 					GrabbedItem.grab(selectedItem);
 				} else {
 					GrabbedItem.tryToCreate();
-				}
-
-				if (!GrabbedItem.element) {
-					document.onmousemove = documentListeners.onmousedrag;
 				}
 			}
 		});
@@ -83,5 +76,27 @@ const documentListeners = {
 
 		mouse.stop();
 		WorldItem.untouchItems();
+	},
+	onkeydown: function (e) {
+		keyboard.onkeydown(e, (code) => {
+			switch (code) {
+				case 'Space':
+					mouse.style('grab');
+					break;
+				default:
+					break;
+			}
+		});
+	},
+	onkeyup: function (e) {
+		keyboard.onkeyup(e, (code) => {
+			switch (code) {
+				case 'Space':
+					mouse.style('initial');
+					break;
+				default:
+					break;
+			}
+		});
 	}
 };

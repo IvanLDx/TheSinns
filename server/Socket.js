@@ -21,8 +21,14 @@ class Socket extends List {
 		this.userMenu.initEvents();
 	}
 
+	#restoreToken() {
+		if (this.token) {
+			this.token.restore();
+		}
+	}
+
 	#saveWorld(worldItems) {
-		this.token.restore();
+		this.#restoreToken();
 		if (this.world && this.world.id) {
 			FS.writeWorld(this.world.id, worldItems);
 		}
@@ -30,12 +36,14 @@ class Socket extends List {
 
 	#initOnEvents() {
 		this.on('placeGrabbedItem', (pack) => {
-			this.token.restore();
-			let tile = this.world.findByID(pack.grabbedItem.touchedTile.id);
-			let grabbedItem = pack.grabbedItem;
-			if (tile && !tile.isCategoryOccupied(grabbedItem)) {
-				this.world.placeItem(grabbedItem, tile);
-				this.self.emit('newPosition', this.world.getPack());
+			this.#restoreToken();
+			if (this.world) {
+				let tile = this.world.findByID(pack.grabbedItem.touchedTile.id);
+				let grabbedItem = pack.grabbedItem;
+				if (tile && !tile.isCategoryOccupied(grabbedItem)) {
+					this.world.placeItem(grabbedItem, tile);
+					this.self.emit('newPosition', this.world.getPack());
+				}
 			}
 		});
 
@@ -50,22 +58,25 @@ class Socket extends List {
 		});
 
 		this.on('removeItemFromWorld', (pack) => {
-			this.token.restore();
-			const tileToUpdate = this.world.findByID(pack.item.touchedTile.id, (tile) => {
-				tile.occupied[pack.item.category] = false;
-				tile.occupied.some = tile.isOccupied();
-			});
-			const itemCategoryButton = this.world.items[pack.item.category];
-			itemCategoryButton.forEach((item, i) => {
-				if (pack.item.id === item.id) {
-					itemCategoryButton.splice(i, 1);
-				}
-			});
+			this.#restoreToken();
 
-			this.removeItemFromWorldOK({
-				item: pack.item,
-				tileToUpdate: tileToUpdate
-			});
+			if (this.world) {
+				const tileToUpdate = this.world.findByID(pack.item.touchedTile.id, (tile) => {
+					tile.occupied[pack.item.category] = false;
+					tile.occupied.some = tile.isOccupied();
+				});
+				const itemCategoryButton = this.world.items[pack.item.category];
+				itemCategoryButton.forEach((item, i) => {
+					if (pack.item.id === item.id) {
+						itemCategoryButton.splice(i, 1);
+					}
+				});
+
+				this.removeItemFromWorldOK({
+					item: pack.item,
+					tileToUpdate: tileToUpdate
+				});
+			}
 		});
 
 		this.on('createWorld', (formData) => {

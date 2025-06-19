@@ -1,0 +1,48 @@
+{
+	"roof": {
+		"ceramic": ["ROCE-R1B", "ROCE-R1G", "ROCE-R1R", "ROCE-R1Y"]
+	},
+	"wall": {
+		"flat": ["WAFL-EMB", "WAFL-EMG", "WAFL-EMR", "WAFL-EMY"],
+		"brick": ["WABR-BRB", "WABR-BRG", "WABR-BRR", "WABR-BRY", "WABR-FEG", "WABR-HBB", "WABR-HBG", "WABR-HBR", "WABR-HBY", "WABR-MG1", "WABR-MG2"],
+		"old": ["WAOL-STB", "WAOL-STG", "WAOL-STR", "WAOL-STY", "WAOL-WOB", "WAOL-WOG", "WAOL-WOR", "WAOL-WOY"],
+		"fence": ["WAFE-GR1", "WAFE-GR2"]
+	},
+	"wallElement": {
+		"door": [
+			"WEDO-D2B",
+			"WEDO-D2R",
+			"WEDO-D2Y",
+			"WEDO-DOB",
+			"WEDO-DOR",
+			"WEDO-W2B",
+			"WEDO-W2R",
+			"WEDO-W2Y",
+			"WEDO-WIB",
+			"WEDO-WIR",
+			"WEDO-WIR",
+			"WEDO-WIY",
+			"WEDO-DOY"
+		],
+		"window": [
+			"WEWI-W2B",
+			"WEWI-W2G",
+			"WEWI-W2R",
+			"WEWI-W2Y",
+			"WEWI-W3B",
+			"WEWI-W3G",
+			"WEWI-W3R",
+			"WEWI-W3Y",
+			"WEWI-WIB",
+			"WEWI-WIG",
+			"WEWI-WIR",
+			"WEWI-WIY"
+		]
+	},
+	"decoration": {
+		"plant": ["DEPL-CA1", "DEPL-CA2", "DEPL-CA3", "DEPL-SA1", "DEPL-SA2"]
+	},
+	"floor": {
+		"stone": ["FLST-TI1", "FLST-TI2"]
+	}
+}

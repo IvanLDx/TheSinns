@@ -2,6 +2,7 @@
 	--green1: #64e29d;
 	--yellow1: #e2b332;
 	--yellow2: #f2e8a2;
+	--orange: #e26932;
 	--blue1: #2c4371;
 	--red: #dc142c;
 }
@@ -51,6 +52,10 @@ body[data-stage='world'] .canvas {
 
 .login-msg {
 	display: none;
+	margin-bottom: 12px;
+	padding: 6px 12px 8px 12px;
+	background-color: var(--orange);
+	color: var(--yellow2);
 }
 
 .login-msg.show {

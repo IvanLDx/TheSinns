@@ -5,8 +5,9 @@ import { Modal } from '../components/Modal/Modal.js';
 const MODAL_PIXEL_SIZE = utils.getModalPixelSize();
 
 export class ModalItem extends Item {
-	constructor({ x, y, w, h, url, name, rotation }) {
+	constructor({ x, y, w, h, url, name, rotation, sku }) {
 		super({ x, y, w, h, url, name, rotation });
+		this.sku = sku;
 		this.locationType = 'ModalItem';
 		this.category = utils.getCategory(url);
 		this.style = utils.getStyle(url);
@@ -70,19 +71,15 @@ export class ModalItem extends Item {
 	static createList(items) {
 		let list = {};
 
-		utils.forEachObject(items, (item, key) => {
-			if (key === 'itemwidth') {
-				this.itemWidth = item;
-			} else {
-				list[key] = {};
-				utils.forEachObject(item, (subItem, subKey) => {
-					list[key][subKey] = [];
-					subItem.forEach((value) => {
-						list[key][subKey].push(new ModalItem(value));
-					});
+		Object.entries(items.serverModalItems).forEach(([key, val]) => {
+			list[key] = {};
+			Object.entries(val).forEach(([subKey, subVal]) => {
+				list[key][subKey] = subVal.map((itemVal) => {
+					return new ModalItem(itemVal);
 				});
-			}
+			});
 		});
+
 		this.list = list;
 	}
 
@@ -100,4 +97,6 @@ export class ModalItem extends Item {
 	static itemWidth = 0;
 
 	static marginRight = 1.1;
+
+	static list = [];
 }

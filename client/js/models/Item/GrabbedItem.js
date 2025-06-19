@@ -9,6 +9,7 @@ export class GrabbedItem extends ModalItem {
 		super(item);
 		this.locationType = 'GrabbedItem';
 		this.id = this.id || this.createID();
+		this.sku = item.sku;
 		this.touchedTile = null;
 		this.destinationY = null;
 	}

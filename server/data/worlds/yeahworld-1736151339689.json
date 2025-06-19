@@ -1,14 +1,8 @@
 [
     {
-        "x": 343,
-        "y": 448,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092833-8302",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "22-20",
             "col": 420,
@@ -18,15 +12,9 @@
         }
     },
     {
-        "x": 361,
-        "y": 454,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092831-9464",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "22-21",
             "col": 430,
@@ -36,15 +24,9 @@
         }
     },
     {
-        "x": 293,
-        "y": 439,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092828-6677",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "21-19",
             "col": 400,
@@ -54,15 +36,9 @@
         }
     },
     {
-        "x": 306,
-        "y": 452,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092905-7286",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "21-20",
             "col": 410,
@@ -72,15 +48,9 @@
         }
     },
     {
-        "x": 341,
-        "y": 469,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092901-3326",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "21-21",
             "col": 420,
@@ -90,15 +60,9 @@
         }
     },
     {
-        "x": 374,
-        "y": 479,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092826-1062",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "21-22",
             "col": 430,
@@ -108,15 +72,9 @@
         }
     },
     {
-        "x": 225,
-        "y": 438,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092819-9347",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "20-18",
             "col": 380,
@@ -126,15 +84,9 @@
         }
     },
     {
-        "x": 251,
-        "y": 454,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092850-1944",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "20-19",
             "col": 390,
@@ -144,15 +96,9 @@
         }
     },
     {
-        "x": 292,
-        "y": 464,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092904-7758",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "20-20",
             "col": 400,
@@ -162,15 +108,9 @@
         }
     },
     {
-        "x": 304,
-        "y": 478,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092902-4305",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "20-21",
             "col": 410,
@@ -180,15 +120,9 @@
         }
     },
     {
-        "x": 335,
-        "y": 494,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092859-8225",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "20-22",
             "col": 420,
@@ -198,15 +132,9 @@
         }
     },
     {
-        "x": 374,
-        "y": 511,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092825-5598",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "20-23",
             "col": 430,
@@ -216,15 +144,9 @@
         }
     },
     {
-        "x": 161,
-        "y": 445,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092817-3934",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-17",
             "col": 360,
@@ -234,15 +156,9 @@
         }
     },
     {
-        "x": 176,
-        "y": 459,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092847-5478",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-18",
             "col": 370,
@@ -252,15 +168,9 @@
         }
     },
     {
-        "x": 235,
-        "y": 471,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092848-6840",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-19",
             "col": 380,
@@ -270,15 +180,9 @@
         }
     },
     {
-        "x": 246,
-        "y": 483,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092853-3524",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-20",
             "col": 390,
@@ -288,15 +192,9 @@
         }
     },
     {
-        "x": 274,
-        "y": 503,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092855-7934",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-21",
             "col": 400,
@@ -306,15 +204,9 @@
         }
     },
     {
-        "x": 303,
-        "y": 518,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092856-4412",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-22",
             "col": 410,
@@ -324,15 +216,9 @@
         }
     },
     {
-        "x": 333,
-        "y": 532,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092858-4707",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-23",
             "col": 420,
@@ -342,15 +228,9 @@
         }
     },
     {
-        "x": 372,
-        "y": 537,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092822-2429",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "19-24",
             "col": 430,
@@ -360,15 +240,9 @@
         }
     },
     {
-        "x": 660,
-        "y": 216,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092756-6819",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-16",
             "col": 340,
@@ -378,15 +252,9 @@
         }
     },
     {
-        "x": 129,
-        "y": 454,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092845-1282",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-17",
             "col": 350,
@@ -396,15 +264,9 @@
         }
     },
     {
-        "x": 156,
-        "y": 470,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092844-8706",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-18",
             "col": 360,
@@ -414,15 +276,9 @@
         }
     },
     {
-        "x": 183,
-        "y": 478,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092842-3458",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-19",
             "col": 370,
@@ -432,15 +288,9 @@
         }
     },
     {
-        "x": 212,
-        "y": 497,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092841-9853",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-20",
             "col": 380,
@@ -450,15 +300,9 @@
         }
     },
     {
-        "x": 247,
-        "y": 515,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092839-6993",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-21",
             "col": 390,
@@ -468,15 +312,9 @@
         }
     },
     {
-        "x": 273,
-        "y": 530,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092838-4256",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-22",
             "col": 400,
@@ -486,15 +324,9 @@
         }
     },
     {
-        "x": 315,
-        "y": 538,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092906-5012",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-23",
             "col": 410,
@@ -504,15 +336,9 @@
         }
     },
     {
-        "x": 327,
-        "y": 567,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092835-5578",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-24",
             "col": 420,
@@ -522,15 +348,9 @@
         }
     },
     {
-        "x": 366,
-        "y": 568,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092820-5692",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "18-25",
             "col": 430,
@@ -540,15 +360,9 @@
         }
     },
     {
-        "x": 596,
-        "y": 208,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092800-8495",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-15",
             "col": 320,
@@ -558,15 +372,9 @@
         }
     },
     {
-        "x": 599,
-        "y": 319,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092944-6478",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-16",
             "col": 330,
@@ -576,15 +384,9 @@
         }
     },
     {
-        "x": 641,
-        "y": 276,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092403-4635",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-17",
             "col": 340,
@@ -594,15 +396,9 @@
         }
     },
     {
-        "x": 671,
-        "y": 292,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092204-3654",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-18",
             "col": 350,
@@ -612,15 +408,9 @@
         }
     },
     {
-        "x": 700,
-        "y": 307,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092203-6649",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-19",
             "col": 360,
@@ -630,15 +420,9 @@
         }
     },
     {
-        "x": 729,
-        "y": 318,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092202-2608",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-20",
             "col": 370,
@@ -648,15 +432,9 @@
         }
     },
     {
-        "x": 756,
-        "y": 335,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092201-8887",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-21",
             "col": 380,
@@ -666,15 +444,9 @@
         }
     },
     {
-        "x": 792,
-        "y": 351,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092200-7149",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-22",
             "col": 390,
@@ -684,15 +456,9 @@
         }
     },
     {
-        "x": 811,
-        "y": 356,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092157-4777",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-23",
             "col": 400,
@@ -702,15 +468,9 @@
         }
     },
     {
-        "x": 846,
-        "y": 390,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092356-1134",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-24",
             "col": 410,
@@ -720,15 +480,9 @@
         }
     },
     {
-        "x": 893,
-        "y": 395,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092358-8542",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-25",
             "col": 420,
@@ -738,15 +492,9 @@
         }
     },
     {
-        "x": 916,
-        "y": 410,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092359-4748",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "17-26",
             "col": 430,
@@ -756,15 +504,9 @@
         }
     },
     {
-        "x": 526,
-        "y": 212,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092801-5939",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "16-14",
             "col": 300,
@@ -774,15 +516,9 @@
         }
     },
     {
-        "x": 533,
-        "y": 322,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092941-3493",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "16-15",
             "col": 310,
@@ -792,15 +528,9 @@
         }
     },
     {
-        "x": 557,
-        "y": 340,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092942-4205",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "16-16",
             "col": 320,
@@ -810,15 +540,9 @@
         }
     },
     {
-        "x": 615,
-        "y": 279,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092401-9092",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "16-17",
             "col": 330,
@@ -828,15 +552,9 @@
         }
     },
     {
-        "x": 636,
-        "y": 303,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092240-9827",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-18",
             "col": 340,
@@ -846,15 +564,9 @@
         }
     },
     {
-        "x": 654,
-        "y": 266,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey",
         "rotation": 2,
         "id": "20250106-092518-3908",
+        "sku": "WAFE-GR1",
         "touchedTile": {
             "id": "16-18",
             "col": 340,
@@ -864,15 +576,9 @@
         }
     },
     {
-        "x": 684,
-        "y": 320,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092242-4153",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-19",
             "col": 350,
@@ -882,15 +588,9 @@
         }
     },
     {
-        "x": 687,
-        "y": 292,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 3,
         "id": "20250106-092521-2382",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "16-19",
             "col": 350,
@@ -900,15 +600,9 @@
         }
     },
     {
-        "x": 709,
-        "y": 327,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092244-1899",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-20",
             "col": 360,
@@ -918,15 +612,9 @@
         }
     },
     {
-        "x": 719,
-        "y": 312,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 3,
         "id": "20250106-092523-6019",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "16-20",
             "col": 360,
@@ -936,15 +624,9 @@
         }
     },
     {
-        "x": 738,
-        "y": 345,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092246-6421",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-21",
             "col": 370,
@@ -954,15 +636,9 @@
         }
     },
     {
-        "x": 736,
-        "y": 320,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 3,
         "id": "20250106-092526-6227",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "16-21",
             "col": 370,
@@ -972,15 +648,9 @@
         }
     },
     {
-        "x": 748,
-        "y": 356,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092249-9788",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-22",
             "col": 380,
@@ -990,15 +660,9 @@
         }
     },
     {
-        "x": 778,
-        "y": 324,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 3,
         "id": "20250106-092528-6181",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "16-22",
             "col": 380,
@@ -1008,15 +672,9 @@
         }
     },
     {
-        "x": 787,
-        "y": 388,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092250-5741",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-23",
             "col": 390,
@@ -1026,15 +684,9 @@
         }
     },
     {
-        "x": 809,
-        "y": 354,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 3,
         "id": "20250106-092531-1104",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "16-23",
             "col": 390,
@@ -1044,15 +696,9 @@
         }
     },
     {
-        "x": 816,
-        "y": 395,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092340-8798",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-24",
             "col": 400,
@@ -1062,15 +708,9 @@
         }
     },
     {
-        "x": 834,
-        "y": 368,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 3,
         "id": "20250106-092535-9536",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "16-24",
             "col": 400,
@@ -1080,15 +720,9 @@
         }
     },
     {
-        "x": 836,
-        "y": 406,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092355-5607",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "16-25",
             "col": 410,
@@ -1098,15 +732,9 @@
         }
     },
     {
-        "x": 864,
-        "y": 378,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey",
         "rotation": 3,
         "id": "20250106-092537-2348",
+        "sku": "WAFE-GR1",
         "touchedTile": {
             "id": "16-25",
             "col": 410,
@@ -1116,15 +744,9 @@
         }
     },
     {
-        "x": 837,
-        "y": 413,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092152-4151",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "16-26",
             "col": 420,
@@ -1134,15 +756,9 @@
         }
     },
     {
-        "x": 925,
-        "y": 413,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092700-7097",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "16-27",
             "col": 430,
@@ -1152,15 +768,9 @@
         }
     },
     {
-        "x": 481,
-        "y": 214,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092803-7604",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-13",
             "col": 280,
@@ -1170,15 +780,9 @@
         }
     },
     {
-        "x": 397,
-        "y": 299,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092957-7880",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-14",
             "col": 290,
@@ -1188,15 +792,9 @@
         }
     },
     {
-        "x": 450,
-        "y": 343,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092958-3926",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-15",
             "col": 300,
@@ -1206,15 +804,9 @@
         }
     },
     {
-        "x": 483,
-        "y": 359,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092939-5109",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-16",
             "col": 310,
@@ -1224,15 +816,9 @@
         }
     },
     {
-        "x": 578,
-        "y": 303,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092206-4534",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-17",
             "col": 320,
@@ -1242,15 +828,9 @@
         }
     },
     {
-        "x": 602,
-        "y": 311,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092238-5657",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "15-18",
             "col": 330,
@@ -1260,15 +840,9 @@
         }
     },
     {
-        "x": 616,
-        "y": 290,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 2,
         "id": "20250106-092512-8150",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "15-18",
             "col": 330,
@@ -1278,15 +852,9 @@
         }
     },
     {
-        "x": 761,
-        "y": 396,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092253-3028",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "15-23",
             "col": 380,
@@ -1296,15 +864,9 @@
         }
     },
     {
-        "x": 787,
-        "y": 369,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "sakura2",
         "rotation": 1,
         "id": "20250106-092613-9496",
+        "sku": "DEPL-SA2",
         "touchedTile": {
             "id": "15-23",
             "col": 380,
@@ -1314,15 +876,9 @@
         }
     },
     {
-        "x": 791,
-        "y": 395,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092338-8034",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "15-24",
             "col": 390,
@@ -1332,15 +888,9 @@
         }
     },
     {
-        "x": 818,
-        "y": 372,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus2",
         "rotation": 1,
         "id": "20250106-092628-1326",
+        "sku": "DEPL-CA2",
         "touchedTile": {
             "id": "15-24",
             "col": 390,
@@ -1350,15 +900,9 @@
         }
     },
     {
-        "x": 809,
-        "y": 428,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092351-4253",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "15-25",
             "col": 400,
@@ -1368,15 +912,9 @@
         }
     },
     {
-        "x": 843,
-        "y": 384,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 0,
         "id": "20250106-092442-4164",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "15-25",
             "col": 400,
@@ -1386,15 +924,9 @@
         }
     },
     {
-        "x": 808,
-        "y": 437,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092153-6188",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-26",
             "col": 410,
@@ -1404,15 +936,9 @@
         }
     },
     {
-        "x": 903,
-        "y": 423,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092651-9795",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-27",
             "col": 420,
@@ -1422,15 +948,9 @@
         }
     },
     {
-        "x": 916,
-        "y": 440,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092702-9172",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "15-28",
             "col": 430,
@@ -1440,15 +960,9 @@
         }
     },
     {
-        "x": 418,
-        "y": 210,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092814-9313",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-12",
             "col": 260,
@@ -1458,15 +972,9 @@
         }
     },
     {
-        "x": 304,
-        "y": 320,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092952-3151",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-13",
             "col": 270,
@@ -1476,15 +984,9 @@
         }
     },
     {
-        "x": 337,
-        "y": 332,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092954-8079",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-14",
             "col": 280,
@@ -1494,15 +996,9 @@
         }
     },
     {
-        "x": 379,
-        "y": 370,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092955-7644",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-15",
             "col": 290,
@@ -1512,15 +1008,9 @@
         }
     },
     {
-        "x": 379,
-        "y": 516,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092924-1378",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-16",
             "col": 300,
@@ -1530,15 +1020,9 @@
         }
     },
     {
-        "x": 557,
-        "y": 319,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092206-7870",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-17",
             "col": 310,
@@ -1548,15 +1032,9 @@
         }
     },
     {
-        "x": 576,
-        "y": 329,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092236-4115",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "14-18",
             "col": 320,
@@ -1566,15 +1044,9 @@
         }
     },
     {
-        "x": 594,
-        "y": 296,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 2,
         "id": "20250106-092510-6750",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "14-18",
             "col": 320,
@@ -1584,15 +1056,9 @@
         }
     },
     {
-        "x": 880,
-        "y": 381,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091635-6103",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "14-20",
             "col": 340,
@@ -1602,15 +1068,9 @@
         }
     },
     {
-        "x": 861,
-        "y": 385,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 3,
         "id": "20250106-091707-9755",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "14-20",
             "col": 340,
@@ -1620,15 +1080,9 @@
         }
     },
     {
-        "x": 905,
-        "y": 391,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091633-2043",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "14-21",
             "col": 350,
@@ -1638,15 +1092,9 @@
         }
     },
     {
-        "x": 896,
-        "y": 405,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 3,
         "id": "20250106-091704-8956",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "14-21",
             "col": 350,
@@ -1656,15 +1104,9 @@
         }
     },
     {
-        "x": 920,
-        "y": 422,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091632-8860",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "14-22",
             "col": 360,
@@ -1674,15 +1116,9 @@
         }
     },
     {
-        "x": 933,
-        "y": 406,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 3,
         "id": "20250106-091702-3464",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "14-22",
             "col": 360,
@@ -1692,15 +1128,9 @@
         }
     },
     {
-        "x": 955,
-        "y": 436,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091630-7785",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "14-23",
             "col": 370,
@@ -1710,15 +1140,9 @@
         }
     },
     {
-        "x": 963,
-        "y": 438,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 3,
         "id": "20250106-091700-8366",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "14-23",
             "col": 370,
@@ -1728,15 +1152,9 @@
         }
     },
     {
-        "x": 976,
-        "y": 360,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/window",
-        "name": "window3-yellow",
         "rotation": 3,
         "id": "20250106-091949-5585",
+        "sku": "WEWI-W3Y",
         "touchedTile": {
             "id": "14-23",
             "col": 370,
@@ -1746,15 +1164,9 @@
         }
     },
     {
-        "x": 754,
-        "y": 425,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092334-6490",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "14-24",
             "col": 380,
@@ -1764,15 +1176,9 @@
         }
     },
     {
-        "x": 775,
-        "y": 381,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus2",
         "rotation": 1,
         "id": "20250106-092619-3858",
+        "sku": "DEPL-CA2",
         "touchedTile": {
             "id": "14-24",
             "col": 380,
@@ -1782,15 +1188,9 @@
         }
     },
     {
-        "x": 783,
-        "y": 444,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092353-8376",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "14-25",
             "col": 390,
@@ -1800,15 +1200,9 @@
         }
     },
     {
-        "x": 790,
-        "y": 406,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "sakura1",
         "rotation": 0,
         "id": "20250106-092603-6154",
+        "sku": "DEPL-SA1",
         "touchedTile": {
             "id": "14-25",
             "col": 390,
@@ -1818,15 +1212,9 @@
         }
     },
     {
-        "x": 804,
-        "y": 419,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 0,
         "id": "20250106-092440-4085",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "14-25",
             "col": 390,
@@ -1836,15 +1224,9 @@
         }
     },
     {
-        "x": 774,
-        "y": 445,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092155-2266",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-26",
             "col": 400,
@@ -1854,15 +1236,9 @@
         }
     },
     {
-        "x": 856,
-        "y": 436,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092648-7575",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-27",
             "col": 410,
@@ -1872,15 +1248,9 @@
         }
     },
     {
-        "x": 912,
-        "y": 448,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092706-3422",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-28",
             "col": 420,
@@ -1890,15 +1260,9 @@
         }
     },
     {
-        "x": 923,
-        "y": 461,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092711-1304",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "14-29",
             "col": 430,
@@ -1908,15 +1272,9 @@
         }
     },
     {
-        "x": 389,
-        "y": 229,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092813-5189",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-12",
             "col": 250,
@@ -1926,15 +1284,9 @@
         }
     },
     {
-        "x": 266,
-        "y": 351,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092951-9287",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-13",
             "col": 260,
@@ -1944,15 +1296,9 @@
         }
     },
     {
-        "x": 250,
-        "y": 372,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092948-8388",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-14",
             "col": 270,
@@ -1962,15 +1308,9 @@
         }
     },
     {
-        "x": 349,
-        "y": 518,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092919-1122",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-15",
             "col": 280,
@@ -1980,15 +1320,9 @@
         }
     },
     {
-        "x": 351,
-        "y": 526,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092921-3654",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-16",
             "col": 290,
@@ -1998,15 +1332,9 @@
         }
     },
     {
-        "x": 534,
-        "y": 333,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092207-3284",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-17",
             "col": 300,
@@ -2016,15 +1344,9 @@
         }
     },
     {
-        "x": 565,
-        "y": 341,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092234-4756",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "13-18",
             "col": 310,
@@ -2034,15 +1356,9 @@
         }
     },
     {
-        "x": 566,
-        "y": 311,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 2,
         "id": "20250106-092509-5030",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "13-18",
             "col": 310,
@@ -2052,15 +1368,9 @@
         }
     },
     {
-        "x": 830,
-        "y": 341,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091622-7024",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "13-20",
             "col": 330,
@@ -2070,15 +1380,9 @@
         }
     },
     {
-        "x": 852,
-        "y": 405,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 1,
         "id": "20250106-091654-7535",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "13-20",
             "col": 330,
@@ -2088,15 +1392,9 @@
         }
     },
     {
-        "x": 831,
-        "y": 347,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091624-3024",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "13-21",
             "col": 340,
@@ -2106,15 +1404,9 @@
         }
     },
     {
-        "x": 871,
-        "y": 415,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 1,
         "id": "20250106-091652-9973",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "13-21",
             "col": 340,
@@ -2124,15 +1416,9 @@
         }
     },
     {
-        "x": 864,
-        "y": 373,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091625-3120",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "13-22",
             "col": 350,
@@ -2142,15 +1428,9 @@
         }
     },
     {
-        "x": 905,
-        "y": 420,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 1,
         "id": "20250106-091650-7887",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "13-22",
             "col": 350,
@@ -2160,15 +1440,9 @@
         }
     },
     {
-        "x": 916,
-        "y": 364,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/window",
-        "name": "window2-yellow",
         "rotation": 1,
         "id": "20250106-091901-5220",
+        "sku": "WEWI-W2Y",
         "touchedTile": {
             "id": "13-22",
             "col": 350,
@@ -2178,15 +1452,9 @@
         }
     },
     {
-        "x": 914,
-        "y": 452,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091628-8899",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "13-23",
             "col": 360,
@@ -2196,15 +1464,9 @@
         }
     },
     {
-        "x": 930,
-        "y": 441,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 1,
         "id": "20250106-091648-5427",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "13-23",
             "col": 360,
@@ -2214,15 +1476,9 @@
         }
     },
     {
-        "x": 955,
-        "y": 376,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/door",
-        "name": "doorWindow2-yellow",
         "rotation": 1,
         "id": "20250106-091942-8723",
+        "sku": "WEDO-W2Y",
         "touchedTile": {
             "id": "13-23",
             "col": 360,
@@ -2232,15 +1488,9 @@
         }
     },
     {
-        "x": 742,
-        "y": 439,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092331-1606",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "13-24",
             "col": 370,
@@ -2250,15 +1500,9 @@
         }
     },
     {
-        "x": 741,
-        "y": 402,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus3",
         "rotation": 1,
         "id": "20250106-092616-7356",
+        "sku": "DEPL-CA3",
         "touchedTile": {
             "id": "13-24",
             "col": 370,
@@ -2268,15 +1512,9 @@
         }
     },
     {
-        "x": 757,
-        "y": 462,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092348-1507",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "13-25",
             "col": 380,
@@ -2286,15 +1524,9 @@
         }
     },
     {
-        "x": 779,
-        "y": 414,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 0,
         "id": "20250106-092438-5814",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "13-25",
             "col": 380,
@@ -2304,15 +1536,9 @@
         }
     },
     {
-        "x": 786,
-        "y": 473,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092419-4542",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-26",
             "col": 390,
@@ -2322,15 +1548,9 @@
         }
     },
     {
-        "x": 843,
-        "y": 445,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092649-8823",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-27",
             "col": 400,
@@ -2340,15 +1560,9 @@
         }
     },
     {
-        "x": 876,
-        "y": 462,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092704-6317",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-28",
             "col": 410,
@@ -2358,15 +1572,9 @@
         }
     },
     {
-        "x": 886,
-        "y": 491,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092709-1743",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-29",
             "col": 420,
@@ -2376,15 +1584,9 @@
         }
     },
     {
-        "x": 911,
-        "y": 499,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092716-8499",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "13-30",
             "col": 430,
@@ -2394,15 +1596,9 @@
         }
     },
     {
-        "x": 397,
-        "y": 264,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092808-5150",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-13",
             "col": 250,
@@ -2412,15 +1608,9 @@
         }
     },
     {
-        "x": 249,
-        "y": 397,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092949-1449",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-14",
             "col": 260,
@@ -2430,15 +1620,9 @@
         }
     },
     {
-        "x": 287,
-        "y": 416,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092947-6143",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-15",
             "col": 270,
@@ -2448,15 +1632,9 @@
         }
     },
     {
-        "x": 322,
-        "y": 547,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092918-8889",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-16",
             "col": 280,
@@ -2466,15 +1644,9 @@
         }
     },
     {
-        "x": 498,
-        "y": 346,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092208-1017",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-17",
             "col": 290,
@@ -2484,15 +1656,9 @@
         }
     },
     {
-        "x": 519,
-        "y": 364,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092232-2957",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "12-18",
             "col": 300,
@@ -2502,15 +1668,9 @@
         }
     },
     {
-        "x": 535,
-        "y": 322,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 2,
         "id": "20250106-092507-8695",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "12-18",
             "col": 300,
@@ -2520,15 +1680,9 @@
         }
     },
     {
-        "x": 810,
-        "y": 419,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091640-4945",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "12-20",
             "col": 320,
@@ -2538,15 +1692,9 @@
         }
     },
     {
-        "x": 807,
-        "y": 391,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 2,
         "id": "20250106-091718-6542",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "12-20",
             "col": 320,
@@ -2556,15 +1704,9 @@
         }
     },
     {
-        "x": 837,
-        "y": 430,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091638-1848",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "12-21",
             "col": 330,
@@ -2574,15 +1716,9 @@
         }
     },
     {
-        "x": 851,
-        "y": 426,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 0,
         "id": "20250106-091711-1912",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "12-21",
             "col": 330,
@@ -2592,15 +1728,9 @@
         }
     },
     {
-        "x": 874,
-        "y": 363,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/window",
-        "name": "window2-yellow",
         "rotation": 0,
         "id": "20250106-092047-1503",
+        "sku": "WEWI-W2Y",
         "touchedTile": {
             "id": "12-21",
             "col": 330,
@@ -2610,15 +1740,9 @@
         }
     },
     {
-        "x": 640,
-        "y": 414,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092325-6589",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-22",
             "col": 340,
@@ -2628,15 +1752,9 @@
         }
     },
     {
-        "x": 656,
-        "y": 395,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus3",
         "rotation": 0,
-        "id": "20250106-092542-8790",
+        "id": "20250612-204609-3878",
+        "sku": "DEPL-CA3",
         "touchedTile": {
             "id": "12-22",
             "col": 340,
@@ -2646,15 +1764,9 @@
         }
     },
     {
-        "x": 677,
-        "y": 427,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092311-1044",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-23",
             "col": 350,
@@ -2664,15 +1776,9 @@
         }
     },
     {
-        "x": 705,
-        "y": 453,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092329-3031",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "12-24",
             "col": 360,
@@ -2682,15 +1788,9 @@
         }
     },
     {
-        "x": 702,
-        "y": 429,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus1",
         "rotation": 1,
         "id": "20250106-092623-2267",
+        "sku": "DEPL-CA1",
         "touchedTile": {
             "id": "12-24",
             "col": 360,
@@ -2700,15 +1800,9 @@
         }
     },
     {
-        "x": 737,
-        "y": 462,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092349-5367",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "12-25",
             "col": 370,
@@ -2718,15 +1812,9 @@
         }
     },
     {
-        "x": 727,
-        "y": 441,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 0,
         "id": "20250106-092436-1252",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "12-25",
             "col": 370,
@@ -2736,15 +1824,9 @@
         }
     },
     {
-        "x": 772,
-        "y": 488,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092417-1438",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-26",
             "col": 380,
@@ -2754,15 +1836,9 @@
         }
     },
     {
-        "x": 807,
-        "y": 466,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092645-8783",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-27",
             "col": 390,
@@ -2772,15 +1848,9 @@
         }
     },
     {
-        "x": 851,
-        "y": 480,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092658-7844",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-28",
             "col": 400,
@@ -2790,15 +1860,9 @@
         }
     },
     {
-        "x": 868,
-        "y": 505,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092713-4189",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-29",
             "col": 410,
@@ -2808,15 +1872,9 @@
         }
     },
     {
-        "x": 897,
-        "y": 518,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092720-4809",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "12-30",
             "col": 420,
@@ -2826,15 +1884,9 @@
         }
     },
     {
-        "x": 390,
-        "y": 289,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092806-4990",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-14",
             "col": 250,
@@ -2844,15 +1896,9 @@
         }
     },
     {
-        "x": 252,
-        "y": 450,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092945-6801",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-15",
             "col": 260,
@@ -2862,15 +1908,9 @@
         }
     },
     {
-        "x": 288,
-        "y": 563,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092917-8442",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-16",
             "col": 270,
@@ -2880,15 +1920,9 @@
         }
     },
     {
-        "x": 474,
-        "y": 362,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092209-6277",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-17",
             "col": 280,
@@ -2898,15 +1932,9 @@
         }
     },
     {
-        "x": 507,
-        "y": 379,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092230-3718",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "11-18",
             "col": 290,
@@ -2916,15 +1944,9 @@
         }
     },
     {
-        "x": 497,
-        "y": 347,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 2,
         "id": "20250106-092505-8345",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "11-18",
             "col": 290,
@@ -2934,15 +1956,9 @@
         }
     },
     {
-        "x": 517,
-        "y": 383,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092225-4894",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "11-19",
             "col": 300,
@@ -2952,15 +1968,9 @@
         }
     },
     {
-        "x": 548,
-        "y": 359,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus1",
         "rotation": 1,
         "id": "20250106-092632-2988",
+        "sku": "DEPL-CA1",
         "touchedTile": {
             "id": "11-19",
             "col": 300,
@@ -2970,15 +1980,9 @@
         }
     },
     {
-        "x": 772,
-        "y": 432,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091643-2804",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "11-20",
             "col": 310,
@@ -2988,15 +1992,9 @@
         }
     },
     {
-        "x": 798,
-        "y": 407,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 2,
         "id": "20250106-091721-8240",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "11-20",
             "col": 310,
@@ -3006,15 +2004,9 @@
         }
     },
     {
-        "x": 785,
-        "y": 359,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/window",
-        "name": "window-yellow",
         "rotation": 1,
         "id": "20250106-091957-6324",
+        "sku": "WEWI-WIY",
         "touchedTile": {
             "id": "11-20",
             "col": 310,
@@ -3024,15 +2016,9 @@
         }
     },
     {
-        "x": 812,
-        "y": 444,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/flat",
-        "name": "empty-yellow",
         "rotation": 0,
         "id": "20250106-091641-2403",
+        "sku": "WAFL-EMY",
         "touchedTile": {
             "id": "11-21",
             "col": 320,
@@ -3042,15 +2028,9 @@
         }
     },
     {
-        "x": 820,
-        "y": 414,
-        "w": 20,
-        "h": 28,
-        "category": "roof",
-        "url": "roof/ceramic",
-        "name": "roof1-yellow",
         "rotation": 0,
-        "id": "20250106-091715-6417",
+        "id": "20250612-204615-8671",
+        "sku": "ROCE-R1Y",
         "touchedTile": {
             "id": "11-21",
             "col": 320,
@@ -3060,15 +2040,9 @@
         }
     },
     {
-        "x": 824,
-        "y": 373,
-        "w": 20,
-        "h": 28,
-        "category": "wallElement",
-        "url": "wallElement/window",
-        "name": "window-yellow",
         "rotation": 1,
-        "id": "20250106-092040-9891",
+        "id": "20250614-201159-3674",
+        "sku": "WEWI-WIY",
         "touchedTile": {
             "id": "11-21",
             "col": 320,
@@ -3078,15 +2052,9 @@
         }
     },
     {
-        "x": 601,
-        "y": 438,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092321-1714",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-22",
             "col": 330,
@@ -3096,15 +2064,9 @@
         }
     },
     {
-        "x": 632,
-        "y": 405,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "sakura1",
         "rotation": 0,
         "id": "20250106-092545-7973",
+        "sku": "DEPL-SA1",
         "touchedTile": {
             "id": "11-22",
             "col": 330,
@@ -3114,15 +2076,9 @@
         }
     },
     {
-        "x": 638,
-        "y": 443,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092309-3894",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-23",
             "col": 340,
@@ -3132,15 +2088,9 @@
         }
     },
     {
-        "x": 674,
-        "y": 469,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092327-9901",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "11-24",
             "col": 350,
@@ -3150,15 +2100,9 @@
         }
     },
     {
-        "x": 676,
-        "y": 438,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "sakura2",
         "rotation": 1,
         "id": "20250106-092607-1812",
+        "sku": "DEPL-SA2",
         "touchedTile": {
             "id": "11-24",
             "col": 350,
@@ -3168,15 +2112,9 @@
         }
     },
     {
-        "x": 709,
-        "y": 486,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092346-8794",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "11-25",
             "col": 360,
@@ -3186,15 +2124,9 @@
         }
     },
     {
-        "x": 709,
-        "y": 452,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 0,
         "id": "20250106-092434-4024",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "11-25",
             "col": 360,
@@ -3204,15 +2136,9 @@
         }
     },
     {
-        "x": 751,
-        "y": 463,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092431-8259",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-26",
             "col": 370,
@@ -3222,15 +2148,9 @@
         }
     },
     {
-        "x": 792,
-        "y": 482,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092643-6489",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-27",
             "col": 380,
@@ -3240,15 +2160,9 @@
         }
     },
     {
-        "x": 806,
-        "y": 499,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092656-3503",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-28",
             "col": 390,
@@ -3258,15 +2172,9 @@
         }
     },
     {
-        "x": 853,
-        "y": 508,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092708-4991",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "11-29",
             "col": 400,
@@ -3276,15 +2184,9 @@
         }
     },
     {
-        "x": 395,
-        "y": 322,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092805-5027",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-15",
             "col": 250,
@@ -3294,15 +2196,9 @@
         }
     },
     {
-        "x": 270,
-        "y": 580,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092915-2928",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-16",
             "col": 260,
@@ -3312,15 +2208,9 @@
         }
     },
     {
-        "x": 446,
-        "y": 376,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092210-1453",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-17",
             "col": 270,
@@ -3330,15 +2220,9 @@
         }
     },
     {
-        "x": 452,
-        "y": 394,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092228-6194",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "10-18",
             "col": 280,
@@ -3348,15 +2232,9 @@
         }
     },
     {
-        "x": 476,
-        "y": 365,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 2,
         "id": "20250106-092503-6358",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "10-18",
             "col": 280,
@@ -3366,15 +2244,9 @@
         }
     },
     {
-        "x": 482,
-        "y": 409,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092223-7963",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "10-19",
             "col": 290,
@@ -3384,15 +2256,9 @@
         }
     },
     {
-        "x": 514,
-        "y": 376,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "sakura2",
         "rotation": 0,
         "id": "20250106-092559-4700",
+        "sku": "DEPL-SA2",
         "touchedTile": {
             "id": "10-19",
             "col": 290,
@@ -3402,15 +2268,9 @@
         }
     },
     {
-        "x": 523,
-        "y": 424,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092221-5072",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "10-20",
             "col": 300,
@@ -3420,15 +2280,9 @@
         }
     },
     {
-        "x": 541,
-        "y": 391,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus1",
         "rotation": 0,
         "id": "20250106-092557-2764",
+        "sku": "DEPL-CA1",
         "touchedTile": {
             "id": "10-20",
             "col": 300,
@@ -3438,15 +2292,9 @@
         }
     },
     {
-        "x": 552,
-        "y": 432,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092322-6530",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "10-21",
             "col": 310,
@@ -3456,15 +2304,9 @@
         }
     },
     {
-        "x": 555,
-        "y": 405,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus2",
         "rotation": 0,
         "id": "20250106-092548-8317",
+        "sku": "DEPL-CA2",
         "touchedTile": {
             "id": "10-21",
             "col": 310,
@@ -3474,15 +2316,9 @@
         }
     },
     {
-        "x": 585,
-        "y": 446,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092323-4451",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-22",
             "col": 320,
@@ -3492,15 +2328,9 @@
         }
     },
     {
-        "x": 603,
-        "y": 464,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092308-8664",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-23",
             "col": 330,
@@ -3510,15 +2340,9 @@
         }
     },
     {
-        "x": 637,
-        "y": 476,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092315-7381",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "10-24",
             "col": 340,
@@ -3528,15 +2352,9 @@
         }
     },
     {
-        "x": 661,
-        "y": 493,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092344-5263",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "10-25",
             "col": 350,
@@ -3546,15 +2364,9 @@
         }
     },
     {
-        "x": 696,
-        "y": 461,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 0,
         "id": "20250106-092433-3230",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "10-25",
             "col": 350,
@@ -3564,15 +2376,9 @@
         }
     },
     {
-        "x": 710,
-        "y": 519,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092413-3123",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-26",
             "col": 360,
@@ -3582,15 +2388,9 @@
         }
     },
     {
-        "x": 748,
-        "y": 495,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092641-7304",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-27",
             "col": 370,
@@ -3600,15 +2400,9 @@
         }
     },
     {
-        "x": 767,
-        "y": 516,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092654-3323",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "10-28",
             "col": 380,
@@ -3618,15 +2412,9 @@
         }
     },
     {
-        "x": 399,
-        "y": 343,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092754-6109",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "9-16",
             "col": 250,
@@ -3636,15 +2424,9 @@
         }
     },
     {
-        "x": 411,
-        "y": 393,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092211-1726",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "9-17",
             "col": 260,
@@ -3654,15 +2436,9 @@
         }
     },
     {
-        "x": 440,
-        "y": 408,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092227-6732",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "9-18",
             "col": 270,
@@ -3672,15 +2448,9 @@
         }
     },
     {
-        "x": 438,
-        "y": 383,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey",
         "rotation": 1,
         "id": "20250106-092500-1627",
+        "sku": "WAFE-GR1",
         "touchedTile": {
             "id": "9-18",
             "col": 270,
@@ -3690,15 +2460,9 @@
         }
     },
     {
-        "x": 459,
-        "y": 430,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092255-5709",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "9-19",
             "col": 280,
@@ -3708,15 +2472,9 @@
         }
     },
     {
-        "x": 464,
-        "y": 393,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 1,
         "id": "20250106-092458-7299",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "9-19",
             "col": 280,
@@ -3726,15 +2484,9 @@
         }
     },
     {
-        "x": 484,
-        "y": 434,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092257-4209",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "9-20",
             "col": 290,
@@ -3744,15 +2496,9 @@
         }
     },
     {
-        "x": 500,
-        "y": 403,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus2",
         "rotation": 0,
         "id": "20250106-092554-1654",
+        "sku": "DEPL-CA2",
         "touchedTile": {
             "id": "9-20",
             "col": 290,
@@ -3762,15 +2508,9 @@
         }
     },
     {
-        "x": 506,
-        "y": 408,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 1,
         "id": "20250106-092456-6919",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "9-20",
             "col": 290,
@@ -3780,15 +2520,9 @@
         }
     },
     {
-        "x": 512,
-        "y": 450,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092258-2935",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "9-21",
             "col": 300,
@@ -3798,15 +2532,9 @@
         }
     },
     {
-        "x": 547,
-        "y": 416,
-        "w": 20,
-        "h": 28,
-        "category": "decoration",
-        "url": "decoration/plant",
-        "name": "cactus1",
         "rotation": 0,
         "id": "20250106-092551-3554",
+        "sku": "DEPL-CA1",
         "touchedTile": {
             "id": "9-21",
             "col": 300,
@@ -3816,15 +2544,9 @@
         }
     },
     {
-        "x": 532,
-        "y": 423,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 1,
         "id": "20250106-092454-6923",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "9-21",
             "col": 300,
@@ -3834,15 +2556,9 @@
         }
     },
     {
-        "x": 555,
-        "y": 460,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092316-1335",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "9-22",
             "col": 310,
@@ -3852,15 +2568,9 @@
         }
     },
     {
-        "x": 589,
-        "y": 477,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092306-6460",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "9-23",
             "col": 320,
@@ -3870,15 +2580,9 @@
         }
     },
     {
-        "x": 588,
-        "y": 481,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092314-5227",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "9-24",
             "col": 330,
@@ -3888,15 +2592,9 @@
         }
     },
     {
-        "x": 636,
-        "y": 464,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey2",
         "rotation": 1,
         "id": "20250106-092452-4209",
+        "sku": "WAFE-GR2",
         "touchedTile": {
             "id": "9-24",
             "col": 330,
@@ -3906,15 +2604,9 @@
         }
     },
     {
-        "x": 644,
-        "y": 509,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile1",
         "rotation": 0,
         "id": "20250106-092343-4550",
+        "sku": "FLST-TI1",
         "touchedTile": {
             "id": "9-25",
             "col": 340,
@@ -3924,15 +2616,9 @@
         }
     },
     {
-        "x": 651,
-        "y": 477,
-        "w": 20,
-        "h": 28,
-        "category": "wall",
-        "url": "wall/fence",
-        "name": "grey",
         "rotation": 0,
         "id": "20250106-092449-8806",
+        "sku": "WAFE-GR1",
         "touchedTile": {
             "id": "9-25",
             "col": 340,
@@ -3942,15 +2628,9 @@
         }
     },
     {
-        "x": 785,
-        "y": 203,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092932-9291",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "9-26",
             "col": 350,
@@ -3960,15 +2640,9 @@
         }
     },
     {
-        "x": 706,
-        "y": 513,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092639-4951",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "9-27",
             "col": 360,
@@ -3978,15 +2652,9 @@
         }
     },
     {
-        "x": 385,
-        "y": 407,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092405-4343",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-17",
             "col": 250,
@@ -3996,15 +2664,9 @@
         }
     },
     {
-        "x": 402,
-        "y": 417,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092212-4246",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-18",
             "col": 260,
@@ -4014,15 +2676,9 @@
         }
     },
     {
-        "x": 430,
-        "y": 434,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
-        "id": "20250106-092213-8084",
+        "id": "20250612-202859-1404",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-19",
             "col": 270,
@@ -4032,15 +2688,9 @@
         }
     },
     {
-        "x": 464,
-        "y": 453,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092214-3717",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-20",
             "col": 280,
@@ -4050,15 +2700,9 @@
         }
     },
     {
-        "x": 493,
-        "y": 462,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092215-9279",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-21",
             "col": 290,
@@ -4068,15 +2712,9 @@
         }
     },
     {
-        "x": 523,
-        "y": 477,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092216-3617",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-22",
             "col": 300,
@@ -4086,15 +2724,9 @@
         }
     },
     {
-        "x": 555,
-        "y": 495,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
-        "id": "20250106-092217-1132",
+        "id": "20250612-204530-8937",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-23",
             "col": 310,
@@ -4104,15 +2736,9 @@
         }
     },
     {
-        "x": 587,
-        "y": 515,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092407-9237",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-24",
             "col": 320,
@@ -4122,15 +2748,9 @@
         }
     },
     {
-        "x": 606,
-        "y": 518,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092409-6203",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-25",
             "col": 330,
@@ -4140,15 +2760,9 @@
         }
     },
     {
-        "x": 641,
-        "y": 539,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092410-5887",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "8-26",
             "col": 340,
@@ -4158,15 +2772,9 @@
         }
     },
     {
-        "x": 395,
-        "y": 408,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092726-6784",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-18",
             "col": 250,
@@ -4176,15 +2784,9 @@
         }
     },
     {
-        "x": 414,
-        "y": 423,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092738-8443",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-19",
             "col": 260,
@@ -4194,15 +2796,9 @@
         }
     },
     {
-        "x": 456,
-        "y": 437,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092740-1677",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-20",
             "col": 270,
@@ -4212,15 +2808,9 @@
         }
     },
     {
-        "x": 488,
-        "y": 450,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092744-9256",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-21",
             "col": 280,
@@ -4230,15 +2820,9 @@
         }
     },
     {
-        "x": 512,
-        "y": 475,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092749-4754",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-22",
             "col": 290,
@@ -4248,15 +2832,9 @@
         }
     },
     {
-        "x": 527,
-        "y": 478,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092751-1000",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-23",
             "col": 300,
@@ -4266,15 +2844,9 @@
         }
     },
     {
-        "x": 562,
-        "y": 488,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092752-7869",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-24",
             "col": 310,
@@ -4284,15 +2856,9 @@
         }
     },
     {
-        "x": 582,
-        "y": 514,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092722-9011",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "7-25",
             "col": 320,
@@ -4302,15 +2868,9 @@
         }
     },
     {
-        "x": 389,
-        "y": 429,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
-        "id": "20250106-092728-5870",
+        "id": "20250614-201917-5401",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "6-19",
             "col": 250,
@@ -4320,15 +2880,9 @@
         }
     },
     {
-        "x": 420,
-        "y": 454,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092737-1484",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "6-20",
             "col": 260,
@@ -4338,15 +2892,9 @@
         }
     },
     {
-        "x": 442,
-        "y": 478,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092742-3812",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "6-21",
             "col": 270,
@@ -4356,15 +2904,9 @@
         }
     },
     {
-        "x": 481,
-        "y": 486,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092746-3562",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "6-22",
             "col": 280,
@@ -4374,15 +2916,9 @@
         }
     },
     {
-        "x": 511,
-        "y": 495,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092747-9357",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "6-23",
             "col": 290,
@@ -4392,15 +2928,9 @@
         }
     },
     {
-        "x": 531,
-        "y": 507,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092723-9675",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "6-24",
             "col": 300,
@@ -4410,15 +2940,9 @@
         }
     },
     {
-        "x": 385,
-        "y": 470,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092730-4402",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "5-20",
             "col": 250,
@@ -4428,15 +2952,9 @@
         }
     },
     {
-        "x": 423,
-        "y": 479,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092734-3403",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "5-21",
             "col": 260,
@@ -4446,15 +2964,9 @@
         }
     },
     {
-        "x": 435,
-        "y": 499,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092735-9289",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "5-22",
             "col": 270,
@@ -4464,15 +2976,9 @@
         }
     },
     {
-        "x": 461,
-        "y": 506,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092726-7947",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "5-23",
             "col": 280,
@@ -4482,15 +2988,9 @@
         }
     },
     {
-        "x": 318,
-        "y": 488,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
-        "id": "20250106-093003-3756",
+        "id": "20250619-130333-6925",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "4-21",
             "col": 250,
@@ -4500,15 +3000,9 @@
         }
     },
     {
-        "x": 410,
-        "y": 509,
-        "w": 20,
-        "h": 28,
-        "category": "floor",
-        "url": "floor/stone",
-        "name": "tile2",
         "rotation": 0,
         "id": "20250106-092733-7016",
+        "sku": "FLST-TI2",
         "touchedTile": {
             "id": "4-22",
             "col": 260,

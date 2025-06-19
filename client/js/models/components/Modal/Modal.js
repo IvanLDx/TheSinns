@@ -4,7 +4,6 @@ import { ItemCategoryButton } from './ItemCategoryButton.js';
 import { Button } from '../Button.js';
 import { Container } from '../Container.js';
 import { ItemStyleButton } from './ItemStyleButton.js';
-import { ModalItem } from '../../Item/ModalItem.js';
 
 export class Modal extends Container {
 	constructor(x, y, w, h) {
