@@ -1,6 +1,8 @@
 import { Item } from './Item.js';
 import { Socket } from '../Socket.js';
 import { utils } from '../../utils.js';
+import { Tile } from '../Tile.js';
+import { TouchedTile } from '../TouchedTile.js';
 
 export class WorldItem extends Item {
 	constructor(worldItem) {
@@ -8,10 +10,11 @@ export class WorldItem extends Item {
 		worldItem.h = 28;
 		super(worldItem);
 
+		const touchedTile = Tile.find((tile) => tile.id === worldItem.touchedTile);
 		this.locationType = 'WorldItem';
 		this.id = worldItem.id;
 		this.sku = worldItem.sku;
-		this.touchedTile = worldItem.touchedTile;
+		this.touchedTile = new TouchedTile(touchedTile);
 		this.touchedItems = [];
 		this.position = this.setPositionTile();
 		this.destinationY = null;
@@ -38,7 +41,7 @@ export class WorldItem extends Item {
 		occupiedTiles.forEach((tile) => {
 			utils.forEachObject(worldItems, (itemCategoryButton, category) => {
 				itemCategoryButton.forEach((item, i) => {
-					if (tile === item.touchedTile.id) {
+					if (tile === item.touchedTile) {
 						WorldItem.push(item);
 						worldItems[category].splice(i, 1);
 					}
@@ -136,7 +139,7 @@ export class WorldItem extends Item {
 				rotation: item.rotation,
 				id: item.id,
 				sku: item.sku,
-				touchedTile: item.touchedTile
+				touchedTile: item.touchedTile.id
 			};
 		});
 

@@ -90,4 +90,6 @@ export class Tile extends List {
 			occupiedTiles.push(tileToUpdate.id);
 		}
 	}
+
+	static list = [];
 }

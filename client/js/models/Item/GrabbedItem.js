@@ -2,6 +2,7 @@ import { ModalItem } from './ModalItem.js';
 import { Socket } from '../Socket.js';
 import { utils } from '../../utils.js';
 import { imageHelpers } from '../../helpers/imagehelpers.js';
+import { TouchedTile } from '../TouchedTile.js';
 let grabbedItem;
 
 export class GrabbedItem extends ModalItem {
@@ -107,13 +108,7 @@ export class GrabbedItem extends ModalItem {
 
 	static setTouchedTile(tile) {
 		if (this.element) {
-			this.element.touchedTile = {
-				id: tile.id,
-				col: tile.col,
-				row: tile.row,
-				colID: tile.colID,
-				rowID: tile.rowID
-			};
+			this.element.touchedTile = new TouchedTile(tile);
 		}
 	}
 

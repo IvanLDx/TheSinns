@@ -67,8 +67,8 @@ class World {
 		const fullItem = FullItem.get(item);
 		this.items[fullItem.category].push(fullItem);
 
-		tile = tile || this.findByID(item.touchedTile.id);
-		tile.occupied[item.category] = true;
+		tile = tile || this.findByID(item.touchedTile);
+		tile.occupied[fullItem.category] = true;
 		tile.occupied.some = true;
 	}
 

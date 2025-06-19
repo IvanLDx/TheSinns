@@ -20,14 +20,14 @@ class UserMenu {
 			this.socket.setWorld(world);
 
 			world.openMap(data.world.id).then(() => {
-				this.socket.emit('newPosition', world.getPack());
-
 				this.socket.emit('selectWorld-OK', {
 					id: this.socket.id,
 					itemData: itemData,
 					playerList: Player.list,
 					world: world.tiles
 				});
+
+				this.socket.emit('newPosition', world.getPack());
 			});
 		});
 	}
