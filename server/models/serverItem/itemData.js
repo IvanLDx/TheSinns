@@ -67,7 +67,6 @@ class ServerModalItem {
 
 class ItemData {
 	constructor(itemData, apiItems, apiCategories) {
-		Object.assign(this, itemData);
 		this.serverModalItems = itemData;
 		this.itemWidth = 20;
 		this.apiItems = apiItems;

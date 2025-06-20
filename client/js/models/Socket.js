@@ -28,8 +28,10 @@ export class Socket {
 			cam.resizeInterface(interfaceElements);
 			documentListeners.init();
 
-			SelfPlayer.create(data.playerList, data.id);
+			const selfPlayer = SelfPlayer.create(data.playerList, data.id);
 			Tile.createList(data.world);
+			const tileInTheMiddle = Tile.getTileInTheMiddle();
+			selfPlayer.moveTo(tileInTheMiddle.col, tileInTheMiddle.row);
 
 			const modal = Modal.getElement();
 			modal.appendItems(ModalItem.list);

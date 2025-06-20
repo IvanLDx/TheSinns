@@ -54,11 +54,13 @@ export class Tile extends List {
 	}
 
 	static createList(world) {
-		Tile.list = [];
+		this.list = [];
 		world.forEach((tile) => {
 			let newTile = new Tile(tile);
-			Tile.list.push(newTile);
+			this.list.push(newTile);
 		});
+
+		return this.getList();
 	}
 
 	static paint() {
@@ -79,6 +81,19 @@ export class Tile extends List {
 				}
 			);
 		});
+	}
+
+	static getTileInTheMiddle() {
+		const tiles = this.getList();
+		const lastTile = tiles[tiles.length - 1];
+		const colInTheMiddle = ~~(lastTile.colID / 2);
+		const rowInTheMiddle = ~~(lastTile.rowID / 2);
+
+		const tileInTheMiddle = tiles.find((tile) => {
+			return tile.colID === colInTheMiddle && tile.rowID === rowInTheMiddle;
+		});
+
+		return tileInTheMiddle;
 	}
 
 	static setOccupiedTile(occupiedTiles, tileToUpdate) {

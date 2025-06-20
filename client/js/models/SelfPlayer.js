@@ -12,6 +12,11 @@ export class SelfPlayer {
 		this.y += mouse.drag.y;
 	}
 
+	moveTo(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+
 	static create(players, id) {
 		players
 			.filter((player) => {
@@ -20,6 +25,8 @@ export class SelfPlayer {
 			.forEach((player) => {
 				this.element = new SelfPlayer(player);
 			});
+
+		return this.get();
 	}
 
 	static get() {

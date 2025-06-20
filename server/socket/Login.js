@@ -1,6 +1,7 @@
 const FS = req('models/FS');
 const Token = req('scripts/Token');
 const basicCheck = req('scripts/basicCheck');
+const itemData = req('models/serverItem/itemData');
 
 class Login {
 	constructor(socket) {
@@ -88,6 +89,7 @@ class Login {
 				customerResult.socket = this.socket.player;
 				const account = FS.readAccount(data.username);
 				customerResult.worlds = account.worlds;
+				customerResult.itemData = itemData;
 
 				this.socket.emit('signIn-OK', customerResult);
 				this.socket.setToken();

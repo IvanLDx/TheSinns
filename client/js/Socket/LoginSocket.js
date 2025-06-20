@@ -1,6 +1,7 @@
 import { ifis } from '../utils.js';
 import { stage } from '../models/Stage.js';
 import { Socket } from '../models/Socket.js';
+import { ItemMgr } from '../models/Item/ItemMgr.js';
 import * as menuHelpers from '../stages/menuHelpers.js';
 const socket = Socket.getLibrary();
 
@@ -37,6 +38,7 @@ export class LoginSocket {
 		socket.on('signIn-OK', (data) => {
 			if (data.success) {
 				stage.change('menu');
+				ItemMgr.set(data.itemData);
 				menuHelpers.paintWorlds(data.worlds);
 			}
 		});
@@ -58,7 +60,6 @@ export class LoginSocket {
 		socket.emit('signUp', data);
 
 		socket.on('signUp-OK', (data) => {
-			console.info(data);
 			if (data.success) {
 				stage.change('menu');
 				menuHelpers.paintWorlds(data.worlds);
